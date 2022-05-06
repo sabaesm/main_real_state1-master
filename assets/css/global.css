@@ -1,0 +1,113 @@
+@import '../font/IranYekan/IranYekan.css';
+
+*,
+body,
+html {
+  font-family: IRANYekan !important;
+  margin: 0;
+  padding: 0;
+  direction: rtl!important;
+  list-style: none;
+  text-decoration: none;
+  box-sizing: border-box;
+  text-align: right;
+}
+p,h1,h2,h3,h4,h5,h6{
+  padding: 0 ;
+  margin: 0 ;
+}
+a{
+  text-decoration: none!important;
+}
+.medium_container
+{
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+
+}
+.v-application ul{
+  padding-left: 0px!important;
+}
+.answer_box .v-input .v-label {
+
+      left: auto!important;
+      right: 0!important;
+      position: absolute;
+  }
+@media (min-width: 1600px) {
+    .medium_container {
+        max-width: 1600px;
+    }
+}
+@media (min-width: 1900px) {
+    .medium_container {
+        max-width: 1900px;
+    }
+}
+@media (min-width: 768px) {
+  .medium_container {
+    width: 750px;
+  }
+}
+@media (min-width: 992px) {
+  .medium_container {
+    width: 970px;
+
+  }
+}
+@media (min-width: 1300px) {
+  .medium_container {
+    width: 1300px;
+  }
+}
+.larg_container{
+  width: 100%;
+  padding-right: 5.7rem;
+  padding-left: 5.7rem;
+  margin-right: auto;
+  margin-left: auto;
+
+ 
+}
+
+
+/* @media only screen and (max-width: 560)  {
+  .headr_title{
+font-size: 13px;
+font-style: normal;
+font-weight: 700;
+line-height: 22px;
+letter-spacing: -0.035em;
+text-align: right;
+background-color: red !important;
+  }
+} */
+/* @media (min-width: 1600px) {
+  .larg_container {
+      max-width: 1600px;
+  }
+}
+@media (min-width: 1900px) {
+  .larg_container {
+      max-width: 1900px;
+  }
+}
+@media (min-width: 768px) {
+.larg_container {
+  width: 750px;
+}
+}
+@media (min-width: 992px) {
+.larg_container {
+  width: 980px;
+}
+}
+@media (min-width: 1599px) {
+.larg_container {
+  width: 1480px;
+}
+} */
+
