@@ -2,7 +2,7 @@
   <div class="larg_container">
     <div class="new-main-section">
       <div class="top_section">
-        <div>
+        <div class="">
           <h4>خونتو پیدا کن</h4>
           <h2>   جدیدترین ملک ها</h2>
         </div>
@@ -399,10 +399,7 @@ export default {
   data() {
     return {
       swiperOption: {
-        slidesPerView: 3,
-        spaceBetween: 0,
         slidesPerGroup: 1,
-        loop: true,
         loopFillGroupWithBlank: true,
         pagination: {
           el: ".swiper-pagination",
@@ -414,18 +411,20 @@ export default {
         },
         breakpoints: {
           1024: {
+                    loop: true,
+
             slidesPerView: 3,
             spaceBetween: 0,
           },
           768: {
-            slidesPerView: 3,
+            slidesPerView: 1,
             spaceBetween: 40,
             freeMode: true,
             freeModeMomentum: true,
             mousewheelSensitivity: 0.02,
           },
           640: {
-            slidesPerView: 2,
+            slidesPerView: 1,
             spaceBetween: 40,
             freeMode: true,
             freeModeMomentum: true,
@@ -456,7 +455,6 @@ box-sizing:initial;
 }
 .top_section {
   display: flex;
-  align-items: center;
   align-items: center;
   margin: 40px 0;
 }
@@ -775,32 +773,67 @@ justify-content: space-around;
   color: #101737;
 }
 
-@media screen and (max-width: 960px) {
-  .sale__cards {
-    min-width: 400px;
+
+ @media screen and (max-width: 600px) {
+.arrows{
+
+  display: none;
+}
+.top_section div{
+width: 100%;  
+}
+   h2{
+    text-align: center!important;
+    width: 100%!important;
   }
-  .sale__card__items {
-    display: flex;
-    flex-wrap: nowrap;
-    overflow-y: scroll;
-  }
-  h2,
   h4 {
-    text-align: center;
-  }
-  h4 {
-    font-family: IRANYekanWeb;
     font-size: 13px;
     font-weight: 700;
     line-height: 22px;
     letter-spacing: -0.035em;
+    text-align: center!important;
+    width: 100%!important;
   }
   h2 {
-    font-family: IRANYekanWeb;
     font-size: 18px;
     font-weight: 800;
     line-height: 30px;
     letter-spacing: -0.035em;
+    
+  }
+  .sale_date {
+font-size: 15px!important;
+font-weight: 700!important;
+line-height: 22px!important;
+letter-spacing: -0.021em!important;
+
+}
+.counter{
+font-size: 11px!important;
+font-weight: 800;
+line-height: 18px;
+letter-spacing: -0.035em;
+}
+.sale__desctiptipn{
+font-size: 15px;
+font-weight: 700;
+line-height: 22px;
+letter-spacing: -0.021em;
+}
+.home__desctiption{
+font-size: 13px;
+font-weight: 400;
+line-height: 19px;
+letter-spacing: -0.021em;
+text-align: right;
+
+}
+  .custom_swiper_container{
+  }
+  .sale__card__items{
+
+
+
   }
 }
 </style>

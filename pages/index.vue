@@ -11,6 +11,8 @@
       <banner v-bind="getContactUsBanner" :data="getContactUsBanner"></banner>
       <favplace></favplace>
          <cons v-bind="getContactUs" :data="getContactUs"></cons>
+         <weblog></weblog>
+               <banner v-bind="getContactUsBanner" :data="getContactUsBanner"></banner>
     </v-app>
   </div>
 </template>

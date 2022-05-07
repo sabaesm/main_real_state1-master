@@ -1,399 +1,627 @@
 <template>
+  <div class="larg_container">
+    <div class="new-main-section">
+      <div class="top_section">
+        <div>
+          <h4>از اخرین اخبار اطلاع دارید</h4>
+          <h2>وبلاگ تخصصی ما</h2>
+        </div>
+        <div class="arrows">
+          <div class="see_more d-flex align-center">
+            <span class="pl-5">مشاهده همه</span>
+            <svg
+              width="26"
+              height="26"
+              viewBox="0 0 26 26"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M7.84463 2.16675H5.7863C3.4138 2.16675 2.16797 3.41258 2.16797 5.77425V7.83258C2.16797 10.1942 3.4138 11.4401 5.77547 11.4401H7.8338C10.1955 11.4401 11.4413 10.1942 11.4413 7.83258V5.77425C11.4521 3.41258 10.2063 2.16675 7.84463 2.16675Z"
+                fill="white"
+              />
+              <path
+                d="M20.2244 2.16675H18.1661C15.8044 2.16675 14.5586 3.41258 14.5586 5.77425V7.83258C14.5586 10.1942 15.8044 11.4401 18.1661 11.4401H20.2244C22.5861 11.4401 23.8319 10.1942 23.8319 7.83258V5.77425C23.8319 3.41258 22.5861 2.16675 20.2244 2.16675Z"
+                fill="white"
+              />
+              <path
+                d="M20.2244 14.5491H18.1661C15.8044 14.5491 14.5586 15.7949 14.5586 18.1566V20.2149C14.5586 22.5766 15.8044 23.8224 18.1661 23.8224H20.2244C22.5861 23.8224 23.8319 22.5766 23.8319 20.2149V18.1566C23.8319 15.7949 22.5861 14.5491 20.2244 14.5491Z"
+                fill="white"
+              />
+              <path
+                d="M7.84463 14.5491H5.7863C3.4138 14.5491 2.16797 15.7949 2.16797 18.1566V20.2149C2.16797 22.5874 3.4138 23.8332 5.77547 23.8332H7.8338C10.1955 23.8332 11.4413 22.5874 11.4413 20.2257V18.1674C11.4521 15.7949 10.2063 14.5491 7.84463 14.5491Z"
+                fill="white"
+              />
+            </svg>
+          </div>
+          <div
+            class="next-button-new d-flex align-center justify-center"
+            slot="next-button-new "
+          >
+            <svg
+              width="20"
+              height="14"
+              viewBox="0 0 20 14"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M12.7144 12L18.4286 7L12.7144 2"
+                stroke="white"
+                stroke-width="2.5"
+                stroke-miterlimit="10"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M2 7H18.4286"
+                stroke="white"
+                stroke-width="2.5"
+                stroke-miterlimit="10"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </div>
+          <div
+            class="prev-button-new d-flex align-center justify-center"
+            slot="button-prev"
+          >
+            <svg
+              width="20"
+              height="14"
+              viewBox="0 0 20 14"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M7.71436 12L2.00007 7L7.71436 2"
+                stroke="white"
+                stroke-width="2.5"
+                stroke-miterlimit="10"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M18.4287 7H2.00014"
+                stroke="white"
+                stroke-width="2.5"
+                stroke-miterlimit="10"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </div>
+        </div>
+      </div>
+      <div v-swiper="swiperOption" class="w-5/6 ml-auto relative custom_swiper_container">
+        <div class="swiper-wrapper">
+          <ul
+            class="sale__cards d-flex flex-row align-center justify-center swiper-slide"
+            v-for="weblog in weblog"
+            :key="weblog.id"
+          >
+            <li class="ma-0 pa-2 sale__card__items">
+              <div class="top_card">
+                <a href="#">
+                  <img :src="weblog.img" alt="" />
+                </a>
+                <div class="topcard__top__section">
+                  <div class="status d-flex flex-row align-center justify-center px-3">
+                    <svg
+                      width="19"
+                      height="19"
+                      viewBox="0 0 19 19"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M16.4284 10.4896C16.4284 14.3133 13.3251 17.4167 9.5013 17.4167C5.67755 17.4167 2.57422 14.3133 2.57422 10.4896C2.57422 6.66583 5.67755 3.5625 9.5013 3.5625C13.3251 3.5625 16.4284 6.66583 16.4284 10.4896Z"
+                        stroke="white"
+                        stroke-width="1.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                      <path
+                        d="M9.5 6.33331V10.2916"
+                        stroke="white"
+                        stroke-width="1.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                      <path
+                        d="M7.125 1.58331H11.875"
+                        stroke="white"
+                        stroke-width="1.5"
+                        stroke-miterlimit="10"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </svg>
 
-<div class="d-flex flex-column align-center mt-5 pt-5 releted_post">
- <h4 class="my-5">پست های مرتبط</h4>
-<div class="d-flex flex-column flex-lg-row  ">
-<ul v-for="  weblog in weblog" :key="weblog.id" class="ma-2">
-      <v-col   cols="12 " class="pa-3 ma-0 grouping_card">
-        <v-row class="main__row  pa-0 ma-0">
-          <v-col cols="12" class="ma-0 pa-0">
-            <!-- right section of card -->
-            <li class="right__section">
-              <div class="pictur ma-0 pb-1">
-                <img class="main__pic" :src="weblog.img" />
-                <div class="time">
-                  <svg viewBox="0 0 15 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path
-                      d="M12.8058 7.6646C12.8058 10.4335 10.5585 12.6808 7.7896 12.6808C5.02068 12.6808 2.77344 10.4335 2.77344 7.6646C2.77344 4.89568 5.02068 2.64844 7.7896 2.64844C10.5585 2.64844 12.8058 4.89568 12.8058 7.6646Z"
-                      stroke="white"
-                      stroke-width="1.5"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    />
-                    <path
-                      d="M7.78906 4.65527V7.52165"
-                      stroke="white"
-                      stroke-width="1.5"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    />
-                    <path
-                      d="M6.07031 1.21533H9.50997"
-                      stroke="white"
-                      stroke-width="1.5"
-                      stroke-miterlimit="10"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    />
-                  </svg>
-                  <p>
-                    {{ weblog.time }}
-                  </p>
-                </div>
-                <div class="date">
-                  <p class="">
+                    <span class="sale__status">{{ weblog.time }}</span>
+                  </div>
+                  <span class="date">
                     {{ weblog.date }}
-                  </p>
-                </div>
-                <div class="d-flex flex-row count__icon">
-                  <div class="text_counter px-2">
-                    <p class="message__number pt-1">{{ weblog.message }}</p>
-                    <span class="message__icon">
-                      <svg
-                        viewBox="0 0 13 13"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          d="M4.41725 10.0321H4.15799C2.08391 10.0321 1.04688 9.51358 1.04688 6.92099V4.3284C1.04688 2.25432 2.08391 1.21729 4.15799 1.21729H8.30613C10.3802 1.21729 11.4172 2.25432 11.4172 4.3284V6.92099C11.4172 8.99506 10.3802 10.0321 8.30613 10.0321H8.04687C7.88613 10.0321 7.73058 10.1099 7.63206 10.2395L6.85428 11.2765C6.51206 11.7328 5.95206 11.7328 5.60984 11.2765L4.83206 10.2395C4.7491 10.1254 4.55725 10.0321 4.41725 10.0321Z"
-                          stroke="white"
-                          stroke-width="1.5"
-                          stroke-miterlimit="10"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                        />
-                        <path
-                          d="M8.30719 5.88377H8.31185"
-                          stroke="white"
-                          stroke-width="2"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                        />
-                        <path
-                          d="M6.23297 5.88377H6.23763"
-                          stroke="white"
-                          stroke-width="2"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                        />
-                        <path
-                          d="M4.15876 5.88377H4.16341"
-                          stroke="white"
-                          stroke-width="2"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                        />
-                      </svg>
-                    </span>
-                  </div>
-                  <div class="view_counter px-2">
-                    <p class="message__number pt-1">{{ weblog.view }}</p>
-                    <span class="message__icon">
-                      <svg
-                        viewBox="0 0 13 13"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          d="M8.53681 6.4022C8.53681 7.42886 7.70718 8.25849 6.68051 8.25849C5.65385 8.25849 4.82422 7.42886 4.82422 6.4022C4.82422 5.37553 5.65385 4.5459 6.68051 4.5459C7.70718 4.5459 8.53681 5.37553 8.53681 6.4022Z"
-                          stroke="white"
-                          stroke-width="1.5"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                        />
-                        <path
-                          d="M6.67917 10.6904C8.50954 10.6904 10.2155 9.61185 11.4029 7.74518C11.8695 7.01407 11.8695 5.78518 11.4029 5.05407C10.2155 3.1874 8.50954 2.10889 6.67917 2.10889C4.8488 2.10889 3.14288 3.1874 1.95547 5.05407C1.4888 5.78518 1.4888 7.01407 1.95547 7.74518C3.14288 9.61185 4.8488 10.6904 6.67917 10.6904Z"
-                          stroke="white"
-                          stroke-width="1.5"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                        />
-                      </svg>
-                    </span>
-                  </div>
-                </div>
-              </div>
-            </li>
-          </v-col>
-          <!-- left section of card -->
-          <v-col cols="12"  class="pa-0 ma-0 pr-3">
-            <li class="left__section">
-              <h4 class="mb-0 pb-0 ">
-                {{ weblog.header }}
-              </h4>
-              <p class="pa-0 ma-0">{{ weblog.details }}</p>
-              <div class="person__details d-flex flex-row w-100">
-                <div class="person d-flex flex-row">
-                  <div class="person__pictur">
-                    <img :src="weblog.person__pic" />
-                  </div>
-                  <span class="d-flex flex-column pa-1">
-                    <h5 class="name">{{ weblog.name }}</h5>
-                    <p class="exprience">{{ weblog.experience }}</p>
                   </span>
                 </div>
-                <div class="contact_way">
-                  <svg
-                    class="ml-2"
-                    viewBox="0 0 44 44"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <rect
-                      x="1.20312"
-                      y="1.70801"
-                      width="41.5"
-                      height="41.5"
-                      rx="13.25"
-                      fill="#FFA80A"
-                      fill-opacity="0.08"
-                      stroke="#FFA80A"
-                      stroke-width="1.5"
-                    />
-                    <path
-                      d="M25.5942 13.9181L16.5642 16.9181C10.4942 18.9481 10.4942 22.2581 16.5642 24.2781L19.2442 25.1681L20.1342 27.8481C22.1542 33.9181 25.4742 33.9181 27.4942 27.8481L30.5042 18.8281C31.8442 14.7781 29.6442 12.5681 25.5942 13.9181ZM25.9142 19.2981L22.1142 23.1181C21.9642 23.2681 21.7742 23.3381 21.5842 23.3381C21.3942 23.3381 21.2042 23.2681 21.0542 23.1181C20.7642 22.8281 20.7642 22.3481 21.0542 22.0581L24.8542 18.2381C25.1442 17.9481 25.6242 17.9481 25.9142 18.2381C26.2042 18.5281 26.2042 19.0081 25.9142 19.2981Z"
-                      fill="#FFA80A"
-                    />
-                  </svg>
-                  <svg viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <rect
-                      x="1.20703"
-                      y="1.70801"
-                      width="41.5"
-                      height="41.5"
-                      rx="13.25"
-                      fill="#0DA049"
-                      fill-opacity="0.08"
-                      stroke="#0DA049"
-                      stroke-width="1.5"
-                    />
-                    <path
-                      d="M27.077 21.7081C26.647 21.7081 26.307 21.3581 26.307 20.9381C26.307 20.5681 25.937 19.7981 25.317 19.1281C24.707 18.4781 24.037 18.0981 23.477 18.0981C23.047 18.0981 22.707 17.7481 22.707 17.3281C22.707 16.9081 23.057 16.5581 23.477 16.5581C24.477 16.5581 25.527 17.0981 26.447 18.0681C27.307 18.9781 27.857 20.1081 27.857 20.9281C27.857 21.3581 27.507 21.7081 27.077 21.7081Z"
-                      fill="#0DA049"
-                    />
-                    <path
-                      d="M30.6887 21.708C30.2587 21.708 29.9187 21.358 29.9187 20.938C29.9187 17.388 27.0287 14.508 23.4887 14.508C23.0587 14.508 22.7188 14.158 22.7188 13.738C22.7188 13.318 23.0588 12.958 23.4788 12.958C27.8788 12.958 31.4587 16.538 31.4587 20.938C31.4587 21.358 31.1087 21.708 30.6887 21.708Z"
-                      fill="#0DA049"
-                    />
-                    <path
-                      d="M20.507 25.908L18.657 27.758C18.267 28.148 17.647 28.148 17.247 27.768C17.137 27.658 17.027 27.558 16.917 27.448C15.887 26.408 14.957 25.318 14.127 24.178C13.307 23.038 12.647 21.898 12.167 20.768C11.697 19.628 11.457 18.538 11.457 17.498C11.457 16.818 11.577 16.168 11.817 15.568C12.057 14.958 12.437 14.398 12.967 13.898C13.607 13.268 14.307 12.958 15.047 12.958C15.327 12.958 15.607 13.018 15.857 13.138C16.117 13.258 16.347 13.438 16.527 13.698L18.847 16.968C19.027 17.218 19.157 17.448 19.247 17.668C19.337 17.878 19.387 18.088 19.387 18.278C19.387 18.518 19.317 18.758 19.177 18.988C19.047 19.218 18.857 19.458 18.617 19.698L17.857 20.488C17.747 20.598 17.697 20.728 17.697 20.888C17.697 20.968 17.707 21.038 17.727 21.118C17.757 21.198 17.787 21.258 17.807 21.318C17.987 21.648 18.297 22.078 18.737 22.598C19.187 23.118 19.667 23.648 20.187 24.178C20.287 24.278 20.397 24.378 20.497 24.478C20.897 24.868 20.907 25.508 20.507 25.908Z"
-                      fill="#0DA049"
-                    />
-                    <path
-                      d="M31.4275 29.288C31.4275 29.568 31.3775 29.858 31.2775 30.138C31.2475 30.218 31.2175 30.298 31.1775 30.378C31.0075 30.738 30.7875 31.078 30.4975 31.398C30.0075 31.938 29.4675 32.328 28.8575 32.578C28.8475 32.578 28.8375 32.588 28.8275 32.588C28.2375 32.828 27.5975 32.958 26.9075 32.958C25.8875 32.958 24.7975 32.718 23.6475 32.228C22.4975 31.738 21.3475 31.078 20.2075 30.248C19.8175 29.958 17.5575 28.038 17.1875 27.728L20.4575 24.458C20.7375 24.668 22.8575 26.458 23.0675 26.568C23.1175 26.588 23.1775 26.618 23.2475 26.648C23.3275 26.678 23.4075 26.688 23.4975 26.688C23.6675 26.688 23.7975 26.628 23.9075 26.518L24.6675 25.768C24.9175 25.518 25.1575 25.328 25.3875 25.208C25.6175 25.068 25.8475 24.998 26.0975 24.998C26.2875 24.998 26.4875 25.038 26.7075 25.128C26.9275 25.218 27.1575 25.348 27.4075 25.518L30.7175 27.868C30.9775 28.048 31.1575 28.258 31.2675 28.508C31.3675 28.758 31.4275 29.008 31.4275 29.288Z"
-                      fill="#0DA049"
-                    />
-                  </svg>
-                </div>
+                <span class="hover__icon_bottom">
+                  <div class="d-flex flex-end justify-end">
+                    <div class="counter d-flex flex-column align-center pa-2 mx-2">
+                      <span>{{ weblog.view }}</span>
+                      <span
+                        ><svg
+                          width="19"
+                          height="19"
+                          viewBox="0 0 19 19"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M4.82496 17.4168H14.1776C16.6408 17.4168 17.6224 16.0789 17.7384 14.4481L18.2025 7.90891C18.3275 6.19891 16.7925 4.75016 14.8559 4.75016C14.3115 4.75016 13.8117 4.47308 13.5619 4.04558L12.9193 2.89766C12.5088 2.17725 11.4379 1.5835 10.5276 1.5835H8.48393C7.56472 1.5835 6.49381 2.17725 6.08329 2.89766L5.44074 4.04558C5.19086 4.47308 4.69109 4.75016 4.14671 4.75016C2.21013 4.75016 0.67515 6.19891 0.80009 7.90891L1.26415 14.4481C1.37125 16.0789 2.36185 17.4168 4.82496 17.4168Z"
+                            stroke="white"
+                            stroke-width="1.5"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                          />
+                          <path
+                            d="M9.4987 14.2498C11.2428 14.2498 12.6654 12.8273 12.6654 11.0832C12.6654 9.33907 11.2428 7.9165 9.4987 7.9165C7.7546 7.9165 6.33203 9.33907 6.33203 11.0832C6.33203 12.8273 7.7546 14.2498 9.4987 14.2498Z"
+                            stroke="white"
+                            stroke-width="1.5"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                          />
+                        </svg>
+                      </span>
+                    </div>
+                    <div class="counter d-flex flex-column align-center pa-2">
+                      <span>{{ weblog.message }}</span>
+                      <span
+                        ><svg
+                          width="19"
+                          height="19"
+                          viewBox="0 0 19 19"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M4.82496 17.4168H14.1776C16.6408 17.4168 17.6224 16.0789 17.7384 14.4481L18.2025 7.90891C18.3275 6.19891 16.7925 4.75016 14.8559 4.75016C14.3115 4.75016 13.8117 4.47308 13.5619 4.04558L12.9193 2.89766C12.5088 2.17725 11.4379 1.5835 10.5276 1.5835H8.48393C7.56472 1.5835 6.49381 2.17725 6.08329 2.89766L5.44074 4.04558C5.19086 4.47308 4.69109 4.75016 4.14671 4.75016C2.21013 4.75016 0.67515 6.19891 0.80009 7.90891L1.26415 14.4481C1.37125 16.0789 2.36185 17.4168 4.82496 17.4168Z"
+                            stroke="white"
+                            stroke-width="1.5"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                          />
+                          <path
+                            d="M9.4987 14.2498C11.2428 14.2498 12.6654 12.8273 12.6654 11.0832C12.6654 9.33907 11.2428 7.9165 9.4987 7.9165C7.7546 7.9165 6.33203 9.33907 6.33203 11.0832C6.33203 12.8273 7.7546 14.2498 9.4987 14.2498Z"
+                            stroke="white"
+                            stroke-width="1.5"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                          />
+                        </svg>
+                      </span>
+                    </div>
+                  </div>
+                </span>
               </div>
+              <v-col class="bottom_card pa-0 ma-0" cols="12">
+                <h5 class="sale__desctiptipn">
+                  {{ weblog.header }}
+                </h5>
+
+                <p class="description pa-0 ma-0">{{ weblog.details }}</p>
+                <div class="sale_person__details d-flex flex-row w-100">
+                  <div class="sale_person d-flex flex-row">
+                    <div class="sale_person__pictur">
+                      <img :src="weblog.person__pic" />
+                    </div>
+                    <span class="d-flex flex-column pa-1">
+                      <h6 class="pa-0 ma-0">{{ weblog.name }}</h6>
+                      <p class="pa-0 ma-0">{{ weblog.experience }}</p>
+                    </span>
+                  </div>
+                  <div class="sale_contact_way pa-0 ma-0">
+                    <svg
+                      class="ml-2"
+                      viewBox="0 0 44 44"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <rect
+                        x="1.20312"
+                        y="1.70801"
+                        width="41.5"
+                        height="41.5"
+                        rx="13.25"
+                        fill="#FFA80A"
+                        fill-opacity="0.08"
+                        stroke="#FFA80A"
+                        stroke-width="1.5"
+                      />
+                      <path
+                        d="M25.5942 13.9181L16.5642 16.9181C10.4942 18.9481 10.4942 22.2581 16.5642 24.2781L19.2442 25.1681L20.1342 27.8481C22.1542 33.9181 25.4742 33.9181 27.4942 27.8481L30.5042 18.8281C31.8442 14.7781 29.6442 12.5681 25.5942 13.9181ZM25.9142 19.2981L22.1142 23.1181C21.9642 23.2681 21.7742 23.3381 21.5842 23.3381C21.3942 23.3381 21.2042 23.2681 21.0542 23.1181C20.7642 22.8281 20.7642 22.3481 21.0542 22.0581L24.8542 18.2381C25.1442 17.9481 25.6242 17.9481 25.9142 18.2381C26.2042 18.5281 26.2042 19.0081 25.9142 19.2981Z"
+                        fill="#FFA80A"
+                      />
+                    </svg>
+                    <svg
+                      viewBox="0 0 44 44"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <rect
+                        x="1.20703"
+                        y="1.70801"
+                        width="41.5"
+                        height="41.5"
+                        rx="13.25"
+                        fill="#0DA049"
+                        fill-opacity="0.08"
+                        stroke="#0DA049"
+                        stroke-width="1.5"
+                      />
+                      <path
+                        d="M27.077 21.7081C26.647 21.7081 26.307 21.3581 26.307 20.9381C26.307 20.5681 25.937 19.7981 25.317 19.1281C24.707 18.4781 24.037 18.0981 23.477 18.0981C23.047 18.0981 22.707 17.7481 22.707 17.3281C22.707 16.9081 23.057 16.5581 23.477 16.5581C24.477 16.5581 25.527 17.0981 26.447 18.0681C27.307 18.9781 27.857 20.1081 27.857 20.9281C27.857 21.3581 27.507 21.7081 27.077 21.7081Z"
+                        fill="#0DA049"
+                      />
+                      <path
+                        d="M30.6887 21.708C30.2587 21.708 29.9187 21.358 29.9187 20.938C29.9187 17.388 27.0287 14.508 23.4887 14.508C23.0587 14.508 22.7188 14.158 22.7188 13.738C22.7188 13.318 23.0588 12.958 23.4788 12.958C27.8788 12.958 31.4587 16.538 31.4587 20.938C31.4587 21.358 31.1087 21.708 30.6887 21.708Z"
+                        fill="#0DA049"
+                      />
+                      <path
+                        d="M20.507 25.908L18.657 27.758C18.267 28.148 17.647 28.148 17.247 27.768C17.137 27.658 17.027 27.558 16.917 27.448C15.887 26.408 14.957 25.318 14.127 24.178C13.307 23.038 12.647 21.898 12.167 20.768C11.697 19.628 11.457 18.538 11.457 17.498C11.457 16.818 11.577 16.168 11.817 15.568C12.057 14.958 12.437 14.398 12.967 13.898C13.607 13.268 14.307 12.958 15.047 12.958C15.327 12.958 15.607 13.018 15.857 13.138C16.117 13.258 16.347 13.438 16.527 13.698L18.847 16.968C19.027 17.218 19.157 17.448 19.247 17.668C19.337 17.878 19.387 18.088 19.387 18.278C19.387 18.518 19.317 18.758 19.177 18.988C19.047 19.218 18.857 19.458 18.617 19.698L17.857 20.488C17.747 20.598 17.697 20.728 17.697 20.888C17.697 20.968 17.707 21.038 17.727 21.118C17.757 21.198 17.787 21.258 17.807 21.318C17.987 21.648 18.297 22.078 18.737 22.598C19.187 23.118 19.667 23.648 20.187 24.178C20.287 24.278 20.397 24.378 20.497 24.478C20.897 24.868 20.907 25.508 20.507 25.908Z"
+                        fill="#0DA049"
+                      />
+                      <path
+                        d="M31.4275 29.288C31.4275 29.568 31.3775 29.858 31.2775 30.138C31.2475 30.218 31.2175 30.298 31.1775 30.378C31.0075 30.738 30.7875 31.078 30.4975 31.398C30.0075 31.938 29.4675 32.328 28.8575 32.578C28.8475 32.578 28.8375 32.588 28.8275 32.588C28.2375 32.828 27.5975 32.958 26.9075 32.958C25.8875 32.958 24.7975 32.718 23.6475 32.228C22.4975 31.738 21.3475 31.078 20.2075 30.248C19.8175 29.958 17.5575 28.038 17.1875 27.728L20.4575 24.458C20.7375 24.668 22.8575 26.458 23.0675 26.568C23.1175 26.588 23.1775 26.618 23.2475 26.648C23.3275 26.678 23.4075 26.688 23.4975 26.688C23.6675 26.688 23.7975 26.628 23.9075 26.518L24.6675 25.768C24.9175 25.518 25.1575 25.328 25.3875 25.208C25.6175 25.068 25.8475 24.998 26.0975 24.998C26.2875 24.998 26.4875 25.038 26.7075 25.128C26.9275 25.218 27.1575 25.348 27.4075 25.518L30.7175 27.868C30.9775 28.048 31.1575 28.258 31.2675 28.508C31.3675 28.758 31.4275 29.008 31.4275 29.288Z"
+                        fill="#0DA049"
+                      />
+                    </svg>
+                  </div>
+                </div>
+              </v-col>
             </li>
-          </v-col>
-          <!-- end of left section -->
-        </v-row>
-      </v-col>
-      <!-- end of card -->
-    </ul>
-</div>
-</div>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
 </template>
 <script>
+import { directive } from "vue-awesome-swiper";
 import { mapState } from "vuex";
 export default {
-  computed: mapState(["weblog"]),
+  name: "Slider",
+  directives: {
+    swiper: directive,
+  },
+  computed: {
+    ...mapState(["weblog"]),
+  },
+  data() {
+    return {
+      swiperOption: {
+        slidesPerView: 3,
+        spaceBetween: 20,
+        slidesPerGroup: 1,
+        loop: true,
+        loopFillGroupWithBlank: true,
+        pagination: {
+          el: ".swiper-pagination",
+          clickable: true,
+        },
+        navigation: {
+          nextEl: ".prev-button-new",
+          prevEl: ".next-button-new",
+        },
+        breakpoints: {
+          1024: {
+            slidesPerView: 3,
+            spaceBetween: 30,
+          },
+          768: {
+            slidesPerView: 3,
+            spaceBetween: 20,
+            freeMode: true,
+            freeModeMomentum: true,
+            mousewheelSensitivity: 0.02,
+          },
+          640: {
+            slidesPerView: 2,
+            spaceBetween: 40,
+            freeMode: true,
+            freeModeMomentum: true,
+            mousewheelSensitivity: 0.02,
+          },
+          320: {
+            freeMode: true,
+            spaceBetween: 40,
+            freeModeMomentum: true,
+            mousewheelSensitivity: 0.02,
+          },
+        },
+      },
+    };
+  },
 };
 </script>
+
 <style scoped>
- .releted_post img{
-object-fit: cover!important;
+.custom_swiper_container {
+  box-sizing: initial;
+  padding: 0 10px !important;
 }
- .releted_post   p,
-h5 {
-  margin: 0 !important;
-  padding: 0!important;
+.new-main-section {
+  box-sizing: border-box;
+  position: relative;
+  margin-bottom: 60px;
 }
- .releted_post .left__section h4 {
-  font-size: 21px;
+.top_section {
+  display: flex;
+  align-items: center;
+  align-items: center;
+  margin: 40px 0;
+}
+h4 {
+  color: #519fff;
+  font-size: 20px;
+  font-weight: 200px;
+}
+h2 {
+  font-size: 37px;
   font-weight: 800;
-  line-height: 31px;
-  letter-spacing: -0.021em;
- 
-  width: 100%;
-  text-align: right !important;
-  transition: all ease-out 0.2s;
-  margin: 5px 0!important;
+  line-height: 61px;
+  letter-spacing: -0.035em;
+  text-align: right;
+  color: #121939 !important;
 }
- .releted_post .left__section p {
+p {
+  font-weight: 100;
+  font-size: 10px;
+}
+h4 {
+  color: #519fff;
+  font-size: 20px;
+  font-weight: 200px;
+}
+h2 {
+  color: #121939;
+  font-size: 30px;
+  font-weight: 500px;
+}
+
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.arrows {
+  position: absolute;
+  z-index: 999;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  direction: ltr;
+  left: 0;
+}
+.see_more {
+  background-color: #798595;
+  border-radius: 10px;
+  height: 61px;
+  padding: 20px;
+  margin: 0 5px;
+}
+.see_more svg {
+  width: 25px;
+  height: 25px;
+}
+.see_more span {
+  color: #ffff;
+  font-size: 17px;
+  font-weight: 700;
+  line-height: 28px;
+  letter-spacing: -0.035em;
+  text-align: right;
+}
+.prev-button-new,
+.next-button-new {
+  border-radius: 10px;
+  cursor: pointer;
+  position: relative;
+  margin: 0 5px;
+}
+
+.prev-button-new {
+  background-color: #519fff;
+  width: 60px;
+  height: 60px;
+}
+.next-button-new {
+  background-color: #519fff;
+  width: 60px;
+  height: 60px;
+}
+.bottom_card {
+  height: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+.sale__card__items:hover .sale__desctiptipn {
+  color: #087cce !important;
+}
+.left__main__card {
+}
+.sale__cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 30px 0px !important;
+}
+.sale__cards .sale__card__items {
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 20px;
+  width: calc(100% -20px);
+  box-shadow: 0px 0px 34px -9px rgba(12, 46, 96, 0.25);
+  height: 490px;
+}
+.top_card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+  transition: all ease-in-out 0.3s;
+  width: 100%;
+  height: 240px;
+}
+.top_card a {
+  overflow: hidden !important;
+  border-radius: 10px;
+  height: 100%;
+  width: 100%;
+  display: block;
+}
+.top_card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: all ease-in-out 0.3s !important;
+}
+.top_card:hover img {
+  transform: scale(1.1);
+}
+
+.top_card .topcard__top__section {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.salecard_product__text {
+  display: none;
+  transition: all ease-in-out 0.3s !important;
+}
+
+.status {
+  width: 120px;
+  background: #6dc175;
+  border-radius: 5px;
+  height: 30px;
+}
+.sale__status {
+  font-size: 12px;
+  font-weight: 800;
+  line-height: 20px;
+  letter-spacing: -0.035em;
+  text-align: right;
+  color: #ffff;
+  padding: 10px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.date {
+  font-size: 12px;
+  font-weight: 800;
+  line-height: 20px;
+  letter-spacing: -0.035em;
+  text-align: right;
+  background: #ffff;
+  padding: 10px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.top_card .hover__icon_bottom {
+  position: absolute;
+  left: 10px;
+  bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  transition: all ease-in-out 0.3s;
+}
+
+.sale_date {
+  background-color: #fff;
+  border-radius: 5px;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 800;
+  line-height: 20px;
+  letter-spacing: -0.035em;
+  text-align: right;
+  padding: 5px;
+  position: absolute;
+  left: 0;
+}
+.counter {
+  background: #101737;
+  color: #fff;
+  border-radius: 5px;
+  font-size: 12px;
+}
+.sale__desctiptipn {
+  font-size: 21px;
+  font-weight: 700;
+  line-height: 29px;
+  letter-spacing: -0.021em;
+  text-align: right;
+  color: #101737 !important;
+  transition: all ease-in-out 0.3s;
+}
+.home__desctiption {
+  display: flex;
+  width: 100%;
+}
+.home__desctiptionli {
+  display: inline-block;
+  width: 20%;
+}
+
+.description {
   font-size: 14px;
   font-weight: 400;
   line-height: 21px;
   letter-spacing: -0.021em;
-  color: rgba(158, 161, 172, 1);
-}
-.releted_post  .mainCard__weblog {
-align-items: center;
-}
-.releted_post  .main__row {
-}
-.releted_post  .grouping_card {
-  box-shadow: 0px 0px 34px -9px rgba(12, 46, 96, 0.25);
-  border-radius: 31px;
-  height: 450px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-   transition: all ease-in-out .3s;
-   overflow: hidden;
-}
- .releted_post  li {
-  width: 100% !important;
-}
- .releted_post  .pictur {
-  width: 100% !important;
-  position: relative;
-  border-radius: 26px;
-  height: 210px;
-  object-fit: cover;
-  overflow: hidden;
-}
-.releted_post  .main__pic {
-  width: 100% !important;
-  border-radius: 26px;
-  height: 100%;
-  transition:all ease-in-out .3s;
-}
-.releted_post  .main__pic:hover {
-  transition:all ease-in-out .3s;
-  transform: scale(1.1);
-}
-.releted_post  .time {
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  text-align: center;
-  background-color: rgba(109, 193, 117, 1);
-  position: absolute;
-  width: 85px;
-  top: 13px;
-  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.25);
-  border-radius: 8px;
-  right: 0%;
-  padding: 6px 5px;
-  margin-right: 13px;
-  
-}
-.releted_post  .time p {
-  padding: 0;
-  margin: 0;
-  font-size: 9px;
-  font-style: normal;
-  font-weight: 800;
-  line-height: 13px;
-  letter-spacing: -0.035em;
-  text-align: right;  white-space: nowrap; 
-  width: 55px; 
-  overflow: hidden;
-  text-overflow: ellipsis;
-  color: #ffff;
-}
-.releted_post  .time svg {
-  height: 13.75px;
-  width: 13.7px;
-}
-.releted_post  .date {
-  position: absolute;
-  width: 55px;
-  top: 13px;
-  left: 0%;
-  background-color: #ffff;
-  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.25);
-  border-radius: 8px;
-  padding: 5px;
-  margin-left: 13px;
-}
-.releted_post  .date p {
-  font-size: 10px;
-  font-weight: 800;
-  line-height: 13px;
-  letter-spacing: -0.035em;
-  text-align: center;
-  color: #535353;
-    text-align: right;  white-space: nowrap; 
-  width: 45px; 
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-.releted_post  .count__icon {
-  position: absolute;
-  left: 0%;
-  bottom: 0%;
-  padding-bottom: 8px;
-  padding-left: 13px;
-}
-.releted_post  .count__icon svg {
-  height: 25px;
-  width: 20px;
-}
-.releted_post  .count__icon .text_counter,
-.view_counter {
-  background: rgba(16, 23, 55, 1);
-  color: #ffff;
-  border-radius: 5px;
-  padding: 0 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  margin: 2px;
-}
-.releted_post .message__number {
-  font-size: 8px;
-  font-weight: 800;
-  line-height: 13px;
-  letter-spacing: -0.035em;
   text-align: right;
+  color: #9ea1ac;
 }
 
-.releted_post  .message__icon svg {
-  width: 14.37px;
-  height: 14px;
-  padding: 0;
-}
-/*left section */
-.releted_post  .left__section {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  width: 100%;
-  box-sizing: border-box;
-  height: 220px;
-}
-.person__details {
+.sale_person__details {
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 30px;
 }
-.releted_post  .person__pictur img {
-  border-radius: 15px !important;
-  margin-left: 8px;
-  object-fit: cover;
+.sale_contact_way {
+  display: flex;
+  cursor: pointer;
 }
- .releted_post  .person__pictur img {
+.sale_contact_way svg {
+  width: 45px;
+}
+.sale_person__pictur img {
   width: 40px;
   height: 40px;
-  border-radius: 0;
+  border-radius: 9px;
 }
-.person {
+.sale_person {
   display: flex;
   align-items: center;
 }
-.person p {
+.sale_person p {
   font-size: 11px;
   font-weight: 400;
   line-height: 16px;
   letter-spacing: -0.021em;
   color: #b1b1b1;
 }
-.person h5 {
+.sale_person h6 {
   font-size: 15px;
   font-weight: 700;
   line-height: 22px;
@@ -401,152 +629,33 @@ align-items: center;
   text-align: right;
   color: #101737;
 }
-.contact_way {
-  display: flex;
-  cursor: pointer;
-}
-.contact_way svg {
-  width: 45px;
-}
 
-.releted_post  .cards_pagination li{
-border: 1px solid rgba(0, 0, 0, 0.219);
-text-align: center;
-display: flex;
-align-items: center;
-justify-content: center;
-border-radius: 10px;
-width: 40px!important;
-height: 40px;
-margin: 0 5px;
-}
-.releted_post  .cards_pagination li .pagination__number{
-font-size: 16px;
-font-weight: 400;
-line-height: 26px;
-color: rgba(0, 0, 0, 0.53);
-}
-.releted_post  .cards_pagination li:hover {
-background: rgba(81, 159, 255, 0.12);
-transition: all ease-in-out .2s;
-}
-.releted_post  .cards_pagination li:hover .pagination__number {
-color: rgba(81, 159, 255, 1);
-transition: all ease-in-out .2s;
-
-}
- .releted_post  .cards_pagination li:hover svg path {
-stroke: rgba(81, 159, 255, 1);
-transition: all ease-in-out .2s;
-
-}
-.releted_post  .mainCard__weblog :hover .main__row .left__section h4 {
-  font-size: 21px;
-  font-style: normal;
-  font-weight: 800;
-  line-height: 31px;
-  letter-spacing: -0.021em;
-  text-align: right;
-  color: rgba(71, 138, 220, 1);
-  transition: all 0.3s;
-}
- .releted_post   .grouping_card:hover {
-  box-shadow: 0px 0px 34px -9px rgba(71, 138, 220, 0.4);
-  transition: all ease-in-out .3s;
- 
+@media screen and (max-width: 960px) {
+  .sale__cards {
+    min-width: 400px;
   }
-@media only screen and (max-width: 1300px){
-
-.left__section h4 {
-  font-size: 19px;
-}
-.left__section p {
- font-size: 12px;
-  line-height: 19px;
-}
-} 
-@media only screen and (max-width: 600px) {
-  .grouping_card {
-    height: 450px;
+  .sale__card__items {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-y: scroll;
   }
-   .main__pic{
-  height: 220px;
+  h2,
+  h4 {
+    text-align: center;
   }
-  .left__section h4 {
-    font-size: 14px !important;
-    font-style: normal;
+  h4 {
+    font-family: IRANYekanWeb;
+    font-size: 13px;
     font-weight: 700;
-    line-height: 20px;
-    letter-spacing: -0.021em;
-    margin-top: 15px;
-    width: 100%;
-    margin-bottom: 0!important;
-  }
-  .left__section p{
-font-size: 10px!important;
-font-style: normal;
-font-weight: 400;
-line-height: 16px;
-letter-spacing: -0.021em;
-  }
-  .time p {
-    font-size: 8px !important;
-  }
-  .date p {
-    font-size: 9px !important;
-    text-overflow: ellipsis;
-  }
-  .date svg {
-    width: 13px;
-    height: 13px;
-  }
-  .message__number {
-    font-size: 9px;
-    height: 11px;
-  }
-  .time {
-    width: 75px;
-  }
-  .date {
-    width: 45px;
-  }
-  .time,
-  .date {
-    padding: 5px 4px;
-  }
-  .count__icon svg {
-    width: 10px;
-    height: 10px;
-  }
-  .left__section p {
-    font-size: 10px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 16px;
-    letter-spacing: -0.021em;
-  }
-  .person h5 {
-    font-size: 10px;
-    font-weight: 700;
-    line-height: 15px;
+    line-height: 22px;
     letter-spacing: -0.035em;
-    padding-right: 10px;
   }
-  .person p {
-    font-size: 8px;
-    font-weight: 400;
-    line-height: 12px;
-    letter-spacing: -0.021em;
-    text-align: right;
-    padding-right: 10px;
-  }
-  .person .person__pictur {
-    height: 35px;
-    width: 35px;
-  }
-  .contact_way svg {
-    width: 35px;
-    height: 35px;
+  h2 {
+    font-family: IRANYekanWeb;
+    font-size: 18px;
+    font-weight: 800;
+    line-height: 30px;
+    letter-spacing: -0.035em;
   }
 }
 </style>
