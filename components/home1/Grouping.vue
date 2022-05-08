@@ -266,6 +266,8 @@ export default {
 <style scoped>
 .larg_container {
   background-color: #f7f9fc;
+  padding-top: 60px;
+  padding-bottom: 60px;
 }
 
 .grouping_card {

@@ -1,11 +1,11 @@
 <template>
-  <div>
+  
     <!-- Site footer -->
-    <footer class="site-footer">
-      <div class="container">
-        <div class="row">
+    <footer class="site-footer   ">
+      <div class="larg_container">
+        <div class="row ">
           <div class="test"></div>
-          <div class="col-sm-6 col-md-2 footer_medium_mood">
+          <div class="col-sm-6 col-md-3 footer_list ">
             <div>
               <svg
                 width="131"
@@ -80,31 +80,13 @@
                 </defs>
               </svg>
             </div>
-            <p>
+            <p class="footer_text">
               اگر شما یک طراح هستین و یا با طراحی های گرافیکی سروکار دارید به متن های
               برخورده اید که با نام لورم ایپسوم شناخته می‌شوند.
             </p>
-            <v-col cols="12">
+            <v-col cols="7 ma-0 " class="d-flex  justify-center">
               <ul class="footer-links-list">
-                <li>
-                  <a href="#">
-                    <svg
-                      width="17"
-                      height="17"
-                      viewBox="0 0 17 17"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        id="instagram"
-                        fill-rule="evenodd"
-                        clip-rule="evenodd"
-                        d="M8.60672 16.0322C9.97997 16.0303 10.9779 16.0131 11.6006 15.9805C12.2622 15.946 12.8368 15.8482 13.3243 15.687C13.9046 15.4798 14.4095 15.1632 14.839 14.7373C15.2684 14.3113 15.5876 13.8106 15.7966 13.235C15.9591 12.7515 16.0577 12.1817 16.0925 11.5255C16.1274 10.8693 16.1448 9.79298 16.1448 8.29645L16.1443 7.78595C16.1419 6.55391 16.1304 5.65348 16.1099 5.08467C16.0635 4.41699 15.9591 3.8414 15.7966 3.3579C15.5876 2.78232 15.2684 2.28155 14.839 1.85562C14.4095 1.42968 13.9046 1.11311 13.3243 0.9059C12.8368 0.744735 12.2622 0.646885 11.6006 0.61235C10.939 0.577815 9.85376 0.560547 8.34484 0.560547L8.08296 0.560726C6.70972 0.562638 5.71176 0.579846 5.08907 0.61235C4.42747 0.646885 3.85292 0.744735 3.36543 0.9059C2.78508 1.11311 2.28017 1.42968 1.85071 1.85562C1.42125 2.28155 1.10206 2.78232 0.893133 3.3579C0.730634 3.8414 0.631975 4.41123 0.597153 5.0674C0.562332 5.72357 0.544922 6.79992 0.544922 8.29645L0.545103 8.55618C0.54703 9.91815 0.564381 10.9079 0.597153 11.5255C0.631975 12.1817 0.730634 12.7515 0.893133 13.235C1.10206 13.8106 1.42125 14.3113 1.85071 14.7373C2.28017 15.1632 2.78508 15.4683 3.36543 15.6525C3.85292 15.8367 4.42747 15.946 5.08907 15.9805C5.75067 16.0151 6.83593 16.0324 8.34484 16.0324L8.60672 16.0322ZM9.13318 14.6506L7.55929 14.6506C6.74003 14.6488 6.09632 14.6374 5.62817 14.6163C4.76925 14.5702 4.14247 14.4781 3.74783 14.34C3.05141 14.0637 2.55231 13.5687 2.25053 12.855C2.11124 12.4636 2.01839 11.8419 1.97196 10.9901C1.94874 10.4835 1.93714 9.76982 1.93714 8.84888L1.93738 7.51783C1.93915 6.70529 1.95068 6.06687 1.97196 5.60256C2.01839 4.72767 2.11124 4.10603 2.25053 3.73766C2.5291 3.02393 3.0282 2.52892 3.74783 2.25264C4.14247 2.1145 4.76925 2.02241 5.62817 1.97636C6.13888 1.95333 6.85852 1.94182 7.78708 1.94182L9.12914 1.94206C9.9484 1.94382 10.5921 1.95525 11.0603 1.97636C11.9424 2.02241 12.5692 2.1145 12.9406 2.25264C13.6602 2.52892 14.1593 3.02393 14.4379 3.73766C14.5772 4.10603 14.67 4.72767 14.7165 5.60256C14.7397 6.08606 14.7513 6.79979 14.7513 7.74375L14.7511 9.0748C14.7493 9.88733 14.7378 10.5258 14.7165 10.9901C14.67 11.8419 14.5772 12.4636 14.4379 12.855C14.1593 13.5457 13.6602 14.0407 12.9406 14.34C12.5692 14.4781 11.9424 14.5702 11.0603 14.6163C10.6133 14.6374 9.97112 14.6488 9.13381 14.6506L9.13318 14.6506ZM13.1674 4.80837C12.9932 4.99256 12.7785 5.08465 12.5232 5.08465C12.2678 5.08465 12.0473 4.99256 11.8616 4.80837C11.6759 4.62418 11.583 4.40546 11.583 4.1522C11.583 3.89894 11.6759 3.68022 11.8616 3.49603C12.0473 3.31184 12.2678 3.21975 12.5232 3.21975C12.7785 3.21975 12.9991 3.31184 13.1848 3.49603C13.3705 3.68022 13.4633 3.89894 13.4633 4.1522C13.4401 4.40546 13.3415 4.62418 13.1674 4.80837ZM8.34393 12.268C9.06356 12.268 9.73097 12.0896 10.3461 11.7327C10.9613 11.3759 11.4488 10.8924 11.8086 10.2822C12.1684 9.67212 12.3484 9.0102 12.3484 8.29647C12.3484 7.58274 12.1684 6.92081 11.8086 6.31069C11.4488 5.70057 10.9613 5.21707 10.3461 4.86021C9.73097 4.50335 9.06356 4.32491 8.34393 4.32491C7.62429 4.32491 6.95689 4.50335 6.34172 4.86021C5.72654 5.21707 5.23905 5.70057 4.87923 6.31069C4.51941 6.92081 4.33951 7.58274 4.33951 8.29647C4.33951 9.0102 4.51941 9.67212 4.87923 10.2822C5.23905 10.8924 5.72654 11.3759 6.34172 11.7327C6.95689 12.0896 7.62429 12.268 8.34393 12.268ZM6.49966 10.1271C7.01036 10.6336 7.62554 10.8869 8.34517 10.8869C9.06481 10.8869 9.67998 10.6336 10.1907 10.1271C10.7014 9.62056 10.9568 9.01044 10.9568 8.29671C10.9568 7.58298 10.7014 6.97286 10.1907 6.46634C9.67998 5.95982 9.06481 5.70656 8.34517 5.70656C7.62554 5.70656 7.01036 5.95982 6.49966 6.46634C5.98895 6.97286 5.73359 7.58298 5.73359 8.29671C5.73359 9.01044 5.98895 9.62056 6.49966 10.1271Z"
-                        fill="white"
-                      />
-                    </svg>
-                  </a>
-                </li>
+             
                 <li>
                   <a href="#">
                     <svg
@@ -172,15 +154,14 @@
               </ul>
             </v-col>
           </div>
-          <div class="col-sm-6 col-md-2 footer_medium_mood">
-            <h6>دسته بندی</h6>
-            <ul class="footer-links d-flex flex-row align-center">
-              <li class="pa-0 ma-0"><a href="#"> دوچرخه </a></li>
-              <li><a href="#">دوچرخه برقی</a></li>
-              <li><a href="">دوچرخه لوازم جانبی</a></li>
-            </ul>
-          </div>
           <div class="col-xs-6 col-md-2 footer_medium_mood">
+            <h6> دسته بندی ها</h6>
+            <ul class="footer-links">
+              <li><a href="#"> دوچرخه </a></li>
+              <li><a href="#">دوچرخه برقی</a></li>
+              <li><a href="#">دوچرخه برقی</a></li>
+            </ul>
+          </div>  <div class="col-xs-6 col-md-2 footer_medium_mood">
             <h6>راهنمای خرید</h6>
             <ul class="footer-links">
               <li><a href="#"> دوچرخه </a></li>
@@ -198,38 +179,52 @@
               <li><a href="">درخواست فاکتور رسمی</a></li>
             </ul>
           </div>
-          <div class="col-sm-12 col-md-4 footer_medium_mood">
+          <div class="col-sm-12 col-md-3 footer_medium_mood">
             <h6>از جدید ترین ها با خبر شوید</h6>
-            <p class="text-justify">
-              Scanfcode.com <i>CODE WANTS TO BE SIMPLE </i> is an initiative to help the
-              upcoming programmers with the code. Scanfcode focuses on providing the most
-              efficient code or snippets as the code wants to be simple. We will help
-              programmers build up concepts in different programming languages that
-              include C, C++, Java, HTML, CSS, Bootstrap, JavaScript, PHP, Android, SQL
-              and Algorithm.
-            </p>
+            <form action="#" class=" mt-3">
+            <input type="text" placeholder="  ایمیل خود را وارد کنید" class="enter_email">
+             <button class="submit">
+             ثبت
+            </button>
+            </form>
+       <ul class="d-flex flex-row  mt-5 justify-center justify-md-start">
+       <li>
+       <v-col cols="4 mx-0 px-0"><img  src="../assets/images/footer1.png"> </v-col></li>
+           <li>
+       <v-col cols="4"><img  src="../assets/images/footer2.png"> </v-col></li>
+       </ul>
           </div>
         </div>
-      </div>
+          </div>
+
     </footer>
-  </div>
 </template>
 <script>
 export default {};
 </script>
 <style scoped>
-.footer-links a{
 
-}
-p {
-  color: #ffff;
-}
+.footer_text {
+font-size: 11px;
+font-weight: 400;
+line-height: 18px;
+letter-spacing: 0em;
+text-align: right;
+color: #ffff;
+opacity: .44;
+
+} 
 .footer-links-list {
   display: flex;
   flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  width: 100%;
 }
 .site-footer {
   background-color: #1d2228;
+  box-sizing: border-box;
+  padding-top: 60px;
 }
 .site-footer h6 {
   font-style: normal;
@@ -246,14 +241,12 @@ p {
   font-size: 15px;
   line-height: 28px;
   display: flex;
-
-  
 }
 .site-footer a:hover {
   color: #3366cc;
   text-decoration: none;
 }
-.site-footer a::before{
+.site-footer .footer_medium_mood a::before{
 content: '';
 opacity: 0;
 width: 6px;
@@ -266,6 +259,7 @@ margin-left:10px;
 display: none;
   transition: all ease-in-out 0.2s!important;
 }
+
 .site-footer li a:hover::before  {
 opacity: 1;
 display: block;
@@ -325,6 +319,36 @@ display: block;
 }
 .copyright-text {
   margin: 0;
+}
+form{
+
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+.enter_email{
+
+  background: #29313A;
+  width: 100%;
+  padding: 14px;
+  border-radius: 9px;
+
+}
+.submit{
+
+  position: absolute;
+  left: 0;
+  font-family: IRANYekanWeb;
+font-size: 14px;
+font-weight: 800;
+line-height: 20px;
+letter-spacing: 0.019em;
+text-align: right;
+color: #FFFFFF;
+background: #519FFF;
+margin-left: 6px ;
+ padding:8px 16px;
+ border-radius: 9px;
 }
 @media (max-width: 991px) {
   .footer-links-list {

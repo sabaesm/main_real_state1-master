@@ -1,14 +1,14 @@
 <template>
-  <div class="larg_container pt-5">
+  <div class="larg_container  ">
     <div class="items">
       <h4 class="pa-0">ارزش های ما</h4>
-      <h2 class="">چرا باید به ما اعتماد کنید؟</h2>
+      <h2 class="pb-5 mb-5">چرا باید به ما اعتماد کنید؟</h2>
       <ul
         class="d-flex flex-column flex-sm-row flex-md-row align-center justify-space-around"
       >
         <v-col cols="12" md="4" lg="4" xl="4" sm="4">
           <li class=" d-flex flex-row align-start">
-            <v-col cols="3">
+            <v-col cols="2">
               <svg
                 width="53"
                 height="53"
@@ -39,7 +39,7 @@
                 /></svg
             >
             </v-col>
-            <v-col cols="9">
+            <v-col cols="10">
               <span class="value-info">
                 <h3>ملک های با ارزش</h3>
                 <p>
@@ -52,7 +52,7 @@
         </v-col>
         <v-col cols="12" md="4" lg="4" xl="4" sm="4">
           <li class="d-flex flex-row align-start">
-            <v-col cols="3">
+            <v-col cols="2">
               <svg
                 width="53"
                 height="53"
@@ -82,7 +82,7 @@
                   stroke-linejoin="round"
                 /></svg
             ></v-col>
-            <v-col cols="9">
+            <v-col cols="10">
               <span class="value-info">
                 <h3>ملک های با ارزش</h3>
                 <p>
@@ -95,7 +95,7 @@
         </v-col>
         <v-col cols="12" md="4" lg="4" xl="4" sm="4">
           <li class="d-flex flex-row align-start">
-            <v-col cols="3">
+            <v-col cols="2">
               <svg
                 width="53"
                 height="53"
@@ -125,7 +125,7 @@
                   stroke-linejoin="round"
                 /></svg
             ></v-col>
-            <v-col cols="9">
+            <v-col cols="10">
               <span class="value-info">
                 <h3>ملک های با ارزش</h3>
                 <p>
@@ -142,6 +142,12 @@
 </template>
 
 <style scoped>
+.larg_container{
+padding-top: 60px;
+padding-bottom: 60px;
+
+
+}
 svg {
   width: 50px;
   height: 50px;
@@ -174,6 +180,7 @@ li p {
   font-weight: 400;
   line-height: 18px;
   color: #9b9b9b;
+  width: 80%;
 }
 h3 {
   font-size: 23px;

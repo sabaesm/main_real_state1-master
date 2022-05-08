@@ -4,10 +4,10 @@
       <div class="top_section">
         <div class="">
           <h4>خونتو پیدا کن</h4>
-          <h2>   جدیدترین ملک ها</h2>
+          <h2>جدیدترین ملک ها</h2>
         </div>
         <div class="arrows">
-          <div class="see_more d-flex align-center  ">
+          <div class="see_more d-flex align-center">
             <span class="pl-5">مشاهده همه</span>
             <svg
               width="26"
@@ -34,7 +34,10 @@
               />
             </svg>
           </div>
-          <div class="next-button-new d-flex align-center justify-center" slot="next-button-new ">
+          <div
+            class="next-button-new d-flex align-center justify-center"
+            slot="next-button-new "
+          >
             <svg
               width="20"
               height="14"
@@ -60,7 +63,10 @@
               />
             </svg>
           </div>
-          <div class="prev-button-new d-flex align-center justify-center" slot="button-prev">
+          <div
+            class="prev-button-new d-flex align-center justify-center"
+            slot="button-prev"
+          >
             <svg
               width="20"
               height="14"
@@ -95,7 +101,7 @@
             v-for="salecard in salecard"
             :key="salecard.id"
           >
-            <li class="ma-0 pa-2  sale__card__items">
+            <li class="ma-0 pa-2 sale__card__items">
               <div class="top_card">
                 <a href="#">
                   <img :src="salecard.img" alt="" />
@@ -125,110 +131,73 @@
                     </span>
                     <span class="sale__status">{{ salecard.sale_status }}</span>
                   </div>
-                  <svg
-                    width="64"
-                    height="64"
-                    viewBox="0 0 64 64"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <g filter="url(#filter0_d_1288_8019)">
-                      <rect x="15" y="15" width="34" height="34" rx="9" fill="white" />
-                    </g>
-                    <path
-                      d="M23.668 40.3335H40.3346"
-                      stroke="#535353"
-                      stroke-width="1.5"
-                      stroke-miterlimit="10"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    />
-                    <path
-                      d="M34.5083 40.3249L24.5083 40.3416L24.5 27.8916C24.5 27.3332 24.7833 26.8165 25.2417 26.5082L28.575 24.2832C29.1333 23.9082 29.8667 23.9082 30.425 24.2832L33.7583 26.5082C34.225 26.8165 34.5 27.3332 34.5 27.8916L34.5083 40.3249Z"
-                      stroke="#535353"
-                      stroke-width="1.5"
-                      stroke-miterlimit="10"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    />
-                    <path
-                      d="M38.6484 40.3417V37"
-                      stroke="#535353"
-                      stroke-width="1.5"
-                      stroke-miterlimit="10"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    />
-                    <path
-                      d="M38.6667 32C37.75 32 37 32.75 37 33.6667V35.3333C37 36.25 37.75 37 38.6667 37C39.5833 37 40.3333 36.25 40.3333 35.3333V33.6667C40.3333 32.75 39.5833 32 38.6667 32Z"
-                      stroke="#535353"
-                      stroke-width="1.5"
-                      stroke-miterlimit="10"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    />
-                    <path
-                      d="M24.5 33.6665H34.5"
-                      stroke="#535353"
-                      stroke-width="1.5"
-                      stroke-miterlimit="10"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    />
-                    <path
-                      d="M29.5 40.3335V37.2085"
-                      stroke="#535353"
-                      stroke-width="1.5"
-                      stroke-miterlimit="10"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    />
-                    <path
-                      d="M29.5 30.75C30.1904 30.75 30.75 30.1904 30.75 29.5C30.75 28.8096 30.1904 28.25 29.5 28.25C28.8096 28.25 28.25 28.8096 28.25 29.5C28.25 30.1904 28.8096 30.75 29.5 30.75Z"
-                      stroke="#535353"
-                      stroke-width="1.5"
-                      stroke-miterlimit="10"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    />
-                    <defs>
-                      <filter
-                        id="filter0_d_1288_8019"
-                        x="0"
-                        y="0"
-                        width="64"
-                        height="64"
-                        filterUnits="userSpaceOnUse"
-                        color-interpolation-filters="sRGB"
-                      >
-                        <feFlood flood-opacity="0" result="BackgroundImageFix" />
-                        <feColorMatrix
-                          in="SourceAlpha"
-                          type="matrix"
-                          values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
-                          result="hardAlpha"
-                        />
-                        <feOffset />
-                        <feGaussianBlur stdDeviation="7.5" />
-                        <feComposite in2="hardAlpha" operator="out" />
-                        <feColorMatrix
-                          type="matrix"
-                          values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"
-                        />
-                        <feBlend
-                          mode="normal"
-                          in2="BackgroundImageFix"
-                          result="effect1_dropShadow_1288_8019"
-                        />
-                        <feBlend
-                          mode="normal"
-                          in="SourceGraphic"
-                          in2="effect1_dropShadow_1288_8019"
-                          result="shape"
-                        />
-                      </filter>
-                    </defs>
-                  </svg>
+                  <div class="d-flex flex-row align-center Building-type">
+                    <p>آپارتمان</p>
+                    <svg
+                      width="20"
+                      height="20"
+                      viewBox="0 0 20 20"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M10.8334 18.3333H4.16675C2.50008 18.3333 1.66675 17.5 1.66675 15.8333V9.16663C1.66675 7.49996 2.50008 6.66663 4.16675 6.66663H8.33342V15.8333C8.33342 17.5 9.16675 18.3333 10.8334 18.3333Z"
+                        stroke="#535353"
+                        stroke-width="1.5"
+                        stroke-miterlimit="10"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                      <path
+                        d="M8.42507 3.33337C8.3584 3.58337 8.33342 3.85837 8.33342 4.16671V6.66671H4.16675V5.00004C4.16675 4.08337 4.91675 3.33337 5.83341 3.33337H8.42507Z"
+                        stroke="#535353"
+                        stroke-width="1.5"
+                        stroke-miterlimit="10"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                      <path
+                        d="M11.6667 6.66663V10.8333"
+                        stroke="#535353"
+                        stroke-width="1.5"
+                        stroke-miterlimit="10"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                      <path
+                        d="M15 6.66663V10.8333"
+                        stroke="#535353"
+                        stroke-width="1.5"
+                        stroke-miterlimit="10"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                      <path
+                        d="M14.1667 14.1666H12.5001C12.0417 14.1666 11.6667 14.5416 11.6667 15V18.3333H15.0001V15C15.0001 14.5416 14.6251 14.1666 14.1667 14.1666Z"
+                        stroke="#535353"
+                        stroke-width="1.5"
+                        stroke-miterlimit="10"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                      <path
+                        d="M5 10.8334V14.1667"
+                        stroke="#535353"
+                        stroke-width="1.5"
+                        stroke-miterlimit="10"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                      <path
+                        d="M8.33325 15.8333V4.16663C8.33325 2.49996 9.16659 1.66663 10.8333 1.66663H15.8333C17.4999 1.66663 18.3333 2.49996 18.3333 4.16663V15.8333C18.3333 17.5 17.4999 18.3333 15.8333 18.3333H10.8333C9.16659 18.3333 8.33325 17.5 8.33325 15.8333Z"
+                        stroke="#535353"
+                        stroke-width="1.5"
+                        stroke-miterlimit="10"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </svg>
+                  </div>
                 </div>
                 <span class="hover__icon_bottom">
                   <div class="counter d-flex flex-column align-center pa-2">
@@ -261,8 +230,8 @@
                   <span class="sale_date">{{ salecard.date }}</span>
                 </span>
               </div>
-              <v-col class="bottom_card pa-0 ma-0 " cols="11">
-                <h5 class="sale__desctiptipn py-2">
+              <v-col class="bottom_card pa-0 ma-0" cols="12">
+                <h5 class="sale__desctiptipn py-2 pt-5">
                   {{ salecard.detaile }}
                 </h5>
                 <ul class="home__desctiption">
@@ -273,7 +242,6 @@
                 </ul>
                 <v-row class="price__row ma-0 px-0 py-2">
                   <span class="value d-flex flex-row align-center">
-                    <span>
                       <svg
                         width="11"
                         height="11"
@@ -303,7 +271,7 @@
                           fill="#237E48"
                         />
                       </svg>
-                    </span>
+                 
                     {{ salecard.value }}
                     <span class="toman">تومان</span>
                   </span>
@@ -404,6 +372,8 @@ export default {
         pagination: {
           el: ".swiper-pagination",
           clickable: true,
+                      spaceBetween: 30,
+
         },
         navigation: {
           nextEl: ".prev-button-new",
@@ -411,7 +381,7 @@ export default {
         },
         breakpoints: {
           1024: {
-                    loop: true,
+            loop: true,
 
             slidesPerView: 3,
             spaceBetween: 0,
@@ -444,9 +414,13 @@ export default {
 </script>
 
 <style scoped>
-.custom_swiper_container{
-box-sizing:initial;
-  padding: 0 10px!important;
+.custom_swiper_container {
+  box-sizing: initial;
+  padding: 0 10px !important;
+
+}
+.swiper-slide{
+  width: 90;
 }
 .new-main-section {
   box-sizing: border-box;
@@ -469,7 +443,7 @@ h2 {
   line-height: 61px;
   letter-spacing: -0.035em;
   text-align: right;
-  color: #121939!important;
+  color: #121939 !important;
 }
 p {
   font-weight: 100;
@@ -506,23 +480,23 @@ h2 {
   left: 0;
 }
 .see_more {
-   background-color: #798595;
+  background-color: #798595;
   border-radius: 10px;
   height: 61px;
   padding: 20px;
-    margin: 0 5px;
+  margin: 0 5px;
 }
 .see_more svg {
   width: 25px;
   height: 25px;
 }
-.see_more span{
-color: #ffff;
-font-size: 17px;
-font-weight: 700;
-line-height: 28px;
-letter-spacing: -0.035em;
-text-align: right;
+.see_more span {
+  color: #ffff;
+  font-size: 17px;
+  font-weight: 700;
+  line-height: 28px;
+  letter-spacing: -0.035em;
+  text-align: right;
 }
 .prev-button-new,
 .next-button-new {
@@ -537,28 +511,26 @@ text-align: right;
   width: 60px;
   height: 60px;
 }
-.next-button-new{
+.next-button-new {
   background-color: #519fff;
   width: 60px;
   height: 60px;
 }
-.bottom_card{
+.bottom_card {
   height: 50%;
-display: flex;
-flex-direction: column;
-justify-content: space-around;
-
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
 }
 .sale__card__items:hover .sale__desctiptipn {
   color: #087cce !important;
 }
-.left__main__card {
-}
+
 .sale__cards {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  padding: 30px 0px!important;
+  padding: 30px 0px !important;
 }
 .sale__cards .sale__card__items {
   background-color: #fff;
@@ -567,7 +539,6 @@ justify-content: space-around;
   width: calc(100% -20px);
   box-shadow: 0px 0px 34px -9px rgba(12, 46, 96, 0.25);
   height: 490px;
-
 }
 .top_card {
   position: relative;
@@ -580,13 +551,13 @@ justify-content: space-around;
 .top_card a {
   overflow: hidden !important;
   border-radius: 10px;
- height: 100%;
+  height: 100%;
   width: 100%;
   display: block;
 }
 .top_card img {
   width: 100%;
- height: 100%;
+  height: 100%;
 
   object-fit: cover;
   transition: all ease-in-out 0.3s !important;
@@ -605,6 +576,7 @@ justify-content: space-around;
   justify-content: space-between;
   align-items: center;
   width: 100%;
+  margin-top: 10px;
 }
 .sale__product {
   background: #ffa80a;
@@ -616,15 +588,23 @@ justify-content: space-around;
   text-align: right;
   color: #ffff;
   border-radius: 5px;
-  padding: 10px;
   transition: all ease-in-out 0.3s !important;
+  overflow: hidden;
+  height: 35px;
+  width: 35px;
+  margin-left: 5px;
+}
+.sale__product:hover {
+  width: 100px;
 }
 .salecard_product__text {
-  display: none;
+  width: 0;
   transition: all ease-in-out 0.3s !important;
+  overflow: hidden;
+  white-space: nowrap;
 }
 .sale__product:hover .salecard_product__text {
-  display: inline-block;
+  width: 60px;
   transition: all ease-in-out 0.3s !important;
 }
 .status {
@@ -640,7 +620,30 @@ justify-content: space-around;
   text-align: right;
   color: #ffff;
   border-radius: 5px;
+  padding: 0 10px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+}
+.Building-type {
+  background-color: #ffff;
+  margin-left: 10px;
   padding: 10px;
+  border-radius: 9px;
+}
+.Building-type p {
+  margin-bottom: 0;
+  font-size: 12px;
+  font-weight: 800;
+  line-height: 20px;
+  letter-spacing: -0.035em;
+  color: #535353;
+  width: 0;
+  overflow: hidden;
+  transition: all ease-in-out 0.3s;
+}
+.Building-type:hover p {
+  width: 40px;
 }
 .top_card .hover__icon_bottom {
   position: absolute;
@@ -651,7 +654,7 @@ justify-content: space-around;
   justify-content: space-between;
   align-items: flex-end;
   transition: all ease-in-out 0.3s;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 .top_card:hover .hover__icon_bottom {
   position: absolute;
@@ -661,7 +664,7 @@ justify-content: space-around;
 }
 .sale_date {
   background-color: #fff;
-  border-radius: 5px;
+  border-radius: 9px;
   font-size: 12px;
   font-style: normal;
   font-weight: 800;
@@ -684,16 +687,23 @@ justify-content: space-around;
   line-height: 29px;
   letter-spacing: -0.021em;
   text-align: right;
-  color: #101737!important;
+  color: #101737 !important;
   transition: all ease-in-out 0.3s;
 }
 .home__desctiption {
   display: flex;
   width: 100%;
 }
-.home__desctiptionli {
+.home__desctiption li {
   display: inline-block;
-  width: 20%;
+  width: 18%;
+font-size: 17px;
+font-weight: 700;
+line-height: 25px;
+letter-spacing: -0.021em;
+text-align: right;
+position: relative;
+padding: 0 5px;
 }
 .shape {
   width: 20px;
@@ -718,6 +728,13 @@ justify-content: space-around;
   letter-spacing: -0.021em;
   text-align: right;
 }
+.value svg{
+
+  height: 32px;
+width: 32px;
+padding-left: 5px;
+
+}
 .price {
   color: rgba(129, 129, 129, 1);
   font-size: 10px;
@@ -728,6 +745,7 @@ justify-content: space-around;
 .price__row {
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 .toman {
   font-size: 20px;
@@ -751,7 +769,7 @@ justify-content: space-around;
 .sale_person__pictur img {
   width: 40px;
   height: 40px;
-  border-radius: 0;
+  border-radius: 9px;
 }
 .sale_person {
   display: flex;
@@ -772,68 +790,67 @@ justify-content: space-around;
   text-align: right;
   color: #101737;
 }
+.home__desctiption li::before{
 
+  content: '';
+  height: 4px;
+  width: 4px;
+background: #C4C4C4;
+  position: absolute;
+  border-radius: 100%;
+ top: 45%;
+left: 100%;
 
- @media screen and (max-width: 600px) {
-.arrows{
-
-  display: none;
 }
-.top_section div{
-width: 100%;  
-}
-   h2{
-    text-align: center!important;
-    width: 100%!important;
+@media screen and (max-width: 600px) {
+  .arrows {
+    display: none;
+  }
+  .top_section div {
+    width: 100%;
+  }
+  h2 {
+    text-align: center !important;
+    width: 100% !important;
   }
   h4 {
     font-size: 13px;
     font-weight: 700;
     line-height: 22px;
     letter-spacing: -0.035em;
-    text-align: center!important;
-    width: 100%!important;
+    text-align: center !important;
+    width: 100% !important;
   }
   h2 {
     font-size: 18px;
     font-weight: 800;
     line-height: 30px;
     letter-spacing: -0.035em;
-    
   }
   .sale_date {
-font-size: 15px!important;
-font-weight: 700!important;
-line-height: 22px!important;
-letter-spacing: -0.021em!important;
-
-}
-.counter{
-font-size: 11px!important;
-font-weight: 800;
-line-height: 18px;
-letter-spacing: -0.035em;
-}
-.sale__desctiptipn{
-font-size: 15px;
-font-weight: 700;
-line-height: 22px;
-letter-spacing: -0.021em;
-}
-.home__desctiption{
-font-size: 13px;
-font-weight: 400;
-line-height: 19px;
-letter-spacing: -0.021em;
-text-align: right;
-
-}
-  .custom_swiper_container{
+    font-size: 15px !important;
+    font-weight: 700 !important;
+    line-height: 22px !important;
+    letter-spacing: -0.021em !important;
   }
-  .sale__card__items{
-
-
-
+  .counter {
+    font-size: 11px !important;
+    font-weight: 800;
+    line-height: 18px;
+    letter-spacing: -0.035em;
+  }
+  .sale__desctiptipn {
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 22px;
+    letter-spacing: -0.021em;
+  }
+  .home__desctiption {
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 19px;
+    letter-spacing: -0.021em;
+    text-align: right;
   }
 }
 </style>
