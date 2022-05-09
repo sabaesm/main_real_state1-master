@@ -61,19 +61,19 @@
         <div class="swiper-wrapper">
           <ul
             class="sale__cards d-flex flex-row swiper-slide  "
-            v-for="salecard in salecard"
-            :key="salecard.id"
+            v-for="data in data"
+            :key="data.id"
           >
             <li class="sale__card__items">
               <div class="top_card">
                 <a href="#">
-                  <img :src="salecard.img" alt="" />
+                  <img :src="data.cover" alt="" />
                 </a>
                 
               </div>
               <div class="bottom_card pa-2">
                 <h5 class="sale__desctiptipn py-2">
-                  {{ salecard.detaile }}
+                  {{ data.title }}
                 </h5>
              
                 <v-row class="price__row ma-0 px-0 py-2">
@@ -109,7 +109,7 @@
                         />
                       </svg>
                     </span>
-                    {{ salecard.value }}
+                    {{ data.unit_price }}
                     <span class="toman">تومان</span>
                   </span>
             
@@ -117,11 +117,11 @@
                 <div class="sale_person__details d-flex flex-row w-100">
                   <div class="sale_person d-flex flex-row">
                     <div class="sale_person__pictur">
-                      <img :src="salecard.person__pic" />
+                      <img :src="data.cover" />
                     </div>
                     <span class="d-flex flex-column pa-1">
-                      <h5 class="pa-0 ma-0">{{ salecard.name }}</h5>
-                      <p class="pa-0 ma-0">{{ salecard.experience }}</p>
+                      <h5 class="pa-0 ma-0">{{ data.username }}</h5>
+                      <p class="pa-0 ma-0">{{ data.user_activity }}</p>
                     </span>
                   </div>
                   <div class="sale_contact_way pa-0 ma-0">
@@ -192,15 +192,15 @@
 </template>
 <script>
 import { directive } from "vue-awesome-swiper";
-import { mapState } from "vuex";
 export default {
   name: "Slider",
   directives: {
     swiper: directive,
   },
-  computed: {
-    ...mapState(["salecard"]),
-  },
+
+  props:[
+    'data'
+  ],
   data() {
     return {
       swiperOption: {
@@ -225,16 +225,25 @@ export default {
             spaceBetween: 200,
           },
           768: {
-            slidesPerView: 3,
-            spaceBetween: 10,
+             slidesPerView: 1,
+            spaceBetween: 40,
+            freeMode: true,
+            freeModeMomentum: true,
+            mousewheelSensitivity: 0.02,
           },
           640: {
-            slidesPerView: 2,
-            spaceBetween: 10,
+             slidesPerView: 1,
+            spaceBetween: 40,
+            freeMode: true,
+            freeModeMomentum: true,
+            mousewheelSensitivity: 0.02,
           },
           320: {
-            slidesPerView: 1,
-            spaceBetween: 10,
+              slidesPerView: 1,
+            spaceBetween: 40,
+            freeMode: true,
+            freeModeMomentum: true,
+            mousewheelSensitivity: 0.02,
           },
         },
       },
@@ -302,13 +311,13 @@ margin-bottom: 90px;
   background-color: #519fff!important;
   width: 50px;
   height: 50px;
-    transition: all ease-in-out.3s!important;
+    transition: all ease-in-out .3s!important;
 }
 .next-button {
   background-color: #519fff!important;
   width: 50px;
   height: 50px;
-    transition: all ease-in-out.3s!important;
+    transition: all ease-in-out .3s !important;
 }
 .next-button:hover {
   background-color: #3370bc!important;
@@ -505,35 +514,58 @@ line-height: 14px;
 letter-spacing: -0.035em;
 text-align: right;
 
-  color: #101737;
+  color: #101737!important;
 }
 
-@media screen and (max-width: 960px) {
-.sale__cards {
-  min-width: 400px;
-
-}
-.sale__card__items {
-  display: flex;
-  flex-wrap: nowrap;
-  overflow-y: scroll;
-}
-h2,h4{
-text-align: center;
-}
-h4{
-font-family: IRANYekanWeb;
-font-size: 13px;
-font-weight: 700;
-line-height: 22px;
-letter-spacing: -0.035em;
-}
-h2{
-font-family: IRANYekanWeb;
-font-size: 18px;
-font-weight: 800;
-line-height: 30px;
-letter-spacing: -0.035em;
-}
+@media screen and (max-width: 600px) {
+  .arrows {
+    display: none;
+  }
+  .top_section div {
+    width: 100%;
+  }
+  h2 {
+    text-align: center !important;
+    width: 100% !important;
+  }
+  h4 {
+    font-size: 13px;
+    font-weight: 700;
+    line-height: 22px;
+    letter-spacing: -0.035em;
+    text-align: center !important;
+    width: 100% !important;
+  }
+  h2 {
+    font-size: 18px;
+    font-weight: 800;
+    line-height: 30px;
+    letter-spacing: -0.035em;
+  }
+  .sale_date {
+    font-size: 15px !important;
+    font-weight: 700 !important;
+    line-height: 22px !important;
+    letter-spacing: -0.021em !important;
+  }
+  .counter {
+    font-size: 11px !important;
+    font-weight: 800;
+    line-height: 18px;
+    letter-spacing: -0.035em;
+  }
+  .sale__desctiptipn {
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 22px;
+    letter-spacing: -0.021em;
+  }
+  .home__desctiption {
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 19px;
+    letter-spacing: -0.021em;
+    text-align: right;
+  }
 }
 </style>

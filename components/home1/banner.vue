@@ -109,8 +109,7 @@ text-align: center;
 
   padding: 0 20px;
 }
-.next-button_luxry {
-}
+
 @media screen and (max-width: 960px) {
   .slider {
     height: 150px;

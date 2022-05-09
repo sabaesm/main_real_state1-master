@@ -231,8 +231,7 @@ h5 {
 .releted_post  .mainCard__weblog {
 align-items: center;
 }
-.releted_post  .main__row {
-}
+
 .releted_post  .grouping_card {
   box-shadow: 0px 0px 34px -9px rgba(12, 46, 96, 0.25);
   border-radius: 31px;

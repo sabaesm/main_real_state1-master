@@ -98,17 +98,17 @@
         <div class="swiper-wrapper">
           <ul
             class="sale__cards d-flex flex-row align-center justify-center swiper-slide"
-            v-for="salecard in salecard"
-            :key="salecard.id"
+            v-for="(data,index) in data"
+            :key="data.id"
           >
-            <li class="ma-0 pa-2 sale__card__items">
+            <li v-if="index<=6"  class="ma-0 pa-2 sale__card__items">
               <div class="top_card">
                 <a href="#">
-                  <img :src="salecard.img" alt="" />
+                  <img :src="data.cover" alt="" />
                 </a>
                 <div class="topcard__top__section">
                   <div class="status d-flex flex-row align-center justify-center px-3">
-                    <span
+                  <div v-if="data.special === true "> <span
                       class="sale__product d-flex align-center justify-center flex-row"
                     >
                       <svg
@@ -127,12 +127,18 @@
                           fill="white"
                         />
                       </svg>
-                      <span class="salecard_product__text"> {{ salecard.product }}</span>
-                    </span>
-                    <span class="sale__status">{{ salecard.sale_status }}</span>
+                      <span class="salecard_product__text">فروش ویژه</span>
+                    </span></div>
+                   
+                    <div class="card_icons" v-if="data.Transaction === 'P' "> <span class="sale__status_v "> پیش فروش</span></div>
+                    <div v-else-if="data.Transaction === 'S'"> <span class="sale__status_s ">  فروش</span></div>
                   </div>
                   <div class="d-flex flex-row align-center Building-type">
-                    <p>آپارتمان</p>
+                    <p v-if="data.estate_type === 'A' ">آپارتمان</p>
+                    <p v-else-if="data.estate_type === 'B' ">مغازه و تجاری</p>
+                    <p v-else-if="data.estate_type === 'L' "> زمین </p>
+                    <p v-else-if="data.estate_type === 'H' "> خانه</p>
+                    <p v-else-if="data.estate_type === 'V' "> ویلایی </p>
                     <svg
                       width="20"
                       height="20"
@@ -201,7 +207,7 @@
                 </div>
                 <span class="hover__icon_bottom">
                   <div class="counter d-flex flex-column align-center pa-2">
-                    <span>6</span>
+                    <span>{{data.media_count}}</span>
                     <span
                       ><svg
                         width="19"
@@ -227,18 +233,35 @@
                       </svg>
                     </span>
                   </div>
-                  <span class="sale_date">{{ salecard.date }}</span>
+                  <span class="sale_date">{{ data.placed_at }}</span>
                 </span>
               </div>
               <v-col class="bottom_card pa-0 ma-0" cols="12">
                 <h5 class="sale__desctiptipn py-2 pt-5">
-                  {{ salecard.detaile }}
+                  {{ data.title.substring(0, 50)   }}
                 </h5>
                 <ul class="home__desctiption">
-                  <li>{{ salecard.area }}</li>
-                  <li>{{ salecard.room }}</li>
-                  <li>{{ salecard.roof }}</li>
-                  <li>{{ salecard.new }}</li>
+                  <li v-if="data.land_size !== null" >{{ data.land_size }}</li>
+                  <li v-if="data.building_size !== null" >{{ data.building_size }}</li>
+                  <li v-if="data.dang !== null" >{{ data.dang }}</li>
+                  <li v-if="data.rooms !== null" >{{ data.rooms }}</li>
+                  <li v-if="data.wc !== null" >{{ data.wc }}</li>
+                  <li v-if="data.master !== null" >{{ data.master }}</li>
+                  <li v-if="data.view !== null" >{{ data.view }}</li>
+                  <li v-if="data.in_material !== null" >{{ data.in_material }}</li>
+                  <li v-if="data.ex_material !== null" >{{ data.ex_material }}</li>
+                  <li v-if="data.floorCover !== null" >{{ data.floorCover }}</li>
+                  <li v-if="data.cabinets !== null" >{{ data.cabinets }}</li>
+                  <li v-if="data.building_age !== null" >{{ data.building_age }}</li>
+                  <li v-if="data.document_type !== null" >{{ data.document_type }}</li>
+                  <li v-if="data.unit_in_floors !== null" >{{ data.unit_in_floors }}</li>
+                  <li v-if="data.wall_cover !== null" >{{ data.wall_cover }}</li>
+                  <li v-if="data.length !== null" >{{ data.length }}</li>
+                  <li v-if="data.ground_width !== null" >{{ data.ground_width }}</li>
+                  <li v-if="data.corrected_area !== null" >{{ data.corrected_area }}</li>
+                  <li v-if="data.passage_width !== null" >{{ data.passage_width }}</li>
+                  <li v-if="data.tree_count !== null" >{{ data.tree_count }}</li>
+                 
                 </ul>
                 <v-row class="price__row ma-0 px-0 py-2">
                   <span class="value d-flex flex-row align-center">
@@ -272,19 +295,18 @@
                         />
                       </svg>
                  
-                    {{ salecard.value }}
+                    {{ data.unit_price }}
                     <span class="toman">تومان</span>
                   </span>
-                  <span class="sale_price">({{ salecard.price }})</span>
                 </v-row>
                 <div class="sale_person__details d-flex flex-row w-100">
                   <div class="sale_person d-flex flex-row">
                     <div class="sale_person__pictur">
-                      <img :src="salecard.person__pic" />
+                      <img :src="data.cover" />
                     </div>
                     <span class="d-flex flex-column pa-1">
-                      <h5 class="pa-0 ma-0">{{ salecard.name }}</h5>
-                      <p class="pa-0 ma-0">{{ salecard.experience }}</p>
+                      <h5 class="pa-0 ma-0">{{ data.username }}</h5>
+                      <p class="pa-0 ma-0">{{ data.user_activity }}</p>
                     </span>
                   </div>
                   <div class="sale_contact_way pa-0 ma-0">
@@ -310,7 +332,7 @@
                         fill="#FFA80A"
                       />
                     </svg>
-                    <svg
+                    <a href="https://wa.me/09392832153" class="pa-0 ma-0"><svg
                       viewBox="0 0 44 44"
                       fill="none"
                       xmlns="http://www.w3.org/2000/svg"
@@ -342,7 +364,9 @@
                         d="M31.4275 29.288C31.4275 29.568 31.3775 29.858 31.2775 30.138C31.2475 30.218 31.2175 30.298 31.1775 30.378C31.0075 30.738 30.7875 31.078 30.4975 31.398C30.0075 31.938 29.4675 32.328 28.8575 32.578C28.8475 32.578 28.8375 32.588 28.8275 32.588C28.2375 32.828 27.5975 32.958 26.9075 32.958C25.8875 32.958 24.7975 32.718 23.6475 32.228C22.4975 31.738 21.3475 31.078 20.2075 30.248C19.8175 29.958 17.5575 28.038 17.1875 27.728L20.4575 24.458C20.7375 24.668 22.8575 26.458 23.0675 26.568C23.1175 26.588 23.1775 26.618 23.2475 26.648C23.3275 26.678 23.4075 26.688 23.4975 26.688C23.6675 26.688 23.7975 26.628 23.9075 26.518L24.6675 25.768C24.9175 25.518 25.1575 25.328 25.3875 25.208C25.6175 25.068 25.8475 24.998 26.0975 24.998C26.2875 24.998 26.4875 25.038 26.7075 25.128C26.9275 25.218 27.1575 25.348 27.4075 25.518L30.7175 27.868C30.9775 28.048 31.1575 28.258 31.2675 28.508C31.3675 28.758 31.4275 29.008 31.4275 29.288Z"
                         fill="#0DA049"
                       />
-                    </svg>
+                    </svg></a>
+
+                    
                   </div>
                 </div>
               </v-col>
@@ -368,11 +392,12 @@ export default {
     return {
       swiperOption: {
         slidesPerGroup: 1,
-        loopFillGroupWithBlank: true,
+        loopFillGroupWithBlank: false,
+            spaceBetween: 30,
         pagination: {
           el: ".swiper-pagination",
           clickable: true,
-                      spaceBetween: 30,
+                      spaceBetween: 10,
 
         },
         navigation: {
@@ -384,7 +409,7 @@ export default {
             loop: true,
 
             slidesPerView: 3,
-            spaceBetween: 0,
+            spaceBetween: 10,
           },
           768: {
             slidesPerView: 1,
@@ -410,6 +435,12 @@ export default {
       },
     };
   },
+  props: ['data'],
+  mounted(){
+    console.log( "case is 2 "+ this.data)
+
+  }
+  
 };
 </script>
 
@@ -522,8 +553,15 @@ h2 {
   flex-direction: column;
   justify-content: space-around;
 }
+.sale__card__items{
+  width: 100%!important;
+  margin: 0 20px!important;
+  background-color: red;
+
+}
 .sale__card__items:hover .sale__desctiptipn {
   color: #087cce !important;
+
 }
 
 .sale__cards {
@@ -531,6 +569,7 @@ h2 {
   flex-wrap: wrap;
   justify-content: space-between;
   padding: 30px 0px !important;
+
 }
 .sale__cards .sale__card__items {
   background-color: #fff;
@@ -610,8 +649,23 @@ h2 {
 .status {
   transition: all ease-in-out 0.3s !important;
 }
-.sale__status {
+.sale__status_v {
   background-color: #0a98ff;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 800;
+  line-height: 20px;
+  letter-spacing: -0.035em;
+  text-align: right;
+  color: #ffff;
+  border-radius: 5px;
+  padding: 0 10px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+}
+.sale__status_s {
+background: #55499B;
   font-size: 12px;
   font-style: normal;
   font-weight: 800;
@@ -641,9 +695,10 @@ h2 {
   width: 0;
   overflow: hidden;
   transition: all ease-in-out 0.3s;
+  white-space: nowrap;
 }
 .Building-type:hover p {
-  width: 40px;
+  width: 70px;
 }
 .top_card .hover__icon_bottom {
   position: absolute;
@@ -780,7 +835,7 @@ padding-left: 5px;
   font-weight: 400;
   line-height: 16px;
   letter-spacing: -0.021em;
-  color: #b1b1b1;
+  color: #b1b1b1!important;
 }
 .sale_person h5 {
   font-size: 15px;
@@ -788,7 +843,7 @@ padding-left: 5px;
   line-height: 22px;
   letter-spacing: -0.035em;
   text-align: right;
-  color: #101737;
+  color: #101737!important;
 }
 .home__desctiption li::before{
 

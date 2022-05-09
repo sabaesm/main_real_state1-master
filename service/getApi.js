@@ -47,3 +47,21 @@ export async function HomePage() {
   });
   return apiCall
 }
+export async function cases() {
+  let apiCall = await api().get("/cases/", {
+    "Content-Type": "application/json",
+  });
+  return apiCall;
+}
+export async function beach() {
+  let apiCall = await api().get("/cases/?estate_type=V&beach=true/", {
+    "Content-Type": "application/json",
+  });
+  return apiCall;
+}
+export async function special() {
+  let apiCall = await api().get("/cases/?special=true/", {
+    "Content-Type": "application/json",
+  });
+  return apiCall;
+}

@@ -4,19 +4,19 @@
       <hed v-bind="HomePage" :data="HomePage"></hed>
       <value></value>
       <grouping></grouping>
-      <new1></new1>
-      <banner v-bind="getContactUsBanner" :data="getContactUsBanner"></banner>
-      <new_vila></new_vila>
-      <offer></offer>
-      <banner v-bind="getContactUsBanner" :data="getContactUsBanner"></banner>
+      <new1 v-bind="cases" :data="cases"></new1>
+      <banner v-bind="homePage_banner_v" :data="homePage_banner_v"></banner>
+      <new_vila v-bind="beach" :data="beach"></new_vila>
+      <offer v-bind="special" :data="special"></offer>
       <favplace></favplace>
-         <cons v-bind="getContactUs" :data="getContactUs"></cons>
-         <weblog></weblog>
-               <banner v-bind="getContactUsBanner" :data="getContactUsBanner"></banner>
+      <cons v-bind="getContactUs" :data="getContactUs"></cons>
+      <weblog></weblog>
+      <banner v-bind="homePage_banner_s" :data="homePage_banner_s"></banner>
     </v-app>
   </div>
 </template>
 <script>
+import { mapState } from "vuex";
 import hed from "../components/home1/Header.vue";
 import grouping from "../components/home1/Grouping.vue";
 import value from "../components/home1/Value.vue";
@@ -27,9 +27,11 @@ import offer from "../components/home1/offer.vue";
 import favplace from "../components/home1/favorit_place.vue";
 import new_vila from "../components/home1/new_vila.vue";
 import weblog from "../components/home1/weblog.vue";
-import { getContactUsBanner } from "../service/getApi";
 import { HomePage } from "../service/getApi";
 import { getContactUs } from "../service/getApi";
+import { cases } from "../service/getApi";
+import { beach } from "../service/getApi";
+import { special } from "../service/getApi";
 
 export default {
   components: {
@@ -44,26 +46,32 @@ export default {
     favplace,
     weblog,
   },
+  computed: {
+    ...mapState(["homePage_banner_v"]),
+    ...mapState(["homePage_banner_s"]),
+  },
   data() {
     return {
-      getContactUsBanner: [],
       HomePage: [],
-      getContactUs:[]
+      getContactUs: [],
+      cases: [],
+      beach: [],
+      special:[]
     };
   },
   mounted() {
-    getContactUsBanner().then((res) => (this.getContactUsBanner = res.data));
     HomePage().then((res) => (this.HomePage = res.data));
-    getContactUs().then((res)=>(this.getContactUs=res.data))
-     
+    getContactUs().then((res) => (this.getContactUs = res.data));
+    cases().then((res) => (this.cases = res.data.results));
+    beach().then((res) => (this.beach = res.data.results));
+    special().then((res) => (this.special = res.data.results));
   },
   layout: "user",
 };
 </script>
 
 <style scoped>
-.main{
-overflow: hidden;
-
+.main {
+  overflow: hidden;
 }
 </style>

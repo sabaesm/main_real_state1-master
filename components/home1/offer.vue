@@ -93,18 +93,18 @@
         <div class="swiper-wrapper my-5">
           <ul
             class="sale__cards d-flex flex-row swiper-slide  mx-5 my-5 pl-5 py-2 px-2"
-            v-for="salecard in salecard"
-            :key="salecard.id"
+            v-for="data in data"
+            :key="data.id"
           > 
-            <li class="ma-0 pa-0 sale__card__items d-flex flex-row" >
-            <v-col cols="5  pa-0 ma-1">
+            <li class="ma-0 pa-0 sale__card__items d-flex flex-column flex-md-row" >
+            <v-col cols="12   pa-0 ma-1" md="5">
               <div class="top_card">
                 <a href="#">
-                  <img :src="salecard.img" alt="" />
+                  <img :src="data.cover" alt="" />
                 </a>
                 <div class="topcard__top__section">
                   <div class="status d-flex flex-row align-center justify-center px-3">
-                    <span
+                    <div v-if="data.special === true "> <span
                       class="sale__product d-flex align-center justify-center flex-row"
                     >
                       <svg
@@ -123,10 +123,11 @@
                           fill="white"
                         />
                       </svg>
-                      <span class="salecard_product__text"> {{ salecard.product }}</span>
-                    </span>
-                    <span class="sale__status">{{ salecard.sale_status }}</span>
-                  </div>
+                      <span class="salecard_product__text">فروش ویژه</span>
+                    </span></div>
+
+                    <div class="card_icons" v-if="data.Transaction === 'P' "> <span class="sale__status_v "> پیش فروش</span></div>
+                    <div v-else-if="data.Transaction === 'S'"> <span class="sale__status_s ">  فروش</span></div>                  </div>
                   <svg
                     width="64"
                     height="64"
@@ -234,7 +235,7 @@
                 </div>
                 <span class="hover__icon_bottom">
                   <div class="counter d-flex flex-column align-center pa-2">
-                    <span>6</span>
+                     <span>{{data.media_count}}</span>
                     <span
                       ><svg
                         width="19"
@@ -264,19 +265,35 @@
                 </span>
               </div>
               </v-col>
-              <v-col class="bottom_card pa-0 ma-1 " cols="7">
-                <h5 class="sale__desctiptipn">
-                  {{ salecard.detaile }}
+              <v-col class="bottom_card pa-0 ma-1 " cols="12" md="7">
+               <h5 class="sale__desctiptipn py-2 pt-5">
+                  {{ data.title.substring(0, 50)   }}
                 </h5>
-                <ul class="home__desctiption">
-                  <li>{{ salecard.area }}</li>
-                  <li>{{ salecard.room }}</li>
-                  <li>{{ salecard.roof }}</li>
-                  <li>{{ salecard.new }}</li>
+                 <ul class="home__desctiption">
+                  <li v-if="data.land_size !== null" >{{ data.land_size }}</li>
+                  <li v-if="data.building_size !== null" >{{ data.building_size }}</li>
+                  <li v-if="data.dang !== null" >{{ data.dang }}</li>
+                  <li v-if="data.rooms !== null" >{{ data.rooms }}</li>
+                  <li v-if="data.wc !== null" >{{ data.wc }}</li>
+                  <li v-if="data.master !== null" >{{ data.master }}</li>
+                  <li v-if="data.view !== null" >{{ data.view }}</li>
+                  <li v-if="data.in_material !== null" >{{ data.in_material }}</li>
+                  <li v-if="data.ex_material !== null" >{{ data.ex_material }}</li>
+                  <li v-if="data.floorCover !== null" >{{ data.floorCover }}</li>
+                  <li v-if="data.cabinets !== null" >{{ data.cabinets }}</li>
+                  <li v-if="data.building_age !== null" >{{ data.building_age }}</li>
+                  <li v-if="data.document_type !== null" >{{ data.document_type }}</li>
+                  <li v-if="data.unit_in_floors !== null" >{{ data.unit_in_floors }}</li>
+                  <li v-if="data.wall_cover !== null" >{{ data.wall_cover }}</li>
+                  <li v-if="data.length !== null" >{{ data.length }}</li>
+                  <li v-if="data.ground_width !== null" >{{ data.ground_width }}</li>
+                  <li v-if="data.corrected_area !== null" >{{ data.corrected_area }}</li>
+                  <li v-if="data.passage_width !== null" >{{ data.passage_width }}</li>
+                  <li v-if="data.tree_count !== null" >{{ data.tree_count }}</li>
+                 
                 </ul>
-                <v-row class="price__row ma-0 px-0 py-2">
+                 <v-row class="price__row ma-0 px-0 py-2">
                   <span class="value d-flex flex-row align-center">
-                    
                       <svg
                         width="11"
                         height="11"
@@ -306,20 +323,19 @@
                           fill="#237E48"
                         />
                       </svg>
-                    
-                    {{ salecard.value }}
+                 
+                    {{ data.unit_price }}
                     <span class="toman">تومان</span>
                   </span>
-                  <span class="sale_price">({{ salecard.price }})</span>
                 </v-row>
                 <div class="sale_person__details d-flex flex-row w-100">
                   <div class="sale_person d-flex flex-row">
                     <div class="sale_person__pictur">
-                      <img :src="salecard.person__pic" />
+                      <img :src="data.cover" />
                     </div>
                     <span class="d-flex flex-column pa-1">
-                      <h5 class="pa-0 ma-0">{{ salecard.name }}</h5>
-                      <p class="pa-0 ma-0">{{ salecard.experience }}</p>
+                      <h5 class="pa-0 ma-0">{{ data.username }}</h5>
+                      <p class="pa-0 ma-0">{{ data.user_activity }}</p>
                     </span>
                   </div>
                   <div class="sale_contact_way pa-0 ma-0">
@@ -345,7 +361,7 @@
                         fill="#FFA80A"
                       />
                     </svg>
-                    <svg
+                    <a href="https://wa.me/09392832153" class="pa-0 ma-0"><svg
                       viewBox="0 0 44 44"
                       fill="none"
                       xmlns="http://www.w3.org/2000/svg"
@@ -377,7 +393,9 @@
                         d="M31.4275 29.288C31.4275 29.568 31.3775 29.858 31.2775 30.138C31.2475 30.218 31.2175 30.298 31.1775 30.378C31.0075 30.738 30.7875 31.078 30.4975 31.398C30.0075 31.938 29.4675 32.328 28.8575 32.578C28.8475 32.578 28.8375 32.588 28.8275 32.588C28.2375 32.828 27.5975 32.958 26.9075 32.958C25.8875 32.958 24.7975 32.718 23.6475 32.228C22.4975 31.738 21.3475 31.078 20.2075 30.248C19.8175 29.958 17.5575 28.038 17.1875 27.728L20.4575 24.458C20.7375 24.668 22.8575 26.458 23.0675 26.568C23.1175 26.588 23.1775 26.618 23.2475 26.648C23.3275 26.678 23.4075 26.688 23.4975 26.688C23.6675 26.688 23.7975 26.628 23.9075 26.518L24.6675 25.768C24.9175 25.518 25.1575 25.328 25.3875 25.208C25.6175 25.068 25.8475 24.998 26.0975 24.998C26.2875 24.998 26.4875 25.038 26.7075 25.128C26.9275 25.218 27.1575 25.348 27.4075 25.518L30.7175 27.868C30.9775 28.048 31.1575 28.258 31.2675 28.508C31.3675 28.758 31.4275 29.008 31.4275 29.288Z"
                         fill="#0DA049"
                       />
-                    </svg>
+                    </svg></a>
+
+                    
                   </div>
                 </div>
               </v-col>
@@ -399,6 +417,9 @@ export default {
   computed: {
     ...mapState(["salecard"]),
   },
+  props:[
+    'data'
+  ],
   data() {
     return {
       swiperOption: {
@@ -534,10 +555,7 @@ margin-bottom: 90px;
   color: #969595;
   font-size: 12px;
 }
-.card_icons {
-  background-color: red;
-  width: 20px;
-}
+
 
 .prev-button,
 .next-button {
@@ -616,21 +634,29 @@ height:200px;
   text-align: right;
   color: #ffff;
   border-radius: 5px;
-  padding: 10px;
   transition: all ease-in-out 0.3s !important;
+  overflow: hidden;
+  height: 35px;
+  width: 35px;
+  margin-left: 5px;
+}
+.sale__product:hover {
+  width: 100px;
 }
 .salecard_product__text {
-  display: none;
+  width: 0;
   transition: all ease-in-out 0.3s !important;
+  overflow: hidden;
+  white-space: nowrap;
 }
 .sale__product:hover .salecard_product__text {
-  display: inline-block;
+  width: 60px;
   transition: all ease-in-out 0.3s !important;
 }
 .status {
   transition: all ease-in-out 0.3s !important;
 }
-.sale__status {
+.sale__status_v {
   background-color: #0a98ff;
   font-size: 12px;
   font-style: normal;
@@ -640,7 +666,25 @@ height:200px;
   text-align: right;
   color: #ffff;
   border-radius: 5px;
-  padding: 10px;
+  padding: 0 10px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+}
+.sale__status_s {
+background: #55499B;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 800;
+  line-height: 20px;
+  letter-spacing: -0.035em;
+  text-align: right;
+  color: #ffff;
+  border-radius: 5px;
+  padding: 0 10px;
+  height: 35px;
+  display: flex;
+  align-items: center;
 }
 .top_card .hover__icon_bottom {
   position: absolute;
@@ -806,32 +850,29 @@ text-align: right;
   color: #101737!important;
 }
 
-@media screen and (max-width: 960px) {
-.sale__cards {
-  min-width: 400px;
+@media screen and (max-width: 600px) {
+  .arrows {
+    display: none;
+  }
 
-}
-.sale__card__items {
-  display: flex;
-  flex-wrap: nowrap;
-  overflow-y: scroll;
-}
-h2,h4{
-text-align: center;
-}
-h4{
-font-family: IRANYekanWeb;
-font-size: 13px;
-font-weight: 700;
-line-height: 22px;
-letter-spacing: -0.035em;
-}
-h2{
-font-family: IRANYekanWeb;
-font-size: 18px;
-font-weight: 800;
-line-height: 30px;
-letter-spacing: -0.035em;
-}
+  h2 {
+    text-align: center !important;
+    width: 100% !important;
+  }
+  h4 {
+    font-size: 13px;
+    font-weight: 700;
+    line-height: 22px;
+    letter-spacing: -0.035em;
+    text-align: center !important;
+    width: 100% !important;
+  }
+  h2 {
+    font-size: 18px;
+    font-weight: 800;
+    line-height: 30px;
+    letter-spacing: -0.035em;
+  }
+  
 }
 </style>
