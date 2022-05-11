@@ -293,6 +293,9 @@ export default {
   computed: {
     ...mapState(["salecard"]),
   },
+  props:[
+    'data'
+  ],
   components: {
     salecardSlider,
   },
@@ -324,12 +327,7 @@ export default {
 <style scoped>
 .sale__card__items:hover .sale__desctiptipn {
 color: #087cce!important;
-
-}
-.left__main__card{
-
-}
-.sale__cards {
+}.sale__cards {
   display: flex;
   flex-wrap: wrap;
   margin: 5px;

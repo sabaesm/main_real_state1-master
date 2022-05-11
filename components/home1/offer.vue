@@ -528,12 +528,12 @@ margin-bottom: 90px;
 }
 .prev-button {
   background-color: #519fff!important;
-    transition: all ease-in-out.3s!important;
+    transition: all ease-in-out .3s!important;
 
 }
 .next-button {
   background-color: #519fff!important;
-    transition: all ease-in-out.3s!important;
+    transition: all ease-in-out .3s!important;
 }
 
 .next-button:hover {
@@ -569,8 +569,7 @@ margin-bottom: 90px;
 .sale__card__items:hover .sale__desctiptipn {
   color: #087cce !important;
 }
-.left__main__card {
-}
+
 .sale__cards {
   display: flex;
   flex-wrap: wrap;

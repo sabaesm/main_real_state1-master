@@ -461,4 +461,17 @@ export const state = () => ({
       type: "s",
     },
   ],
+filterData:[]
+
 });
+export const mutations = () => ({
+  [filter]: (state, filterData) => state.filterData.push(filterData),
+});
+export const getters = () => {
+  
+}
+
+export const actions = () => {
+  
+}
+

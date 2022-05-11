@@ -65,3 +65,18 @@ export async function special() {
   });
   return apiCall;
 }
+
+export async function getSearch({
+  estate_type,
+  unit_price__gte,
+  unit_price__lte,
+  region,
+}) {
+  let apiCall = await api().get(
+    `/cases/?&estate_type=${estate_type}&unit_price__gte=${unit_price__gte}&unit_price__lte=${unit_price__lte}&region=${region}`,
+    {
+      "Content-Type": "application/json",
+    }
+  );
+  return apiCall;
+}

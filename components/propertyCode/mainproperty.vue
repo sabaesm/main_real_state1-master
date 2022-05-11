@@ -38,15 +38,3 @@ export default {
   },
 };
 </script>
-<style scoped>
-.main__property{}
-.test {
-overflow: hidden;
-background-color: #ffff;
-margin-top: -100px;
-border-radius: 20px;
-display: flex;
-flex-direction: row;
-position: sticky;
-}
-</style>

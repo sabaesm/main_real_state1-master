@@ -21,6 +21,7 @@ import card from '../../components/blog/cards.vue'
 import search from '../../components/blog/search.vue'
 import slider from '../../components/blog/slider.vue'
 import {getBlog} from '../../service/getApi'
+import { mapActions } from 'vuex'
 export default ({
    components: {
         weblogCard,
@@ -36,8 +37,8 @@ return{
 }
     },
     mounted() {
-      getBlog().then((res)=>this.getBlog=res.data )
-      .then((res)=>console.log(res.find(i=> i.id === 1)))
+      getBlog().then((res)=>this.getBlog=res.data.results )
+      // .then((res)=>console.log(res.find(i=> i.id === 1)))
     },
 
       layout:'user'
