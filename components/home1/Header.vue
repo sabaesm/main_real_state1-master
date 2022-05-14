@@ -21,11 +21,15 @@
           <div class="building">
             <label for=""> نوع ملک : </label>
             <input type="text" name="" id="" placeholder=" نوع شما" />
-            <select name="estate_type" id="" v-on:change="onchangeGetValue">
+            <select
+              name="estate_type"
+              id=""
+              v-on:change="onchangeGetValue"
+            >
               <option value="">انتخاب کنید:</option>
               <option value="V ">ویلا</option>
               <option value="G">باغ</option>
-              <option value="H">خانه وبلایی</option>
+              <option value="H">خانه ویلایی</option>
               <option value="L">زمین</option>
               <option value="ََA">آپارتمان</option>
               <option value="B">مغازه و تجاری</option>
@@ -57,12 +61,26 @@
         </form>
       </v-col>
       <nuxt-link to=""></nuxt-link>
-      
-      <nuxt-link :to=" { name: 'propertyCode', query: { region: '1' }}">      <v-btn class="search_home" v-on:click="handleSearch"> جستجوی ملک</v-btn>
-</nuxt-link>
+
+      <!-- <nuxt-link :to="{ name: 'propertyCode', query: { region: `${this.onchangeGetValue.region}` } }"> -->
+      <nuxt-link
+        :to="{
+          name: 'propertyCode',
+          query: {
+            region: `${this.valueInput.region}`,
+            estate_type: `${this.valueInput.estate_type}`,
+            unit_price__lte: `${this.valueInput.unit_price__lte}`,
+            unit_price__gte: `${this.valueInput.unit_price__gte}`,
+          },
+        }"
+      >
+        <!-- <nuxt-link :to=" { name: 'propertyCode', query: ` ${'region'}`}">     -->
+        <v-btn class="search_home" v-on:click="handleSearch"> جستجوی ملک</v-btn>
+      </nuxt-link>
     </div>
   </div>
 </template>
+
 <script>
 import search from "./Search.vue";
 import { getSearch } from "../../service/getApi";
@@ -80,27 +98,26 @@ export default {
         region: "",
         estate_type: "",
       },
+      region: "",
     };
   },
   methods: {
     submited() {
       (this.region = region),
-        (this.place = place),
+        (this.estate_type = estate_type),
         (this.high_price = high_price),
         (this.low_price = low_price);
     },
-
     onchangeGetValue(e) {
       this.valueInput = {
         ...this.valueInput,
         [e.target.name]: e.target.value,
       };
     },
-    handleSearch() {
-      console.log(this.valueInput);
-      getSearch({...this.valueInput}).then((res) => console.log(res));
-      // getSearch({...this.valueInput}).then(res=> );
-
+    async handleSearch() {
+      const keyword = this.valueInput;
+      const httpRequest = await getSearch(keyword);
+      console.log(httpRequest)
     },
   },
   mounted() {},

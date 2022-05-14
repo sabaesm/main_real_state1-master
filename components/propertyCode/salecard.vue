@@ -1,15 +1,22 @@
 <template>
   <div class="left__main__card">
+ {{$route.query}}
+       :search data
+
     <v-row class="">
       <v-col cols="12" class="pa-0 ma-0">
-        <ul class="sale__cards d-flex flex-row ">
-          <li v-for="salecard in salecard" :key="salecard.id" class="pa-3 sale__card__items">
+        <ul class="sale__cards d-flex flex-row">
+          <li
+            v-for="salecard in salecard"
+            :key="salecard.id"
+            class="pa-3 sale__card__items"
+          >
             <div class="top_card">
               <a href="#">
-                  <img :src="salecard.img" alt="" />                               
+                <img :src="salecard.img" alt="" />
               </a>
               <div class="topcard__top__section">
-                <div class="status d-flex flex-row align-center justify-center  px-3">
+                <div class="status d-flex flex-row align-center justify-center px-3">
                   <span class="sale__product d-flex align-center justify-center flex-row">
                     <svg
                       width="22"
@@ -222,7 +229,7 @@
                   </div>
                   <span class="d-flex flex-column pa-1">
                     <h5 class="pa-0 ma-0">{{ salecard.name }}</h5>
-                    <p class=" pa-0 ma-0">{{ salecard.experience }}</p>
+                    <p class="pa-0 ma-0">{{ salecard.experience }}</p>
                   </span>
                 </div>
                 <div class="sale_contact_way pa-0 ma-0">
@@ -289,18 +296,19 @@
 <script>
 import { mapState } from "vuex";
 import salecardSlider from "./salecardSlider.vue";
+import { getSearch } from "../../service/getApi";
+
 export default {
   computed: {
     ...mapState(["salecard"]),
   },
-  props:[
-    'data'
-  ],
+  props: ["data"],
   components: {
     salecardSlider,
   },
   data() {
     return {
+      getSearch: [],
       swiperOption: {
         slidesPerView: 1,
         spaceBetween: -10,
@@ -322,12 +330,18 @@ export default {
       },
     };
   },
+    mounted(){
+      console.log('hi')
+    // getSearch(this.$route.params.id).then((res)=>console.log(res.data));
+
+    },
 };
 </script>
 <style scoped>
 .sale__card__items:hover .sale__desctiptipn {
-color: #087cce!important;
-}.sale__cards {
+  color: #087cce !important;
+}
+.sale__cards {
   display: flex;
   flex-wrap: wrap;
   margin: 5px;
@@ -341,12 +355,12 @@ color: #087cce!important;
   box-shadow: 0px 0px 34px -9px rgba(12, 46, 96, 0.25);
   margin-bottom: 30px;
 }
-.top_card a{
-overflow: hidden!important;;
-   border-radius: 10px;
-   height: 100%!important;
-     width: 100%;
-     display: block;
+.top_card a {
+  overflow: hidden !important;
+  border-radius: 10px;
+  height: 100% !important;
+  width: 100%;
+  display: block;
 }
 .top_card img {
   width: 100%;
@@ -362,7 +376,7 @@ overflow: hidden!important;;
   overflow: hidden;
   border-radius: 10px;
   transition: all ease-in-out 0.3s;
-    width: 100%;
+  width: 100%;
   height: 240px;
 }
 .top_card .topcard__top__section {
@@ -397,10 +411,9 @@ overflow: hidden!important;;
   display: inline-block;
   transition: all ease-in-out 0.3s !important;
 }
-.status{
-   transition: all ease-in-out 0.3s !important;
-   
-   }
+.status {
+  transition: all ease-in-out 0.3s !important;
+}
 .sale__status {
   background-color: #0a98ff;
   font-size: 12px;
@@ -412,7 +425,6 @@ overflow: hidden!important;;
   color: #ffff;
   border-radius: 5px;
   padding: 10px;
-
 }
 .top_card .hover__icon_bottom {
   position: absolute;
@@ -457,7 +469,7 @@ overflow: hidden!important;;
   letter-spacing: -0.021em;
   text-align: right;
   color: #101737;
-  transition: all ease-in-out .3s;
+  transition: all ease-in-out 0.3s;
 }
 .home__desctiption {
   display: flex;
@@ -544,70 +556,70 @@ overflow: hidden!important;;
   text-align: right;
   color: #101737;
 }
-@media  screen and (max-width: 760px) {
-.sale__cards .sale__card__items {
-  width: 90% !important;
+@media screen and (max-width: 760px) {
+  .sale__cards .sale__card__items {
+    width: 90% !important;
+  }
 }
-}
-@media  screen and (max-width: 600px) {
-.sale__desctiptipn {
-font-size: 13px;
-font-weight: 400;
-line-height: 19px;
-letter-spacing: -0.021em;
-}
-.home__desctiption{
-font-size: 11px;
-font-weight: 400;
-line-height: 16px;
-letter-spacing: -0.021em;
-}
-.value svg{
-width: 15px !important;
-height: 15px !important;
-}
-.value{
-font-size: 17px;
-font-weight: 700;
-line-height: 25px;
-letter-spacing: -0.021em;
-}
-.toman{
-font-size: 12px;
-}
-.sale_price{
-font-size: 10px;
-line-height: 15px;
-letter-spacing: -0.021em;
-text-align: right;
-}
-.sale_person__pictur{
-height: 35px!important;
-width: 35px!important;
-}
-.sale_person__pictur img{
-height: 100%;
-width: 100%;
-}
-.sale_person h5{
-font-size: 10px;
-}
-.sale_person p{
-font-size: 8px;
-}
-.sale_contact_way  svg{
-height: 26px;
-width: 26px;
-}
-.sale__status{
-font-size: 10px;
-}
-.sale__product {
-font-size: 10px;
-}
-.sale__product svg{
-width: 20px;
-height: 20px;
-}
+@media screen and (max-width: 600px) {
+  .sale__desctiptipn {
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 19px;
+    letter-spacing: -0.021em;
+  }
+  .home__desctiption {
+    font-size: 11px;
+    font-weight: 400;
+    line-height: 16px;
+    letter-spacing: -0.021em;
+  }
+  .value svg {
+    width: 15px !important;
+    height: 15px !important;
+  }
+  .value {
+    font-size: 17px;
+    font-weight: 700;
+    line-height: 25px;
+    letter-spacing: -0.021em;
+  }
+  .toman {
+    font-size: 12px;
+  }
+  .sale_price {
+    font-size: 10px;
+    line-height: 15px;
+    letter-spacing: -0.021em;
+    text-align: right;
+  }
+  .sale_person__pictur {
+    height: 35px !important;
+    width: 35px !important;
+  }
+  .sale_person__pictur img {
+    height: 100%;
+    width: 100%;
+  }
+  .sale_person h5 {
+    font-size: 10px;
+  }
+  .sale_person p {
+    font-size: 8px;
+  }
+  .sale_contact_way svg {
+    height: 26px;
+    width: 26px;
+  }
+  .sale__status {
+    font-size: 10px;
+  }
+  .sale__product {
+    font-size: 10px;
+  }
+  .sale__product svg {
+    width: 20px;
+    height: 20px;
+  }
 }
 </style>

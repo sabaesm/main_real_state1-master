@@ -1,28 +1,33 @@
 <template>
 <div class="medium_container">
 <v-col  class="mainCard " cols="12"  >
-<v-row  class=" flex-column flex-md-row">
+<v-row  class=" flex-column flex-md-row" v-for="data in data" :key="data.id">
 <v-col cols="12" md="6" class="pictur"> 
-<img src="https://picsum.photos/200"/>
+<img :src="data.estate_picture"/>
 </v-col>
 <v-col class="left_section " col="12" md="6" >
 <v-row class="bio  my-5 ">
  <span class="bio_info">
- <img src="../../assets/images/person.png" alt="">
+ <img :src="data.manager_pic" alt="">
  </span> 
  <span class=" manage_title d-none d-md-flex">  به مدیریت : </span>
-  <span class="manage d-none d-md-flex" > اشکان صامتی  </span>
+  <span class="manage d-none d-md-flex" >  {{data.manager_name}}  </span>
  </v-row>
-<h4 class="my-4" >   ما مدرن ترین خدمات را ارایه میدهیم </h4>
+<h4 class="my-4" >       {{data.manager_activity}}  </h4>
 <p class="paragraf m-0" >
- لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم
- لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجلهلورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجلهلورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم
+{{data.manager_description}}
 </p>
 </v-col>
 </v-row>
 </v-col>
 </div>
 </template>
+<script>
+export default ({
+    props:['data']
+
+})
+</script>
 <style scoped>
 /* No CSS *//*# sourceMappingURL=card.css.map */
 .mainCard{

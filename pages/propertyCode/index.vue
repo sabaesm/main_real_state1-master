@@ -1,7 +1,5 @@
 <template>
    <v-app>
-   search data:
-   {{$route.query.region}}
   <div class="main__property">
     <header2 class="pb-5"></header2>
     <div class="medium_container">
@@ -43,10 +41,7 @@ export default {
 getSearch:[]
         }
     },
-    mounted(){
-    getSearch(this.$route.params.id).then((res) => (this.getSearch = res.data.results));
-
-    },
+ 
           layout:'user',
 
 }

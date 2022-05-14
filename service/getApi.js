@@ -11,12 +11,7 @@ export async function getBlog() {
     });
     return apiCall
 }
-export async function getBlogDynamic(id) {
-    let apiCall = await api().get(`/weblog/${id}`, {
-      "Content-Type": "application/json",
-    });
-    return apiCall
-}
+
 export async function getContactUsBanner() {
   let apiCall = await api().get("/ContactUsBanner/", {
     "Content-Type": "application/json",
@@ -65,7 +60,12 @@ export async function special() {
   });
   return apiCall;
 }
-
+export async function getBlogDynamic(id) {
+  let apiCall = await api().get(`/weblog/${id}`, {
+    "Content-Type": "application/json",
+  });
+  return apiCall;
+}
 export async function getSearch({
   estate_type,
   unit_price__gte,
