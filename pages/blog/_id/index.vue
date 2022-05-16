@@ -48,9 +48,8 @@ export default {
 
   /* extracting url params */
   mounted() {
-  
     getBlogDynamic(this.$route.params.id).then((res) =>this.getBlogDynamic=res.data)
-    .then(res=>console.log(res))
+    .then(res=>console.log(res.data))
 
     
 

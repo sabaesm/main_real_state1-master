@@ -21,24 +21,17 @@
           <div class="building">
             <label for=""> نوع ملک : </label>
             <input type="text" name="" id="" placeholder=" نوع شما" />
-            <select
-              name="estate_type"
-              id=""
-              v-on:change="onchangeGetValue"
-            >
+            <select name="estate_type" id="" v-on:change="onchangeGetValue">
               <option value="">انتخاب کنید:</option>
               <option value="V ">ویلا</option>
               <option value="G">باغ</option>
               <option value="H">خانه ویلایی</option>
               <option value="L">زمین</option>
-              <option value="ََA">آپارتمان</option>
+              <option value="A">آپارتمان</option>
               <option value="B">مغازه و تجاری</option>
             </select>
           </div>
-          <a :class="{ select_building }" v-on:click="select_building = !select_building">
-            test</a
-          >
-
+       
           <div class="price">
             <span> بازه قیمتی</span>
             <label for="down"> از</label>
@@ -115,9 +108,9 @@ export default {
       };
     },
     async handleSearch() {
-      const keyword = this.valueInput;
-      const httpRequest = await getSearch(keyword);
-      console.log(httpRequest)
+      // console.log(this.valueInput)
+      // const httpRequest = await getSearch(keyword);
+      // console.log(httpRequest)
     },
   },
   mounted() {},
