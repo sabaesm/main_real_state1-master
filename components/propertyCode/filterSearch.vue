@@ -1,3 +1,4 @@
+
 <!-- <template>
   <v-app>
     <div>
@@ -88,15 +89,15 @@
     </div>
   </v-app>
 </template> -->
-
 <template>
   <v-app>
     <div>
       <form action="">
         <v-col cols="12" class="pa-0 ma-0">
+        
           <ul class="">
             <li class="filter__card">
-              <div class="region">
+             <div class="region">
                 <label for=""> منطقه : </label>
                 <input
                   type="text"
@@ -106,7 +107,7 @@
                   v-on:change="onchangeGetValue"
                 />
               </div>
-              <span v-if="this.region === null"> هر منطقه ای</span>
+                            <span v-if="this.region === null"> هر منطقه ای</span>
 
               <span class="filter__card__detaile" v-if="this.region !== null">
                 {{ this.region }}
@@ -114,17 +115,17 @@
             </li>
             <li class="filter__card">
               <div class="building">
-                <label for=""> نوع ملک : </label>
-                <select name="estate_type" id="" v-on:change="onchangeGetValue">
-                  <option value="">انتخاب کنید:</option>
-                  <option value="V ">ویلا</option>
-                  <option value="G">باغ</option>
-                  <option value="H">خانه ویلایی</option>
-                  <option value="L">زمین</option>
-                  <option value="A">آپارتمان</option>
-                  <option value="B">مغازه و تجاری</option>
-                </select>
-              </div>
+            <label for=""> نوع ملک : </label>
+            <select name="estate_type" id="" v-on:change="onchangeGetValue">
+              <option value="">انتخاب کنید:</option>
+              <option value="V ">ویلا</option>
+              <option value="G">باغ</option>
+              <option value="H">خانه ویلایی</option>
+              <option value="L">زمین</option>
+              <option value="A">آپارتمان</option>
+              <option value="B">مغازه و تجاری</option>
+            </select>
+          </div>
               <div class="filter__card__detaile" v-if="this.estate_type == null">
                 null
               </div>
@@ -145,7 +146,9 @@
               <div class="filter__card__detaile" v-if="this.estate_type === 'B'">
                 مغازه تجاری
               </div>
+               
             </li>
+           
           </ul>
           <span class="filter__card__detaile"> {{ this.unit_price__lte }} </span>
           <span class="filter__card__detaile"> {{ this.unit_price__gte }} </span>
@@ -164,9 +167,11 @@
             }"
           >
             <!-- <nuxt-link :to=" { name: 'propertyCode', query: ` ${'region'}`}">     -->
+            <v-btn class="search_home" v-on:click="handleSearch"> جستجوی ملک</v-btn>
           </nuxt-link>
         </v-col>
       </form>
+
     </div>
   </v-app>
 </template>

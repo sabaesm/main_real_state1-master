@@ -419,15 +419,16 @@ export default {
             mousewheelSensitivity: 0.02,
           },
           640: {
-            slidesPerView: 1,
-            spaceBetween: 40,
+                      spaceBetween: 10,
+
             freeMode: true,
             freeModeMomentum: true,
             mousewheelSensitivity: 0.02,
           },
           320: {
+                      spaceBetween: 10,
+
             freeMode: true,
-            spaceBetween: 40,
             freeModeMomentum: true,
             mousewheelSensitivity: 0.02,
           },
@@ -556,7 +557,6 @@ h2 {
 .sale__card__items{
   width: 100%!important;
   margin: 0 20px!important;
-  background-color: red;
 
 }
 .sale__card__items:hover .sale__desctiptipn {
@@ -585,7 +585,7 @@ h2 {
   border-radius: 10px;
   transition: all ease-in-out 0.3s;
   width: 100%;
-  height: 240px;
+  height: 50%;
 }
 .top_card a {
   overflow: hidden !important;
@@ -858,6 +858,7 @@ left: 100%;
 
 }
 @media screen and (max-width: 600px) {
+
   .arrows {
     display: none;
   }
@@ -900,12 +901,25 @@ left: 100%;
     line-height: 22px;
     letter-spacing: -0.021em;
   }
-  .home__desctiption {
+  .sale__product {
+    height: 27px;
+  }
+  .home__desctiption li {
     font-size: 13px;
     font-weight: 400;
     line-height: 19px;
     letter-spacing: -0.021em;
     text-align: right;
   }
+      .sale__cards {
+       width: 300px!important;
+  }
+  .sale__cards .sale__card__items {
+    height: 415px;
+  }
+  .sale__card__items{
+    width: 200px;
+  }
+ 
 }
 </style>

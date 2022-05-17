@@ -66,7 +66,7 @@ export default {
     beach().then((res) => (this.beach = res.data.results));
     special().then((res) => (this.special = res.data.results));
   },
-  layout: "user",
+  layout: "homeLayout",
 };
 </script>
 
