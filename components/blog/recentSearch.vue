@@ -1,14 +1,14 @@
 <template>
 <div>
-    <ul   v-for="recent in recent" :key="recent.id"  class="my-1">
+    <ul   v-for="data in data" :key="data.id"  class="my-1">
 <li>
 <div class="d-flex justify-center align-center cards_row_weblog py-2 pe-2 ">
 <v-col cols="5" class="pa-0 home_img  px-1">
-    <img class="" :src="recent.img" />
+    <img class="" :src="data.cover" />
     </v-col>
 <v-col class="recent__home d-flex flex-column pa-0 pr-2" cols="7">
-<h5 class="mb-0 p-0 mt-1">{{recent.title}}</h5>
-<p class="pa-0" >{{recent.desctiption}}</p>
+<h5 class="mb-0 p-0 mt-1">{{data.title}}</h5>
+<p class="pa-0" >{{data.text.substring(0, 150)}}</p>
 <div class="home_date pt-0">
 <span><svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M5 1.25V3.125" stroke="#989898" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
@@ -23,7 +23,7 @@
 <path d="M5.18407 10.4375H5.18968" stroke="#989898" stroke-linecap="round" stroke-linejoin="round"/>
 </svg>
 </span>
-{{recent.date}}</div>
+{{data.placed_at}}</div>
 </v-col>
 </div>
 </li>
@@ -34,6 +34,9 @@
 import { mapState } from "vuex";
 export default {
   computed: mapState(["recent"]),
+  props:[
+    'data'
+  ]
 };
 </script>
 <style scoped>

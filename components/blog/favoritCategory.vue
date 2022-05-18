@@ -1,12 +1,12 @@
 <template>
   <div>
-    <ul v-for="category in category" :key="category.id" class="m-0 py-2">
+    <ul v-for="data in data" :key="data.id" class="m-0 py-2">
       <li>
         <v-col cols="12 " class="ma-0 pa-0">
           <div class="category__itmes">
             <p class="col-11 ma-1">
-              {{ category.name }}
-              <span>({{ category.counter }})</span>
+              {{ data.types }}
+              <span>({{ data.count }})</span>
             </p>
             <svg
               width="6"
@@ -35,6 +35,9 @@
 import { mapState } from "vuex";
 export default {
   computed: mapState(["category"]),
+  props:[
+    'data'
+  ]
 };
 </script>
 <style scoped>

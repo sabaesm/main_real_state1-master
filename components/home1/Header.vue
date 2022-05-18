@@ -109,9 +109,9 @@ export default {
       };
     },
     async handleSearch() {
-      // console.log(this.valueInput)
-      // const httpRequest = await getSearch(keyword);
-      // console.log(httpRequest)
+      console.log(this.valueInput)
+      const httpRequest = await getSearch(keyword);
+      console.log(httpRequest)
     },
   },
   mounted() {},

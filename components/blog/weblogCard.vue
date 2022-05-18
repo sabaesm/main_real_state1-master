@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
    <div class="medium_container">
    <div class="mainSection__cards mb-5" >
    <v-row >
@@ -32,4 +32,4 @@ display: flex!important;
 flex-direction: column;
 }
 }
-</style>
+</style> -->

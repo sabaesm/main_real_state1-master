@@ -8,7 +8,7 @@
             <!-- right section of card -->
             <li class="right__section ma-0 pa-0">
               <div class="pictur ma-0">
-                <img class="main__pic" :src="weblog.img" />
+                <img class="main__pic" :src="data.cover" />
                 <div class="time">
                   <svg viewBox="0 0 15 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path
@@ -40,12 +40,12 @@
                 </div>
                 <div class="date">
                   <p class="">
-                    {{ data.date }}
+                    {{ data.placed_at }}
                   </p>
                 </div>
                 <div class="d-flex flex-row count__icon mb-4">
                   <div class="text_counter px-2">
-                    <p class="message__number pt-1">{{ data.message }}</p>
+                    <p class="message__number pt-1">{{ data.review_count }}</p>
                     <span class="message__icon">
                       <svg
                         viewBox="0 0 13 13"
@@ -85,7 +85,7 @@
                     </span>
                   </div>
                   <div class="view_counter px-2">
-                    <p class="message__number pt-1">{{ weblog.view }}</p>
+                    <p class="message__number pt-1">{{ data.view }}</p>
                     <span class="message__icon">
                       <svg
                         viewBox="0 0 13 13"
@@ -123,11 +123,11 @@
               <div class="person__details d-flex flex-row w-100">
                 <div class="person d-flex flex-row">
                   <div class="person__pictur">
-                    <img :src="weblog.person__pic" />
+                    <img :src="data.person__pic" />
                   </div>
                   <span class="d-flex flex-column p-1">
-                    <h5 class="">{{ weblog.name }}</h5>
-                    <p class="">{{ weblog.experience }}</p>
+                    <h5 class="">{{ data.username }}</h5>
+                    <p class="">{{ data.user_activity }}</p>
                   </span>
                 </div>
                 <div class="contact_way">
@@ -274,8 +274,7 @@ h5 {
   align-items: center;
   transition: all ease-in-out 0.3s;
 }
-.right__section {
-}
+
 li {
   width: 100% !important;
 }
@@ -385,8 +384,7 @@ transform: scale(1.1);
   letter-spacing: -0.035em;
   text-align: right;
 }
-.message__icon {
-}
+
 .message__icon svg {
   width: 14.37px;
   height: 14px;
@@ -424,7 +422,7 @@ transform: scale(1.1);
   font-weight: 400;
   line-height: 16px;
   letter-spacing: -0.021em;
-  color: #b1b1b1;
+  color: #b1b1b1!important;
 }
 .person h5 {
   font-size: 15px;
@@ -432,7 +430,7 @@ transform: scale(1.1);
   line-height: 22px;
   letter-spacing: -0.035em;
   text-align: right;
-  color: #101737;
+  color: #101737!important;
 }
 .contact_way {
   display: flex;
@@ -440,8 +438,6 @@ transform: scale(1.1);
 }
 .contact_way svg {
   width: 45px;
-}
-.left__section {
 }
 .cards_pagination {
   padding: 0;

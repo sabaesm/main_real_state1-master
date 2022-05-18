@@ -43,6 +43,12 @@ export async function getBlog() {
   });
   return apiCall;
 }
+export async function tags() {
+  let apiCall = await api().get("/tags/", {
+    "Content-Type": "application/json",
+  });
+  return apiCall;
+}
 
 
 export async function weblogTypes() {
@@ -50,6 +56,12 @@ export async function weblogTypes() {
     "Content-Type": "application/json",
   });
   return apiCall
+}
+export async function MostViewWeblogs() {
+  let apiCall = await api().get("/MostViewWeblogs/", {
+    "Content-Type": "application/json",
+  });
+  return apiCall;
 }
 
 export async function HomePage() {

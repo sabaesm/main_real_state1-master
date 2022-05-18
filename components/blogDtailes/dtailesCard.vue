@@ -9,14 +9,15 @@
       <p  class="py-0 my-0" :v-html=" data.text">
         {{parseInt(data.text) }}
       </p>
+      <p> {{data.text}}</p>
       <h6 class="pa-0">اولین قدم برای داشتن خانه ای زیبا</h6>
-      <p   class="ma-0" v-html=" data.text">
+      <p   class="ma-0" :v-html=" data.text">
            {{parseInt(data.text) }}
       </p>
       <v-col cols="12"
       class="ma-0 pa-0"><img src="~/assets/images/9.png" alt="" /></v-col>
       <h6 class="">اولین قدم برای داشتن خانه ای زیبا</h6>
-      <p  class="pa-0"  v-html=" data.text">
+      <p  class="pa-0"  :v-html=" data.text">
           {parseInt(data.text }}
       </p>
       <div class="atention">
@@ -26,7 +27,7 @@
         <p>ای که باید به آن توجه کنیدای که باید به آن توجه کنید</p>
       </div>
       <h6>اولین قدم برای داشتن خانه ای زیبا</h6>
-      <p class="ma-0 pa-0" v-html=" data.text"  >
+      <p class="ma-0 pa-0" :v-html=" data.text"  >
           {{parseInt(data.text) }}
       </p>
        </div>
@@ -43,7 +44,7 @@
       
       </p>
      <div v-for="blogDetailes__user in blogDetailes__user" :key="blogDetailes__user.id" >
-     <user 
+     
       <div class="user w-100 mb-0 pa-0  d-flex justify-space-between">
         <div class="person d-flex flex-row">
           <div class="person__pictur">
@@ -667,9 +668,7 @@ height: 25px;
 width: 25px;
 margin-bottom: 5px;
 }
-.user .contact_way{
 
-}
 .user_comment  .text{
 font-size: 12px!important;
 font-weight: 400;
