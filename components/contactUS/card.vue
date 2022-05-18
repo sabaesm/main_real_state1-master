@@ -1,6 +1,5 @@
 <template>
   <div class="medium_container contactUs ">
-
     <v-col cols="12 pa-0 ma-0" class="mainCard">
       <div class="d-flex flex-column flex-md-row">
         <v-col cols="12" md="7">
@@ -9,7 +8,7 @@
               <div class=" ma-0 pa-0  registration d-flex flex-wrap">
                 <v-col cols="12 " md="6">
                   <v-text-field
-                    v-model="name"
+                    v-model="form.Customer_name"
                     :rules="nameRules"
                     label="نام و نام خانوادگی"
                     required
@@ -18,7 +17,7 @@
                 </v-col>
                 <v-col cols="12 " md="6">
                   <v-text-field
-                    v-model="phone"
+                    v-model="form.Phone"
                     :counter="11"
                     :rules=" phoneRules"
                     label="شماره تماس"
@@ -27,16 +26,30 @@
                 </v-col>
                 <v-col cols="12 " md="6">
                   <v-text-field
-                    v-model="country"
-                    
+                    v-model="form.country"
                     :rules="countryRules"
                     label="استان"
                     required
                   ></v-text-field>
                 </v-col>
+                  <v-col cols="12 " md="6">
+                  <v-text-field
+                    v-model="form.city"
+                    :rules="countryRules"
+                    label="شهر"
+                    required
+                  ></v-text-field>
+                </v-col>  <v-col cols="12 " md="6">
+                  <v-text-field
+                    v-model="form.country"
+                    :rules="countryRules"
+                    label="منطقه"
+                    required
+                  ></v-text-field>
+                </v-col>
                 <v-col cols="12 " md="6">
                   <v-text-field
-                    v-model="city"
+                    v-model="form.city"
                     :rules="cityRules"
                     label="شهرستان"
                     required
@@ -44,7 +57,7 @@
                 </v-col>
                 <v-col cols="12 " md="6">
                   <v-select
-                    v-model="select"
+                    v-model="form.select"
                     :items="items"
                     :rules="[(v) => !!v || 'Item is required']"
                     label="منطقه"
@@ -56,11 +69,32 @@
             <v-row class="ma-0 pa-0 check_box">
             <v-col cols="4" md="2">
              <v-checkbox
-              label="نوساز"
+              label="ویلا"
               hide-details
             ></v-checkbox>
              </v-col>
                  <v-col cols="4" md="2">
+             <v-checkbox
+              label="مغازه و تجاری"
+              hide-details
+            ></v-checkbox>
+             </v-col>  
+               <v-col cols="4" md="2">
+             <v-checkbox
+              label=" آپارتمان "
+              hide-details
+            ></v-checkbox>
+             </v-col> <v-col cols="4" md="2">
+             <v-checkbox
+              label="خانه ویلایی"
+              hide-details
+            ></v-checkbox>
+             </v-col>   <v-col cols="4" md="2">
+             <v-checkbox
+              label="باغ"
+              hide-details
+            ></v-checkbox>
+             </v-col>   <v-col cols="4" md="2">
              <v-checkbox
               label="فلت"
               hide-details
@@ -70,7 +104,8 @@
              <v-checkbox
               label="دوبلکس"
               hide-details
-            ></v-checkbox>
+            >
+            </v-checkbox>
              </v-col>
                  <v-col cols="4" md="2">
              <v-checkbox
@@ -96,7 +131,7 @@
         ></v-textarea>
       </v-col>
      <v-col cols="12" lg="10" class="d-flex justify-content-center">
-        <v-btn  class="mr-4 mt-5" @click="validate">
+        <v-btn  class="mr-4 mt-5" @click="submitForm">
               ثبت اطلاعات
             </v-btn>
      </v-col>
@@ -110,34 +145,41 @@
   </div>
 </template>
 <script>
+import {vilayab} from '../../service/postApi'
 export default {
   data: () => ({
     valid: true,
-    name: "",
+    Customer_name: "",
     nameRules: [
       (v) => !!v || "Name is required",
       (v) => (v && v.length <= 30) || "Name must be less than 10 characters",
     ],
-    phone: "",
+    form:{
+    Phone: "",
+     country: "",
+      city: "",
+    select: null,
+    items: ["Item 1", "Item 2", "Item 3", "Item 4"],
+    checkbox: false,
+    },
+    vilayab:[ 
+
+
+    ],
     phoneRules: [
       (v) => !!v || "phone is required",
       
     ],
-     country: "",
       countryRules: [
       (v) => !!v || "country is required",
       
     ],
-      city: "",
       cityRules: [
       (v) => !!v || "city is required",
       
     ],
-    select: null,
-    items: ["Item 1", "Item 2", "Item 3", "Item 4"],
-    checkbox: false,
-  }),
 
+  }),
   methods: {
     validate() {
       this.$refs.form.validate();
@@ -147,6 +189,20 @@ export default {
     },
     resetValidation() {
       this.$refs.form.resetValidation();
+    
+    },
+      test(){
+
+      },
+      submitForm(){
+        // console.log(this.form)
+      vilayab({...this.form }).then( res=>this.form  =res.data)
+      .then( res=>console.log( res.data))
+
+      },
+    mounted() {
+        
+
     },
   },
 };
@@ -206,7 +262,7 @@ border-radius: 14px;
 .check_box{
 display: flex;
 flex-direction: row;
-justify-content: space-around;
+justify-content: flex-start;
 flex-wrap: wrap;
 }
 </style>

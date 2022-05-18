@@ -2,9 +2,9 @@
 
   <div class="main_section">
     <div class="overlays "></div>
-   <div class="medium_container">
-    <div class="header-info  mb-5 " >
-     <v-col cols="12" class="mb-5">
+   <div class="larg_container">
+    <div class="header-info    " >
+     <v-col cols="12" class="">
       <h5 class="pb-4 aboutus_header">برترین مشاورین املاک خاور میانه</h5>
       <h2 class="pb-4 about_header">درباره ما</h2>
       <p class="pb-5  aboutus_text ">
@@ -32,8 +32,6 @@
    </div >
   </div>
 </template>
-<script></script>
-
 <style>
 h5 {
     font-style: Bold;
@@ -78,7 +76,7 @@ h5 {
   }
   .header-info {
   width: 100%  !important;
-    padding-bottom: 60px !important;
+    padding: 100px 0 140px 0 !important;
     z-index: 2;
   }
   .header-info p {

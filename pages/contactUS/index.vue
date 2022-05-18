@@ -26,15 +26,15 @@
 </defs>
 </svg>
 <header2></header2>
-<map2></map2>
+<map2 v-bind="getContactUs" :data="getContactUs"></map2>
 <h3 class="my-5 py-5"> ویلا یاب  </h3>
 <card></card> 
 <div class="medium_container ">
 <v-col  cols="12"  >
-<div class="banner">
-<h3 class="mb-4">هوم لند ، تیمی سربلند</h3>
-<v-col cols="">
-<div class="pictur " > </div>
+<div class="banner" v-for="getContactUsBanner in getContactUsBanner" :key="getContactUsBanner.id">
+<h3 class="mb-4">{{getContactUsBanner.title}}</h3>
+<v-col cols="" >
+<div class="picture"><img :src="getContactUsBanner.banner" alt=""></div>
 </v-col>
 </div>
 </v-col >
@@ -46,12 +46,27 @@
 import  header2 from '../../components/contactUS/Header2.vue'
 import card from '../../components/contactUS/card.vue'
 import map2 from '../../components/contactUS/Map2.vue'
+import {getContactUsBanner} from '../../service/getApi'
+import {getContactUs} from '../../service/getApi'
 export default {
     components: {
       header2,
           card,
           map2
     },
+    data(){
+        return{
+            getContactUsBanner:[],
+            getContactUs:[]
+
+        }
+    },
+    mounted(){
+        getContactUsBanner().then(res=>this.getContactUsBanner=res.data)
+        getContactUs().then(res=>this.getContactUs=res.data)
+
+    },
+    
         layout:'user'
 }
 </script>
@@ -82,14 +97,19 @@ margin-top: 100px;
    display: flex !important;
     align-items: center;
     object-fit: cover;
-    flex-direction: column;}
-.main .banner .pictur{
+    flex-direction: column;
+    }
+.main .banner .picture{
 height: 300px;
 width: 100%;
 object-fit: cover;
-background-image:url("../../assets/images/mainbanner.png") !important;
 margin: 0px;
+}
+.picture img{
+width: 100%;
+height: 100%;
 border-radius: 30px;
+object-fit: cover;
 }
 .right_circle{
 position: absolute;

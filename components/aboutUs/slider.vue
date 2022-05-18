@@ -8,18 +8,17 @@
             <div class="swiper-wrapper">
               <ul
                 class="swiper-slide"
-                :key="aboutSlider.id"
-                v-for="aboutSlider in aboutSlider"
+                :key="data.id"
+                v-for="data in data"
               >
                 <!-- Render original HTML in server, render Swiper in browser (client) -->
                 <li class="cards">
-              
-                  <img :src="aboutSlider.img" />
+                  <img :src="data.picture" />
                   <h4>
-                    {{ aboutSlider.name }}
+                    {{ data.full_name }}
                   </h4>
                   <p>
-                    {{ aboutSlider.text }}
+                    {{ data.activity_type }}
                   </p>
                 </li>
               </ul>
@@ -206,6 +205,9 @@ export default {
       },
     };
   },
+  props:[
+    'data'
+  ]
 };
 </script>
 

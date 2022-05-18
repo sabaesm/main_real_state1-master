@@ -7,32 +7,116 @@
         <li class="main pa-0">
           <img :src="user.img" />
           <div class="card_icons" v-if="user.kind === 'first'">
-           <svg width="68" height="68" viewBox="0 0 68 68" fill="none" xmlns="http://www.w3.org/2000/svg">
-<g filter="url(#filter0_d_1855_37763)">
-<circle cx="34" cy="34" r="25" fill="#FEFFFF"/>
-</g>
-<path d="M34.625 44.75H25.625C23.375 44.75 22.25 43.625 22.25 41.375V32.375C22.25 30.125 23.375 29 25.625 29H31.25V41.375C31.25 43.625 32.375 44.75 34.625 44.75Z" stroke="black" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M31.3737 24.5C31.2837 24.8375 31.25 25.2087 31.25 25.625V29H25.625V26.75C25.625 25.5125 26.6375 24.5 27.875 24.5H31.3737Z" stroke="black" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M35.75 29V34.625" stroke="black" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M40.25 29V34.625" stroke="black" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M39.125 39.125H36.875C36.2562 39.125 35.75 39.6313 35.75 40.25V44.75H40.25V40.25C40.25 39.6313 39.7437 39.125 39.125 39.125Z" stroke="black" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M26.75 34.625V39.125" stroke="black" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M31.25 41.375V25.625C31.25 23.375 32.375 22.25 34.625 22.25H41.375C43.625 22.25 44.75 23.375 44.75 25.625V41.375C44.75 43.625 43.625 44.75 41.375 44.75H34.625C32.375 44.75 31.25 43.625 31.25 41.375Z" stroke="black" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
-<defs>
-<filter id="filter0_d_1855_37763" x="0" y="0" width="68" height="68" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-<feFlood flood-opacity="0" result="BackgroundImageFix"/>
-<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
-<feMorphology radius="3" operator="erode" in="SourceAlpha" result="effect1_dropShadow_1855_37763"/>
-<feOffset/>
-<feGaussianBlur stdDeviation="6"/>
-<feComposite in2="hardAlpha" operator="out"/>
-<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
-<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_1855_37763"/>
-<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_1855_37763" result="shape"/>
-</filter>
-</defs>
-</svg>
-
+            <svg
+              width="68"
+              height="68"
+              viewBox="0 0 68 68"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <g filter="url(#filter0_d_1855_37763)">
+                <circle cx="34" cy="34" r="25" fill="#FEFFFF" />
+              </g>
+              <path
+                d="M34.625 44.75H25.625C23.375 44.75 22.25 43.625 22.25 41.375V32.375C22.25 30.125 23.375 29 25.625 29H31.25V41.375C31.25 43.625 32.375 44.75 34.625 44.75Z"
+                stroke="black"
+                stroke-width="1.5"
+                stroke-miterlimit="10"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M31.3737 24.5C31.2837 24.8375 31.25 25.2087 31.25 25.625V29H25.625V26.75C25.625 25.5125 26.6375 24.5 27.875 24.5H31.3737Z"
+                stroke="black"
+                stroke-width="1.5"
+                stroke-miterlimit="10"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M35.75 29V34.625"
+                stroke="black"
+                stroke-width="1.5"
+                stroke-miterlimit="10"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M40.25 29V34.625"
+                stroke="black"
+                stroke-width="1.5"
+                stroke-miterlimit="10"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M39.125 39.125H36.875C36.2562 39.125 35.75 39.6313 35.75 40.25V44.75H40.25V40.25C40.25 39.6313 39.7437 39.125 39.125 39.125Z"
+                stroke="black"
+                stroke-width="1.5"
+                stroke-miterlimit="10"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M26.75 34.625V39.125"
+                stroke="black"
+                stroke-width="1.5"
+                stroke-miterlimit="10"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M31.25 41.375V25.625C31.25 23.375 32.375 22.25 34.625 22.25H41.375C43.625 22.25 44.75 23.375 44.75 25.625V41.375C44.75 43.625 43.625 44.75 41.375 44.75H34.625C32.375 44.75 31.25 43.625 31.25 41.375Z"
+                stroke="black"
+                stroke-width="1.5"
+                stroke-miterlimit="10"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <defs>
+                <filter
+                  id="filter0_d_1855_37763"
+                  x="0"
+                  y="0"
+                  width="68"
+                  height="68"
+                  filterUnits="userSpaceOnUse"
+                  color-interpolation-filters="sRGB"
+                >
+                  <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                  <feColorMatrix
+                    in="SourceAlpha"
+                    type="matrix"
+                    values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                    result="hardAlpha"
+                  />
+                  <feMorphology
+                    radius="3"
+                    operator="erode"
+                    in="SourceAlpha"
+                    result="effect1_dropShadow_1855_37763"
+                  />
+                  <feOffset />
+                  <feGaussianBlur stdDeviation="6" />
+                  <feComposite in2="hardAlpha" operator="out" />
+                  <feColorMatrix
+                    type="matrix"
+                    values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"
+                  />
+                  <feBlend
+                    mode="normal"
+                    in2="BackgroundImageFix"
+                    result="effect1_dropShadow_1855_37763"
+                  />
+                  <feBlend
+                    mode="normal"
+                    in="SourceGraphic"
+                    in2="effect1_dropShadow_1855_37763"
+                    result="shape"
+                  />
+                </filter>
+              </defs>
+            </svg>
           </div>
           <div class="card_icons" v-else-if="user.kind === 'second'">
             <svg
@@ -246,7 +330,9 @@
               </defs>
             </svg>
           </div>
-          <div class="pa-2 pa-md-3  ma-0 d-flex flex-row justify-space-between categury_detailes">
+          <div
+            class="pa-2 pa-md-3 ma-0 d-flex flex-row justify-space-between categury_detailes"
+          >
             <p class="pa-0 ma-0">
               {{ user.name }}
             </p>
@@ -269,7 +355,6 @@ export default {
   padding-top: 60px;
   padding-bottom: 60px;
 }
-
 .grouping_card {
   width: calc(33.333% - 20px);
   transition: all ease-in-out 0.3s;
@@ -348,62 +433,55 @@ h2 {
   font-size: 12px;
 }
 .card_icons g {
-  height: 50px!important;
-  width: 50px!important;
+  height: 50px !important;
+  width: 50px !important;
 }
 .card_icons {
   position: absolute;
   top: 10px !important;
   right: 10px !important;
-    height: 50px;
+  height: 50px;
   width: 50px;
 }
 @media screen and (max-width: 600px) {
- p{
-font-size: 15px!important;
-font-weight: 700!important;
-line-height: 25px!important;
-letter-spacing: -0.04em!important;
-text-align: right!important;
+  p {
+    font-size: 15px !important;
+    font-weight: 700 !important;
+    line-height: 25px !important;
+    letter-spacing: -0.04em !important;
+    text-align: right !important;
+  }
+  .number {
+    font-size: 11px;
+    font-weight: 400;
+    line-height: 18px;
+    letter-spacing: -0.04em;
+    text-align: right;
+  }
+  .categury_detailes {
+    background-color: #ffff;
+    width: 90% !important;
+    position: absolute;
+    bottom: 10px;
 
- }
- .number{
-font-size: 11px;
-font-weight: 400;
-line-height: 18px;
-letter-spacing: -0.04em;
-text-align: right;
-
- }
- .categury_detailes {
-  background-color: #ffff;
-  width: 90% !important;
-  position: absolute;
-  bottom: 10px;
-
-  border-radius: 10px;
-}
-.larg_container {
-  background-color: #ffff;
-  padding: 40px 0;
-}
-
+    border-radius: 10px;
+  }
+  .larg_container {
+    background-color: #ffff;
+    padding: 40px 0;
+  }
   .grouping_card {
     min-width: 320px;
-
   }
   .cards {
     display: flex;
     flex-wrap: nowrap;
     overflow-y: scroll;
-            justify-content: right;
-
+    justify-content: right;
   }
-  .main{
-
+  .main {
     margin: 10px;
-      height: 213px;
-
+    height: 213px;
   }
   h2,
   h4 {

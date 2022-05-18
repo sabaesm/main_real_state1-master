@@ -1,12 +1,12 @@
 <template>
-  <div class="weblog__cards" :key="data.id">
+  <div class="weblog__cards" v-bind="data" :key="data.id">
   <div  >
   </div>
     <div class="blog_detailes_right_section" >
     <div class="blog_description">
       <h4 class="blog_detailes__beautiful_home py-4 mt-5"> {{data.title}}   </h4>
       <img src="~/assets/images/4.png" alt="" />
-      <p  class="py-0 my-0" v-html=" data.text">
+      <p  class="py-0 my-0" :v-html=" data.text">
         {{parseInt(data.text) }}
       </p>
       <h6 class="pa-0">اولین قدم برای داشتن خانه ای زیبا</h6>

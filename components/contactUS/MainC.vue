@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
 <v-app>
 <div  class="main ">
 <svg class="right_circle" width="246" height="514" viewBox="0 0 246 514" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -112,4 +112,4 @@ text-align: center!important;
 }
 
 }
-</style>
+</style> -->

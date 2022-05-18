@@ -55,7 +55,7 @@ font-style: normal;
 font-weight: 400;
 line-height: 23px;
 letter-spacing: -0.021em;
-color: rgba(16, 23, 55, 1);
+color: rgba(16, 23, 55, 1)!important;
 padding-top: 0!important;
 padding-bottom: 5px!important;
 }

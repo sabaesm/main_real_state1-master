@@ -1,12 +1,12 @@
 <template>
   <div class="medium_container">
-    <v-col cols="12" class="mainCard__map m-0 p-0">
+    <v-col cols="12" class="mainCard__map m-0 p-0" v-for="data in data" :key="data.id">
       <v-row class="location">
         <div class="map">
           <div class="overlay"></div>
           <div class="mapCard">
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d51338.40354349451!2d52.32350293720235!3d36.466008434627184!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3f8fa2a3d2087e37%3A0x66f6e6532d382c7c!2sImamzadeh%20Qasem!5e0!3m2!1sen!2s!4v1642404173807!5m2!1sen!2s"
+              :src="data.map_frame"
               allowfullscreen=""
               loading="lazy"
             ></iframe>
@@ -15,17 +15,16 @@
               <ul class=" ">
                 <li class="detail py-3">
                   <span class="pl-3 title_info"> شهر :</span>
-                  آمل
+                  {{data.city}}
                 </li>
                 <li class="detail py-3">
-                  <span class="pl-3 title_info"> آدرس </span>: هراز آفتاب 6جنب سوپر مارکت
-                  پلاک 62
+                  <span class="pl-3 title_info"> آدرس </span>:     {{data.address}}
                 </li>
                 <li class="detail py-3">
-                  <span class="pl-3 title_info">تلفن: </span> 43243240
+                  <span class="pl-3 title_info">تلفن: </span>{{data.number}}
                 </li>
                 <li class="detail py-3">
-                  <span class="pl-3 title_info"> همراه:</span>09112228866
+                  <span class="pl-3 title_info"> همراه:</span>{{data.phone_number}}
                 </li>
               </ul>
             </v-col>
@@ -52,7 +51,7 @@
                     />
                   </svg>
                 </a>
-                <span class="id_number">amlak.com@</span>
+                <span class="id_number">{{data.instagram}}</span>
               </li>
             </v-col>
             <v-col cols="4">
@@ -85,7 +84,7 @@
                       stroke-linejoin="round"
                     /></svg
                 ></a>
-                <span class="id_number">091111555</span>
+                <span class="id_number">{{data.whatsapp}}</span>
               </li>
             </v-col>
             <v-col cols="4">
@@ -102,7 +101,7 @@
                       fill="white"
                     /></svg
                 ></a>
-                <span class="id_number">091111555</span>
+                <span class="id_number">{{data.whatsapp}}</span>
               </li>
             </v-col>
           </ul>
@@ -112,7 +111,11 @@
   </div>
 </template>
 <script>
-export default {};
+export default {
+  props:[
+    'data'
+  ]
+};
 </script>
 <style scoped>
 .mainCard__map {

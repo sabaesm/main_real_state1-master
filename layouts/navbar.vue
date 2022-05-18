@@ -84,10 +84,7 @@
             <nuxt-link to="contactUS"> ارتباط با ما</nuxt-link>
             <span class="border"></span>
           </li>
-          <li>
-            <nuxt-link to="propertyCode"> جستجوی ملک </nuxt-link>
-            <span class="border"></span>
-          </li>
+      
         </ul>
       </v-col>
       <a class="search" href="#">

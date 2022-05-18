@@ -34,7 +34,7 @@ export default ({
     background-color: #ffff;
 box-shadow: 0px 0px 5px -3px ;
     border-radius: 20px;
-    margin-top: -70px ;
+    margin-top: -100px ;
 }
 .pictur img{
     width: 100%;
