@@ -1,20 +1,29 @@
 <template>
   <div class="left__main__card">
+      {{ $route.params.id }}
+
+    <!-- <div v-if="(this.$route.query.region === null || this.$route.query.region === '')&(this.$route.query.estate_type === null || this.$route.query.estate_type === '')" >ّ 
+    <v-col cols="12">
+      <p class="d-flex align-center">
+    data not found
+    </p>
+    </v-col>
+  
+    </div> -->
     <v-row class="">
       <v-col cols="12" class="pa-0 ma-0">
+   
         <ul class="sale__cards d-flex flex-row">
-          <li
-            v-for="data in data"
-            :key="data.id"
-            class="pa-3 sale__card__items"
-          >
-           <div class="top_card">
-                <a href="#">
-                  <img :src="data.cover" alt="" />
-                </a>
-                <div class="topcard__top__section">
-                  <div class="status d-flex flex-row align-center justify-center px-3">
-                  <div v-if="data.special === true "> <span
+          <li v-for="data in data" :key="data.id" class="pa-3 sale__card__items">
+             <nuxt-link :to="'/propertyCode/'+ data.id">
+            <div class="top_card">
+              <a href="#">
+                <img :src="data.cover" alt="" />
+              </a>
+              <div class="topcard__top__section">
+                <div class="status d-flex flex-row align-center justify-center px-3">
+                  <div v-if="data.special === true">
+                    <span
                       class="sale__product d-flex align-center justify-center flex-row"
                     >
                       <svg
@@ -34,187 +43,191 @@
                         />
                       </svg>
                       <span class="salecard_product__text">فروش ویژه</span>
-                    </span></div>
-                   
-                    <div class="card_icons" v-if="data.Transaction === 'P' "> <span class="sale__status_v "> پیش فروش</span></div>
-                    <div v-else-if="data.Transaction === 'S'"> <span class="sale__status_s ">  فروش</span></div>
+                    </span>
                   </div>
-                  <div class="d-flex flex-row align-center Building-type">
-                    <p v-if="data.estate_type === 'A' ">آپارتمان</p>
-                    <p v-else-if="data.estate_type === 'B' ">مغازه و تجاری</p>
-                    <p v-else-if="data.estate_type === 'L' "> زمین </p>
-                    <p v-else-if="data.estate_type === 'H' "> خانه</p>
-                    <p v-else-if="data.estate_type === 'V' "> ویلایی </p>
-                    <svg
-                      width="20"
-                      height="20"
-                      viewBox="0 0 20 20"
+
+                  <div class="card_icons" v-if="data.Transaction === 'P'">
+                    <span class="sale__status_v"> پیش فروش</span>
+                  </div>
+                  <div v-else-if="data.Transaction === 'S'">
+                    <span class="sale__status_s"> فروش</span>
+                  </div>
+                </div>
+                <div class="d-flex flex-row align-center Building-type">
+                  <p v-if="data.estate_type === 'A'">آپارتمان</p>
+                  <p v-else-if="data.estate_type === 'B'">مغازه و تجاری</p>
+                  <p v-else-if="data.estate_type === 'L'">زمین</p>
+                  <p v-else-if="data.estate_type === 'H'">خانه</p>
+                  <p v-else-if="data.estate_type === 'V'">ویلایی</p>
+                  <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 20 20"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M10.8334 18.3333H4.16675C2.50008 18.3333 1.66675 17.5 1.66675 15.8333V9.16663C1.66675 7.49996 2.50008 6.66663 4.16675 6.66663H8.33342V15.8333C8.33342 17.5 9.16675 18.3333 10.8334 18.3333Z"
+                      stroke="#535353"
+                      stroke-width="1.5"
+                      stroke-miterlimit="10"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                    <path
+                      d="M8.42507 3.33337C8.3584 3.58337 8.33342 3.85837 8.33342 4.16671V6.66671H4.16675V5.00004C4.16675 4.08337 4.91675 3.33337 5.83341 3.33337H8.42507Z"
+                      stroke="#535353"
+                      stroke-width="1.5"
+                      stroke-miterlimit="10"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                    <path
+                      d="M11.6667 6.66663V10.8333"
+                      stroke="#535353"
+                      stroke-width="1.5"
+                      stroke-miterlimit="10"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                    <path
+                      d="M15 6.66663V10.8333"
+                      stroke="#535353"
+                      stroke-width="1.5"
+                      stroke-miterlimit="10"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                    <path
+                      d="M14.1667 14.1666H12.5001C12.0417 14.1666 11.6667 14.5416 11.6667 15V18.3333H15.0001V15C15.0001 14.5416 14.6251 14.1666 14.1667 14.1666Z"
+                      stroke="#535353"
+                      stroke-width="1.5"
+                      stroke-miterlimit="10"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                    <path
+                      d="M5 10.8334V14.1667"
+                      stroke="#535353"
+                      stroke-width="1.5"
+                      stroke-miterlimit="10"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                    <path
+                      d="M8.33325 15.8333V4.16663C8.33325 2.49996 9.16659 1.66663 10.8333 1.66663H15.8333C17.4999 1.66663 18.3333 2.49996 18.3333 4.16663V15.8333C18.3333 17.5 17.4999 18.3333 15.8333 18.3333H10.8333C9.16659 18.3333 8.33325 17.5 8.33325 15.8333Z"
+                      stroke="#535353"
+                      stroke-width="1.5"
+                      stroke-miterlimit="10"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                </div>
+              </div>
+              <span class="hover__icon_bottom">
+                <div class="counter d-flex flex-column align-center pa-2">
+                  <span>{{ data.media_count }}</span>
+                  <span
+                    ><svg
+                      width="19"
+                      height="19"
+                      viewBox="0 0 19 19"
                       fill="none"
                       xmlns="http://www.w3.org/2000/svg"
                     >
                       <path
-                        d="M10.8334 18.3333H4.16675C2.50008 18.3333 1.66675 17.5 1.66675 15.8333V9.16663C1.66675 7.49996 2.50008 6.66663 4.16675 6.66663H8.33342V15.8333C8.33342 17.5 9.16675 18.3333 10.8334 18.3333Z"
-                        stroke="#535353"
+                        d="M4.82496 17.4168H14.1776C16.6408 17.4168 17.6224 16.0789 17.7384 14.4481L18.2025 7.90891C18.3275 6.19891 16.7925 4.75016 14.8559 4.75016C14.3115 4.75016 13.8117 4.47308 13.5619 4.04558L12.9193 2.89766C12.5088 2.17725 11.4379 1.5835 10.5276 1.5835H8.48393C7.56472 1.5835 6.49381 2.17725 6.08329 2.89766L5.44074 4.04558C5.19086 4.47308 4.69109 4.75016 4.14671 4.75016C2.21013 4.75016 0.67515 6.19891 0.80009 7.90891L1.26415 14.4481C1.37125 16.0789 2.36185 17.4168 4.82496 17.4168Z"
+                        stroke="white"
                         stroke-width="1.5"
-                        stroke-miterlimit="10"
                         stroke-linecap="round"
                         stroke-linejoin="round"
                       />
                       <path
-                        d="M8.42507 3.33337C8.3584 3.58337 8.33342 3.85837 8.33342 4.16671V6.66671H4.16675V5.00004C4.16675 4.08337 4.91675 3.33337 5.83341 3.33337H8.42507Z"
-                        stroke="#535353"
+                        d="M9.4987 14.2498C11.2428 14.2498 12.6654 12.8273 12.6654 11.0832C12.6654 9.33907 11.2428 7.9165 9.4987 7.9165C7.7546 7.9165 6.33203 9.33907 6.33203 11.0832C6.33203 12.8273 7.7546 14.2498 9.4987 14.2498Z"
+                        stroke="white"
                         stroke-width="1.5"
-                        stroke-miterlimit="10"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                      />
-                      <path
-                        d="M11.6667 6.66663V10.8333"
-                        stroke="#535353"
-                        stroke-width="1.5"
-                        stroke-miterlimit="10"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                      />
-                      <path
-                        d="M15 6.66663V10.8333"
-                        stroke="#535353"
-                        stroke-width="1.5"
-                        stroke-miterlimit="10"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                      />
-                      <path
-                        d="M14.1667 14.1666H12.5001C12.0417 14.1666 11.6667 14.5416 11.6667 15V18.3333H15.0001V15C15.0001 14.5416 14.6251 14.1666 14.1667 14.1666Z"
-                        stroke="#535353"
-                        stroke-width="1.5"
-                        stroke-miterlimit="10"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                      />
-                      <path
-                        d="M5 10.8334V14.1667"
-                        stroke="#535353"
-                        stroke-width="1.5"
-                        stroke-miterlimit="10"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                      />
-                      <path
-                        d="M8.33325 15.8333V4.16663C8.33325 2.49996 9.16659 1.66663 10.8333 1.66663H15.8333C17.4999 1.66663 18.3333 2.49996 18.3333 4.16663V15.8333C18.3333 17.5 17.4999 18.3333 15.8333 18.3333H10.8333C9.16659 18.3333 8.33325 17.5 8.33325 15.8333Z"
-                        stroke="#535353"
-                        stroke-width="1.5"
-                        stroke-miterlimit="10"
                         stroke-linecap="round"
                         stroke-linejoin="round"
                       />
                     </svg>
-                  </div>
+                  </span>
                 </div>
-                <span class="hover__icon_bottom">
-                  <div class="counter d-flex flex-column align-center pa-2">
-                    <span>{{data.media_count}}</span>
-                    <span
-                      ><svg
-                        width="19"
-                        height="19"
-                        viewBox="0 0 19 19"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          d="M4.82496 17.4168H14.1776C16.6408 17.4168 17.6224 16.0789 17.7384 14.4481L18.2025 7.90891C18.3275 6.19891 16.7925 4.75016 14.8559 4.75016C14.3115 4.75016 13.8117 4.47308 13.5619 4.04558L12.9193 2.89766C12.5088 2.17725 11.4379 1.5835 10.5276 1.5835H8.48393C7.56472 1.5835 6.49381 2.17725 6.08329 2.89766L5.44074 4.04558C5.19086 4.47308 4.69109 4.75016 4.14671 4.75016C2.21013 4.75016 0.67515 6.19891 0.80009 7.90891L1.26415 14.4481C1.37125 16.0789 2.36185 17.4168 4.82496 17.4168Z"
-                          stroke="white"
-                          stroke-width="1.5"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                        />
-                        <path
-                          d="M9.4987 14.2498C11.2428 14.2498 12.6654 12.8273 12.6654 11.0832C12.6654 9.33907 11.2428 7.9165 9.4987 7.9165C7.7546 7.9165 6.33203 9.33907 6.33203 11.0832C6.33203 12.8273 7.7546 14.2498 9.4987 14.2498Z"
-                          stroke="white"
-                          stroke-width="1.5"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                        />
-                      </svg>
-                    </span>
-                  </div>
-                  <span class="sale_date">{{ data.placed_at }}</span>
-                </span>
-              </div>
+                <span class="sale_date">{{ data.placed_at }}</span>
+              </span>
+            </div>
             <div class="bottom_card">
               <h5 class="sale__desctiptipn py-2">
-                {{ data.description.substring(0, 50)   }}
+                {{ data.description.substring(0, 50) }}
               </h5>
-                  <ul class="home__desctiption">
-                  <li v-if="data.land_size !== null" >{{ data.land_size }}</li>
-                  <li v-if="data.building_size !== null" >{{ data.building_size }}</li>
-                  <li v-if="data.dang !== null" >{{ data.dang }}</li>
-                  <li v-if="data.rooms !== null" >{{ data.rooms }}</li>
-                  <li v-if="data.wc !== null" >{{ data.wc }}</li>
-                  <li v-if="data.master !== null" >{{ data.master }}</li>
-                  <li v-if="data.view !== null" >{{ data.view }}</li>
-                  <li v-if="data.in_material !== null" >{{ data.in_material }}</li>
-                  <li v-if="data.ex_material !== null" >{{ data.ex_material }}</li>
-                  <li v-if="data.floorCover !== null" >{{ data.floorCover }}</li>
-                  <li v-if="data.cabinets !== null" >{{ data.cabinets }}</li>
-                  <li v-if="data.building_age !== null" >{{ data.building_age }}</li>
-                  <li v-if="data.document_type !== null" >{{ data.document_type }}</li>
-                  <li v-if="data.unit_in_floors !== null" >{{ data.unit_in_floors }}</li>
-                  <li v-if="data.wall_cover !== null" >{{ data.wall_cover }}</li>
-                  <li v-if="data.length !== null" >{{ data.length }}</li>
-                  <li v-if="data.ground_width !== null" >{{ data.ground_width }}</li>
-                  <li v-if="data.corrected_area !== null" >{{ data.corrected_area }}</li>
-                  <li v-if="data.passage_width !== null" >{{ data.passage_width }}</li>
-                  <li v-if="data.tree_count !== null" >{{ data.tree_count }}</li>
-                 
-                </ul>
+              <ul class="home__desctiption">
+                <li v-if="data.land_size !== null">{{ data.land_size }}</li>
+                <li v-if="data.building_size !== null">{{ data.building_size }}</li>
+                <li v-if="data.dang !== null">{{ data.dang }}</li>
+                <li v-if="data.rooms !== null">{{ data.rooms }}</li>
+                <li v-if="data.wc !== null">{{ data.wc }}</li>
+                <li v-if="data.master !== null">{{ data.master }}</li>
+                <li v-if="data.view !== null">{{ data.view }}</li>
+                <li v-if="data.in_material !== null">{{ data.in_material }}</li>
+                <li v-if="data.ex_material !== null">{{ data.ex_material }}</li>
+                <li v-if="data.floorCover !== null">{{ data.floorCover }}</li>
+                <li v-if="data.cabinets !== null">{{ data.cabinets }}</li>
+                <li v-if="data.building_age !== null">{{ data.building_age }}</li>
+                <li v-if="data.document_type !== null">{{ data.document_type }}</li>
+                <li v-if="data.unit_in_floors !== null">{{ data.unit_in_floors }}</li>
+                <li v-if="data.wall_cover !== null">{{ data.wall_cover }}</li>
+                <li v-if="data.length !== null">{{ data.length }}</li>
+                <li v-if="data.ground_width !== null">{{ data.ground_width }}</li>
+                <li v-if="data.corrected_area !== null">{{ data.corrected_area }}</li>
+                <li v-if="data.passage_width !== null">{{ data.passage_width }}</li>
+                <li v-if="data.tree_count !== null">{{ data.tree_count }}</li>
+              </ul>
               <v-row class="price__row ma-0 px-0 py-2">
-             <span class="value d-flex flex-row align-center">
-                      <svg
-                        width="11"
-                        height="11"
-                        viewBox="0 0 11 11"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          opacity="0.4"
-                          d="M8.84724 3.62993V5.99036C8.84724 7.40203 8.04057 8.00701 6.83057 8.00701H2.80182C2.59557 8.00701 2.39849 7.9887 2.21515 7.94745C2.10057 7.92912 1.99057 7.89703 1.88974 7.86037C1.20224 7.6037 0.785156 7.00786 0.785156 5.99036V3.62993C0.785156 2.21826 1.59182 1.61328 2.80182 1.61328H6.83057C7.85724 1.61328 8.59516 2.0487 8.79224 3.04328C8.82432 3.22661 8.84724 3.41451 8.84724 3.62993Z"
-                          fill="#237E48"
-                        />
-                        <path
-                          d="M10.2219 5.00511V7.36554C10.2219 8.7772 9.41526 9.38219 8.20526 9.38219H4.17651C3.83734 9.38219 3.53026 9.33638 3.26443 9.23555C2.71901 9.03388 2.34776 8.6168 2.21484 7.94763C2.39818 7.98888 2.59526 8.00719 2.80151 8.00719H6.83026C8.04026 8.00719 8.84693 7.4022 8.84693 5.99054V3.63011C8.84693 3.41469 8.8286 3.22221 8.79193 3.04346C9.66276 3.22679 10.2219 3.84094 10.2219 5.00511Z"
-                          fill="#237E48"
-                        />
-                        <path
-                          d="M4.81157 6.02255C5.47983 6.02255 6.02158 5.48081 6.02158 4.81255C6.02158 4.14428 5.47983 3.60254 4.81157 3.60254C4.1433 3.60254 3.60156 4.14428 3.60156 4.81255C3.60156 5.48081 4.1433 6.02255 4.81157 6.02255Z"
-                          fill="#237E48"
-                        />
-                        <path
-                          d="M2.19141 3.78125C2.00349 3.78125 1.84766 3.93708 1.84766 4.125V5.5C1.84766 5.68792 2.00349 5.84375 2.19141 5.84375C2.37932 5.84375 2.53516 5.68792 2.53516 5.5V4.125C2.53516 3.93708 2.38391 3.78125 2.19141 3.78125Z"
-                          fill="#237E48"
-                        />
-                        <path
-                          d="M7.42969 3.78125C7.24177 3.78125 7.08594 3.93708 7.08594 4.125V5.5C7.08594 5.68792 7.24177 5.84375 7.42969 5.84375C7.6176 5.84375 7.77344 5.68792 7.77344 5.5V4.125C7.77344 3.93708 7.62219 3.78125 7.42969 3.78125Z"
-                          fill="#237E48"
-                        />
-                      </svg>
-                 
-                    {{ data.unit_price }}
-                    <span class="toman">تومان</span>
-                  </span>
+                <span class="value d-flex flex-row align-center">
+                  <svg
+                    width="11"
+                    height="11"
+                    viewBox="0 0 11 11"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      opacity="0.4"
+                      d="M8.84724 3.62993V5.99036C8.84724 7.40203 8.04057 8.00701 6.83057 8.00701H2.80182C2.59557 8.00701 2.39849 7.9887 2.21515 7.94745C2.10057 7.92912 1.99057 7.89703 1.88974 7.86037C1.20224 7.6037 0.785156 7.00786 0.785156 5.99036V3.62993C0.785156 2.21826 1.59182 1.61328 2.80182 1.61328H6.83057C7.85724 1.61328 8.59516 2.0487 8.79224 3.04328C8.82432 3.22661 8.84724 3.41451 8.84724 3.62993Z"
+                      fill="#237E48"
+                    />
+                    <path
+                      d="M10.2219 5.00511V7.36554C10.2219 8.7772 9.41526 9.38219 8.20526 9.38219H4.17651C3.83734 9.38219 3.53026 9.33638 3.26443 9.23555C2.71901 9.03388 2.34776 8.6168 2.21484 7.94763C2.39818 7.98888 2.59526 8.00719 2.80151 8.00719H6.83026C8.04026 8.00719 8.84693 7.4022 8.84693 5.99054V3.63011C8.84693 3.41469 8.8286 3.22221 8.79193 3.04346C9.66276 3.22679 10.2219 3.84094 10.2219 5.00511Z"
+                      fill="#237E48"
+                    />
+                    <path
+                      d="M4.81157 6.02255C5.47983 6.02255 6.02158 5.48081 6.02158 4.81255C6.02158 4.14428 5.47983 3.60254 4.81157 3.60254C4.1433 3.60254 3.60156 4.14428 3.60156 4.81255C3.60156 5.48081 4.1433 6.02255 4.81157 6.02255Z"
+                      fill="#237E48"
+                    />
+                    <path
+                      d="M2.19141 3.78125C2.00349 3.78125 1.84766 3.93708 1.84766 4.125V5.5C1.84766 5.68792 2.00349 5.84375 2.19141 5.84375C2.37932 5.84375 2.53516 5.68792 2.53516 5.5V4.125C2.53516 3.93708 2.38391 3.78125 2.19141 3.78125Z"
+                      fill="#237E48"
+                    />
+                    <path
+                      d="M7.42969 3.78125C7.24177 3.78125 7.08594 3.93708 7.08594 4.125V5.5C7.08594 5.68792 7.24177 5.84375 7.42969 5.84375C7.6176 5.84375 7.77344 5.68792 7.77344 5.5V4.125C7.77344 3.93708 7.62219 3.78125 7.42969 3.78125Z"
+                      fill="#237E48"
+                    />
+                  </svg>
+
+                  {{ data.unit_price }}
+                  <span class="toman">تومان</span>
+                </span>
                 <span class="sale_price">({{ salecard.price }})</span>
               </v-row>
               <div class="sale_person__details d-flex flex-row w-100">
                 <div class="sale_person d-flex flex-row">
                   <div class="sale_person__pictur">
-                      <img :src="data.cover" />
+                    <img :src="data.cover" />
                   </div>
                   <span class="d-flex flex-column pa-1">
-                      <h5 class="pa-0 ma-0">{{ data.username }}</h5>
-                      <p class="pa-0 ma-0">{{ data.user_activity }}</p>
-                    </span>
+                    <h5 class="pa-0 ma-0">{{ data.username }}</h5>
+                    <p class="pa-0 ma-0">{{ data.user_activity }}</p>
+                  </span>
                 </div>
                 <div class="sale_contact_way pa-0 ma-0">
                   <svg
@@ -271,6 +284,7 @@
                 </div>
               </div>
             </div>
+            </nuxt-link>
           </li>
         </ul>
       </v-col>
@@ -313,7 +327,6 @@ export default {
       },
     };
   },
-
 };
 </script>
 <style scoped>
@@ -417,7 +430,7 @@ export default {
   align-items: center;
 }
 .sale__status_s {
-background: #55499B;
+  background: #55499b;
   font-size: 12px;
   font-style: normal;
   font-weight: 800;
@@ -505,7 +518,7 @@ background: #55499B;
   line-height: 29px;
   letter-spacing: -0.021em;
   text-align: right;
-  color: #101737!important;
+  color: #101737 !important;
   transition: all ease-in-out 0.3s;
 }
 .home__desctiption {

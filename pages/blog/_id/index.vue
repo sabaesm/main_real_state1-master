@@ -7,19 +7,14 @@
         <div class="mb-5">
           <v-row class="mainSection_weblog__cards">
             <v-col cols="12 " md="8" class="ma-0 pa-0">
-              <cardDtaile v-bind="getBlogDynamic" :data="getBlogDynamic"  ></cardDtaile>
+              <cardDtaile v-bind="getBlogDynamic" :data="getBlogDynamic"></cardDtaile>
             </v-col>
             <v-col cols="12 " md="4" class="ma-0 pa-0 d-none d-md-flex">
               <search></search>
             </v-col>
           </v-row>
         </div>
-        <div
-          
-          class="tset"
-        >
-     
-        </div>
+        <div class="tset"></div>
         <slider class="mt-5 pt-5"> </slider>
       </div>
     </div>
@@ -48,11 +43,9 @@ export default {
 
   /* extracting url params */
   mounted() {
-    getBlogDynamic(this.$route.params.id).then((res) =>this.getBlogDynamic=res.data)
-    .then(res=>console.log(res.data))
-
-    
-
+    getBlogDynamic(this.$route.params.id)
+      .then((res) => (this.getBlogDynamic = res.data.results))
+      .then((res) => console.log(res));
   },
   layout: "user",
 };

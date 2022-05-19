@@ -1,6 +1,5 @@
 import api from "../hooks/useAxios";
 
-
 export async function AboutUs() {
   let apiCall = await api().get("/AboutUs/", {
     "Content-Type": "application/json",
@@ -34,7 +33,7 @@ export async function getConsultans() {
   let apiCall = await api().get("/usersinfo/", {
     "Content-Type": "application/json",
   });
-  return apiCall
+  return apiCall;
 }
 //blog root
 export async function getBlog() {
@@ -50,12 +49,11 @@ export async function tags() {
   return apiCall;
 }
 
-
 export async function weblogTypes() {
   let apiCall = await api().get("/weblogTypes/", {
     "Content-Type": "application/json",
   });
-  return apiCall
+  return apiCall;
 }
 export async function MostViewWeblogs() {
   let apiCall = await api().get("/MostViewWeblogs/", {
@@ -68,7 +66,7 @@ export async function HomePage() {
   let apiCall = await api().get("/HomePage/", {
     "Content-Type": "application/json",
   });
-  return apiCall
+  return apiCall;
 }
 export async function cases() {
   let apiCall = await api().get("/cases/", {
@@ -89,7 +87,7 @@ export async function special() {
   return apiCall;
 }
 export async function getBlogDynamic(id) {
-  let apiCall = await api().get(`/weblog/${id}`, {
+  let apiCall = await api().get(`/weblog/?&id=${id}`, {
     "Content-Type": "application/json",
   });
   return apiCall;
@@ -99,13 +97,20 @@ export async function getSearch({
   unit_price__gte,
   unit_price__lte,
   region,
+  id,
 }) {
   let apiCall = await api().get(
-    `/cases/?&estate_type=${estate_type}&unit_price__gte=${unit_price__gte}&unit_price__lte=${unit_price__lte}&region=${region}`,
+    `/cases/?&estate_type=${estate_type}&unit_price__gte=${unit_price__gte}&unit_price__lte=${unit_price__lte}&region=${region}&id=${id}`,
     {
       "Content-Type": "application/json",
     }
   );
+  return apiCall;
+}
+export async function getSearchDynamic( id ) {
+  let apiCall = await api().get(`/cases/${id}`, {
+    "Content-Type": "application/json",
+  });
   return apiCall;
 }
 export async function usersinfo() {

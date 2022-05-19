@@ -1,6 +1,8 @@
 <template>
   <v-col cols="8">
-    <div class="right_section">
+      {{this.$route.params.id}}
+
+    <div class="right_section" v-bind="data" :key="data.id">
       <v-row class="pb-4 detaile">
         <span class="d-flex flex-row">
           <v-btn class="btn sale_btn mx-1">
@@ -22,7 +24,7 @@
             </svg>
             فروش ویژه</v-btn
           >
-          <v-btn class="btn lease_btn mx-2">رهن کامل </v-btn>
+          <v-btn class="btn lease_btn mx-2">{{ data.description }} </v-btn>
           <span class="month">
             <svg
               class="mx-2"
@@ -542,9 +544,12 @@
                 <span class="Floor">طبقه اول</span>
                 <ul class="d-flex flex-row">
                   <li class="d-flex flex-row px-2">
-                  <span class="mx-2">اتاق خواب:</span>2</li>
-                  <li class="d-flex flex-row mx-2 "><span class="mx-2"> حمام:</span>2</li>
-                  <li class="d-flex flex-row mx-2"><span class="mx-2">زیر بنا: </span> 90</li>
+                    <span class="mx-2">اتاق خواب:</span>2
+                  </li>
+                  <li class="d-flex flex-row mx-2"><span class="mx-2"> حمام:</span>2</li>
+                  <li class="d-flex flex-row mx-2">
+                    <span class="mx-2">زیر بنا: </span> 90
+                  </li>
                 </ul>
               </div>
             </v-expansion-panel-header>
@@ -556,16 +561,17 @@
             <v-expansion-panel-header>
               <div class="Floor__detailes">
                 <span class="Floor">طبقه دوم</span>
-                 <ul class="d-flex flex-row">
+                <ul class="d-flex flex-row">
                   <li class="d-flex flex-row px-2">
-                  <span class="mx-2">اتاق خواب:</span>2</li>
-                  <li class="d-flex flex-row mx-2 "><span class="mx-2"> حمام:</span>2</li>
-                  <li class="d-flex flex-row mx-2"><span class="mx-2">زیر بنا: </span> 90</li>
+                    <span class="mx-2">اتاق خواب:</span>2
+                  </li>
+                  <li class="d-flex flex-row mx-2"><span class="mx-2"> حمام:</span>2</li>
+                  <li class="d-flex flex-row mx-2">
+                    <span class="mx-2">زیر بنا: </span> 90
+                  </li>
                 </ul>
               </div>
-              
-              </v-expansion-panel-header
-            >
+            </v-expansion-panel-header>
             <v-expansion-panel-content>
               <img src="~/assets/images/plan.png" alt="" />
             </v-expansion-panel-content>
@@ -576,9 +582,12 @@
                 <span class="Floor">طبقه سوم</span>
                 <ul class="d-flex flex-row m-0">
                   <li class="d-flex flex-row px-2">
-                  <span class="mx-2">اتاق خواب:</span>2</li>
-                  <li class="d-flex flex-row mx-2 "><span class="mx-2"> حمام:</span>2</li>
-                  <li class="d-flex flex-row mx-2"><span class="mx-2">زیر بنا: </span> 90</li>
+                    <span class="mx-2">اتاق خواب:</span>2
+                  </li>
+                  <li class="d-flex flex-row mx-2"><span class="mx-2"> حمام:</span>2</li>
+                  <li class="d-flex flex-row mx-2">
+                    <span class="mx-2">زیر بنا: </span> 90
+                  </li>
                 </ul>
               </div>
             </v-expansion-panel-header>
@@ -602,7 +611,7 @@
         <h5 class="py-5">ویدئو ملک</h5>
         <v-col cols="12" class="p-0 m-0 w-100">
           <div class="space_video h_iframe-aparat_embed_frame">
-           <iframe
+            <iframe
               src="https://www.aparat.com/video/video/embed/videohash/QjJ2S/vt/frame"
               allowFullScreen="true"
               webkitallowfullscreen="true"
@@ -621,6 +630,7 @@ export default {
   components: {
     slider,
   },
+  props: ["data"],
 };
 </script>
 <style scoped>
@@ -792,7 +802,7 @@ h5 {
   display: flex;
   width: 100%;
   justify-content: space-between;
-    white-space: nowrap!important;
+  white-space: nowrap !important;
 }
 .Floor {
   font-size: 17px;
@@ -804,25 +814,24 @@ h5 {
   color: #545663;
 }
 .Floor ul {
-
 }
 .v-expansion-panel-header {
   background: #f8f8f8;
   border: none;
 }
-.v-expansion-panel-content__wrap{
-display: flex;
-align-items: center;
-justify-content: center;
+.v-expansion-panel-content__wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-.v-expansion-panel-content__wrap img{
-width: 50%;
-height: 300px;
-border-radius: 10px;
-object-fit: cover;
+.v-expansion-panel-content__wrap img {
+  width: 50%;
+  height: 300px;
+  border-radius: 10px;
+  object-fit: cover;
 }
-.theme--light.v-expansion-panels .v-expansion-panel{
-background-color: #ffff!important;
+.theme--light.v-expansion-panels .v-expansion-panel {
+  background-color: #ffff !important;
 }
 .tour {
   width: 100%;
@@ -830,9 +839,9 @@ background-color: #ffff!important;
   border: 1px solid gray;
   border-radius: 20px;
 }
-.space_video iframe{
-width: 100%;
-height: 350px;
-border-radius: 15px;
+.space_video iframe {
+  width: 100%;
+  height: 350px;
+  border-radius: 15px;
 }
 </style>

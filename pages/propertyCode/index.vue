@@ -1,8 +1,6 @@
 <template>
-
   <v-app>
    {{$route.query}}
-
     <div class="main__property">
       <header2 class="pb-5"></header2>
       <div class="medium_container">
