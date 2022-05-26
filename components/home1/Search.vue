@@ -5,7 +5,7 @@
     <span class="Area">منطقه:</span>
     <div class="place">
     <span >منطقه شما</span>
- 
+
     <select class="ui dropdown">
   <option value="0" > q
   <span class="first"></span>

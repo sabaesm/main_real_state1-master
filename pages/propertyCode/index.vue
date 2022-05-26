@@ -1,6 +1,5 @@
 <template>
   <v-app>
-   {{$route.query}}
     <div class="main__property">
       <header2 class="pb-5"></header2>
       <div class="medium_container">
@@ -8,7 +7,9 @@
           <v-row class="d-flex flex-column flex-lg-row test">
             <v-col cols="12" md="4">
               <filterSearch></filterSearch>
+              
               <recentSearch class="d-none d-lg-block"></recentSearch>
+              
             </v-col>
             <v-col cols="12" md="8">
               <salecard v-bind="getSearch" :data="getSearch"></salecard>

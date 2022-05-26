@@ -1,30 +1,37 @@
 <template>
-  <v-col cols="8">
-      {{this.$route.params.id}}
-
+  <v-col cols="12 " md="8">
     <div class="right_section" v-bind="data" :key="data.id">
       <v-row class="pb-4 detaile">
         <span class="d-flex flex-row">
-          <v-btn class="btn sale_btn mx-1">
-            <svg
-              width="22"
-              height="22"
-              viewBox="0 0 22 22"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
+          <div v-if="data.special === true">
+            <v-btn class="btn sale_btn mx-1">
+              <svg
+                width="22"
+                height="22"
+                viewBox="0 0 22 22"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M15.5846 20.1665H6.41797C6.04214 20.1665 5.73047 19.8548 5.73047 19.479C5.73047 19.1032 6.04214 18.7915 6.41797 18.7915H15.5846C15.9605 18.7915 16.2721 19.1032 16.2721 19.479C16.2721 19.8548 15.9605 20.1665 15.5846 20.1665Z"
+                  fill="white"
+                />
+                <path
+                  d="M18.6529 5.06012L14.9862 7.68178C14.5004 8.03012 13.8037 7.81928 13.5929 7.26012L11.8604 2.64012C11.5671 1.84262 10.4396 1.84262 10.1462 2.64012L8.40457 7.25095C8.19374 7.81928 7.50624 8.03012 7.0204 7.67262L3.35374 5.05095C2.6204 4.53762 1.64874 5.26178 1.95124 6.11428L5.76457 16.7935C5.8929 17.1601 6.24124 17.3985 6.62624 17.3985H15.3621C15.7471 17.3985 16.0954 17.151 16.2237 16.7935L20.0371 6.11428C20.3487 5.26178 19.3771 4.53762 18.6529 5.06012ZM13.2904 13.521H8.70707C8.33124 13.521 8.01957 13.2093 8.01957 12.8335C8.01957 12.4576 8.33124 12.146 8.70707 12.146H13.2904C13.6662 12.146 13.9779 12.4576 13.9779 12.8335C13.9779 13.2093 13.6662 13.521 13.2904 13.521Z"
+                  fill="white"
+                />
+              </svg>
+              فروش ویژه</v-btn
             >
-              <path
-                d="M15.5846 20.1665H6.41797C6.04214 20.1665 5.73047 19.8548 5.73047 19.479C5.73047 19.1032 6.04214 18.7915 6.41797 18.7915H15.5846C15.9605 18.7915 16.2721 19.1032 16.2721 19.479C16.2721 19.8548 15.9605 20.1665 15.5846 20.1665Z"
-                fill="white"
-              />
-              <path
-                d="M18.6529 5.06012L14.9862 7.68178C14.5004 8.03012 13.8037 7.81928 13.5929 7.26012L11.8604 2.64012C11.5671 1.84262 10.4396 1.84262 10.1462 2.64012L8.40457 7.25095C8.19374 7.81928 7.50624 8.03012 7.0204 7.67262L3.35374 5.05095C2.6204 4.53762 1.64874 5.26178 1.95124 6.11428L5.76457 16.7935C5.8929 17.1601 6.24124 17.3985 6.62624 17.3985H15.3621C15.7471 17.3985 16.0954 17.151 16.2237 16.7935L20.0371 6.11428C20.3487 5.26178 19.3771 4.53762 18.6529 5.06012ZM13.2904 13.521H8.70707C8.33124 13.521 8.01957 13.2093 8.01957 12.8335C8.01957 12.4576 8.33124 12.146 8.70707 12.146H13.2904C13.6662 12.146 13.9779 12.4576 13.9779 12.8335C13.9779 13.2093 13.6662 13.521 13.2904 13.521Z"
-                fill="white"
-              />
-            </svg>
-            فروش ویژه</v-btn
-          >
-          <v-btn class="btn lease_btn mx-2">{{ data.description }} </v-btn>
+          </div>
+          <v-btn class="btn lease_btn mx-2">
+            <div class="card_icons" v-if="data.Transaction === 'P'">
+              <span class="sale__status_v"> پیش فروش</span>
+            </div>
+            <div v-else-if="data.Transaction === 'S'">
+              <span class="sale__status_s"> فروش</span>
+            </div>
+          </v-btn>
           <span class="month">
             <svg
               class="mx-2"
@@ -78,7 +85,7 @@
                 stroke-linejoin="round"
               />
             </svg>
-            <span>10254</span>
+            <span>{{ data.view }}</span>
             بازدید
           </span>
         </span>
@@ -119,7 +126,9 @@
       </v-row>
       <v-row class="sale__title">
         <v-col class="m-0 p-0">
-          <h4>فروش ویلا ساحلی قواره دوم دریا در آویدر نوشهر</h4>
+          <h4>
+            {{ data.title }}
+          </h4>
           <div class="location">
             <span>
               <svg
@@ -146,13 +155,9 @@
             </span>
           </div>
           <h5>توضیحات ملک</h5>
-          <v-col cols="7" class="description__place m-0 p-0">
+          <v-col cols="11" md="12" class="description__place m-0 p-0">
             <p>
-              فروش یک واحد آپارتمان فول امکانات واقع در فاز سه پردیس مجتمع نیلوفر دوبهترين
-              موقعیت برای سرمایه گذاری و سکونت در شهر جدید پردیسخرید و فروش مسکن در شهر
-              جدید پردیسآدرس: پردیس .میدان امام . جنب شهرداری.پاساژ نیایش طبقه 4 واحد
-              3آدرس سایت :www.ihomepardis.com مشاور شما :
-              <span> علی ابادی </span>
+              {{ data.description }}
             </p>
           </v-col>
         </v-col>
@@ -190,30 +195,257 @@
                 />
               </svg>
             </span>
-            230 میلیارد
+            {{ data.unit_price }}
             <span class="toman mx-2">تومان</span>
           </v-row>
-          <div class="price_meter my-4">متری 60 میلیون</div>
         </div>
       </v-row>
       <div class="bordr my-4"></div>
       <v-row class="main_details d-flex flex-column">
         <h5>اطلاعات اصلی</h5>
-        <ul>
-          <li class=""><span class="main_details__title pl-1"> زیربنا:</span>۷۵ متر</li>
-          <li><span class="main_details__title pl-1"> متراژ :</span>۷۵ متر</li>
-          <li><span class="main_details__title pl-1">طبقات:</span>4</li>
-          <li><span class="main_details__title pl-1">طبقات:</span>4</li>
-          <li><span class="main_details__title pl-1">طبقات:</span>4</li>
-          <li><span class="main_details__title pl-1">طبقات:</span>4</li>
-          <li><span class="main_details__title pl-1">طبقات:</span>4</li>
+        <ul v-if="data.estate_type === 'B'">
+          <li>
+            <span class="main_details__title pl-1"> سند :</span>
+          </li>
+          <li class="">
+            <span class="main_details__title pl-1"> دانگ:</span>
+
+            {{ data.dang }}
+          </li>
+          <li>
+            <span class="main_details__title pl-1">
+              سن بنا:
+              <span> {{ data.building_age }} </span>
+            </span>
+          </li>
+          <li>
+            <span class="main_details__title pl-1"> مجوز تجاری :</span>
+            <span v-if="data.building_license === true"> دارد</span>
+            <span v-else> ندارد</span>
+          </li>
+          <li>
+            <span class="main_details__title pl-1">طول بر:</span>
+            {{ data.ground_width }} متر
+          </li>
+          <li>
+            <span class="main_details__title pl-1"> ارتفاع:</span> {{ data.height }}متر
+          </li>
+          <li>
+            <span class="main_details__title pl-1"> پوشش دیوار :</span>
+            <span v-if="data.wallpaper === true"> کاغذ دیواری</span>
+            <span v-else> رنگ شده</span>
+          </li>
+          <li>
+            <span class="main_details__title pl-1"> نما:</span>
+            {{ data.view }}
+          </li>
+          <li>
+            <span class="main_details__title pl-1"> کفپوش:</span>
+            {{ data.floorCover }}
+          </li>
+          <li>
+            <span class="main_details__title pl-1"> سرویس بهداشتی:</span>{{ data.wc }} عدد
+          </li>
+        </ul>
+        <ul v-else-if="data.estate_type === 'G'">
+          <li>
+            <span class="main_details__title pl-1"> متراژ :</span>{{ data.land_size }} متر
+          </li>
+          <li class="">
+            <span class="main_details__title pl-1"> زیربنا:</span>{{ data.land_size }} متر
+          </li>
+          <li>
+            <span class="main_details__title pl-1">دانگ:</span>
+            {{ data.dang }}
+          </li>
+          <li>
+            <span class="main_details__title pl-1">تعداد اصله درخت:</span
+            >{{ data.tree_count }}
+          </li>
+          <li>
+            <span class="main_details__title pl-1">طول بر:</span>{{ data.length }} متر
+          </li>
+        </ul>
+        <ul v-else-if="data.estate_type === 'V'">
+          <li>
+            <span class="main_details__title pl-1"> متراژ :</span>{{ data.land_size }} متر
+          </li>
+          <li class="">
+            <span class="main_details__title pl-1"> زیربنا:</span>
+            {{ data.land_size }} متر مربع
+          </li>
+          <li>
+            <span class="main_details__title pl-1">اتاق خواب :</span>{{ data.rooms }} عدد
+          </li>
+          <li>
+            <span class="main_details__title pl-1">نوع واحد:</span>
+            <span v-if="data.unit_types === 'F'"> فلت</span>
+            <span v-if="data.unit_types === 'D'"> دوبلکس</span>
+            <span v-if="data.unit_types === 'T'">تریبلکس </span>
+            <span v-if="data.unit_types === 'F'"> نیم پلوت</span>
+          </li>
+          <li>
+            <span class="main_details__title pl-1">کفپوش:</span> {{ data.floorCover }}
+          </li>
+          <li>
+            <span class="main_details__title pl-1">سن بنا:</span>{{ data.building_age }}
+          </li>
+          <li>
+            <span class="main_details__title pl-1">کابینت:</span>
+            <span v-if="data.cabinets === true"> دارد</span>
+            <span v-else> ندارد </span>
+          </li>
+          <li>
+            <span class="main_details__title pl-1">سرویس:</span>
+            {{ data.wc }}
+          </li>
+          <li>
+            <span class="main_details__title pl-1">نما:</span>
+            {{ data.master }}
+          </li>
+          <li>
+            <span class="main_details__title pl-1">مستر:</span>
+            {{ data.view }}
+          </li>
+        </ul>
+        <ul v-else-if="data.estate_type === 'L'">
+          <li>
+            <span class="main_details__title pl-1"> دانگ :</span>{{ data.land_size }} متر
+          </li>
+          <li class="">
+            <span class="main_details__title pl-1"> متراژ زمین:</span
+            >{{ data.land_size }} متر
+          </li>
+          <li>
+            <span class="main_details__title pl-1">طول بر:</span> {{ data.lentgh }}متر
+          </li>
+          <li>
+            <span class="main_details__title pl-1">عرض زمین:</span>
+            {{ data.ground_width }} متر
+          </li>
+          <li>
+            <span class="main_details__title pl-1">متراژ اصلاحی:</span>
+            {{ data.corrected_area }} متر
+          </li>
+          <li>
+            <span class="main_details__title pl-1">مجوز ساخت:</span>
+            <span v-if="data.business_licencse === true"> دارد</span>
+            <span v-else> ندارد</span>
+          </li>
+          <li>
+            <span class="main_details__title pl-1">عرض گذر:</span>
+            {{ data.passage_width }} متر
+          </li>
+          <li>
+            <span class="main_details__title pl-1" v-if="data.water_branch">
+              انشعابات آب:دارد</span
+            >
+          </li>
+          <li>
+            <span class="main_details__title pl-1" v-if="data.electricity_branch">
+              انشعابات برق:دارد</span
+            >
+          </li>
+          <li>
+            <span class="main_details__title pl-1" v-if="data.gas_branch">
+              انشعابات گاز: دارد</span
+            >
+          </li>
+        </ul>
+        <ul v-else-if="data.estate_type === 'H'">
+          <li>
+            <span class="main_details__title pl-1"> متراژ :</span>{{ data.land_size }} متر
+          </li>
+          <li class="">
+            <span class="main_details__title pl-1"> زیربنا:</span>
+            {{ data.land_size }} متر مربع
+          </li>
+          <li>
+            <span class="main_details__title pl-1">اتاق خواب :</span>{{ data.rooms }} عدد
+          </li>
+         
+          <li>
+            <span class="main_details__title pl-1">کفپوش:</span> {{ data.floorCover }}
+          </li>
+          <li>
+            <span class="main_details__title pl-1">سن بنا:</span>{{ data.building_age }}
+          </li>
+          <li>
+            <span class="main_details__title pl-1">کابینت:</span>
+            <span v-if="data.cabinets === true"> دارد</span>
+            <span v-else> ندارد </span>
+          </li>
+          <li>
+            <span class="main_details__title pl-1">سرویس:</span>
+            {{ data.wc }}
+          </li>
+          <li>
+            <span class="main_details__title pl-1">نما:</span>
+            {{ data.master }}
+          </li>
+          <li>
+            <span class="main_details__title pl-1">مستر:</span>
+            {{ data.view }}
+          </li>
+        </ul>
+        <ul v-else-if="data.estate_type === 'A'">
+        <li>
+            <span class="main_details__title pl-1"> متراژ :</span>{{ data.land_size }} متر
+          </li>
+          <li class="">
+            <span class="main_details__title pl-1"> زیربنا:</span>
+            {{ data.land_size }} متر مربع
+          </li>
+          <li>
+            <span class="main_details__title pl-1">اتاق خواب :</span>{{ data.rooms }} عدد
+          </li>
+          <li>
+            <span class="main_details__title pl-1">نوع واحد:</span>
+            <span v-if="data.unit_types === 'F'"> فلت</span>
+            <span v-if="data.unit_types === 'D'"> دوبلکس</span>
+            <span v-if="data.unit_types === 'T'">تریبلکس </span>
+            <span v-if="data.unit_types === 'F'"> نیم پلوت</span>
+          </li>
+          <li>
+            <span class="main_details__title pl-1">کفپوش:</span> {{ data.floorCover }}
+          </li>
+          <li>
+            <span class="main_details__title pl-1">سن بنا:</span>{{ data.building_age }}
+          </li>
+          <li>
+            <span class="main_details__title pl-1">کابینت:</span>
+            <span v-if="data.cabinets === true"> دارد</span>
+            <span v-else> ندارد </span>
+          </li>
+          <li>
+            <span class="main_details__title pl-1">سرویس:</span>
+            {{ data.wc }}
+            عدد
+          </li>
+          <li>
+            <span class="main_details__title pl-1">نما:</span>
+            {{ data.master }}
+          </li>
+          <li>
+            <span class="main_details__title pl-1">مستر:</span>
+            {{ data.master }}
+             عدد
+          </li>
+          <li><span class="main_details__title pl-1">  تعداد طبقه:</span>{{data.floors}}</li>
+          <li><span class="main_details__title pl-1">   واحد موجود در هر طبقه  :</span>{{data.unit_in_floors}}</li>
+          <li><span class="main_details__title pl-1"> طبقه ی:</span>{{data.which_floor}}</li>
         </ul>
       </v-row>
       <div class="bordr my-4"></div>
-      <v-row class="Equipment d-flex flex-column">
+      <v-row
+        class="Equipment d-flex flex-column"
+        v-if="
+          data.estate_type === 'A' || data.estate_type === 'H' || data.estate_type === 'V'
+        "
+      >
         <h5>تجهیزات و امکانات</h5>
         <ul>
-          <li>
+          <li v-if="data.parking === true">
             <span class="main_details__title pl-1">
               <svg
                 class="mx-1"
@@ -235,10 +467,11 @@
                   stroke-width="1.2"
                   stroke-linejoin="round"
                 />
-              </svg> </span
-            >پارکینگ
+              </svg>
+            </span>
+            پارکینگ
           </li>
-          <li>
+          <li v-if="data.Warehouse === true">
             <span class="main_details__title pl-1"
               ><svg
                 class="mx-1"
@@ -288,7 +521,7 @@
               </svg> </span
             >انباری
           </li>
-          <li>
+          <li v-if="data.wall_cupboard === true">
             <span class="main_details__title pl-1"
               ><svg
                 class="mx-1"
@@ -320,7 +553,7 @@
               </svg> </span
             >کمد دیواری
           </li>
-          <li>
+          <li v-if="data.paint === true">
             <span class="main_details__title pl-1"
               ><svg
                 class="mx-1"
@@ -358,7 +591,7 @@
               </svg> </span
             >نقاشی
           </li>
-          <li>
+          <li v-if="data.Terrace === true">
             <span class="main_details__title pl-1"
               ><svg
                 class="mx-1"
@@ -420,7 +653,346 @@
               </svg> </span
             >تراس
           </li>
-          <li>
+          <li v-if="data.cctv === true">
+            <span class="main_details__title pl-1"
+              ><svg
+                class="mx-1"
+                width="27"
+                height="27"
+                viewBox="0 0 27 27"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <g filter="url(#filter0_ddd_1325_8727)">
+                  <path
+                    d="M8.14261 0.675293H6.1278C5.32587 0.675293 4.67578 1.32538 4.67578 2.12731V16.8726C4.67578 17.6745 5.32587 18.3246 6.1278 18.3246H8.14261C8.94453 18.3246 9.59462 17.6745 9.59462 16.8726V2.12731C9.59462 1.32538 8.94453 0.675293 8.14261 0.675293Z"
+                    stroke="#0A98FF"
+                    stroke-width="1.2"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M9.62891 2.08207H20.6597C21.1026 2.07906 21.5287 2.25135 21.845 2.56133C22.1613 2.87132 22.3422 3.29384 22.3481 3.73669V15.4991C22.3452 15.7179 22.2992 15.934 22.2127 16.1349C22.1263 16.3359 22.0011 16.5179 21.8443 16.6705C21.6875 16.8231 21.5022 16.9434 21.299 17.0243C21.0957 17.1053 20.8785 17.1455 20.6597 17.1425H9.62891"
+                    stroke="#0A98FF"
+                    stroke-width="1.2"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M19.6558 5.41406H12.5195V9.61252H19.6558V5.41406Z"
+                    stroke="#0A98FF"
+                    stroke-width="1.2"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M20.3343 13.5635H18.4883"
+                    stroke="#0A98FF"
+                    stroke-width="1.2"
+                    stroke-linejoin="round"
+                  />
+                </g>
+                <defs>
+                  <filter
+                    id="filter0_ddd_1325_8727"
+                    x="0"
+                    y="0"
+                    width="27.0234"
+                    height="27"
+                    filterUnits="userSpaceOnUse"
+                    color-interpolation-filters="sRGB"
+                  >
+                    <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                    <feColorMatrix
+                      in="SourceAlpha"
+                      type="matrix"
+                      values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                      result="hardAlpha"
+                    />
+                    <feOffset dy="4" />
+                    <feGaussianBlur stdDeviation="2" />
+                    <feComposite in2="hardAlpha" operator="out" />
+                    <feColorMatrix
+                      type="matrix"
+                      values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"
+                    />
+                    <feBlend
+                      mode="normal"
+                      in2="BackgroundImageFix"
+                      result="effect1_dropShadow_1325_8727"
+                    />
+                    <feColorMatrix
+                      in="SourceAlpha"
+                      type="matrix"
+                      values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                      result="hardAlpha"
+                    />
+                    <feOffset dy="4" />
+                    <feGaussianBlur stdDeviation="2" />
+                    <feComposite in2="hardAlpha" operator="out" />
+                    <feColorMatrix
+                      type="matrix"
+                      values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"
+                    />
+                    <feBlend
+                      mode="normal"
+                      in2="effect1_dropShadow_1325_8727"
+                      result="effect2_dropShadow_1325_8727"
+                    />
+                    <feColorMatrix
+                      in="SourceAlpha"
+                      type="matrix"
+                      values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                      result="hardAlpha"
+                    />
+                    <feOffset dy="4" />
+                    <feGaussianBlur stdDeviation="2" />
+                    <feComposite in2="hardAlpha" operator="out" />
+                    <feColorMatrix
+                      type="matrix"
+                      values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"
+                    />
+                    <feBlend
+                      mode="normal"
+                      in2="effect2_dropShadow_1325_8727"
+                      result="effect3_dropShadow_1325_8727"
+                    />
+                    <feBlend
+                      mode="normal"
+                      in="SourceGraphic"
+                      in2="effect3_dropShadow_1325_8727"
+                      result="shape"
+                    />
+                  </filter>
+                </defs>
+              </svg>
+            </span>
+            دوربین مدار بسته
+          </li>
+          <li v-if="data.electric_door === true">
+            <span class="main_details__title pl-1"
+              ><svg
+                class="mx-1"
+                width="27"
+                height="27"
+                viewBox="0 0 27 27"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <g filter="url(#filter0_ddd_1325_8727)">
+                  <path
+                    d="M8.14261 0.675293H6.1278C5.32587 0.675293 4.67578 1.32538 4.67578 2.12731V16.8726C4.67578 17.6745 5.32587 18.3246 6.1278 18.3246H8.14261C8.94453 18.3246 9.59462 17.6745 9.59462 16.8726V2.12731C9.59462 1.32538 8.94453 0.675293 8.14261 0.675293Z"
+                    stroke="#0A98FF"
+                    stroke-width="1.2"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M9.62891 2.08207H20.6597C21.1026 2.07906 21.5287 2.25135 21.845 2.56133C22.1613 2.87132 22.3422 3.29384 22.3481 3.73669V15.4991C22.3452 15.7179 22.2992 15.934 22.2127 16.1349C22.1263 16.3359 22.0011 16.5179 21.8443 16.6705C21.6875 16.8231 21.5022 16.9434 21.299 17.0243C21.0957 17.1053 20.8785 17.1455 20.6597 17.1425H9.62891"
+                    stroke="#0A98FF"
+                    stroke-width="1.2"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M19.6558 5.41406H12.5195V9.61252H19.6558V5.41406Z"
+                    stroke="#0A98FF"
+                    stroke-width="1.2"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M20.3343 13.5635H18.4883"
+                    stroke="#0A98FF"
+                    stroke-width="1.2"
+                    stroke-linejoin="round"
+                  />
+                </g>
+                <defs>
+                  <filter
+                    id="filter0_ddd_1325_8727"
+                    x="0"
+                    y="0"
+                    width="27.0234"
+                    height="27"
+                    filterUnits="userSpaceOnUse"
+                    color-interpolation-filters="sRGB"
+                  >
+                    <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                    <feColorMatrix
+                      in="SourceAlpha"
+                      type="matrix"
+                      values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                      result="hardAlpha"
+                    />
+                    <feOffset dy="4" />
+                    <feGaussianBlur stdDeviation="2" />
+                    <feComposite in2="hardAlpha" operator="out" />
+                    <feColorMatrix
+                      type="matrix"
+                      values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"
+                    />
+                    <feBlend
+                      mode="normal"
+                      in2="BackgroundImageFix"
+                      result="effect1_dropShadow_1325_8727"
+                    />
+                    <feColorMatrix
+                      in="SourceAlpha"
+                      type="matrix"
+                      values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                      result="hardAlpha"
+                    />
+                    <feOffset dy="4" />
+                    <feGaussianBlur stdDeviation="2" />
+                    <feComposite in2="hardAlpha" operator="out" />
+                    <feColorMatrix
+                      type="matrix"
+                      values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"
+                    />
+                    <feBlend
+                      mode="normal"
+                      in2="effect1_dropShadow_1325_8727"
+                      result="effect2_dropShadow_1325_8727"
+                    />
+                    <feColorMatrix
+                      in="SourceAlpha"
+                      type="matrix"
+                      values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                      result="hardAlpha"
+                    />
+                    <feOffset dy="4" />
+                    <feGaussianBlur stdDeviation="2" />
+                    <feComposite in2="hardAlpha" operator="out" />
+                    <feColorMatrix
+                      type="matrix"
+                      values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"
+                    />
+                    <feBlend
+                      mode="normal"
+                      in2="effect2_dropShadow_1325_8727"
+                      result="effect3_dropShadow_1325_8727"
+                    />
+                    <feBlend
+                      mode="normal"
+                      in="SourceGraphic"
+                      in2="effect3_dropShadow_1325_8727"
+                      result="shape"
+                    />
+                  </filter>
+                </defs>
+              </svg>
+            </span>
+            درب برقی
+          </li>
+          <li v-if="data.wallpaper === true">
+            <span class="main_details__title pl-1"
+              ><svg
+                class="mx-1"
+                width="27"
+                height="27"
+                viewBox="0 0 27 27"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <g filter="url(#filter0_ddd_1325_8727)">
+                  <path
+                    d="M8.14261 0.675293H6.1278C5.32587 0.675293 4.67578 1.32538 4.67578 2.12731V16.8726C4.67578 17.6745 5.32587 18.3246 6.1278 18.3246H8.14261C8.94453 18.3246 9.59462 17.6745 9.59462 16.8726V2.12731C9.59462 1.32538 8.94453 0.675293 8.14261 0.675293Z"
+                    stroke="#0A98FF"
+                    stroke-width="1.2"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M9.62891 2.08207H20.6597C21.1026 2.07906 21.5287 2.25135 21.845 2.56133C22.1613 2.87132 22.3422 3.29384 22.3481 3.73669V15.4991C22.3452 15.7179 22.2992 15.934 22.2127 16.1349C22.1263 16.3359 22.0011 16.5179 21.8443 16.6705C21.6875 16.8231 21.5022 16.9434 21.299 17.0243C21.0957 17.1053 20.8785 17.1455 20.6597 17.1425H9.62891"
+                    stroke="#0A98FF"
+                    stroke-width="1.2"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M19.6558 5.41406H12.5195V9.61252H19.6558V5.41406Z"
+                    stroke="#0A98FF"
+                    stroke-width="1.2"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M20.3343 13.5635H18.4883"
+                    stroke="#0A98FF"
+                    stroke-width="1.2"
+                    stroke-linejoin="round"
+                  />
+                </g>
+                <defs>
+                  <filter
+                    id="filter0_ddd_1325_8727"
+                    x="0"
+                    y="0"
+                    width="27.0234"
+                    height="27"
+                    filterUnits="userSpaceOnUse"
+                    color-interpolation-filters="sRGB"
+                  >
+                    <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                    <feColorMatrix
+                      in="SourceAlpha"
+                      type="matrix"
+                      values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                      result="hardAlpha"
+                    />
+                    <feOffset dy="4" />
+                    <feGaussianBlur stdDeviation="2" />
+                    <feComposite in2="hardAlpha" operator="out" />
+                    <feColorMatrix
+                      type="matrix"
+                      values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"
+                    />
+                    <feBlend
+                      mode="normal"
+                      in2="BackgroundImageFix"
+                      result="effect1_dropShadow_1325_8727"
+                    />
+                    <feColorMatrix
+                      in="SourceAlpha"
+                      type="matrix"
+                      values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                      result="hardAlpha"
+                    />
+                    <feOffset dy="4" />
+                    <feGaussianBlur stdDeviation="2" />
+                    <feComposite in2="hardAlpha" operator="out" />
+                    <feColorMatrix
+                      type="matrix"
+                      values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"
+                    />
+                    <feBlend
+                      mode="normal"
+                      in2="effect1_dropShadow_1325_8727"
+                      result="effect2_dropShadow_1325_8727"
+                    />
+                    <feColorMatrix
+                      in="SourceAlpha"
+                      type="matrix"
+                      values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                      result="hardAlpha"
+                    />
+                    <feOffset dy="4" />
+                    <feGaussianBlur stdDeviation="2" />
+                    <feComposite in2="hardAlpha" operator="out" />
+                    <feColorMatrix
+                      type="matrix"
+                      values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"
+                    />
+                    <feBlend
+                      mode="normal"
+                      in2="effect2_dropShadow_1325_8727"
+                      result="effect3_dropShadow_1325_8727"
+                    />
+                    <feBlend
+                      mode="normal"
+                      in="SourceGraphic"
+                      in2="effect3_dropShadow_1325_8727"
+                      result="shape"
+                    />
+                  </filter>
+                </defs>
+              </svg>
+            </span>
+            گاز رومیزی
+          </li>
+          <li v-if="data.tablecloth_gas === true">
             <span class="main_details__title pl-1"
               ><svg
                 class="mx-1"
@@ -531,6 +1103,2032 @@
                 </defs>
               </svg> </span
             >آیفون تصویری
+          </li>
+          <li v-if="data.hood === true">
+            <span class="main_details__title pl-1"
+              ><svg
+                class="mx-1"
+                width="27"
+                height="27"
+                viewBox="0 0 27 27"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <g filter="url(#filter0_ddd_1325_8727)">
+                  <path
+                    d="M8.14261 0.675293H6.1278C5.32587 0.675293 4.67578 1.32538 4.67578 2.12731V16.8726C4.67578 17.6745 5.32587 18.3246 6.1278 18.3246H8.14261C8.94453 18.3246 9.59462 17.6745 9.59462 16.8726V2.12731C9.59462 1.32538 8.94453 0.675293 8.14261 0.675293Z"
+                    stroke="#0A98FF"
+                    stroke-width="1.2"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M9.62891 2.08207H20.6597C21.1026 2.07906 21.5287 2.25135 21.845 2.56133C22.1613 2.87132 22.3422 3.29384 22.3481 3.73669V15.4991C22.3452 15.7179 22.2992 15.934 22.2127 16.1349C22.1263 16.3359 22.0011 16.5179 21.8443 16.6705C21.6875 16.8231 21.5022 16.9434 21.299 17.0243C21.0957 17.1053 20.8785 17.1455 20.6597 17.1425H9.62891"
+                    stroke="#0A98FF"
+                    stroke-width="1.2"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M19.6558 5.41406H12.5195V9.61252H19.6558V5.41406Z"
+                    stroke="#0A98FF"
+                    stroke-width="1.2"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M20.3343 13.5635H18.4883"
+                    stroke="#0A98FF"
+                    stroke-width="1.2"
+                    stroke-linejoin="round"
+                  />
+                </g>
+                <defs>
+                  <filter
+                    id="filter0_ddd_1325_8727"
+                    x="0"
+                    y="0"
+                    width="27.0234"
+                    height="27"
+                    filterUnits="userSpaceOnUse"
+                    color-interpolation-filters="sRGB"
+                  >
+                    <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                    <feColorMatrix
+                      in="SourceAlpha"
+                      type="matrix"
+                      values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                      result="hardAlpha"
+                    />
+                    <feOffset dy="4" />
+                    <feGaussianBlur stdDeviation="2" />
+                    <feComposite in2="hardAlpha" operator="out" />
+                    <feColorMatrix
+                      type="matrix"
+                      values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"
+                    />
+                    <feBlend
+                      mode="normal"
+                      in2="BackgroundImageFix"
+                      result="effect1_dropShadow_1325_8727"
+                    />
+                    <feColorMatrix
+                      in="SourceAlpha"
+                      type="matrix"
+                      values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                      result="hardAlpha"
+                    />
+                    <feOffset dy="4" />
+                    <feGaussianBlur stdDeviation="2" />
+                    <feComposite in2="hardAlpha" operator="out" />
+                    <feColorMatrix
+                      type="matrix"
+                      values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"
+                    />
+                    <feBlend
+                      mode="normal"
+                      in2="effect1_dropShadow_1325_8727"
+                      result="effect2_dropShadow_1325_8727"
+                    />
+                    <feColorMatrix
+                      in="SourceAlpha"
+                      type="matrix"
+                      values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                      result="hardAlpha"
+                    />
+                    <feOffset dy="4" />
+                    <feGaussianBlur stdDeviation="2" />
+                    <feComposite in2="hardAlpha" operator="out" />
+                    <feColorMatrix
+                      type="matrix"
+                      values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"
+                    />
+                    <feBlend
+                      mode="normal"
+                      in2="effect2_dropShadow_1325_8727"
+                      result="effect3_dropShadow_1325_8727"
+                    />
+                    <feBlend
+                      mode="normal"
+                      in="SourceGraphic"
+                      in2="effect3_dropShadow_1325_8727"
+                      result="shape"
+                    />
+                  </filter>
+                </defs>
+              </svg>
+            </span>
+            هود
+          </li>
+          <li v-if="data.french_service === true">
+            <span class="main_details__title pl-1"
+              ><svg
+                class="mx-1"
+                width="27"
+                height="27"
+                viewBox="0 0 27 27"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <g filter="url(#filter0_ddd_1325_8727)">
+                  <path
+                    d="M8.14261 0.675293H6.1278C5.32587 0.675293 4.67578 1.32538 4.67578 2.12731V16.8726C4.67578 17.6745 5.32587 18.3246 6.1278 18.3246H8.14261C8.94453 18.3246 9.59462 17.6745 9.59462 16.8726V2.12731C9.59462 1.32538 8.94453 0.675293 8.14261 0.675293Z"
+                    stroke="#0A98FF"
+                    stroke-width="1.2"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M9.62891 2.08207H20.6597C21.1026 2.07906 21.5287 2.25135 21.845 2.56133C22.1613 2.87132 22.3422 3.29384 22.3481 3.73669V15.4991C22.3452 15.7179 22.2992 15.934 22.2127 16.1349C22.1263 16.3359 22.0011 16.5179 21.8443 16.6705C21.6875 16.8231 21.5022 16.9434 21.299 17.0243C21.0957 17.1053 20.8785 17.1455 20.6597 17.1425H9.62891"
+                    stroke="#0A98FF"
+                    stroke-width="1.2"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M19.6558 5.41406H12.5195V9.61252H19.6558V5.41406Z"
+                    stroke="#0A98FF"
+                    stroke-width="1.2"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M20.3343 13.5635H18.4883"
+                    stroke="#0A98FF"
+                    stroke-width="1.2"
+                    stroke-linejoin="round"
+                  />
+                </g>
+                <defs>
+                  <filter
+                    id="filter0_ddd_1325_8727"
+                    x="0"
+                    y="0"
+                    width="27.0234"
+                    height="27"
+                    filterUnits="userSpaceOnUse"
+                    color-interpolation-filters="sRGB"
+                  >
+                    <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                    <feColorMatrix
+                      in="SourceAlpha"
+                      type="matrix"
+                      values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                      result="hardAlpha"
+                    />
+                    <feOffset dy="4" />
+                    <feGaussianBlur stdDeviation="2" />
+                    <feComposite in2="hardAlpha" operator="out" />
+                    <feColorMatrix
+                      type="matrix"
+                      values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"
+                    />
+                    <feBlend
+                      mode="normal"
+                      in2="BackgroundImageFix"
+                      result="effect1_dropShadow_1325_8727"
+                    />
+                    <feColorMatrix
+                      in="SourceAlpha"
+                      type="matrix"
+                      values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                      result="hardAlpha"
+                    />
+                    <feOffset dy="4" />
+                    <feGaussianBlur stdDeviation="2" />
+                    <feComposite in2="hardAlpha" operator="out" />
+                    <feColorMatrix
+                      type="matrix"
+                      values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"
+                    />
+                    <feBlend
+                      mode="normal"
+                      in2="effect1_dropShadow_1325_8727"
+                      result="effect2_dropShadow_1325_8727"
+                    />
+                    <feColorMatrix
+                      in="SourceAlpha"
+                      type="matrix"
+                      values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                      result="hardAlpha"
+                    />
+                    <feOffset dy="4" />
+                    <feGaussianBlur stdDeviation="2" />
+                    <feComposite in2="hardAlpha" operator="out" />
+                    <feColorMatrix
+                      type="matrix"
+                      values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"
+                    />
+                    <feBlend
+                      mode="normal"
+                      in2="effect2_dropShadow_1325_8727"
+                      result="effect3_dropShadow_1325_8727"
+                    />
+                    <feBlend
+                      mode="normal"
+                      in="SourceGraphic"
+                      in2="effect3_dropShadow_1325_8727"
+                      result="shape"
+                    />
+                  </filter>
+                </defs>
+              </svg>
+            </span>
+            سرویس فرنگی
+          </li>
+          <li v-if="data.sauna === true">
+            <span class="main_details__title pl-1"
+              ><svg
+                class="mx-1"
+                width="27"
+                height="27"
+                viewBox="0 0 27 27"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <g filter="url(#filter0_ddd_1325_8727)">
+                  <path
+                    d="M8.14261 0.675293H6.1278C5.32587 0.675293 4.67578 1.32538 4.67578 2.12731V16.8726C4.67578 17.6745 5.32587 18.3246 6.1278 18.3246H8.14261C8.94453 18.3246 9.59462 17.6745 9.59462 16.8726V2.12731C9.59462 1.32538 8.94453 0.675293 8.14261 0.675293Z"
+                    stroke="#0A98FF"
+                    stroke-width="1.2"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M9.62891 2.08207H20.6597C21.1026 2.07906 21.5287 2.25135 21.845 2.56133C22.1613 2.87132 22.3422 3.29384 22.3481 3.73669V15.4991C22.3452 15.7179 22.2992 15.934 22.2127 16.1349C22.1263 16.3359 22.0011 16.5179 21.8443 16.6705C21.6875 16.8231 21.5022 16.9434 21.299 17.0243C21.0957 17.1053 20.8785 17.1455 20.6597 17.1425H9.62891"
+                    stroke="#0A98FF"
+                    stroke-width="1.2"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M19.6558 5.41406H12.5195V9.61252H19.6558V5.41406Z"
+                    stroke="#0A98FF"
+                    stroke-width="1.2"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M20.3343 13.5635H18.4883"
+                    stroke="#0A98FF"
+                    stroke-width="1.2"
+                    stroke-linejoin="round"
+                  />
+                </g>
+                <defs>
+                  <filter
+                    id="filter0_ddd_1325_8727"
+                    x="0"
+                    y="0"
+                    width="27.0234"
+                    height="27"
+                    filterUnits="userSpaceOnUse"
+                    color-interpolation-filters="sRGB"
+                  >
+                    <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                    <feColorMatrix
+                      in="SourceAlpha"
+                      type="matrix"
+                      values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                      result="hardAlpha"
+                    />
+                    <feOffset dy="4" />
+                    <feGaussianBlur stdDeviation="2" />
+                    <feComposite in2="hardAlpha" operator="out" />
+                    <feColorMatrix
+                      type="matrix"
+                      values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"
+                    />
+                    <feBlend
+                      mode="normal"
+                      in2="BackgroundImageFix"
+                      result="effect1_dropShadow_1325_8727"
+                    />
+                    <feColorMatrix
+                      in="SourceAlpha"
+                      type="matrix"
+                      values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                      result="hardAlpha"
+                    />
+                    <feOffset dy="4" />
+                    <feGaussianBlur stdDeviation="2" />
+                    <feComposite in2="hardAlpha" operator="out" />
+                    <feColorMatrix
+                      type="matrix"
+                      values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"
+                    />
+                    <feBlend
+                      mode="normal"
+                      in2="effect1_dropShadow_1325_8727"
+                      result="effect2_dropShadow_1325_8727"
+                    />
+                    <feColorMatrix
+                      in="SourceAlpha"
+                      type="matrix"
+                      values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                      result="hardAlpha"
+                    />
+                    <feOffset dy="4" />
+                    <feGaussianBlur stdDeviation="2" />
+                    <feComposite in2="hardAlpha" operator="out" />
+                    <feColorMatrix
+                      type="matrix"
+                      values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"
+                    />
+                    <feBlend
+                      mode="normal"
+                      in2="effect2_dropShadow_1325_8727"
+                      result="effect3_dropShadow_1325_8727"
+                    />
+                    <feBlend
+                      mode="normal"
+                      in="SourceGraphic"
+                      in2="effect3_dropShadow_1325_8727"
+                      result="shape"
+                    />
+                  </filter>
+                </defs>
+              </svg>
+            </span>
+            سونا
+          </li>
+          <li v-if="data.jacuzzi === true">
+            <span class="main_details__title pl-1"
+              ><svg
+                class="mx-1"
+                width="27"
+                height="27"
+                viewBox="0 0 27 27"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <g filter="url(#filter0_ddd_1325_8727)">
+                  <path
+                    d="M8.14261 0.675293H6.1278C5.32587 0.675293 4.67578 1.32538 4.67578 2.12731V16.8726C4.67578 17.6745 5.32587 18.3246 6.1278 18.3246H8.14261C8.94453 18.3246 9.59462 17.6745 9.59462 16.8726V2.12731C9.59462 1.32538 8.94453 0.675293 8.14261 0.675293Z"
+                    stroke="#0A98FF"
+                    stroke-width="1.2"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M9.62891 2.08207H20.6597C21.1026 2.07906 21.5287 2.25135 21.845 2.56133C22.1613 2.87132 22.3422 3.29384 22.3481 3.73669V15.4991C22.3452 15.7179 22.2992 15.934 22.2127 16.1349C22.1263 16.3359 22.0011 16.5179 21.8443 16.6705C21.6875 16.8231 21.5022 16.9434 21.299 17.0243C21.0957 17.1053 20.8785 17.1455 20.6597 17.1425H9.62891"
+                    stroke="#0A98FF"
+                    stroke-width="1.2"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M19.6558 5.41406H12.5195V9.61252H19.6558V5.41406Z"
+                    stroke="#0A98FF"
+                    stroke-width="1.2"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M20.3343 13.5635H18.4883"
+                    stroke="#0A98FF"
+                    stroke-width="1.2"
+                    stroke-linejoin="round"
+                  />
+                </g>
+                <defs>
+                  <filter
+                    id="filter0_ddd_1325_8727"
+                    x="0"
+                    y="0"
+                    width="27.0234"
+                    height="27"
+                    filterUnits="userSpaceOnUse"
+                    color-interpolation-filters="sRGB"
+                  >
+                    <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                    <feColorMatrix
+                      in="SourceAlpha"
+                      type="matrix"
+                      values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                      result="hardAlpha"
+                    />
+                    <feOffset dy="4" />
+                    <feGaussianBlur stdDeviation="2" />
+                    <feComposite in2="hardAlpha" operator="out" />
+                    <feColorMatrix
+                      type="matrix"
+                      values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"
+                    />
+                    <feBlend
+                      mode="normal"
+                      in2="BackgroundImageFix"
+                      result="effect1_dropShadow_1325_8727"
+                    />
+                    <feColorMatrix
+                      in="SourceAlpha"
+                      type="matrix"
+                      values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                      result="hardAlpha"
+                    />
+                    <feOffset dy="4" />
+                    <feGaussianBlur stdDeviation="2" />
+                    <feComposite in2="hardAlpha" operator="out" />
+                    <feColorMatrix
+                      type="matrix"
+                      values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"
+                    />
+                    <feBlend
+                      mode="normal"
+                      in2="effect1_dropShadow_1325_8727"
+                      result="effect2_dropShadow_1325_8727"
+                    />
+                    <feColorMatrix
+                      in="SourceAlpha"
+                      type="matrix"
+                      values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                      result="hardAlpha"
+                    />
+                    <feOffset dy="4" />
+                    <feGaussianBlur stdDeviation="2" />
+                    <feComposite in2="hardAlpha" operator="out" />
+                    <feColorMatrix
+                      type="matrix"
+                      values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"
+                    />
+                    <feBlend
+                      mode="normal"
+                      in2="effect2_dropShadow_1325_8727"
+                      result="effect3_dropShadow_1325_8727"
+                    />
+                    <feBlend
+                      mode="normal"
+                      in="SourceGraphic"
+                      in2="effect3_dropShadow_1325_8727"
+                      result="shape"
+                    />
+                  </filter>
+                </defs>
+              </svg>
+            </span>
+            جکوزی
+          </li>
+          <li v-if="data.lobby === true">
+            <span class="main_details__title pl-1"
+              ><svg
+                class="mx-1"
+                width="27"
+                height="27"
+                viewBox="0 0 27 27"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <g filter="url(#filter0_ddd_1325_8727)">
+                  <path
+                    d="M8.14261 0.675293H6.1278C5.32587 0.675293 4.67578 1.32538 4.67578 2.12731V16.8726C4.67578 17.6745 5.32587 18.3246 6.1278 18.3246H8.14261C8.94453 18.3246 9.59462 17.6745 9.59462 16.8726V2.12731C9.59462 1.32538 8.94453 0.675293 8.14261 0.675293Z"
+                    stroke="#0A98FF"
+                    stroke-width="1.2"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M9.62891 2.08207H20.6597C21.1026 2.07906 21.5287 2.25135 21.845 2.56133C22.1613 2.87132 22.3422 3.29384 22.3481 3.73669V15.4991C22.3452 15.7179 22.2992 15.934 22.2127 16.1349C22.1263 16.3359 22.0011 16.5179 21.8443 16.6705C21.6875 16.8231 21.5022 16.9434 21.299 17.0243C21.0957 17.1053 20.8785 17.1455 20.6597 17.1425H9.62891"
+                    stroke="#0A98FF"
+                    stroke-width="1.2"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M19.6558 5.41406H12.5195V9.61252H19.6558V5.41406Z"
+                    stroke="#0A98FF"
+                    stroke-width="1.2"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M20.3343 13.5635H18.4883"
+                    stroke="#0A98FF"
+                    stroke-width="1.2"
+                    stroke-linejoin="round"
+                  />
+                </g>
+                <defs>
+                  <filter
+                    id="filter0_ddd_1325_8727"
+                    x="0"
+                    y="0"
+                    width="27.0234"
+                    height="27"
+                    filterUnits="userSpaceOnUse"
+                    color-interpolation-filters="sRGB"
+                  >
+                    <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                    <feColorMatrix
+                      in="SourceAlpha"
+                      type="matrix"
+                      values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                      result="hardAlpha"
+                    />
+                    <feOffset dy="4" />
+                    <feGaussianBlur stdDeviation="2" />
+                    <feComposite in2="hardAlpha" operator="out" />
+                    <feColorMatrix
+                      type="matrix"
+                      values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"
+                    />
+                    <feBlend
+                      mode="normal"
+                      in2="BackgroundImageFix"
+                      result="effect1_dropShadow_1325_8727"
+                    />
+                    <feColorMatrix
+                      in="SourceAlpha"
+                      type="matrix"
+                      values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                      result="hardAlpha"
+                    />
+                    <feOffset dy="4" />
+                    <feGaussianBlur stdDeviation="2" />
+                    <feComposite in2="hardAlpha" operator="out" />
+                    <feColorMatrix
+                      type="matrix"
+                      values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"
+                    />
+                    <feBlend
+                      mode="normal"
+                      in2="effect1_dropShadow_1325_8727"
+                      result="effect2_dropShadow_1325_8727"
+                    />
+                    <feColorMatrix
+                      in="SourceAlpha"
+                      type="matrix"
+                      values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                      result="hardAlpha"
+                    />
+                    <feOffset dy="4" />
+                    <feGaussianBlur stdDeviation="2" />
+                    <feComposite in2="hardAlpha" operator="out" />
+                    <feColorMatrix
+                      type="matrix"
+                      values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"
+                    />
+                    <feBlend
+                      mode="normal"
+                      in2="effect2_dropShadow_1325_8727"
+                      result="effect3_dropShadow_1325_8727"
+                    />
+                    <feBlend
+                      mode="normal"
+                      in="SourceGraphic"
+                      in2="effect3_dropShadow_1325_8727"
+                      result="shape"
+                    />
+                  </filter>
+                </defs>
+              </svg>
+            </span>
+            لابی
+          </li>
+          <li v-if="data.water_heater === true">
+            <span class="main_details__title pl-1"
+              ><svg
+                class="mx-1"
+                width="27"
+                height="27"
+                viewBox="0 0 27 27"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <g filter="url(#filter0_ddd_1325_8727)">
+                  <path
+                    d="M8.14261 0.675293H6.1278C5.32587 0.675293 4.67578 1.32538 4.67578 2.12731V16.8726C4.67578 17.6745 5.32587 18.3246 6.1278 18.3246H8.14261C8.94453 18.3246 9.59462 17.6745 9.59462 16.8726V2.12731C9.59462 1.32538 8.94453 0.675293 8.14261 0.675293Z"
+                    stroke="#0A98FF"
+                    stroke-width="1.2"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M9.62891 2.08207H20.6597C21.1026 2.07906 21.5287 2.25135 21.845 2.56133C22.1613 2.87132 22.3422 3.29384 22.3481 3.73669V15.4991C22.3452 15.7179 22.2992 15.934 22.2127 16.1349C22.1263 16.3359 22.0011 16.5179 21.8443 16.6705C21.6875 16.8231 21.5022 16.9434 21.299 17.0243C21.0957 17.1053 20.8785 17.1455 20.6597 17.1425H9.62891"
+                    stroke="#0A98FF"
+                    stroke-width="1.2"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M19.6558 5.41406H12.5195V9.61252H19.6558V5.41406Z"
+                    stroke="#0A98FF"
+                    stroke-width="1.2"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M20.3343 13.5635H18.4883"
+                    stroke="#0A98FF"
+                    stroke-width="1.2"
+                    stroke-linejoin="round"
+                  />
+                </g>
+                <defs>
+                  <filter
+                    id="filter0_ddd_1325_8727"
+                    x="0"
+                    y="0"
+                    width="27.0234"
+                    height="27"
+                    filterUnits="userSpaceOnUse"
+                    color-interpolation-filters="sRGB"
+                  >
+                    <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                    <feColorMatrix
+                      in="SourceAlpha"
+                      type="matrix"
+                      values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                      result="hardAlpha"
+                    />
+                    <feOffset dy="4" />
+                    <feGaussianBlur stdDeviation="2" />
+                    <feComposite in2="hardAlpha" operator="out" />
+                    <feColorMatrix
+                      type="matrix"
+                      values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"
+                    />
+                    <feBlend
+                      mode="normal"
+                      in2="BackgroundImageFix"
+                      result="effect1_dropShadow_1325_8727"
+                    />
+                    <feColorMatrix
+                      in="SourceAlpha"
+                      type="matrix"
+                      values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                      result="hardAlpha"
+                    />
+                    <feOffset dy="4" />
+                    <feGaussianBlur stdDeviation="2" />
+                    <feComposite in2="hardAlpha" operator="out" />
+                    <feColorMatrix
+                      type="matrix"
+                      values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"
+                    />
+                    <feBlend
+                      mode="normal"
+                      in2="effect1_dropShadow_1325_8727"
+                      result="effect2_dropShadow_1325_8727"
+                    />
+                    <feColorMatrix
+                      in="SourceAlpha"
+                      type="matrix"
+                      values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                      result="hardAlpha"
+                    />
+                    <feOffset dy="4" />
+                    <feGaussianBlur stdDeviation="2" />
+                    <feComposite in2="hardAlpha" operator="out" />
+                    <feColorMatrix
+                      type="matrix"
+                      values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"
+                    />
+                    <feBlend
+                      mode="normal"
+                      in2="effect2_dropShadow_1325_8727"
+                      result="effect3_dropShadow_1325_8727"
+                    />
+                    <feBlend
+                      mode="normal"
+                      in="SourceGraphic"
+                      in2="effect3_dropShadow_1325_8727"
+                      result="shape"
+                    />
+                  </filter>
+                </defs>
+              </svg>
+            </span>
+            آبگرم کن
+          </li>
+          <li v-if="data.roof_garden === true">
+            <span class="main_details__title pl-1"
+              ><svg
+                class="mx-1"
+                width="27"
+                height="27"
+                viewBox="0 0 27 27"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <g filter="url(#filter0_ddd_1325_8727)">
+                  <path
+                    d="M8.14261 0.675293H6.1278C5.32587 0.675293 4.67578 1.32538 4.67578 2.12731V16.8726C4.67578 17.6745 5.32587 18.3246 6.1278 18.3246H8.14261C8.94453 18.3246 9.59462 17.6745 9.59462 16.8726V2.12731C9.59462 1.32538 8.94453 0.675293 8.14261 0.675293Z"
+                    stroke="#0A98FF"
+                    stroke-width="1.2"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M9.62891 2.08207H20.6597C21.1026 2.07906 21.5287 2.25135 21.845 2.56133C22.1613 2.87132 22.3422 3.29384 22.3481 3.73669V15.4991C22.3452 15.7179 22.2992 15.934 22.2127 16.1349C22.1263 16.3359 22.0011 16.5179 21.8443 16.6705C21.6875 16.8231 21.5022 16.9434 21.299 17.0243C21.0957 17.1053 20.8785 17.1455 20.6597 17.1425H9.62891"
+                    stroke="#0A98FF"
+                    stroke-width="1.2"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M19.6558 5.41406H12.5195V9.61252H19.6558V5.41406Z"
+                    stroke="#0A98FF"
+                    stroke-width="1.2"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M20.3343 13.5635H18.4883"
+                    stroke="#0A98FF"
+                    stroke-width="1.2"
+                    stroke-linejoin="round"
+                  />
+                </g>
+                <defs>
+                  <filter
+                    id="filter0_ddd_1325_8727"
+                    x="0"
+                    y="0"
+                    width="27.0234"
+                    height="27"
+                    filterUnits="userSpaceOnUse"
+                    color-interpolation-filters="sRGB"
+                  >
+                    <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                    <feColorMatrix
+                      in="SourceAlpha"
+                      type="matrix"
+                      values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                      result="hardAlpha"
+                    />
+                    <feOffset dy="4" />
+                    <feGaussianBlur stdDeviation="2" />
+                    <feComposite in2="hardAlpha" operator="out" />
+                    <feColorMatrix
+                      type="matrix"
+                      values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"
+                    />
+                    <feBlend
+                      mode="normal"
+                      in2="BackgroundImageFix"
+                      result="effect1_dropShadow_1325_8727"
+                    />
+                    <feColorMatrix
+                      in="SourceAlpha"
+                      type="matrix"
+                      values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                      result="hardAlpha"
+                    />
+                    <feOffset dy="4" />
+                    <feGaussianBlur stdDeviation="2" />
+                    <feComposite in2="hardAlpha" operator="out" />
+                    <feColorMatrix
+                      type="matrix"
+                      values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"
+                    />
+                    <feBlend
+                      mode="normal"
+                      in2="effect1_dropShadow_1325_8727"
+                      result="effect2_dropShadow_1325_8727"
+                    />
+                    <feColorMatrix
+                      in="SourceAlpha"
+                      type="matrix"
+                      values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                      result="hardAlpha"
+                    />
+                    <feOffset dy="4" />
+                    <feGaussianBlur stdDeviation="2" />
+                    <feComposite in2="hardAlpha" operator="out" />
+                    <feColorMatrix
+                      type="matrix"
+                      values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"
+                    />
+                    <feBlend
+                      mode="normal"
+                      in2="effect2_dropShadow_1325_8727"
+                      result="effect3_dropShadow_1325_8727"
+                    />
+                    <feBlend
+                      mode="normal"
+                      in="SourceGraphic"
+                      in2="effect3_dropShadow_1325_8727"
+                      result="shape"
+                    />
+                  </filter>
+                </defs>
+              </svg>
+            </span>
+            روف گاردن
+          </li>
+          <li v-if="data.cooling_system === true">
+            <span class="main_details__title pl-1"
+              ><svg
+                class="mx-1"
+                width="27"
+                height="27"
+                viewBox="0 0 27 27"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <g filter="url(#filter0_ddd_1325_8727)">
+                  <path
+                    d="M8.14261 0.675293H6.1278C5.32587 0.675293 4.67578 1.32538 4.67578 2.12731V16.8726C4.67578 17.6745 5.32587 18.3246 6.1278 18.3246H8.14261C8.94453 18.3246 9.59462 17.6745 9.59462 16.8726V2.12731C9.59462 1.32538 8.94453 0.675293 8.14261 0.675293Z"
+                    stroke="#0A98FF"
+                    stroke-width="1.2"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M9.62891 2.08207H20.6597C21.1026 2.07906 21.5287 2.25135 21.845 2.56133C22.1613 2.87132 22.3422 3.29384 22.3481 3.73669V15.4991C22.3452 15.7179 22.2992 15.934 22.2127 16.1349C22.1263 16.3359 22.0011 16.5179 21.8443 16.6705C21.6875 16.8231 21.5022 16.9434 21.299 17.0243C21.0957 17.1053 20.8785 17.1455 20.6597 17.1425H9.62891"
+                    stroke="#0A98FF"
+                    stroke-width="1.2"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M19.6558 5.41406H12.5195V9.61252H19.6558V5.41406Z"
+                    stroke="#0A98FF"
+                    stroke-width="1.2"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M20.3343 13.5635H18.4883"
+                    stroke="#0A98FF"
+                    stroke-width="1.2"
+                    stroke-linejoin="round"
+                  />
+                </g>
+                <defs>
+                  <filter
+                    id="filter0_ddd_1325_8727"
+                    x="0"
+                    y="0"
+                    width="27.0234"
+                    height="27"
+                    filterUnits="userSpaceOnUse"
+                    color-interpolation-filters="sRGB"
+                  >
+                    <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                    <feColorMatrix
+                      in="SourceAlpha"
+                      type="matrix"
+                      values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                      result="hardAlpha"
+                    />
+                    <feOffset dy="4" />
+                    <feGaussianBlur stdDeviation="2" />
+                    <feComposite in2="hardAlpha" operator="out" />
+                    <feColorMatrix
+                      type="matrix"
+                      values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"
+                    />
+                    <feBlend
+                      mode="normal"
+                      in2="BackgroundImageFix"
+                      result="effect1_dropShadow_1325_8727"
+                    />
+                    <feColorMatrix
+                      in="SourceAlpha"
+                      type="matrix"
+                      values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                      result="hardAlpha"
+                    />
+                    <feOffset dy="4" />
+                    <feGaussianBlur stdDeviation="2" />
+                    <feComposite in2="hardAlpha" operator="out" />
+                    <feColorMatrix
+                      type="matrix"
+                      values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"
+                    />
+                    <feBlend
+                      mode="normal"
+                      in2="effect1_dropShadow_1325_8727"
+                      result="effect2_dropShadow_1325_8727"
+                    />
+                    <feColorMatrix
+                      in="SourceAlpha"
+                      type="matrix"
+                      values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                      result="hardAlpha"
+                    />
+                    <feOffset dy="4" />
+                    <feGaussianBlur stdDeviation="2" />
+                    <feComposite in2="hardAlpha" operator="out" />
+                    <feColorMatrix
+                      type="matrix"
+                      values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"
+                    />
+                    <feBlend
+                      mode="normal"
+                      in2="effect2_dropShadow_1325_8727"
+                      result="effect3_dropShadow_1325_8727"
+                    />
+                    <feBlend
+                      mode="normal"
+                      in="SourceGraphic"
+                      in2="effect3_dropShadow_1325_8727"
+                      result="shape"
+                    />
+                  </filter>
+                </defs>
+              </svg>
+            </span>
+            سیستم خنک کننده
+          </li>
+          <li v-if="data.roof_garden === true">
+            <span class="main_details__title pl-1"
+              ><svg
+                class="mx-1"
+                width="27"
+                height="27"
+                viewBox="0 0 27 27"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <g filter="url(#filter0_ddd_1325_8727)">
+                  <path
+                    d="M8.14261 0.675293H6.1278C5.32587 0.675293 4.67578 1.32538 4.67578 2.12731V16.8726C4.67578 17.6745 5.32587 18.3246 6.1278 18.3246H8.14261C8.94453 18.3246 9.59462 17.6745 9.59462 16.8726V2.12731C9.59462 1.32538 8.94453 0.675293 8.14261 0.675293Z"
+                    stroke="#0A98FF"
+                    stroke-width="1.2"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M9.62891 2.08207H20.6597C21.1026 2.07906 21.5287 2.25135 21.845 2.56133C22.1613 2.87132 22.3422 3.29384 22.3481 3.73669V15.4991C22.3452 15.7179 22.2992 15.934 22.2127 16.1349C22.1263 16.3359 22.0011 16.5179 21.8443 16.6705C21.6875 16.8231 21.5022 16.9434 21.299 17.0243C21.0957 17.1053 20.8785 17.1455 20.6597 17.1425H9.62891"
+                    stroke="#0A98FF"
+                    stroke-width="1.2"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M19.6558 5.41406H12.5195V9.61252H19.6558V5.41406Z"
+                    stroke="#0A98FF"
+                    stroke-width="1.2"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M20.3343 13.5635H18.4883"
+                    stroke="#0A98FF"
+                    stroke-width="1.2"
+                    stroke-linejoin="round"
+                  />
+                </g>
+                <defs>
+                  <filter
+                    id="filter0_ddd_1325_8727"
+                    x="0"
+                    y="0"
+                    width="27.0234"
+                    height="27"
+                    filterUnits="userSpaceOnUse"
+                    color-interpolation-filters="sRGB"
+                  >
+                    <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                    <feColorMatrix
+                      in="SourceAlpha"
+                      type="matrix"
+                      values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                      result="hardAlpha"
+                    />
+                    <feOffset dy="4" />
+                    <feGaussianBlur stdDeviation="2" />
+                    <feComposite in2="hardAlpha" operator="out" />
+                    <feColorMatrix
+                      type="matrix"
+                      values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"
+                    />
+                    <feBlend
+                      mode="normal"
+                      in2="BackgroundImageFix"
+                      result="effect1_dropShadow_1325_8727"
+                    />
+                    <feColorMatrix
+                      in="SourceAlpha"
+                      type="matrix"
+                      values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                      result="hardAlpha"
+                    />
+                    <feOffset dy="4" />
+                    <feGaussianBlur stdDeviation="2" />
+                    <feComposite in2="hardAlpha" operator="out" />
+                    <feColorMatrix
+                      type="matrix"
+                      values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"
+                    />
+                    <feBlend
+                      mode="normal"
+                      in2="effect1_dropShadow_1325_8727"
+                      result="effect2_dropShadow_1325_8727"
+                    />
+                    <feColorMatrix
+                      in="SourceAlpha"
+                      type="matrix"
+                      values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                      result="hardAlpha"
+                    />
+                    <feOffset dy="4" />
+                    <feGaussianBlur stdDeviation="2" />
+                    <feComposite in2="hardAlpha" operator="out" />
+                    <feColorMatrix
+                      type="matrix"
+                      values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"
+                    />
+                    <feBlend
+                      mode="normal"
+                      in2="effect2_dropShadow_1325_8727"
+                      result="effect3_dropShadow_1325_8727"
+                    />
+                    <feBlend
+                      mode="normal"
+                      in="SourceGraphic"
+                      in2="effect3_dropShadow_1325_8727"
+                      result="shape"
+                    />
+                  </filter>
+                </defs>
+              </svg>
+            </span>
+            روف گاردن
+          </li>
+          <li v-if="data.heating_system === true">
+            <span class="main_details__title pl-1"
+              ><svg
+                class="mx-1"
+                width="27"
+                height="27"
+                viewBox="0 0 27 27"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <g filter="url(#filter0_ddd_1325_8727)">
+                  <path
+                    d="M8.14261 0.675293H6.1278C5.32587 0.675293 4.67578 1.32538 4.67578 2.12731V16.8726C4.67578 17.6745 5.32587 18.3246 6.1278 18.3246H8.14261C8.94453 18.3246 9.59462 17.6745 9.59462 16.8726V2.12731C9.59462 1.32538 8.94453 0.675293 8.14261 0.675293Z"
+                    stroke="#0A98FF"
+                    stroke-width="1.2"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M9.62891 2.08207H20.6597C21.1026 2.07906 21.5287 2.25135 21.845 2.56133C22.1613 2.87132 22.3422 3.29384 22.3481 3.73669V15.4991C22.3452 15.7179 22.2992 15.934 22.2127 16.1349C22.1263 16.3359 22.0011 16.5179 21.8443 16.6705C21.6875 16.8231 21.5022 16.9434 21.299 17.0243C21.0957 17.1053 20.8785 17.1455 20.6597 17.1425H9.62891"
+                    stroke="#0A98FF"
+                    stroke-width="1.2"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M19.6558 5.41406H12.5195V9.61252H19.6558V5.41406Z"
+                    stroke="#0A98FF"
+                    stroke-width="1.2"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M20.3343 13.5635H18.4883"
+                    stroke="#0A98FF"
+                    stroke-width="1.2"
+                    stroke-linejoin="round"
+                  />
+                </g>
+                <defs>
+                  <filter
+                    id="filter0_ddd_1325_8727"
+                    x="0"
+                    y="0"
+                    width="27.0234"
+                    height="27"
+                    filterUnits="userSpaceOnUse"
+                    color-interpolation-filters="sRGB"
+                  >
+                    <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                    <feColorMatrix
+                      in="SourceAlpha"
+                      type="matrix"
+                      values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                      result="hardAlpha"
+                    />
+                    <feOffset dy="4" />
+                    <feGaussianBlur stdDeviation="2" />
+                    <feComposite in2="hardAlpha" operator="out" />
+                    <feColorMatrix
+                      type="matrix"
+                      values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"
+                    />
+                    <feBlend
+                      mode="normal"
+                      in2="BackgroundImageFix"
+                      result="effect1_dropShadow_1325_8727"
+                    />
+                    <feColorMatrix
+                      in="SourceAlpha"
+                      type="matrix"
+                      values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                      result="hardAlpha"
+                    />
+                    <feOffset dy="4" />
+                    <feGaussianBlur stdDeviation="2" />
+                    <feComposite in2="hardAlpha" operator="out" />
+                    <feColorMatrix
+                      type="matrix"
+                      values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"
+                    />
+                    <feBlend
+                      mode="normal"
+                      in2="effect1_dropShadow_1325_8727"
+                      result="effect2_dropShadow_1325_8727"
+                    />
+                    <feColorMatrix
+                      in="SourceAlpha"
+                      type="matrix"
+                      values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                      result="hardAlpha"
+                    />
+                    <feOffset dy="4" />
+                    <feGaussianBlur stdDeviation="2" />
+                    <feComposite in2="hardAlpha" operator="out" />
+                    <feColorMatrix
+                      type="matrix"
+                      values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"
+                    />
+                    <feBlend
+                      mode="normal"
+                      in2="effect2_dropShadow_1325_8727"
+                      result="effect3_dropShadow_1325_8727"
+                    />
+                    <feBlend
+                      mode="normal"
+                      in="SourceGraphic"
+                      in2="effect3_dropShadow_1325_8727"
+                      result="shape"
+                    />
+                  </filter>
+                </defs>
+              </svg>
+            </span>
+            سیستم گرم کننده
+          </li>
+          <li v-if="data.gym === true">
+            <span class="main_details__title pl-1"
+              ><svg
+                class="mx-1"
+                width="27"
+                height="27"
+                viewBox="0 0 27 27"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <g filter="url(#filter0_ddd_1325_8727)">
+                  <path
+                    d="M8.14261 0.675293H6.1278C5.32587 0.675293 4.67578 1.32538 4.67578 2.12731V16.8726C4.67578 17.6745 5.32587 18.3246 6.1278 18.3246H8.14261C8.94453 18.3246 9.59462 17.6745 9.59462 16.8726V2.12731C9.59462 1.32538 8.94453 0.675293 8.14261 0.675293Z"
+                    stroke="#0A98FF"
+                    stroke-width="1.2"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M9.62891 2.08207H20.6597C21.1026 2.07906 21.5287 2.25135 21.845 2.56133C22.1613 2.87132 22.3422 3.29384 22.3481 3.73669V15.4991C22.3452 15.7179 22.2992 15.934 22.2127 16.1349C22.1263 16.3359 22.0011 16.5179 21.8443 16.6705C21.6875 16.8231 21.5022 16.9434 21.299 17.0243C21.0957 17.1053 20.8785 17.1455 20.6597 17.1425H9.62891"
+                    stroke="#0A98FF"
+                    stroke-width="1.2"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M19.6558 5.41406H12.5195V9.61252H19.6558V5.41406Z"
+                    stroke="#0A98FF"
+                    stroke-width="1.2"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M20.3343 13.5635H18.4883"
+                    stroke="#0A98FF"
+                    stroke-width="1.2"
+                    stroke-linejoin="round"
+                  />
+                </g>
+                <defs>
+                  <filter
+                    id="filter0_ddd_1325_8727"
+                    x="0"
+                    y="0"
+                    width="27.0234"
+                    height="27"
+                    filterUnits="userSpaceOnUse"
+                    color-interpolation-filters="sRGB"
+                  >
+                    <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                    <feColorMatrix
+                      in="SourceAlpha"
+                      type="matrix"
+                      values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                      result="hardAlpha"
+                    />
+                    <feOffset dy="4" />
+                    <feGaussianBlur stdDeviation="2" />
+                    <feComposite in2="hardAlpha" operator="out" />
+                    <feColorMatrix
+                      type="matrix"
+                      values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"
+                    />
+                    <feBlend
+                      mode="normal"
+                      in2="BackgroundImageFix"
+                      result="effect1_dropShadow_1325_8727"
+                    />
+                    <feColorMatrix
+                      in="SourceAlpha"
+                      type="matrix"
+                      values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                      result="hardAlpha"
+                    />
+                    <feOffset dy="4" />
+                    <feGaussianBlur stdDeviation="2" />
+                    <feComposite in2="hardAlpha" operator="out" />
+                    <feColorMatrix
+                      type="matrix"
+                      values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"
+                    />
+                    <feBlend
+                      mode="normal"
+                      in2="effect1_dropShadow_1325_8727"
+                      result="effect2_dropShadow_1325_8727"
+                    />
+                    <feColorMatrix
+                      in="SourceAlpha"
+                      type="matrix"
+                      values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                      result="hardAlpha"
+                    />
+                    <feOffset dy="4" />
+                    <feGaussianBlur stdDeviation="2" />
+                    <feComposite in2="hardAlpha" operator="out" />
+                    <feColorMatrix
+                      type="matrix"
+                      values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"
+                    />
+                    <feBlend
+                      mode="normal"
+                      in2="effect2_dropShadow_1325_8727"
+                      result="effect3_dropShadow_1325_8727"
+                    />
+                    <feBlend
+                      mode="normal"
+                      in="SourceGraphic"
+                      in2="effect3_dropShadow_1325_8727"
+                      result="shape"
+                    />
+                  </filter>
+                </defs>
+              </svg>
+            </span>
+            باشگاه
+          </li>
+          <li v-if="data.hall === true">
+            <span class="main_details__title pl-1"
+              ><svg
+                class="mx-1"
+                width="27"
+                height="27"
+                viewBox="0 0 27 27"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <g filter="url(#filter0_ddd_1325_8727)">
+                  <path
+                    d="M8.14261 0.675293H6.1278C5.32587 0.675293 4.67578 1.32538 4.67578 2.12731V16.8726C4.67578 17.6745 5.32587 18.3246 6.1278 18.3246H8.14261C8.94453 18.3246 9.59462 17.6745 9.59462 16.8726V2.12731C9.59462 1.32538 8.94453 0.675293 8.14261 0.675293Z"
+                    stroke="#0A98FF"
+                    stroke-width="1.2"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M9.62891 2.08207H20.6597C21.1026 2.07906 21.5287 2.25135 21.845 2.56133C22.1613 2.87132 22.3422 3.29384 22.3481 3.73669V15.4991C22.3452 15.7179 22.2992 15.934 22.2127 16.1349C22.1263 16.3359 22.0011 16.5179 21.8443 16.6705C21.6875 16.8231 21.5022 16.9434 21.299 17.0243C21.0957 17.1053 20.8785 17.1455 20.6597 17.1425H9.62891"
+                    stroke="#0A98FF"
+                    stroke-width="1.2"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M19.6558 5.41406H12.5195V9.61252H19.6558V5.41406Z"
+                    stroke="#0A98FF"
+                    stroke-width="1.2"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M20.3343 13.5635H18.4883"
+                    stroke="#0A98FF"
+                    stroke-width="1.2"
+                    stroke-linejoin="round"
+                  />
+                </g>
+                <defs>
+                  <filter
+                    id="filter0_ddd_1325_8727"
+                    x="0"
+                    y="0"
+                    width="27.0234"
+                    height="27"
+                    filterUnits="userSpaceOnUse"
+                    color-interpolation-filters="sRGB"
+                  >
+                    <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                    <feColorMatrix
+                      in="SourceAlpha"
+                      type="matrix"
+                      values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                      result="hardAlpha"
+                    />
+                    <feOffset dy="4" />
+                    <feGaussianBlur stdDeviation="2" />
+                    <feComposite in2="hardAlpha" operator="out" />
+                    <feColorMatrix
+                      type="matrix"
+                      values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"
+                    />
+                    <feBlend
+                      mode="normal"
+                      in2="BackgroundImageFix"
+                      result="effect1_dropShadow_1325_8727"
+                    />
+                    <feColorMatrix
+                      in="SourceAlpha"
+                      type="matrix"
+                      values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                      result="hardAlpha"
+                    />
+                    <feOffset dy="4" />
+                    <feGaussianBlur stdDeviation="2" />
+                    <feComposite in2="hardAlpha" operator="out" />
+                    <feColorMatrix
+                      type="matrix"
+                      values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"
+                    />
+                    <feBlend
+                      mode="normal"
+                      in2="effect1_dropShadow_1325_8727"
+                      result="effect2_dropShadow_1325_8727"
+                    />
+                    <feColorMatrix
+                      in="SourceAlpha"
+                      type="matrix"
+                      values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                      result="hardAlpha"
+                    />
+                    <feOffset dy="4" />
+                    <feGaussianBlur stdDeviation="2" />
+                    <feComposite in2="hardAlpha" operator="out" />
+                    <feColorMatrix
+                      type="matrix"
+                      values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"
+                    />
+                    <feBlend
+                      mode="normal"
+                      in2="effect2_dropShadow_1325_8727"
+                      result="effect3_dropShadow_1325_8727"
+                    />
+                    <feBlend
+                      mode="normal"
+                      in="SourceGraphic"
+                      in2="effect3_dropShadow_1325_8727"
+                      result="shape"
+                    />
+                  </filter>
+                </defs>
+              </svg>
+            </span>
+
+            هال
+          </li>
+        </ul>
+      </v-row>
+      <v-row class="Equipment d-flex flex-column" v-else-if="data.estate_type === 'B'">
+        <h5>تجهیزات و امکانات</h5>
+        <ul>
+          <li v-if="data.electric_door === true">
+            <span class="main_details__title pl-1">
+              <svg
+                class="mx-1"
+                width="19"
+                height="19"
+                viewBox="0 0 19 19"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M18.3219 0.676758H0.675781V18.3228H18.3219V0.676758Z"
+                  stroke="#0A98FF"
+                  stroke-width="1.2"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M6.35156 15.1977V4.65967H11.9929C12.6692 4.65967 13.3177 4.92832 13.7959 5.40651C14.2741 5.88471 14.5428 6.53328 14.5428 7.20955V7.20955C14.5428 7.88686 14.2745 8.5366 13.7966 9.01659C13.3187 9.49658 12.6702 9.76773 11.9929 9.77071H6.35156"
+                  stroke="#0A98FF"
+                  stroke-width="1.2"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </span>
+            درب الکتریکی
+          </li>
+          <li v-if="data.protective_shutters === true">
+            <span class="main_details__title pl-1"
+              ><svg
+                class="mx-1"
+                width="20"
+                height="19"
+                viewBox="0 0 20 19"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <g clip-path="url(#clip0_1325_8702)">
+                  <path
+                    d="M9.56824 9.2959H0.679688V18.3203H9.56824V9.2959Z"
+                    stroke="#0A98FF"
+                    stroke-width="1.2"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M9.54688 9.2959H18.4468V18.3203H9.54688"
+                    stroke="#0A98FF"
+                    stroke-width="1.2"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M9.54688 18.3203V9.2959"
+                    stroke="#0A98FF"
+                    stroke-width="1.2"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M5.0625 9.29601V0.679199H13.9511V9.29601"
+                    stroke="#0A98FF"
+                    stroke-width="1.2"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M9.54688 0.679199V3.90625"
+                    stroke="#0A98FF"
+                    stroke-width="1.2"
+                    stroke-linejoin="round"
+                  />
+                </g>
+                <defs>
+                  <clipPath id="clip0_1325_8702">
+                    <rect width="19.1132" height="19" fill="white" />
+                  </clipPath>
+                </defs>
+              </svg>
+            </span>
+            محافظ کرکره
+          </li>
+          <li v-if="data.pantry === true">
+            <span class="main_details__title pl-1"
+              ><svg
+                class="mx-1"
+                width="19"
+                height="19"
+                viewBox="0 0 19 19"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <g clip-path="url(#clip0_1325_8737)">
+                  <path
+                    d="M8.20418 9.8317C8.54584 9.58985 8.95412 9.45996 9.37272 9.45996C9.79132 9.45996 10.1996 9.58985 10.5413 9.8317L17.6873 14.7643C17.9798 15.0621 18.177 15.4402 18.2536 15.8505C18.3303 16.2608 18.2831 16.6846 18.118 17.0679C17.9528 17.4512 17.6773 17.7767 17.3264 18.0028C16.9755 18.2289 16.5653 18.3453 16.148 18.3373H2.82216C2.40841 18.3432 2.00214 18.2267 1.65432 18.0025C1.3065 17.7784 1.03262 17.4565 0.867012 17.0773C0.701408 16.6981 0.651461 16.2784 0.723436 15.8709C0.795412 15.4635 0.986104 15.0863 1.2716 14.7868L8.20418 9.8317Z"
+                    stroke="#0A98FF"
+                    stroke-width="1.2"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M6.48438 3.56198C6.48438 2.78123 6.79453 2.03246 7.3466 1.48039C7.89867 0.928316 8.64745 0.618164 9.4282 0.618164C10.2089 0.618164 10.9577 0.928316 11.5098 1.48039C12.0619 2.03246 12.372 2.78123 12.372 3.56198C12.3686 3.99745 12.2656 4.42637 12.0708 4.81587C11.8761 5.20538 11.5947 5.54516 11.2484 5.80918C10.6989 6.24405 10.2569 6.79969 9.95686 7.43297C9.65678 8.06626 9.50664 8.76017 9.51808 9.46086"
+                    stroke="#0A98FF"
+                    stroke-width="1.2"
+                    stroke-linejoin="round"
+                  />
+                </g>
+                <defs>
+                  <clipPath id="clip0_1325_8737">
+                    <rect width="18.9775" height="19" fill="white" />
+                  </clipPath>
+                </defs>
+              </svg>
+            </span>
+            آبدارخانه
+          </li>
+          <li v-if="data.burglar_alarm === true">
+            <span class="main_details__title pl-1"
+              ><svg
+                class="mx-1"
+                width="14"
+                height="19"
+                viewBox="0 0 14 19"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <g clip-path="url(#clip0_1325_8692)">
+                  <path
+                    d="M11.8655 10.7358H8.63672V18.3223H11.8655V10.7358Z"
+                    stroke="#0A98FF"
+                    stroke-width="1.2"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M10.1602 2.40451C10.5153 2.40001 10.8678 2.46627 11.1971 2.59942C11.5264 2.73258 11.8258 2.92996 12.078 3.18006C12.3302 3.43016 12.5301 3.72797 12.666 4.05612C12.8019 4.38427 12.8711 4.7362 12.8696 5.09138C12.8776 5.53701 12.7732 5.97746 12.566 6.37208C12.3588 6.7667 12.0556 7.10277 11.6842 7.34925C11.2338 7.63715 10.8599 8.02991 10.5944 8.49392C10.329 8.95793 10.18 9.47935 10.1602 10.0135V10.7361"
+                    stroke="#0A98FF"
+                    stroke-width="1.2"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M1.12753 0.677246H10.159V3.89471H1.12753C1.0018 3.88328 0.885131 3.8244 0.801251 3.73003C0.717371 3.63567 0.672572 3.5129 0.67596 3.38669V1.12882C0.686134 1.01247 0.736978 0.903431 0.819562 0.820847C0.902145 0.738264 1.01119 0.68742 1.12753 0.677246V0.677246Z"
+                    stroke="#0A98FF"
+                    stroke-width="1.2"
+                    stroke-linejoin="round"
+                  />
+                </g>
+                <defs>
+                  <clipPath id="clip0_1325_8692">
+                    <rect width="13.5472" height="19" fill="white" />
+                  </clipPath>
+                </defs>
+              </svg>
+            </span>
+            دزدگیر
+          </li>
+          <li v-if="data.showcase === true">
+            <span class="main_details__title pl-1"
+              ><svg
+                class="mx-1"
+                width="19"
+                height="19"
+                viewBox="0 0 19 19"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <g clip-path="url(#clip0_1325_8713)">
+                  <path
+                    d="M0 12.877H3.51185H6.49467H9.45498H12.3703H15.2518H18.8987"
+                    stroke="#0A98FF"
+                    stroke-width="1.2"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M17.4802 12.877H1.41797V18.3361H17.4802V12.877Z"
+                    stroke="#0A98FF"
+                    stroke-width="1.2"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M9.45312 0.675293V3.89449V12.8767V18.3246"
+                    stroke="#0A98FF"
+                    stroke-width="1.2"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M3.30859 4.24365H9.45433H15.465"
+                    stroke="#0A98FF"
+                    stroke-width="1.2"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M5.26953 18.3248V12.877"
+                    stroke="#0A98FF"
+                    stroke-width="1.2"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M13.4961 18.3248V12.877"
+                    stroke="#0A98FF"
+                    stroke-width="1.2"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M3.29688 12.8767V0.675293H15.4533V12.8767"
+                    stroke="#0A98FF"
+                    stroke-width="1.2"
+                    stroke-linejoin="round"
+                  />
+                </g>
+                <defs>
+                  <clipPath id="clip0_1325_8713">
+                    <rect width="18.8987" height="19" fill="white" />
+                  </clipPath>
+                </defs>
+              </svg>
+            </span>
+            ویترین
+          </li>
+          <li v-if="data.shelf === true">
+            <span class="main_details__title pl-1"
+              ><svg
+                class="mx-1"
+                width="27"
+                height="27"
+                viewBox="0 0 27 27"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <g filter="url(#filter0_ddd_1325_8727)">
+                  <path
+                    d="M8.14261 0.675293H6.1278C5.32587 0.675293 4.67578 1.32538 4.67578 2.12731V16.8726C4.67578 17.6745 5.32587 18.3246 6.1278 18.3246H8.14261C8.94453 18.3246 9.59462 17.6745 9.59462 16.8726V2.12731C9.59462 1.32538 8.94453 0.675293 8.14261 0.675293Z"
+                    stroke="#0A98FF"
+                    stroke-width="1.2"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M9.62891 2.08207H20.6597C21.1026 2.07906 21.5287 2.25135 21.845 2.56133C22.1613 2.87132 22.3422 3.29384 22.3481 3.73669V15.4991C22.3452 15.7179 22.2992 15.934 22.2127 16.1349C22.1263 16.3359 22.0011 16.5179 21.8443 16.6705C21.6875 16.8231 21.5022 16.9434 21.299 17.0243C21.0957 17.1053 20.8785 17.1455 20.6597 17.1425H9.62891"
+                    stroke="#0A98FF"
+                    stroke-width="1.2"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M19.6558 5.41406H12.5195V9.61252H19.6558V5.41406Z"
+                    stroke="#0A98FF"
+                    stroke-width="1.2"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M20.3343 13.5635H18.4883"
+                    stroke="#0A98FF"
+                    stroke-width="1.2"
+                    stroke-linejoin="round"
+                  />
+                </g>
+                <defs>
+                  <filter
+                    id="filter0_ddd_1325_8727"
+                    x="0"
+                    y="0"
+                    width="27.0234"
+                    height="27"
+                    filterUnits="userSpaceOnUse"
+                    color-interpolation-filters="sRGB"
+                  >
+                    <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                    <feColorMatrix
+                      in="SourceAlpha"
+                      type="matrix"
+                      values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                      result="hardAlpha"
+                    />
+                    <feOffset dy="4" />
+                    <feGaussianBlur stdDeviation="2" />
+                    <feComposite in2="hardAlpha" operator="out" />
+                    <feColorMatrix
+                      type="matrix"
+                      values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"
+                    />
+                    <feBlend
+                      mode="normal"
+                      in2="BackgroundImageFix"
+                      result="effect1_dropShadow_1325_8727"
+                    />
+                    <feColorMatrix
+                      in="SourceAlpha"
+                      type="matrix"
+                      values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                      result="hardAlpha"
+                    />
+                    <feOffset dy="4" />
+                    <feGaussianBlur stdDeviation="2" />
+                    <feComposite in2="hardAlpha" operator="out" />
+                    <feColorMatrix
+                      type="matrix"
+                      values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"
+                    />
+                    <feBlend
+                      mode="normal"
+                      in2="effect1_dropShadow_1325_8727"
+                      result="effect2_dropShadow_1325_8727"
+                    />
+                    <feColorMatrix
+                      in="SourceAlpha"
+                      type="matrix"
+                      values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                      result="hardAlpha"
+                    />
+                    <feOffset dy="4" />
+                    <feGaussianBlur stdDeviation="2" />
+                    <feComposite in2="hardAlpha" operator="out" />
+                    <feColorMatrix
+                      type="matrix"
+                      values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"
+                    />
+                    <feBlend
+                      mode="normal"
+                      in2="effect2_dropShadow_1325_8727"
+                      result="effect3_dropShadow_1325_8727"
+                    />
+                    <feBlend
+                      mode="normal"
+                      in="SourceGraphic"
+                      in2="effect3_dropShadow_1325_8727"
+                      result="shape"
+                    />
+                  </filter>
+                </defs>
+              </svg>
+            </span>
+            تاقچه
+          </li>
+          <li v-if="data.fire_alarm === true">
+            <span class="main_details__title pl-1"
+              ><svg
+                class="mx-1"
+                width="27"
+                height="27"
+                viewBox="0 0 27 27"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <g filter="url(#filter0_ddd_1325_8727)">
+                  <path
+                    d="M8.14261 0.675293H6.1278C5.32587 0.675293 4.67578 1.32538 4.67578 2.12731V16.8726C4.67578 17.6745 5.32587 18.3246 6.1278 18.3246H8.14261C8.94453 18.3246 9.59462 17.6745 9.59462 16.8726V2.12731C9.59462 1.32538 8.94453 0.675293 8.14261 0.675293Z"
+                    stroke="#0A98FF"
+                    stroke-width="1.2"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M9.62891 2.08207H20.6597C21.1026 2.07906 21.5287 2.25135 21.845 2.56133C22.1613 2.87132 22.3422 3.29384 22.3481 3.73669V15.4991C22.3452 15.7179 22.2992 15.934 22.2127 16.1349C22.1263 16.3359 22.0011 16.5179 21.8443 16.6705C21.6875 16.8231 21.5022 16.9434 21.299 17.0243C21.0957 17.1053 20.8785 17.1455 20.6597 17.1425H9.62891"
+                    stroke="#0A98FF"
+                    stroke-width="1.2"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M19.6558 5.41406H12.5195V9.61252H19.6558V5.41406Z"
+                    stroke="#0A98FF"
+                    stroke-width="1.2"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M20.3343 13.5635H18.4883"
+                    stroke="#0A98FF"
+                    stroke-width="1.2"
+                    stroke-linejoin="round"
+                  />
+                </g>
+                <defs>
+                  <filter
+                    id="filter0_ddd_1325_8727"
+                    x="0"
+                    y="0"
+                    width="27.0234"
+                    height="27"
+                    filterUnits="userSpaceOnUse"
+                    color-interpolation-filters="sRGB"
+                  >
+                    <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                    <feColorMatrix
+                      in="SourceAlpha"
+                      type="matrix"
+                      values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                      result="hardAlpha"
+                    />
+                    <feOffset dy="4" />
+                    <feGaussianBlur stdDeviation="2" />
+                    <feComposite in2="hardAlpha" operator="out" />
+                    <feColorMatrix
+                      type="matrix"
+                      values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"
+                    />
+                    <feBlend
+                      mode="normal"
+                      in2="BackgroundImageFix"
+                      result="effect1_dropShadow_1325_8727"
+                    />
+                    <feColorMatrix
+                      in="SourceAlpha"
+                      type="matrix"
+                      values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                      result="hardAlpha"
+                    />
+                    <feOffset dy="4" />
+                    <feGaussianBlur stdDeviation="2" />
+                    <feComposite in2="hardAlpha" operator="out" />
+                    <feColorMatrix
+                      type="matrix"
+                      values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"
+                    />
+                    <feBlend
+                      mode="normal"
+                      in2="effect1_dropShadow_1325_8727"
+                      result="effect2_dropShadow_1325_8727"
+                    />
+                    <feColorMatrix
+                      in="SourceAlpha"
+                      type="matrix"
+                      values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                      result="hardAlpha"
+                    />
+                    <feOffset dy="4" />
+                    <feGaussianBlur stdDeviation="2" />
+                    <feComposite in2="hardAlpha" operator="out" />
+                    <feColorMatrix
+                      type="matrix"
+                      values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"
+                    />
+                    <feBlend
+                      mode="normal"
+                      in2="effect2_dropShadow_1325_8727"
+                      result="effect3_dropShadow_1325_8727"
+                    />
+                    <feBlend
+                      mode="normal"
+                      in="SourceGraphic"
+                      in2="effect3_dropShadow_1325_8727"
+                      result="shape"
+                    />
+                  </filter>
+                </defs>
+              </svg>
+            </span>
+            زنگ خطر آتش
+          </li>
+          <li v-if="data.wall_around === true">
+            <span class="main_details__title pl-1"
+              ><svg
+                class="mx-1"
+                width="27"
+                height="27"
+                viewBox="0 0 27 27"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <g filter="url(#filter0_ddd_1325_8727)">
+                  <path
+                    d="M8.14261 0.675293H6.1278C5.32587 0.675293 4.67578 1.32538 4.67578 2.12731V16.8726C4.67578 17.6745 5.32587 18.3246 6.1278 18.3246H8.14261C8.94453 18.3246 9.59462 17.6745 9.59462 16.8726V2.12731C9.59462 1.32538 8.94453 0.675293 8.14261 0.675293Z"
+                    stroke="#0A98FF"
+                    stroke-width="1.2"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M9.62891 2.08207H20.6597C21.1026 2.07906 21.5287 2.25135 21.845 2.56133C22.1613 2.87132 22.3422 3.29384 22.3481 3.73669V15.4991C22.3452 15.7179 22.2992 15.934 22.2127 16.1349C22.1263 16.3359 22.0011 16.5179 21.8443 16.6705C21.6875 16.8231 21.5022 16.9434 21.299 17.0243C21.0957 17.1053 20.8785 17.1455 20.6597 17.1425H9.62891"
+                    stroke="#0A98FF"
+                    stroke-width="1.2"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M19.6558 5.41406H12.5195V9.61252H19.6558V5.41406Z"
+                    stroke="#0A98FF"
+                    stroke-width="1.2"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M20.3343 13.5635H18.4883"
+                    stroke="#0A98FF"
+                    stroke-width="1.2"
+                    stroke-linejoin="round"
+                  />
+                </g>
+                <defs>
+                  <filter
+                    id="filter0_ddd_1325_8727"
+                    x="0"
+                    y="0"
+                    width="27.0234"
+                    height="27"
+                    filterUnits="userSpaceOnUse"
+                    color-interpolation-filters="sRGB"
+                  >
+                    <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                    <feColorMatrix
+                      in="SourceAlpha"
+                      type="matrix"
+                      values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                      result="hardAlpha"
+                    />
+                    <feOffset dy="4" />
+                    <feGaussianBlur stdDeviation="2" />
+                    <feComposite in2="hardAlpha" operator="out" />
+                    <feColorMatrix
+                      type="matrix"
+                      values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"
+                    />
+                    <feBlend
+                      mode="normal"
+                      in2="BackgroundImageFix"
+                      result="effect1_dropShadow_1325_8727"
+                    />
+                    <feColorMatrix
+                      in="SourceAlpha"
+                      type="matrix"
+                      values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                      result="hardAlpha"
+                    />
+                    <feOffset dy="4" />
+                    <feGaussianBlur stdDeviation="2" />
+                    <feComposite in2="hardAlpha" operator="out" />
+                    <feColorMatrix
+                      type="matrix"
+                      values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"
+                    />
+                    <feBlend
+                      mode="normal"
+                      in2="effect1_dropShadow_1325_8727"
+                      result="effect2_dropShadow_1325_8727"
+                    />
+                    <feColorMatrix
+                      in="SourceAlpha"
+                      type="matrix"
+                      values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                      result="hardAlpha"
+                    />
+                    <feOffset dy="4" />
+                    <feGaussianBlur stdDeviation="2" />
+                    <feComposite in2="hardAlpha" operator="out" />
+                    <feColorMatrix
+                      type="matrix"
+                      values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"
+                    />
+                    <feBlend
+                      mode="normal"
+                      in2="effect2_dropShadow_1325_8727"
+                      result="effect3_dropShadow_1325_8727"
+                    />
+                    <feBlend
+                      mode="normal"
+                      in="SourceGraphic"
+                      in2="effect3_dropShadow_1325_8727"
+                      result="shape"
+                    />
+                  </filter>
+                </defs>
+              </svg>
+            </span>
+            دیوار در اطراف
+          </li>
+          <li v-if="data.water_well === true">
+            <span class="main_details__title pl-1"
+              ><svg
+                class="mx-1"
+                width="27"
+                height="27"
+                viewBox="0 0 27 27"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <g filter="url(#filter0_ddd_1325_8727)">
+                  <path
+                    d="M8.14261 0.675293H6.1278C5.32587 0.675293 4.67578 1.32538 4.67578 2.12731V16.8726C4.67578 17.6745 5.32587 18.3246 6.1278 18.3246H8.14261C8.94453 18.3246 9.59462 17.6745 9.59462 16.8726V2.12731C9.59462 1.32538 8.94453 0.675293 8.14261 0.675293Z"
+                    stroke="#0A98FF"
+                    stroke-width="1.2"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M9.62891 2.08207H20.6597C21.1026 2.07906 21.5287 2.25135 21.845 2.56133C22.1613 2.87132 22.3422 3.29384 22.3481 3.73669V15.4991C22.3452 15.7179 22.2992 15.934 22.2127 16.1349C22.1263 16.3359 22.0011 16.5179 21.8443 16.6705C21.6875 16.8231 21.5022 16.9434 21.299 17.0243C21.0957 17.1053 20.8785 17.1455 20.6597 17.1425H9.62891"
+                    stroke="#0A98FF"
+                    stroke-width="1.2"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M19.6558 5.41406H12.5195V9.61252H19.6558V5.41406Z"
+                    stroke="#0A98FF"
+                    stroke-width="1.2"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M20.3343 13.5635H18.4883"
+                    stroke="#0A98FF"
+                    stroke-width="1.2"
+                    stroke-linejoin="round"
+                  />
+                </g>
+                <defs>
+                  <filter
+                    id="filter0_ddd_1325_8727"
+                    x="0"
+                    y="0"
+                    width="27.0234"
+                    height="27"
+                    filterUnits="userSpaceOnUse"
+                    color-interpolation-filters="sRGB"
+                  >
+                    <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                    <feColorMatrix
+                      in="SourceAlpha"
+                      type="matrix"
+                      values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                      result="hardAlpha"
+                    />
+                    <feOffset dy="4" />
+                    <feGaussianBlur stdDeviation="2" />
+                    <feComposite in2="hardAlpha" operator="out" />
+                    <feColorMatrix
+                      type="matrix"
+                      values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"
+                    />
+                    <feBlend
+                      mode="normal"
+                      in2="BackgroundImageFix"
+                      result="effect1_dropShadow_1325_8727"
+                    />
+                    <feColorMatrix
+                      in="SourceAlpha"
+                      type="matrix"
+                      values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                      result="hardAlpha"
+                    />
+                    <feOffset dy="4" />
+                    <feGaussianBlur stdDeviation="2" />
+                    <feComposite in2="hardAlpha" operator="out" />
+                    <feColorMatrix
+                      type="matrix"
+                      values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"
+                    />
+                    <feBlend
+                      mode="normal"
+                      in2="effect1_dropShadow_1325_8727"
+                      result="effect2_dropShadow_1325_8727"
+                    />
+                    <feColorMatrix
+                      in="SourceAlpha"
+                      type="matrix"
+                      values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                      result="hardAlpha"
+                    />
+                    <feOffset dy="4" />
+                    <feGaussianBlur stdDeviation="2" />
+                    <feComposite in2="hardAlpha" operator="out" />
+                    <feColorMatrix
+                      type="matrix"
+                      values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"
+                    />
+                    <feBlend
+                      mode="normal"
+                      in2="effect2_dropShadow_1325_8727"
+                      result="effect3_dropShadow_1325_8727"
+                    />
+                    <feBlend
+                      mode="normal"
+                      in="SourceGraphic"
+                      in2="effect3_dropShadow_1325_8727"
+                      result="shape"
+                    />
+                  </filter>
+                </defs>
+              </svg>
+            </span>
+            چاه آب
           </li>
         </ul>
       </v-row>
@@ -752,7 +3350,7 @@ h5 {
   font-weight: 400;
   line-height: 25px;
   letter-spacing: -0.011em;
-  text-align: right;
+  text-align: justify;
   color: #5d5f67 !important;
 }
 .bordr {
@@ -812,8 +3410,6 @@ h5 {
   letter-spacing: -0.011em;
   text-align: right;
   color: #545663;
-}
-.Floor ul {
 }
 .v-expansion-panel-header {
   background: #f8f8f8;

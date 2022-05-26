@@ -1,7 +1,6 @@
 <template>
 <div class="larg_container">
   <div class="gallery-container">
-    
       <v-row class="d-flex flex-row">
         <v-col cols="12">
           <h4>بهشت خودت رو پیدا کن !</h4>
@@ -39,7 +38,6 @@
                 <div class="overlay"></div>
                 <div class="text">{{ items.text }}</div>
                 <div class="detailes">۳,۴۳۸ ملک ثبت شده</div>
-                <img :src="items.imges" alt="" />
               </div>
               <div class="overlay"></div>
               <div class="text">{{ items.text }}</div>
@@ -160,8 +158,7 @@ height: 61px;
 .gallery:hover .overlay {
 }
 .gallery_img:hover .overlay {
-  display: none;
-  transition: all ease-in-out 0.3s;
+opacity: .2;  transition: all ease-in-out 0.3s;
 }
 .gallery_img .overlay {
   position: absolute;

@@ -22,7 +22,7 @@ export default {
 .gallery{
     width: 100%;
     height: 410px;
-    overflow: hidden;
+    overflow: hidden!important;
     border-radius: 10px;
     display: flex;
     flex-direction: column;
@@ -76,7 +76,24 @@ object-fit: cover;
 padding: 50px;
 }
 
-@media screen and (max-width: 960px) {
- 
+@media screen and (max-width: 600px) {
+
+.gallery{
+    width: 100%;
+    height: 370px;
+    flex-direction: row;
+    overflow: hidden!important;
+
+}  .gallery .gallery_img:first-child{
+      height: 75%!important;
+    width: 100%!important;
+}
+ .gallery_img{
+height:27%!important;
+    opacity: 1;
+    width: 33%!important;
+    cursor: pointer;
+    padding: 7px 2px;
+}
 }
 </style>

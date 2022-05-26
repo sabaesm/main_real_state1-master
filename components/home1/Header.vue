@@ -1,5 +1,5 @@
 <template>
-  <div class="main_section" >
+  <div class="main_section">
     <div class="medium_container">
       <div class="header-info pt-5" v-for="data in data" :key="data.id">
         <h5>{{ data.homePage_header }}</h5>
@@ -9,7 +9,7 @@
       <div class="d-flex flex-row justify-space-between align-center">
         <v-col cols="10">
           <form action="" class="">
-            <div class="region  search_bar">
+            <div class="region search_bar">
               <label for=""> منطقه : </label>
               <input
                 type="text"
@@ -109,9 +109,9 @@ export default {
       };
     },
     async handleSearch() {
-      console.log(this.valueInput)
+      console.log(this.valueInput);
       const httpRequest = await getSearch(keyword);
-      console.log(httpRequest)
+      console.log(httpRequest);
     },
   },
   mounted() {},
@@ -119,7 +119,6 @@ export default {
 </script>
 <style scoped>
 /*search */
-
 
 .main_section {
   padding: 200px 0 100px 0 !important;
@@ -148,13 +147,13 @@ h2 {
 }
 
 p {
-font-size: 13px;
-font-weight: 400;
-line-height: 22px;
-letter-spacing: 0em;
-text-align: right;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 22px;
+  letter-spacing: 0em;
+  text-align: right;
   width: 50% !important;
-  opacity: .6;
+  opacity: 0.6;
 }
 
 h5 {
@@ -182,16 +181,16 @@ form {
   flex-direction: row;
   justify-content: space-around;
 }
-.search_bar{
-opacity: 0.9!important;
-  border-radius: 10px!important;
-height: 58px;
+.search_bar {
+  opacity: 0.9 !important;
+  border-radius: 10px !important;
+  height: 58px;
+  position: relative;
 }
-.search_bar:hover{
-opacity: 1!important;
-transition: all ease-in-out .2s;
-box-shadow: 0px 0px 52px -10px rgba(0, 0, 0, 0.29)!important;
-
+.search_bar:hover {
+  opacity: 1 !important;
+  transition: all ease-in-out 0.2s;
+  box-shadow: 0px 0px 52px -10px rgba(0, 0, 0, 0.29) !important;
 }
 .region {
   background-color: #ffff;
@@ -262,5 +261,13 @@ input {
   letter-spacing: -0.05em;
   text-align: left;
   opacity: 0.8;
+}
+
+select {
+  background-color: #ffff;
+  width: 100% !important;
+  position: absolute;
+  top: 100%;
+  outline: none;
 }
 </style>

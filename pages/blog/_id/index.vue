@@ -1,7 +1,7 @@
 <template>
   <v-app>
+  
     <div class="mainPage">
-      text : {{ $route.params.id }}
       <Header2 class="mb-5"></Header2>
       <div class="medium_container">
         <div class="mb-5">
@@ -26,7 +26,7 @@ import Header2 from "../../../components/blogDtailes/Header2.vue";
 import weblogCard from "../../../components/blogDtailes/weblogCard.vue";
 import search from "../../../components/blogDtailes/dtaileSearch.vue";
 import cardDtaile from "../../../components/blogDtailes/dtailesCard.vue";
-import { getBlogDynamic } from "../../../service/getApi";
+import { getBlog, getBlogDynamic } from "../../../service/getApi";
 export default {
   components: {
     Blog,
@@ -43,9 +43,10 @@ export default {
 
   /* extracting url params */
   mounted() {
+    // consol.log('dynamic routs')
     getBlogDynamic(this.$route.params.id)
-      .then((res) => (this.getBlogDynamic = res.data.results))
-      .then((res) => console.log(res));
+      .then((res) => (this.getBlogDynamic = res.data ))
+
   },
   layout: "user",
 };

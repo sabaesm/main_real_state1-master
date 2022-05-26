@@ -25,7 +25,7 @@
                   >
                     <img :src="data.picture" alt="" />
                   </div>
-                  <div class="bottom_section d-flex flex-column align-center ">
+                  <div class="bottom_section d-flex flex-column align-center">
                     <svg
                       width="189"
                       height="123"
@@ -3926,11 +3926,10 @@
                         fill="#519FFF"
                       />
                     </svg>
-                    <h5 >{{ data.full_name }}</h5>
-                    <p class="Experience">{{ data.activity_type }}</p>
+                    <h5>{{ data.username }}</h5>
+                    <p class="Experience">{{ data.activity }}</p>
                     <p class="detailes px-2">
-                      اگر شما یک طراح هستین و یا با طراحی های گرافیکی سروکار دارید به متن
-                      های برخورده اید که با نام لورم ایپسوم شناخته می‌شوند.
+                      {{ data.description.substring(0, 50) }}
                     </p>
                   </div>
                 </div>
@@ -4004,6 +4003,7 @@
 </template>
 <script>
 import { directive } from "vue-awesome-swiper";
+
 export default {
   name: "my_Slider",
   directives: {
@@ -4087,8 +4087,6 @@ h2 {
   font-size: 30px;
   font-weight: 500px;
 }
-.consultans-container {
-}
 .main_card {
   margin-top: 30px;
 
@@ -4115,17 +4113,23 @@ h2 {
 .bottom_section {
   position: absolute;
   bottom: 15px;
+  width: 100%;
 }
-
 .top_section {
   text-align: center;
+  position: relative!important;
+}
+.bottom_section svg {
+  position: absolute;
+bottom: 120%!important;
 }
 .top_section img {
   width: 150px;
   height: 150px;
   border-radius: 100%;
-  border: 3.82051px solid #519fff;
-  position: absolute;
+box-shadow: 0px 0px 0px 6.6859px #ffff ;
+border: 5px solid #519FFF;
+ position: absolute;
   z-index: 22;
 }
 .bottom_section h5 {
@@ -4134,6 +4138,7 @@ h2 {
   line-height: 24px;
   letter-spacing: -0.035em;
   padding: 10px 0;
+  color: #101737 !important;
 }
 .bottom_section .detailes {
   font-size: 11px;
@@ -4150,8 +4155,7 @@ h2 {
   letter-spacing: -0.021em;
   color: #8a8989;
 }
-.bottom_section svg {
-}
+
 .arrows {
   position: absolute;
   top: 0;

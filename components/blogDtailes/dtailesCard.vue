@@ -356,6 +356,7 @@ export default {
   },
   props: ["data"],
   mounted() {
+    console.log('hi');
     console.log(this.data);
   },
 };

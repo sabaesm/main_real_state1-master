@@ -89,7 +89,6 @@
   </v-app>
 </template> -->
 <template>
-  <v-app>
     <div>
       <form action="">
         <v-col cols="12" class="pa-0 ma-0">
@@ -124,10 +123,11 @@
                   <option value="L">زمین</option>
                   <option value="A">آپارتمان</option>
                   <option value="B">مغازه و تجاری</option>
+                  <option value="V">ویلا  </option>
                 </select>
               </div>
               <div  class="filter__card__detaile">
-              <div v-if="this.estate_type === null || this.estate_type === ''">هر مکانی</div>
+              <div v-if="this.estate_type === null || this.estate_type === '' ">هر مکانی</div>
               <div v-else-if="this.estate_type !== null">
                 <!-- <div class="filter__card__detaile" v-if="this.estate_type === 'V'">
                   ویلا
@@ -146,16 +146,18 @@
                 </div>
                 <div class="filter__card__detaile" v-if="this.estate_type === 'B'">
                   مغازه تجاری
+                </div> <div class="filter__card__detaile" v-if="this.estate_type === 'V'">
+                   ویلا
                 </div>
               </div>
               </div>
             </li>
           </ul>
-          <span class="filter__card__detaile"> {{ this.unit_price__lte }} </span>
-          <span class="filter__card__detaile"> {{ this.unit_price__gte }} </span>
-          <v-col class="d-flex" cols="12" sm="6">
+          <!-- <span class="filter__card__detaile"> {{ this.unit_price__lte }} </span> -->
+          <!-- <span class="filter__card__detaile"> {{ this.unit_price__gte }} </span> -->
+          <!-- <v-col class="d-flex" cols="12" sm="6">
             <v-select :items="itema" label="Select" item-text="state" filled></v-select>
-          </v-col>
+          </v-col> -->
           <nuxt-link
             :to="{
               name: 'propertyCode',
@@ -173,7 +175,6 @@
         </v-col>
       </form>
     </div>
-  </v-app>
 </template>
 <script>
 export default {

@@ -96,6 +96,7 @@
           </div>
         </div>
       </div>
+      <div class=" test">
       <div v-swiper="swiperOption" class="w-5/6 ml-auto relative custom_swiper_container">
         <ul class="swiper-wrapper test">
           <li
@@ -133,7 +134,6 @@
                         <span class="salecard_product__text">فروش ویژه</span>
                       </span>
                     </div>
-
                     <div class="card_icons" v-if="data.Transaction === 'P'">
                       <span class="sale__status_v"> پیش فروش</span>
                     </div>
@@ -251,32 +251,53 @@
                   {{ data.title.substring(0, 50) }}
                 </h5>
                 <ul class="home__desctiption">
-                  <li v-if="data.land_size !== null">{{ data.land_size }} متر مربع</li>
-                  <li v-if="data.building_size !== null">{{ data.building_size }} متر مربع </li>
+                  <li v-if="data.land_size !== null">
+                  {{ data.land_size }} متر مربع
+                  </li>
+                  <li v-if="data.building_size !== null">
+                    {{ data.building_size }} متر مربع
+                  </li>
                   <li v-if="data.dang !== null">{{ data.dang }} دنگ</li>
                   <li v-if="data.rooms !== null">{{ data.rooms }} خواب</li>
-                  <li v-if="data.wc !== null"> دستشویی:{{ data.wc }} عدد</li>
-                  <li v-if="data.master !== null"> حمام:{{ data.master }} عدد</li>
-                  <li v-if="data.view !== null">{{ data.view }} </li>
-                  <li v-if="data.in_material !== null">{{ data.in_material }} </li>
-                  <li v-if="data.ex_material !== null">{{ data.ex_material }} </li>
-                  <li v-if="data.floorCover !== null">{{ data.floorCover }} </li>
+                  <li v-if="data.wc !== null">دستشویی:{{ data.wc }} عدد</li>
+                  <li v-if="data.master !== null">حمام:{{ data.master }} عدد</li>
+                  <li v-if="data.view !== null">{{ data.view }}</li>
+                  <li v-if="data.in_material !== null">{{ data.in_material }}</li>
+                  <li v-if="data.ex_material !== null">{{ data.ex_material }}</li>
+                  <li v-if="data.floorCover !== null">{{ data.floorCover }}</li>
                   <li v-if="data.cabinets !== null">{{ data.cabinets }} دارد</li>
-                  <li v-if="data.building_age !== null">{{ data.building_age }} سال ساخت</li>
-                  <li v-if="data.document_type !== null">{{ data.document_type }} </li>
-                  <li v-if="data.unit_in_floors !== null">{{ data.unit_in_floors }} واحد</li>
-                  <li v-if="data.wall_cover !== null">{{ data.wall_cover }} </li>
-                  <li v-if="data.length !== null">{{ data.length }} </li>
-                  <li v-if="data.ground_width !== null"> عرض زمین:{{ data.ground_width }} متر</li>
-                  <li v-if="data.corrected_area !== null"> متراژ اطلاحی:{{ data.corrected_area }} متر</li>
-                  <li v-if="data.passage_width !== null"> عرض گذر:{{ data.passage_width }} متر</li>
-                  <li v-if="data.passage_width !== null"> عرض گذر:{{ data.passage_width }} متر</li>
-                  <li v-if="data.tree_count !== null"> تعداد اصله درخت: {{ data.tree_count }} عدد</li>
-                  <li v-if="data.business_licencse !== null"> دارد </li>
-                  <li v-if="data.building_licencse !== null"> دارد </li>
-                  <li v-if="data.height !== null"> {{data.height}}متر </li>
-                  <li v-if="data.lentgh !== null"> طول بر:{{data.lentgh}}متر </li>
-                  <li v-if="data.which_floors !== null"> طبقه ی:{{data.which_floors}} </li>
+                  <li v-if="data.building_age !== null">
+                    {{ data.building_age }} سال ساخت
+                  </li>
+                  <li v-if="data.document_type !== null">{{ data.document_type }}</li>
+                  <li v-if="data.unit_in_floors !== null">
+                    {{ data.unit_in_floors }} واحد
+                  </li>
+                  <li v-if="data.wall_cover !== null">{{ data.wall_cover }}</li>
+                  <li v-if="data.length !== null">{{ data.length }}</li>
+                  <li v-if="data.ground_width !== null">
+                    عرض زمین:
+                    {{ data.ground_width }} متر
+                  </li>
+                  <li v-if="data.corrected_area !== null">
+                    متراژ اطلاحی:
+                    {{ data.corrected_area }} متر
+                  </li>
+                  <li v-if="data.passage_width !== null">
+                    عرض گذر:
+                    {{ data.passage_width }} متر
+                  </li>
+                 
+                  <li v-if="data.tree_count !== null">
+                    تعداد اصله درخت: {{ data.tree_count }} عدد
+                  </li>
+                  <li v-if="data.business_licencse === true">اجازه ساخت دارد</li>
+                  <li v-if="data.building_licencse !== null">دارد</li>
+                  <li v-if="data.height !== null">{{ data.height }}متر</li>
+                  <li v-if="data.lentgh !== null">طول بر:{{ data.lentgh }}متر</li>
+                  <li v-if="data.which_floors !== null">
+                    طبقه ی:{{ data.which_floors }}
+                  </li>
                 </ul>
                 <v-row class="price__row ma-0 px-0 py-2">
                   <span class="value d-flex flex-row align-center">
@@ -394,6 +415,7 @@
           </li>
         </ul>
       </div>
+      </div>
     </div>
   </div>
 </template>
@@ -415,12 +437,11 @@ export default {
       swiperOption: {
         slidesPerGroup: 1,
         loopFillGroupWithBlank: false,
-        spaceBetween: 30,
 
         pagination: {
           el: ".swiper-pagination",
           clickable: true,
-          spaceBetween: 10,
+         
         },
         navigation: {
           nextEl: ".prev-button-new",
@@ -430,6 +451,7 @@ export default {
           1024: {
             loop: true,
             slidesPerView: 3,
+               spaceBetween: 20,
           },
           768: {
             slidesPerView: 2,
@@ -566,9 +588,12 @@ h2 {
 .sale__card__items:hover .sale__desctiptipn {
   color: #087cce !important;
 }
+.test{
+
+  box-sizing: border-box;
+}
 .custom_swiper_container {
-  box-sizing: initial;
-  padding: 30px 0!important;
+  padding: 30px 0 !important;
 }
 
 .sale__cards .sale__card__items {
@@ -748,17 +773,23 @@ h2 {
 }
 .home__desctiption {
   display: flex;
-  width: 100%;
+  align-items: center;
+  justify-content: flex-start;
+  flex-wrap: nowrap;
+  overflow: hidden;
+  width: 70%!important;
 }
 .home__desctiption li {
-  display: inline-block;
-  width: 18%;
+  width:30%!important;
+  white-space: nowrap;
+display: inline-block;
   font-size: 17px;
   font-weight: 700;
   line-height: 25px;
   letter-spacing: -0.021em;
   text-align: right;
   position: relative;
+  margin: 10px;
   padding: 0 5px;
 }
 .shape {

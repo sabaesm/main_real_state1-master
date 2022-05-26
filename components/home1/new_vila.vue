@@ -1,10 +1,10 @@
 <template>
   <div class="larg_container">
-    <div class="new_vila__main_section ">
-      <h4>  ویلای ساحلی مورد علاقت را  پیدا کن !</h4>
-      <h2 >   جدیدترین ویلاهای ساحلی</h2>
-       <div class="arrows">
-      <div class="next-button d-flex justify-center align-center" slot="button-next">
+    <div class="new_vila__main_section">
+      <h4>ویلای ساحلی مورد علاقت را پیدا کن !</h4>
+      <h2>جدیدترین ویلاهای ساحلی</h2>
+      <div class="arrows">
+        <div class="next-button d-flex justify-center align-center" slot="button-next">
           <svg
             width="20"
             height="14"
@@ -60,7 +60,7 @@
       <div v-swiper="swiperOption" class="w-5/6 ml-auto relative" :loadtheme="false">
         <div class="swiper-wrapper">
           <ul
-            class="sale__cards d-flex flex-row swiper-slide  "
+            class="sale__cards d-flex flex-row swiper-slide"
             v-for="data in data"
             :key="data.id"
           >
@@ -69,14 +69,13 @@
                 <a href="#">
                   <img :src="data.cover" alt="" />
                 </a>
-                
               </div>
               <div class="bottom_card pa-2">
-                <h5 class="sale__desctiptipn py-2">
+                <h5 class="sale__desctiptipn py-0">
                   {{ data.title }}
                 </h5>
-             
-                <v-row class="price__row ma-0 px-0 py-2">
+
+                <v-row class="price__row ma-0 px-0 py-0">
                   <span class="value d-flex flex-row align-center">
                     <span>
                       <svg
@@ -112,7 +111,6 @@
                     {{ data.unit_price }}
                     <span class="toman">تومان</span>
                   </span>
-            
                 </v-row>
                 <div class="sale_person__details d-flex flex-row w-100">
                   <div class="sale_person d-flex flex-row">
@@ -186,7 +184,7 @@
             </li>
           </ul>
         </div>
-      </div>     
+      </div>
     </div>
   </div>
 </template>
@@ -198,18 +196,17 @@ export default {
     swiper: directive,
   },
 
-  props:[
-    'data'
-  ],
+  props: ["data"],
   data() {
     return {
       swiperOption: {
         slidesPerView: 4,
-        spaceBetween: 200,
+        spaceBetween: 100,
+
         slidesPerGroup: 1,
         freeMode: true,
-    		   freeModeMomentum: true,
-    		   mousewheelSensitivity: 0.02,
+        freeModeMomentum: true,
+        mousewheelSensitivity: 0.02,
         loopFillGroupWithBlank: true,
         pagination: {
           el: ".swiper-pagination",
@@ -225,22 +222,20 @@ export default {
             spaceBetween: 200,
           },
           768: {
-             slidesPerView: 1,
-            spaceBetween: 40,
+            slidesPerView: 1,
             freeMode: true,
             freeModeMomentum: true,
             mousewheelSensitivity: 0.02,
           },
           640: {
-             slidesPerView: 1,
-            spaceBetween: 40,
+            spaceBetween: 10,
+
             freeMode: true,
             freeModeMomentum: true,
             mousewheelSensitivity: 0.02,
           },
           320: {
-              slidesPerView: 1,
-            spaceBetween: 40,
+            spaceBetween: 150,
             freeMode: true,
             freeModeMomentum: true,
             mousewheelSensitivity: 0.02,
@@ -252,7 +247,6 @@ export default {
 };
 </script>
 <style scoped>
-
 .new_vila__main_section {
   box-sizing: border-box;
   position: relative;
@@ -269,13 +263,13 @@ h4 {
   font-weight: 200px;
 }
 h2 {
-font-size: 37px;
-font-weight: 800;
-line-height: 61px;
-letter-spacing: -0.035em;
-text-align: right;
-color: #121939!important;
-margin-bottom: 90px;
+  font-size: 37px;
+  font-weight: 800;
+  line-height: 61px;
+  letter-spacing: -0.035em;
+  text-align: right;
+  color: #121939 !important;
+  margin-bottom: 90px;
 }
 .arrows {
   position: absolute;
@@ -308,25 +302,22 @@ margin-bottom: 90px;
   height: 61px;
 }
 .prev-button {
-  background-color: #519fff!important;
+  background-color: #519fff !important;
   width: 50px;
   height: 50px;
-    transition: all ease-in-out .3s!important;
+  transition: all ease-in-out 0.3s !important;
 }
 .next-button {
-  background-color: #519fff!important;
+  background-color: #519fff !important;
   width: 50px;
   height: 50px;
-    transition: all ease-in-out .3s !important;
+  transition: all ease-in-out 0.3s !important;
 }
 .next-button:hover {
-  background-color: #3370bc!important;
-
+  background-color: #3370bc !important;
 }
 .prev-button:hover {
-  background-color: #3370bc!important;
-
-
+  background-color: #3370bc !important;
 }
 
 .cards {
@@ -356,39 +347,44 @@ margin-bottom: 90px;
   height: 50px;
 }
 
-.sale__card__items:hover .sale__desctiptipn {
-  color: #087cce !important;
-}
+
 
 .sale__cards {
   display: flex;
   flex-wrap: wrap;
-height:270px;
   justify-content: space-between;
-  margin-bottom: 100px;
+  margin: 30px 0;
+}
+.top_card {
+  position: relative;
+  overflow: hidden;
+  transition: all ease-in-out 0.3s;
+  width: 100%;
+  height: 60%;
+}
+
+.bottom_card {
+  height: 40% !important;
 
 }
 .sale__cards .sale__card__items {
-
   background-color: #fff;
   border-radius: 10px;
-    min-width: 350px;
-   
+  overflow: hidden;
+  min-width: 350px;
   box-shadow: 0px 0px 34px -9px rgba(12, 46, 96, 0.25);
- 
-
+  height: 275px;
 }
 .top_card a {
   overflow: hidden !important;
   border-top-right-radius: 15px;
   border-bottom-right-radius: 0px;
-    border-top-left-radius: 15px;
-        border-bottom-left-radius: 0;
+  border-top-left-radius: 15px;
+  border-bottom-left-radius: 0;
   height: 100% !important;
   width: 100%;
   display: block;
 }
-
 
 .top_card img {
   width: 100%;
@@ -398,13 +394,6 @@ height:270px;
 }
 .top_card:hover img {
   transform: scale(1.1);
-}
-.top_card {
-  position: relative;
-  overflow: hidden;
-  transition: all ease-in-out 0.3s;
-  width: 100%;
-  height: 155px;
 }
 
 .sale_date {
@@ -422,13 +411,17 @@ height:270px;
 }
 
 .sale__desctiptipn {
-font-size: 14px;
-font-weight: 700;
-line-height: 20px;
-letter-spacing: -0.021em;
-text-align: right;
-  color: #101737!important;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 20px;
+  letter-spacing: -0.021em;
+  text-align: right;
+  color: #101737 !important;
   transition: all ease-in-out 0.3s;
+  margin-bottom: 5px;
+}
+.sale__card__items:hover .sale__desctiptipn {
+  color: #087cce !important;
 }
 .home__desctiption {
   display: flex;
@@ -454,11 +447,11 @@ text-align: right;
   color: #818181;
 }
 .value {
-font-size: 14px;
-font-weight: 800;
-line-height: 20px;
-letter-spacing: -0.021em;
-text-align: right;
+  font-size: 14px;
+  font-weight: 800;
+  line-height: 20px;
+  letter-spacing: -0.021em;
+  text-align: right;
 }
 .price {
   color: rgba(129, 129, 129, 1);
@@ -472,12 +465,11 @@ text-align: right;
   justify-content: space-between;
 }
 .toman {
-
-font-size: 12px;
-font-weight: 400;
-line-height: 29px;
-letter-spacing: -0.021em;
-text-align: right;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 29px;
+  letter-spacing: -0.021em;
+  text-align: right;
 }
 .sale_person__details {
   justify-content: space-between;
@@ -490,33 +482,39 @@ text-align: right;
 .sale_contact_way svg {
   width: 28px;
 }
-.sale_person__pictur img {
-  width: 40px;
-  height: 40px;
-  border-radius: 0;
+.sale_person__pictur  {
+  width: 30px;
+  height: 30px;
+  border-radius: 6px;
+  overflow: hidden;
+}
+.sale_person__pictur img{
+width: 100%;
+height: 100%;
+object-fit: cover;
+
 }
 .sale_person {
   display: flex;
   align-items: center;
 }
 .sale_person p {
-font-size: 8px;
-font-weight: 400;
-line-height: 11px;
-letter-spacing: -0.021em;
-text-align: right;
+  font-size: 8px;
+  font-weight: 400;
+  line-height: 11px;
+  letter-spacing: -0.021em;
+  text-align: right;
   color: #b1b1b1;
 }
 .sale_person h5 {
-font-size: 10px;
-font-weight: 700;
-line-height: 14px;
-letter-spacing: -0.035em;
-text-align: right;
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 14px;
+  letter-spacing: -0.035em;
+  text-align: right;
 
-  color: #101737!important;
+  color: #101737 !important;
 }
-
 @media screen and (max-width: 600px) {
   .arrows {
     display: none;
@@ -548,6 +546,16 @@ text-align: right;
     line-height: 22px !important;
     letter-spacing: -0.021em !important;
   }
+  .sale__status_v {
+    font-size: 10px !important;
+    height: 27px;
+  }
+  .Building-type {
+    height: 27px;
+  }
+  .top_card a {
+    border-radius: 14px;
+  }
   .counter {
     font-size: 11px !important;
     font-weight: 800;
@@ -560,12 +568,53 @@ text-align: right;
     line-height: 22px;
     letter-spacing: -0.021em;
   }
-  .home__desctiption {
+  .sale__product {
+    height: 27px;
+  }
+  .home__desctiption li {
     font-size: 13px;
     font-weight: 400;
     line-height: 19px;
     letter-spacing: -0.021em;
     text-align: right;
+  }
+  .sale__cards {
+    width: 200px !important;
+  }
+  .sale__cards .sale__card__items {
+    height: 415px;
+    
+  }
+
+  .sale_contact_way svg {
+    width: 28px;
+  }
+  .sale__cards {
+    padding: 30px 5px !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60% !important;
+  }
+  .sale__card__items {
+    border-radius: 17px !important;
+  }
+  .toman {
+    font-size: 13px;
+  }
+  .value {
+    font-size: 18px;
+  }
+  .value svg {
+    height: 27px;
+    width: 27px;
+    padding-left: 3px;
+  }
+  .sale_person h5 {
+    font-size: 12px;
+  }
+  .sale_person p {
+    font-size: 10px;
   }
 }
 </style>

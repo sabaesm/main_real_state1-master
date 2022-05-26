@@ -30,7 +30,7 @@ export async function getContactUs() {
 // end of contact us root
 
 export async function getConsultans() {
-  let apiCall = await api().get("/usersinfo/", {
+  let apiCall = await api().get("/consultants/", {
     "Content-Type": "application/json",
   });
   return apiCall;
@@ -87,7 +87,7 @@ export async function special() {
   return apiCall;
 }
 export async function getBlogDynamic(id) {
-  let apiCall = await api().get(`/weblog/?&id=${id}`, {
+  let apiCall = await api().get(`/weblog/${id}`, {
     "Content-Type": "application/json",
   });
   return apiCall;
@@ -107,7 +107,7 @@ export async function getSearch({
   );
   return apiCall;
 }
-export async function getSearchDynamic( id ) {
+export async function getSearchDynamic(id) {
   let apiCall = await api().get(`/cases/${id}`, {
     "Content-Type": "application/json",
   });

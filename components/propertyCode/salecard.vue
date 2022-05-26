@@ -1,6 +1,5 @@
 <template>
   <div class="left__main__card">
-      {{ $route.params.id }}
 
     <!-- <div v-if="(this.$route.query.region === null || this.$route.query.region === '')&(this.$route.query.estate_type === null || this.$route.query.estate_type === '')" >ّ 
     <v-col cols="12">
@@ -168,7 +167,7 @@
                 <li v-if="data.wc !== null">{{ data.wc }}</li>
                 <li v-if="data.master !== null">{{ data.master }}</li>
                 <li v-if="data.view !== null">{{ data.view }}</li>
-                <li v-if="data.in_material !== null">{{ data.in_material }}</li>
+                <!-- <li v-if="data.in_material !== null">{{ data.in_material }}</li> -->
                 <li v-if="data.ex_material !== null">{{ data.ex_material }}</li>
                 <li v-if="data.floorCover !== null">{{ data.floorCover }}</li>
                 <li v-if="data.cabinets !== null">{{ data.cabinets }}</li>
@@ -217,7 +216,6 @@
                   {{ data.unit_price }}
                   <span class="toman">تومان</span>
                 </span>
-                <span class="sale_price">({{ salecard.price }})</span>
               </v-row>
               <div class="sale_person__details d-flex flex-row w-100">
                 <div class="sale_person d-flex flex-row">
@@ -525,9 +523,10 @@ export default {
   display: flex;
   width: 100%;
 }
-.home__desctiptionli {
+.home__desctiption li {
   display: inline-block;
-  width: 20%;
+  width: 20%!important;
+  overflow: hidden;
 }
 .shape {
   width: 20px;

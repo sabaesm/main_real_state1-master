@@ -6,7 +6,9 @@
         <div class="mainSection__cards mb-5">
           <v-row>
             <v-col cols="12 " md="7">
-              <card v-bind="getBlog" :data="getBlog"></card
+              <card v-bind="'getBlog,count' " :data="getBlog"
+              :data2="count"
+              ></card
             ></v-col>
             <v-col cols="12 " md="5">
               <search
@@ -48,13 +50,13 @@ export default {
       tags: [],
       weblogTypes: [],
       MostViewWeblogs: [],
+      count:[]
     };
   },
   mounted() {
     getBlog().then((res) => (this.getBlog = res.data.results));
-    tags()
-      .then((res) => (this.tags = res.data))
-      .then((res) => console.log(res));
+    getBlog().then((res) => (this.count = res.data.count));
+    tags().then((res) => (this.tags = res.data))
     weblogTypes().then((res) => (this.weblogTypes = res.data));
     MostViewWeblogs().then((res) => (this.MostViewWeblogs = res.data));
     // .then((res)=>console.log(res.find(i=> i.id === 1)))
@@ -65,8 +67,7 @@ export default {
 </script>
 
 <style>
-.mainPage {
-}
+
 .mainSection__cards .mainCard__weblog,
 .search_main_section {
   margin-top: -100px;

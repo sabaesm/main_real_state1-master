@@ -196,8 +196,13 @@ export default {
       },
       submitForm(){
         // console.log(this.form)
-      vilayab({...this.form }).then( res=>this.form  =res.data)
-      .then( res=>console.log( res.data))
+        var form_data = new FormData();
+
+      for ( var key in this.form ) {
+          form_data.append(key, item[key]);
+      }
+      vilayab(form_data).then( res =>console.log( 'hi'))
+      // .then( res=>console.log( res.data))
 
       },
     mounted() {

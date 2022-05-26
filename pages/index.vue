@@ -8,9 +8,10 @@
       <banner v-bind="homePage_banner_v" :data="homePage_banner_v"></banner>
       <new_vila v-bind="beach" :data="beach"></new_vila>
       <offer v-bind="special" :data="special"></offer>
+      <media></media>
       <favplace></favplace>
-      <cons v-bind="getContactUs" :data="getContactUs"></cons>
-      <weblog></weblog>
+      <cons v-bind="usersinfo" :data="usersinfo"></cons>
+      <weblog v-bind="getBlog" :data="getBlog"></weblog>
       <banner v-bind="homePage_banner_s" :data="homePage_banner_s"></banner>
     </v-app>
   </div>
@@ -28,11 +29,12 @@ import favplace from "../components/home1/favorit_place.vue";
 import new_vila from "../components/home1/new_vila.vue";
 import weblog from "../components/home1/weblog.vue";
 import { HomePage } from "../service/getApi";
-import { getContactUs } from "../service/getApi";
+import { usersinfo } from "../service/getApi";
 import { cases } from "../service/getApi";
 import { beach } from "../service/getApi";
 import { special } from "../service/getApi";
-
+import { getBlog } from "../service/getApi";
+import media from "../components/home1/media.vue";
 export default {
   components: {
     hed,
@@ -53,18 +55,20 @@ export default {
   data() {
     return {
       HomePage: [],
-      getContactUs: [],
+      usersinfo: [],
       cases: [],
       beach: [],
-      special:[]
+      special: [],
+      getBlog: [],
     };
   },
   mounted() {
     HomePage().then((res) => (this.HomePage = res.data));
-    getContactUs().then((res) => (this.getContactUs = res.data));
+    usersinfo().then((res) => (this.usersinfo = res.data));
     cases().then((res) => (this.cases = res.data.results));
     beach().then((res) => (this.beach = res.data.results));
     special().then((res) => (this.special = res.data.results));
+    getBlog().then((res) => (this.getBlog = res.data.results));
   },
   layout: "homeLayout",
 };

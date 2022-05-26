@@ -98,13 +98,13 @@
         <div class="swiper-wrapper">
           <ul
             class="sale__cards d-flex flex-row align-center justify-center swiper-slide"
-            v-for="weblog in weblog"
-            :key="weblog.id"
+            v-for="data in data"
+            :key="data.id"
           >
             <li class="ma-0 pa-2 sale__card__items">
               <div class="top_card">
                 <a href="#">
-                  <img :src="weblog.img" alt="" />
+                  <img :src="data.cover" alt="" />
                 </a>
                 <div class="topcard__top__section">
                   <div class="status d-flex flex-row align-center justify-center px-3">
@@ -139,16 +139,16 @@
                       />
                     </svg>
 
-                    <span class="sale__status">{{ weblog.time }}</span>
+                    <span class="sale__status">{{ data.time }}</span>
                   </div>
                   <span class="date">
-                    {{ weblog.date }}
+                    {{ data.placed_at }}
                   </span>
                 </div>
                 <span class="hover__icon_bottom">
                   <div class="d-flex flex-end justify-end">
                     <div class="counter d-flex flex-column align-center pa-2 mx-2">
-                      <span>{{ weblog.view }}</span>
+                      <span>{{ data.review_count }}</span>
                       <span
                         ><svg
                           width="19"
@@ -175,7 +175,7 @@
                       </span>
                     </div>
                     <div class="counter d-flex flex-column align-center pa-2">
-                      <span>{{ weblog.message }}</span>
+                      <span>{{ data.view }}</span>
                       <span
                         ><svg
                           width="19"
@@ -206,18 +206,18 @@
               </div>
               <v-col class="bottom_card pa-0 ma-0" cols="12">
                 <h5 class="sale__desctiptipn">
-                  {{ weblog.header }}
+                  {{ data.title }}
                 </h5>
 
-                <p class="description pa-0 ma-0">{{ weblog.details }}</p>
+                <p class="description pa-0 ma-0">{{ data.text.substring(0, 150) }}</p>
                 <div class="sale_person__details d-flex flex-row w-100">
                   <div class="sale_person d-flex flex-row">
                     <div class="sale_person__pictur">
-                      <img :src="weblog.person__pic" />
+                      <img :src="data.person__pic" />
                     </div>
                     <span class="d-flex flex-column pa-1">
-                      <h6 class="pa-0 ma-0">{{ weblog.name }}</h6>
-                      <p class="pa-0 ma-0">{{ weblog.experience }}</p>
+                      <h6 class="pa-0 ma-0">{{ data.username }}</h6>
+                      <p class="pa-0 ma-0">{{ data.user_activity }}</p>
                     </span>
                   </div>
                   <div class="sale_contact_way pa-0 ma-0">
@@ -342,6 +342,9 @@ export default {
       },
     };
   },
+  props:[
+    'data'
+  ]
 };
 </script>
 
@@ -450,8 +453,7 @@ h2 {
 .sale__card__items:hover .sale__desctiptipn {
   color: #087cce !important;
 }
-.left__main__card {
-}
+
 .sale__cards {
   display: flex;
   flex-wrap: wrap;
@@ -511,8 +513,8 @@ h2 {
 .status {
   width: 120px;
   background: #6dc175;
-  border-radius: 5px;
-  height: 30px;
+  border-radius: 9px;
+  height: 34px;
 }
 .sale__status {
   font-size: 12px;
@@ -537,6 +539,7 @@ h2 {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  border-radius: 9px;
 }
 .top_card .hover__icon_bottom {
   position: absolute;
