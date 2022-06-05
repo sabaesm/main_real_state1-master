@@ -97,10 +97,10 @@ export async function getSearch({
   unit_price__gte,
   unit_price__lte,
   region,
-  id,
+  estate_code
 }) {
   let apiCall = await api().get(
-    `/cases/?&estate_type=${estate_type}&unit_price__gte=${unit_price__gte}&unit_price__lte=${unit_price__lte}&region=${region}&id=${id}`,
+    `/cases/?&estate_type=${estate_type && estate_type !== undefined ? estate_type : ""}&unit_price__gte=${unit_price__gte && unit_price__gte !== undefined ? unit_price__gte : ""}&unit_price__lte=${unit_price__lte && unit_price__lte !== undefined ? unit_price__lte : ""}&region=${region && region !== undefined ? region : ""}&estate_code=${estate_code && estate_code !== undefined ? estate_code : ""}`,
     {
       "Content-Type": "application/json",
     }

@@ -11,7 +11,7 @@
         >
           <!-- Render original HTML in server, render Swiper in browser (client) -->
           <ul
-            class="consultans-container d-flex flex-row align-center justify-center swiper-wrapper ma-0"
+            class="consultans-container  swiper-wrapper ma-0"
           >
             <li
               v-for="data in data"
@@ -3938,7 +3938,7 @@
           </ul>
         </div>
       </v-col>
-      <div class="arrows">
+      <div class="arrows d-none d-md-flex">
         <div
           class="next-button_consoltans d-flex align-center justify-center"
           slot="next-button_consoltans"
@@ -4016,7 +4016,6 @@ export default {
       swiperOption_member: {
         slidesPerView: 3,
         spaceBetween: 0,
-        slidesPerGroup: 1,
         loop: true,
         pagination: {
           el: ".swiper-pagination",
@@ -4036,13 +4035,15 @@ export default {
             spaceBetween: 10,
           },
           640: {
-            slidesPerView: 1,
-            spaceBetween: 10,
+             freeMode: true,
+            freeModeMomentum: true,
+            mousewheelSensitivity: 0.02,
           },
           320: {
-            slidesPerView: 1,
-            spaceBetween: 10,
-          },
+             freeMode: true,
+            freeModeMomentum: true,
+            mousewheelSensitivity: 0.02,
+              },
         },
       },
     };
@@ -4105,6 +4106,11 @@ h2 {
 }
 .consultans-container {
   max-width: 1020px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+
 }
 .offer__card__items {
   width: 300px !important;
@@ -4117,19 +4123,19 @@ h2 {
 }
 .top_section {
   text-align: center;
-  position: relative!important;
+  position: relative !important;
 }
 .bottom_section svg {
   position: absolute;
-bottom: 120%!important;
+  bottom: 120% !important;
 }
 .top_section img {
   width: 150px;
   height: 150px;
   border-radius: 100%;
-box-shadow: 0px 0px 0px 6.6859px #ffff ;
-border: 5px solid #519FFF;
- position: absolute;
+  box-shadow: 0px 0px 0px 6.6859px #ffff;
+  border: 5px solid #519fff;
+  position: absolute;
   z-index: 22;
 }
 .bottom_section h5 {
@@ -4185,6 +4191,66 @@ border: 5px solid #519FFF;
 .next-button_consoltans:hover,
 .prev-button_consoltans:hover {
   background-color: #3370bc;
+}
+@media screen and (max-width: 600px) {
+  .offer-main-section h2{
+font-size: 18px;
+font-weight: 800;
+line-height: 30px;
+letter-spacing: -0.035em;
+text-align: center;
+
+  }
+  .offer-main-section h4{
+font-size: 13px;
+font-weight: 700;
+line-height: 22px;
+letter-spacing: -0.035em;
+text-align: center;
+
+  }
+  .consultans-container {
+  max-width: 425px!important;
+display: flex!important;
+align-items: flex-start!important;
+justify-content: start!important;
+
+}
+  .offer__card__items {
+  width: 250px !important;
+  margin: 70px 5px;
+  
+}
+.main_card{
+  height: 170px;
+}
+.top_section img{
+    width: 100px;
+  height: 100px;
+}
+.bottom_section svg {
+  height: 100px;
+    bottom: 100% !important;
+}
+.bottom_section h5 {
+font-size: 13px;
+font-weight: 700;
+line-height: 19px;
+letter-spacing: -0.035em;
+}
+.Experience{
+font-size: 8px;
+font-weight: 400;
+line-height: 11px;
+letter-spacing: -0.021em;
+}
+.detailes{
+font-size: 8px;
+font-weight: 400;
+line-height: 13px;
+letter-spacing: -0.021em;
+
+}
 }
 /*card style*/
 </style>

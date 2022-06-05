@@ -3,7 +3,7 @@
     <div class="new-main-sections pt-0">
       <h4>خونتو پیدا کن!</h4>
       <h2>جدید تررین ملک ها</h2>
-      <div class="arrows">
+      <div class="arrows d-none d-md-flex">
         <a href="#" class="see_more d-flex align-center justify-center px-3">
           مشاهده همه
           <svg
@@ -710,6 +710,22 @@ height: 32px;
   }
 }
 @media screen and (max-width: 600px) {
+     h2{
+font-size: 18px;
+font-weight: 800;
+line-height: 30px;
+letter-spacing: -0.035em;
+text-align: center;
+
+  }
+   h4{
+font-size: 13px;
+font-weight: 700;
+line-height: 22px;
+letter-spacing: -0.035em;
+text-align: center;
+
+  }
   .sale__desctiptipn {
     font-size: 13px;
     font-weight: 400;
@@ -771,4 +787,5 @@ height: 32px;
     height: 20px;
   }
 }
+
 </style>

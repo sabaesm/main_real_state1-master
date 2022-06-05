@@ -2,11 +2,11 @@
   <div class="larg_container">
     <div class="new-main-section">
       <div class="top_section">
-        <div>
+        <div class="title">
           <h4>از اخرین اخبار اطلاع دارید</h4>
           <h2>وبلاگ تخصصی ما</h2>
         </div>
-        <div class="arrows">
+        <div class="arrows d-none d-md-flex">
           <div class="see_more d-flex align-center">
             <span class="pl-5">مشاهده همه</span>
             <svg
@@ -95,13 +95,13 @@
         </div>
       </div>
       <div v-swiper="swiperOption" class="w-5/6 ml-auto relative custom_swiper_container">
-        <div class="swiper-wrapper">
-          <ul
-            class="sale__cards d-flex flex-row align-center justify-center swiper-slide"
+        <ul class="swiper-wrapper">
+          <li
+            class="sale__cards align-center justify-center swiper-slide"
             v-for="data in data"
             :key="data.id"
           >
-            <li class="ma-0 pa-2 sale__card__items">
+            <div class="ma-0 pa-2 sale__card__items d-flex flex-column">
               <div class="top_card">
                 <a href="#">
                   <img :src="data.cover" alt="" />
@@ -138,7 +138,6 @@
                         stroke-linejoin="round"
                       />
                     </svg>
-
                     <span class="sale__status">{{ data.time }}</span>
                   </div>
                   <span class="date">
@@ -208,8 +207,7 @@
                 <h5 class="sale__desctiptipn">
                   {{ data.title }}
                 </h5>
-
-                <p class="description pa-0 ma-0">{{ data.text.substring(0, 150) }}</p>
+                <p class="description px-0 ma-0">{{ data.text.substring(0, 150) }}</p>
                 <div class="sale_person__details d-flex flex-row w-100">
                   <div class="sale_person d-flex flex-row">
                     <div class="sale_person__pictur">
@@ -279,9 +277,9 @@
                   </div>
                 </div>
               </v-col>
-            </li>
-          </ul>
-        </div>
+            </div>
+          </li>
+        </ul>
       </div>
     </div>
   </div>
@@ -301,7 +299,6 @@ export default {
     return {
       swiperOption: {
         slidesPerView: 3,
-        spaceBetween: 20,
         slidesPerGroup: 1,
         loop: true,
         loopFillGroupWithBlank: true,
@@ -326,15 +323,13 @@ export default {
             mousewheelSensitivity: 0.02,
           },
           640: {
-            slidesPerView: 2,
-            spaceBetween: 40,
+            spaceBetween: 15,
             freeMode: true,
             freeModeMomentum: true,
-            mousewheelSensitivity: 0.02,
           },
           320: {
             freeMode: true,
-            spaceBetween: 40,
+            spaceBetween: 15,
             freeModeMomentum: true,
             mousewheelSensitivity: 0.02,
           },
@@ -342,9 +337,7 @@ export default {
       },
     };
   },
-  props:[
-    'data'
-  ]
+  props: ["data"],
 };
 </script>
 
@@ -363,6 +356,7 @@ export default {
   align-items: center;
   align-items: center;
   margin: 40px 0;
+  width: 100%;
 }
 h4 {
   color: #519fff;
@@ -448,7 +442,6 @@ h2 {
   height: 50%;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
 }
 .sale__card__items:hover .sale__desctiptipn {
   color: #087cce !important;
@@ -470,7 +463,6 @@ h2 {
 }
 .top_card {
   position: relative;
-  overflow: hidden;
   border-radius: 10px;
   transition: all ease-in-out 0.3s;
   width: 100%;
@@ -535,7 +527,8 @@ h2 {
   letter-spacing: -0.035em;
   text-align: right;
   background: #ffff;
-  padding: 10px;
+  height: 27px;
+  padding: 0 10px;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -609,6 +602,11 @@ h2 {
   width: 45px;
 }
 .sale_person__pictur img {
+  width: 100%;
+  height: 100%;
+  border-radius: 9px;
+}
+.sale_person__pictur  {
   width: 40px;
   height: 40px;
   border-radius: 9px;
@@ -633,32 +631,91 @@ h2 {
   color: #101737;
 }
 
-@media screen and (max-width: 960px) {
-  .sale__cards {
-    min-width: 400px;
+@media screen and (max-width: 600px) {
+  .title {
+    width: 100%;
   }
-  .sale__card__items {
-    display: flex;
-    flex-wrap: nowrap;
-    overflow-y: scroll;
-  }
-  h2,
-  h4 {
-    text-align: center;
-  }
-  h4 {
-    font-family: IRANYekanWeb;
-    font-size: 13px;
-    font-weight: 700;
-    line-height: 22px;
-    letter-spacing: -0.035em;
-  }
+
+ 
   h2 {
-    font-family: IRANYekanWeb;
+    width: 100% !important;
     font-size: 18px;
     font-weight: 800;
     line-height: 30px;
     letter-spacing: -0.035em;
+    text-align: center !important;
   }
+  h4 {
+    font-size: 13px;
+    font-weight: 700;
+    line-height: 22px;
+    letter-spacing: -0.035em;
+    text-align: center !important;
+  }
+  .sale__cards {
+          min-width: 320px;
+
+  }
+  .sale__cards .sale__card__items {
+    height: 410px;
+    width: 100%;
+
+  }
+  .top_card {
+    height: 50% !important;
+  }
+  .bottom_card {
+    width: 100%;
+    height: 100%;
+  }
+  .bottom_card .sale__desctiptipn{
+font-size: 15px;
+font-weight: 700;
+line-height: 22px;
+letter-spacing: -0.021em;
+padding-top:2% ;
+padding-bottom:5% ;
+  }
+  .description{
+    padding-top: 0;
+font-size: 12px;
+font-weight: 400;
+line-height: 18px;
+letter-spacing: -0.021em;
+
+padding-bottom:2% ;
+
+  }
+    .sale_person h6 {
+    font-size: 12px;
+  }
+  .sale_person p {
+    font-size: 10px;
+  }
+   .sale_contact_way svg {
+    width: 34px;
+  }
+  .counter {
+    height: 40px;
+    width: 25px;
+  }
+    .counter svg {
+height: 16px;
+width: 16px;
+}
+.status {
+  width: 90px;
+  background: #6dc175;
+  border-radius: 9px;
+  height: 27px;
+}
+.sale__status{
+font-size: 10px!important;
+}
+.date{
+  font-size: 10px!important;
+  height: 27px;
+
+}
 }
 </style>

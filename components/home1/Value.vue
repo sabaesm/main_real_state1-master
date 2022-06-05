@@ -1,5 +1,5 @@
 <template>
-  <div class="larg_container  ">
+  <div class="larg_container">
     <div class="items">
       <h4 class="pa-0">ارزش های ما</h4>
       <h2 class="pb-5 mb-5">چرا باید به ما اعتماد کنید؟</h2>
@@ -7,7 +7,7 @@
         class="d-flex flex-column flex-sm-row flex-md-row align-center justify-space-around"
       >
         <v-col cols="12" md="4" lg="4" xl="4" sm="4">
-          <li class=" d-flex flex-row align-start">
+          <li class="d-flex flex-row align-center align-md-start">
             <v-col cols="2">
               <svg
                 width="53"
@@ -36,8 +36,8 @@
                   stroke-width="3"
                   stroke-linecap="round"
                   stroke-linejoin="round"
-                /></svg
-            >
+                />
+              </svg>
             </v-col>
             <v-col cols="10">
               <span class="value-info">
@@ -51,7 +51,7 @@
           </li>
         </v-col>
         <v-col cols="12" md="4" lg="4" xl="4" sm="4">
-          <li class="d-flex flex-row align-start">
+          <li class="d-flex flex-row align-center align-md-start">
             <v-col cols="2">
               <svg
                 width="53"
@@ -94,7 +94,7 @@
           </li>
         </v-col>
         <v-col cols="12" md="4" lg="4" xl="4" sm="4">
-          <li class="d-flex flex-row align-start">
+          <li class="d-flex flex-row align-center align-md-start">
             <v-col cols="2">
               <svg
                 width="53"
@@ -142,11 +142,9 @@
 </template>
 
 <style scoped>
-.larg_container{
-padding-top: 60px;
-padding-bottom: 60px;
-
-
+.larg_container {
+  padding-top: 60px;
+  padding-bottom: 60px;
 }
 svg {
   width: 50px;
@@ -188,9 +186,9 @@ h3 {
   font-weight: 700;
   line-height: 38px;
   letter-spacing: -0.055em;
-  text-align: right!important;
+  text-align: right !important;
   color: #121939;
-    margin: 0;
+  margin: 0;
 }
 
 @media only screen and (max-width: 860px) {
@@ -201,10 +199,9 @@ h3 {
   }
 }
 @media only screen and (max-width: 600px) {
-    .larg_container{
-
-        background: #F7F9FC;
-    }
+  .larg_container {
+    background: #f7f9fc;
+  }
   h4,
   h2 {
     text-align: center !important;
@@ -226,6 +223,10 @@ h3 {
   }
   h3 {
     text-align: right;
+  }
+  svg {
+    height: 40px;
+    width: 40px;
   }
 }
 </style>

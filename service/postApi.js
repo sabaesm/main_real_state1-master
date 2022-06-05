@@ -8,3 +8,9 @@ export async function vilayab(data) {
   return apiCall
 }
 
+export async function footer(data) {
+  let apiCall = await api().post("/footer/",data, {
+    "Content-Type": "application/json",
+  });
+  return apiCall
+}

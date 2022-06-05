@@ -90,15 +90,14 @@
       </div>
       <div>
         <div v-swiper="swiperOption" class="w-5/6 ml-auto relative" :loadtheme="false">
-          <ul class="swiper-wrapper my-5">
+          <ul class="swiper-wrapper test ">
             <li
-              class="sale__cards d-flex flex-row swiper-slide pa-2 ma-0"
+              class="sale__cards d-flex flex-row  swiper-slide py-5 px-2 ma-0"
               v-for="data in data"
               :key="data.id"
             >
               <div class="sale__card__items d-flex flex-column flex-md-row pa-0 ma-0">
-                <v-col cols="12   pa-2 ma-0" md="5">
-                  <div class="top_card">
+                <v-col cols="12   pa-2 ma-0" md="5" class="top_card">
                     <a href="#">
                       <img :src="data.cover" alt="" />
                     </a>
@@ -279,11 +278,10 @@
                       </div>
                       <span class="sale_date">{{ data.placed_at }}</span>
                     </span>
-                  </div>
                 </v-col>
                 <v-col class="bottom_card pa-2 ma-0" cols="12" md="7">
                   <h5 class="sale__desctiptipn py-2 pt-5">
-                    {{ data.title.substring(0, 50) }}
+                    {{ data.title.substring(0, 40) }}
                   </h5>
                   <ul class="home__desctiption">
                     <li v-if="data.land_size !== null">{{ data.land_size }} متر مربع</li>
@@ -363,7 +361,7 @@
                         />
                       </svg>
 
-                      {{ data.unit_price }}
+                     <span class="pa-0 ma-0 price">  {{ data.unit_price }}</span>
                       <span class="toman">تومان</span>
                     </span>
                   </v-row>
@@ -460,13 +458,7 @@ export default {
   data() {
     return {
       swiperOption: {
-        slidesPerView: 2,
-    spaceBetween: -120,   
          slidesPerGroup: 1,
-        freeMode: true,
-        freeModeMomentum: true,
-        mousewheelSensitivity: 0.02,
-        loopFillGroupWithBlank: true,
         pagination: {
           el: ".swiper-pagination",
           clickable: true,
@@ -477,9 +469,7 @@ export default {
         },
         breakpoints: {
           1024: {
-    spaceBetween: -120,   
-        
-
+       spaceBetween: -120,   
             slidesPerView: 2,
           },
           768: {
@@ -487,12 +477,14 @@ export default {
             spaceBetween: 10,
           },
           640: {
-            slidesPerView: 2,
-            spaceBetween: 10,
+   spaceBetween: 5,
+            freeMode: true,
+            freeModeMomentum: true,        
           },
           320: {
-            slidesPerView: 1,
-            spaceBetween: 10,
+               spaceBetween: 5,
+            freeMode: true,
+            freeModeMomentum: true,
           },
         },
       },
@@ -766,21 +758,19 @@ h2 {
   align-items: center;
   justify-content: flex-start;
   flex-wrap: nowrap;
-  overflow: hidden;
-  width: 70% !important;
+  overflow: hidden!important;
+  width: 70%!important;
 }
 .home__desctiption li {
-  width: 30% !important;
   white-space: nowrap;
-  display: inline-block;
   font-size: 17px;
   font-weight: 700;
   line-height: 25px;
   letter-spacing: -0.021em;
   text-align: right;
   position: relative;
-  margin: 10px;
-  padding: 0 5px;
+  margin-left: 15px;
+  padding: 0 5px!important;
 }
 .home__desctiption li::before {
   content: "";
@@ -805,24 +795,19 @@ h2 {
   text-align: right;
   color: #818181;
 }
-.value {
-  font-size: 23px;
+
+.value svg {
+  padding: 0 3px;
+  height: 32px;
+  width: 32px;
+}
+.price {
+  color: rgb(1, 1, 1);
+   font-size: 23px;
   font-weight: 800;
   line-height: 33px;
   letter-spacing: -0.021em;
   text-align: right;
-}
-.value svg {
-  padding: 0 3px;
-  height: 22px;
-  width: 22px;
-}
-.price {
-  color: rgba(129, 129, 129, 1);
-  font-size: 10px;
-  font-weight: 700;
-  line-height: 15px;
-  letter-spacing: -0.021em;
 }
 .price__row {
   display: flex;
@@ -879,12 +864,11 @@ h2 {
   .arrows {
     display: none;
   }
-
-  h2 {
-    text-align: center !important;
-    width: 100% !important;
-  }
-  h4 {
+.top_section div{
+  width: 100%!important;
+  margin-bottom: 30px!important;
+}
+ h4 {
     font-size: 13px;
     font-weight: 700;
     line-height: 22px;
@@ -897,6 +881,105 @@ h2 {
     font-weight: 800;
     line-height: 30px;
     letter-spacing: -0.035em;
+        text-align: center !important;
+    width: 100% !important;
   }
+  .sale__cards{
+    height: 100%!important;
+    width: 100%;
+     width: 320px !important;
+
+  }
+
+  .sale__cards .sale__card__items {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0px 0px 34px -9px rgba(12, 46, 56, 0.15);
+  height: 100%;
+  
+}
+.top_card a {
+  height: 200px!important;
+}
+.top_card a img{
+  height: 200px!important;
+}
+.bottom_card {
+  height: 200px;
+}
+ .bottom_card  h5{
+   width: 100%;
+   white-space: nowrap;
+   text-overflow: ellipsis;
+font-size: 15px;
+font-weight: 700;
+line-height: 22px;
+letter-spacing: -0.021em;
+text-align: right;
+ }
+ .bottom_card .home__desctiption  li{
+font-size: 15px;
+font-weight: 400;
+line-height: 22px;
+letter-spacing: -0.021em;
+text-align: right;
+
+ }
+ .sale__product:hover {
+  width: 90px;
+}
+.sale__status_v , .sale__status_s{
+ font-size: 10px!important;
+line-height: 17px!important;
+letter-spacing: -0.035em;
+  height: 27px!important;
+
+}
+.sale__product{
+    height: 27px!important;
+
+}
+.sale__product svg{
+  height: 17px;
+  width: 20px;
+}
+.salecard_product__text{
+ font-size: 10px!important;
+line-height: 17px!important;
+letter-spacing: -0.035em;
+}
+
+.price{
+font-size: 18px!important;
+line-height: 26px;
+letter-spacing: -0.021em;
+}
+.toman{
+  font-size: 13px!important;
+line-height: 19px;
+}
+.sale_person .sale_person__pictur {
+  height: 34px;
+  width: 34px;
+}
+.sale_person .sale_person__pictur img{
+  height: 100%;
+  width: 100%;
+}
+.sale_person h5{
+font-size: 12px!important;
+line-height: 17px;
+letter-spacing: -0.035em;
+}
+.sale_person p{
+font-size: 10px!important;
+font-weight: 400;
+line-height: 15px;
+letter-spacing: -0.021em;
+}
+.sale_contact_way svg {
+  width: 33px!important;
+  height: 33px!important;
+}
 }
 </style>

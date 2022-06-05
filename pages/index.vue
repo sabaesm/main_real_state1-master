@@ -1,23 +1,30 @@
 <template>
   <div>
     <v-app class="main">
-      <hed v-bind="HomePage" :data="HomePage"></hed>
-      <value></value>
-      <grouping></grouping>
-      <new1 v-bind="cases" :data="cases"></new1>
-      <banner v-bind="homePage_banner_v" :data="homePage_banner_v"></banner>
-      <new_vila v-bind="beach" :data="beach"></new_vila>
-      <offer v-bind="special" :data="special"></offer>
-      <media></media>
-      <favplace></favplace>
-      <cons v-bind="usersinfo" :data="usersinfo"></cons>
-      <weblog v-bind="getBlog" :data="getBlog"></weblog>
-      <banner v-bind="homePage_banner_s" :data="homePage_banner_s"></banner>
+      <!-- isLoading page -->
+      <!-- <loading v-if="isLoading"></loading> -->
+
+      <!-- -------------- -->
+      <!-- <div v-if="!isLoading"> -->
+        <hed v-bind="HomePage" :data="HomePage"></hed>
+        <value></value>
+        <grouping></grouping>
+        <new1 v-bind="'cases ,  usersinfo' " :data="cases" :data2="usersinfo"  ></new1>
+        <banner v-bind="homePage_banner_v" :data="homePage_banner_v"></banner>
+        <new_vila v-bind="beach" :data="beach"></new_vila>
+        <offer v-bind="special" :data="special"></offer>
+        <media></media>
+        <favplace></favplace>
+        <cons v-bind="usersinfo" :data="usersinfo"></cons>
+        <weblog v-bind="getBlog" :data="getBlog"></weblog>
+        <banner v-bind="homePage_banner_s" :data="homePage_banner_s"></banner>
+      <!-- </div> -->
     </v-app>
   </div>
 </template>
 <script>
 import { mapState } from "vuex";
+import loading from "../components/ui/loading.vue";
 import hed from "../components/home1/Header.vue";
 import grouping from "../components/home1/Grouping.vue";
 import value from "../components/home1/Value.vue";
@@ -47,6 +54,7 @@ export default {
     offer,
     favplace,
     weblog,
+    loading,
   },
   computed: {
     ...mapState(["homePage_banner_v"]),
@@ -60,6 +68,7 @@ export default {
       beach: [],
       special: [],
       getBlog: [],
+      isLoading: true,
     };
   },
   mounted() {
@@ -69,6 +78,9 @@ export default {
     beach().then((res) => (this.beach = res.data.results));
     special().then((res) => (this.special = res.data.results));
     getBlog().then((res) => (this.getBlog = res.data.results));
+
+    // loaded page
+    this.isLoading = false;
   },
   layout: "homeLayout",
 };

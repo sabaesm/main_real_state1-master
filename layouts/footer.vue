@@ -6,8 +6,8 @@
         <div class="row ">
           <div class="test"></div>
           <div class="col-sm-6 col-md-3 footer_list ">
-            <div>
               <svg
+              class="homeLand_icon "
                 width="131"
                 height="69"
                 viewBox="0 0 131 69"
@@ -79,15 +79,14 @@
                   </clipPath>
                 </defs>
               </svg>
-            </div>
             <p class="footer_text">
               اگر شما یک طراح هستین و یا با طراحی های گرافیکی سروکار دارید به متن های
               برخورده اید که با نام لورم ایپسوم شناخته می‌شوند.
             </p>
-            <v-col cols="7 ma-0 " class="d-flex  justify-center">
+            <v-col  md="7" class=" ma-0  d-flex  justify-center">
               <ul class="footer-links-list">
              
-                <li>
+                <li class="px-3">
                   <a href="#">
                     <svg
                       width="21"
@@ -103,7 +102,7 @@
                     </svg>
                   </a>
                 </li>
-                <li>
+                <li class="px-3">
                   <a href=""
                     ><svg
                       width="21"
@@ -119,7 +118,7 @@
                     </svg>
                   </a>
                 </li>
-                <li>
+                <li class="px-3">
                   <a href="#"
                     ><svg
                       width="21"
@@ -135,7 +134,7 @@
                     </svg>
                   </a>
                 </li>
-                <li>
+                <li class="px-3">
                   <a href="#"
                     ><svg
                       width="21"
@@ -180,10 +179,10 @@
             </ul>
           </div>
           <div class="col-sm-12 col-md-3 footer_medium_mood">
-            <h6>از جدید ترین ها با خبر شوید</h6>
-            <form action="#" class=" mt-3">
-            <input type="text" placeholder="  ایمیل خود را وارد کنید" class="enter_email">
-             <button class="submit">
+            <h6 class="mb-5">از جدید ترین ها با خبر شوید</h6>
+            <form  class=" mt-3">
+            <input type="text" placeholder="  شماره تماس  خود را وارد کنید" class="enter_email" v-model="form.phone">
+             <button class="submit" @click="validate">
              ثبت
             </button>
             </form>
@@ -200,7 +199,21 @@
     </footer>
 </template>
 <script>
-export default {};
+import {footer} from "../service/postApi"
+export default {
+  data(){
+    return{
+      form:{
+          phone: ""
+      }
+    }
+  },
+  methods: {
+    validate(){
+  footer(this.form).then((res) => console.log("hi"));
+    }
+  },
+};
 </script>
 <style scoped>
 
@@ -258,11 +271,13 @@ margin-top: 10px;
 margin-left:10px;
 display: none;
   transition: all ease-in-out 0.2s!important;
+  
 }
 
 .site-footer li a:hover::before  {
 opacity: 1;
 display: block;
+
   transition: all ease-in-out 0.2s!important;
 }
 .footer-links {
@@ -290,6 +305,8 @@ display: block;
 }
 .footer-links li a:hover {
  transform: translateX(-10px);
+     display: flex;
+    align-items: baseline;
 }
 .footer-links a {
   transition: all ease-in-out 0.1s;
@@ -332,6 +349,7 @@ form{
   width: 100%;
   padding: 14px;
   border-radius: 9px;
+  color: #ffff;
 
 }
 .submit{
@@ -437,5 +455,56 @@ margin-left: 6px ;
     margin-right: 0;
     font-weight: 600;
   }
+}
+@media (max-width: 600px) {
+  .footer_list{
+    flex-direction: column;
+    display: flex!important;
+    align-items: center!important;
+  }
+  .footer_list  .homeLand_icon {
+    width: 200px;
+    height: 200px;
+text-align: center!important;
+margin-bottom: 20px!important;
+
+  }
+  .footer_text{
+    text-align: center!important;
+    display: flex;
+    align-items: center;
+    width: 80%;
+
+  }
+  .footer-links a {
+  color: #ffffff;
+font-size: 13px;
+font-weight: 400;
+line-height: 18px;
+letter-spacing: -0.036em;
+text-align: center!important;
+display: block;
+}
+h6{
+  color: #519FFF!important;
+font-size: 16px!important;
+font-weight: 800!important;
+line-height: 23px!important;
+letter-spacing: -0.036em;
+text-align: center!important;
+}
+form{
+      width: 100%;
+
+}
+form .enter_email{
+  background: #F7F9FC;
+
+}
+.submit{
+font-size: 12px;
+line-height: 17px;
+
+}
 }
 </style>

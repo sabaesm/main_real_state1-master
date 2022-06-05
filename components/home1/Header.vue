@@ -6,24 +6,26 @@
         <h2>{{ data.homePage_title }}</h2>
         <p>{{ data.homePage_text }}</p>
       </div>
-      <div class="d-flex flex-row justify-space-between align-center">
-        <v-col cols="10">
-          <form action="" class="">
-            <div class="region search_bar">
-              <label for=""> منطقه : </label>
-              <input
-                type="text"
-                name="region"
-                id=""
-                placeholder="  منطقه ی شما"
-                v-on:change="onchangeGetValue"
-              />
+    
+    </div>
+      <div
+        class="search_section d-flex flex-column flex-md-row justify-space-between align-center "
+      >
+        <v-col cols=" 12 " md="10" class="pa-0 ma-0">
+          <form action="" class="d-flex flex-column flex-md-row align-center">
+            <div class="region search_bar ma-md-0 mb-5">
+              <!-- <label for=""> منطقه : </label> -->
+              <select name="region" id="" v-on:change="onchangeGetValue">
+                <option value="">منطقه:</option>
+                <option value="هراز ">هراز</option>
+                <option value="امام رضا">امام رضا</option>
+                <option value="جاده نور">جاده نور</option>
+                <option value="جاده محمودآباد">جاده محمودآباد</option>
+              </select>
             </div>
-            <div class="building search_bar">
-              <label for=""> نوع ملک : </label>
-              <input type="text" name="" id="" placeholder=" نوع شما" />
-              <select name="estate_type" id="" v-on:change="onchangeGetValue">
-                <option value="">انتخاب کنید:</option>
+            <div class="building ma-md-0 mb-5 pr-2">
+              <select name="estate_type" id="" v-on:change="onchangeGetValue" class=" ">
+                <option value=""> نوع ملک: </option>
                 <option value="V ">ویلا</option>
                 <option value="G">باغ</option>
                 <option value="H">خانه ویلایی</option>
@@ -31,9 +33,21 @@
                 <option value="A">آپارتمان</option>
                 <option value="B">مغازه و تجاری</option>
               </select>
+              <label for="" class="name"> </label>
             </div>
-
-            <div class="price search_bar">
+               <div class="building pa-0 ma-md-0 mb-5">
+              <select name="estate_type" id="" v-on:change="onchangeGetValue" >
+                <option class=" pl-2" value="">نوع ملک:</option>
+                <option value="V ">ویلا</option>
+                <option value="G">باغ</option>
+                <option value="H">خانه ویلایی</option>
+                <option value="L">زمین</option>
+                <option value="A">آپارتمان</option>
+                <option value="B">مغازه و تجاری</option>
+              </select>
+              <label for="" class="name"> </label>
+            </div>
+            <!-- <div class="price search_bar ma-md-0 mb-5">
               <span> بازه قیمتی</span>
               <label for="down"> از</label>
               <input
@@ -51,12 +65,12 @@
                 id="top"
                 placeholder=""
               />
-            </div>
+            </div> -->
           </form>
         </v-col>
-
         <!-- <nuxt-link :to="{ name: 'propertyCode', query: { region: `${this.onchangeGetValue.region}` } }"> -->
         <nuxt-link
+          class="ma-md-0 pa-0 mb-5 col-12 col-md-2  test_btn"
           :to="{
             name: 'propertyCode',
             query: {
@@ -71,7 +85,6 @@
           <v-btn class="search_home" v-on:click="handleSearch"> جستجوی ملک</v-btn>
         </nuxt-link>
       </div>
-    </div>
   </div>
 </template>
 
@@ -121,6 +134,7 @@ export default {
 /*search */
 
 .main_section {
+  position: relative;
   padding: 200px 0 100px 0 !important;
   background-image: url("~/assets/images/headerimg.png");
   object-fit: cover;
@@ -173,20 +187,15 @@ h5 {
   line-height: 28px;
   letter-spacing: -0.01em;
   text-align: right;
-  width: 163px;
-  height: 48px !important;
+  width: 80%;
+  height: 58px !important;
 }
 form {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
 }
-.search_bar {
-  opacity: 0.9 !important;
-  border-radius: 10px !important;
-  height: 58px;
-  position: relative;
-}
+
 .search_bar:hover {
   opacity: 1 !important;
   transition: all ease-in-out 0.2s;
@@ -199,29 +208,49 @@ form {
   justify-content: space-between;
   align-items: center;
   padding: 10px;
+  position: relative;
+  opacity: 0.9 !important;
+  border-radius: 10px !important;
+  height: 58px;
+  overflow: hidden;
+  width: 30%;
+}
+.region select {
+  background-color: #ffff;
+
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding-right: 20px!important;
 }
 
 .building {
-  background-color: #ffff;
+  opacity: 0.9 !important;
+  border-radius: 10px !important;
+  height: 58px;
+  position: relative;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px;
   position: relative;
+  z-index: 1;
+  width: 30%;
+  overflow: hidden;
 }
 
-.select_building {
+.building select {
   background-color: #ffff;
   position: absolute;
-  top: 100%;
-  left: 10%;
-  width: 80%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding-right: 20px!important;
 }
-
-.select_building ul li {
-  border-bottom: 1px solid gray;
+.building select option {
 }
-
 .region label {
   font-size: 19px;
   font-weight: 800;
@@ -232,11 +261,17 @@ form {
 
 .price {
   background-color: #ffff;
+
   display: flex;
   justify-content: space-between;
   align-items: center;
-
   padding: 10px;
+  position: relative;
+  width: 300px !important;
+  opacity: 0.9 !important;
+  border-radius: 10px !important;
+  height: 58px;
+  overflow: hidden;
   width: 400px;
 }
 
@@ -269,5 +304,71 @@ select {
   position: absolute;
   top: 100%;
   outline: none;
+}
+@media screen and (max-width: 600px) {
+
+  .main_section  h5{
+font-size: 12px;
+font-weight: 700;
+line-height: 20px;
+letter-spacing: -0.035em;
+text-align: center!important;
+color: #ffff!important;
+  }
+  .main_section h2{
+    font-family: IRANYekanWeb;
+font-size: 24px;
+font-weight: 800;
+line-height: 34px;
+letter-spacing: -0.025em;
+text-align: center!important;
+color: #ffff!important;
+  }
+  .main_section p{
+font-size: 11px;
+font-weight: 400;
+line-height: 18px;
+letter-spacing: -0.015em;
+text-align: center!important;
+color: #ffff!important;
+width: 100%!important;
+margin: 0px!important;
+opacity: 1;
+  }
+  .building,
+  .region {
+    box-shadow: 0px 0px 34px -9px rgba(0, 0, 0, 0.25);
+    width: 90%;
+    height: 40px;
+    border-radius: 12px;
+    font-size: 13px;
+    font-weight: 700;
+    line-height: 15px;
+    letter-spacing: -0.05em;
+    text-align: left;
+  }
+  .search_home{
+    width: 90%;
+  }
+  .search_section{
+    padding: 0px;
+    align-items: center!important;
+         margin-top:-20px!important;
+         background-color: #ffff;
+
+  }
+  .main_section{
+
+    padding-bottom: 0px!important;
+
+  }
+  .search_section{
+
+  }
+  .test_btn{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 }
 </style>

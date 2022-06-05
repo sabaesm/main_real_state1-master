@@ -340,9 +340,10 @@
                   v-bind="usersinfo"
                   :key="usersinfo.id"
                 >
-                  <div class="sale_person d-flex flex-row">
-                    <div class="sale_person__pictur">
-                      <img :src="usersinfo.picture" />
+                  <div class="sale_person d-flex flex-row" >
+                  
+                    <div class="sale_person__pictur " v-if="data2">
+                      <img :src="data2.picture" />
                     </div>
                     <span class="d-flex flex-column px-2">
                       <h5 class="pa-0 ma-0">{{ data.username }}</h5>
@@ -416,6 +417,15 @@
         </ul>
       </div>
       </div>
+       <div class="arrows arrows_resp_mod  ">
+          <div class="see_more  d-flex align-items-center">
+            <nuxt-link to="propertyCode" class="">
+              <span class="py-0 px-5 see_more_resp_mode">مشاهده بیشتر</span>
+            </nuxt-link>
+          
+          </div>
+          
+        </div>
     </div>
   </div>
 </template>
@@ -451,7 +461,7 @@ export default {
           1024: {
             loop: true,
             slidesPerView: 3,
-               spaceBetween: 20,
+               spaceBetween: 0,
           },
           768: {
             slidesPerView: 2,
@@ -460,15 +470,13 @@ export default {
             mousewheelSensitivity: 0.02,
           },
           640: {
-            spaceBetween: 10,
-
+            spaceBetween: 5,
             freeMode: true,
             freeModeMomentum: true,
             mousewheelSensitivity: 0.02,
           },
           320: {
-            spaceBetween: 10,
-
+            spaceBetween: 5,
             freeMode: true,
             freeModeMomentum: true,
             mousewheelSensitivity: 0.02,
@@ -477,7 +485,7 @@ export default {
       },
     };
   },
-  props: ["data"],
+  props: ["data" ,"data2"],
   mounted() {
     // console.log("case is 2 " + this.data);
     usersinfo()
@@ -539,6 +547,9 @@ h2 {
   direction: ltr;
   left: 0;
 }
+.arrows_resp_mod{
+  display: none;
+}
 .see_more {
   background-color: #798595;
   border-radius: 10px;
@@ -599,9 +610,9 @@ h2 {
 .sale__cards .sale__card__items {
   background-color: #fff;
   border-radius: 10px;
-  padding: 20px 0;
-  width: 100%;
-  box-shadow: 0px 0px 34px -9px rgba(12, 46, 96, 0.25);
+  
+  width:calc( 100% - 20px)!important;
+  box-shadow: 0px 0px 34px -9px rgba(12, 46, 56, 0.15);
   height: 490px;
 }
 .top_card {
@@ -892,16 +903,21 @@ display: inline-block;
   left: 100%;
 }
 @media screen and (max-width: 600px) {
+
+  .new-main-section {
+
+  margin-bottom: 80px;
+}
   .arrows {
     display: none;
+  }
+  .top_section{
+    margin-bottom: 10px!important;
   }
   .top_section div {
     width: 100%;
   }
-  h2 {
-    text-align: center !important;
-    width: 100% !important;
-  }
+ 
   h4 {
     font-size: 13px;
     font-weight: 700;
@@ -915,6 +931,8 @@ display: inline-block;
     font-weight: 800;
     line-height: 30px;
     letter-spacing: -0.035em;
+        text-align: center !important;
+    width: 100% !important;
   }
   .sale_date {
     font-size: 15px !important;
@@ -954,9 +972,7 @@ display: inline-block;
     letter-spacing: -0.021em;
     text-align: right;
   }
-  .sale__cards {
-    width: 300px !important;
-  }
+  
   .sale__cards .sale__card__items {
     height: 415px;
   }
@@ -965,11 +981,11 @@ display: inline-block;
     width: 28px;
   }
   .sale__cards {
-    padding: 30px 5px !important;
+    padding: 30px 0px !important;
     display: flex;
     align-items: center;
     justify-content: center;
-    width: calc(75% - 10px) !important;
+    width: 320px !important;
   }
   .sale__card__items {
     border-radius: 17px !important;
@@ -990,6 +1006,33 @@ display: inline-block;
   }
   .sale_person p {
     font-size: 10px;
+  }
+  .Building-type{
+    border-radius: 6px;
+  }
+  .arrows_resp_mod {
+    display: flex!important;
+    align-items: center!important;
+    flex-direction: column!important;
+    width: 100%;
+  }
+  .see_more{
+height: 40px!important;
+padding: 0px!important;
+border-radius: 7px!important;
+display: flex;
+align-items: center!important;
+justify-content: center!important;
+text-align: center!important;
+
+  }
+   .see_more_resp_mode {
+font-size: 11px!important;
+font-weight: 700!important;
+line-height: 19px!important;
+letter-spacing: -0.035em!important;
+padding: 0px!important;
+
   }
 }
 </style>

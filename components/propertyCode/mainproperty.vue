@@ -24,14 +24,12 @@
 </template>
 <script>
 import header2 from "./Header2.vue";
-import leftside from './leftside.vue';
 import salecard from './salecard.vue'
 import filterSearch from './filterSearch.vue'
 import recentSearch from './recentSearch.vue'
 export default {
   components: {
     header2,
-    leftside,
     salecard,
     filterSearch,
     recentSearch

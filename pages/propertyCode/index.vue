@@ -26,7 +26,6 @@
 
 <script>
 import header2 from "../../components/propertyCode/Header2.vue";
-import leftside from "../../components/propertyCode/leftside.vue";
 import salecard from "../../components/propertyCode/salecard.vue";
 import filterSearch from "../../components/propertyCode/filterSearch.vue";
 import recentSearch from "../../components/propertyCode/recentSearch.vue";
@@ -34,7 +33,6 @@ import { getSearch } from "../../service/getApi";
 export default {
   components: {
     header2,
-    leftside,
     salecard,
     filterSearch,
     recentSearch,

@@ -14,6 +14,7 @@
    
         <ul class="sale__cards d-flex flex-row">
           <li v-for="data in data" :key="data.id" class="pa-3 sale__card__items">
+          <div v-if="data.length == 0  " class="not_founf"> data not found</div>
              <nuxt-link :to="'/propertyCode/'+ data.id">
             <div class="top_card">
               <a href="#">
@@ -328,6 +329,9 @@ export default {
 };
 </script>
 <style scoped>
+.not_founf{
+  background-color: #087cce;
+}
 .sale__card__items:hover .sale__desctiptipn {
   color: #087cce !important;
 }

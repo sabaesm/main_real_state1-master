@@ -57,27 +57,31 @@
           </svg>
         </div>
       </div>
-      <div v-swiper="swiperOption" class="w-5/6 ml-auto relative" :loadtheme="false">
-        <div class="swiper-wrapper">
+      <div>
+        <div  v-swiper="swiperOption" class="w-5/6 ml-auto relative" :loadtheme="false" >
           <ul
-            class="sale__cards d-flex flex-row swiper-slide"
-            v-for="data in data"
-            :key="data.id"
+           class="swiper-wrapper"
           >
-            <li class="sale__card__items">
+            <li  class="sale__cards d-flex flex-row swiper-slide"
+            v-for="data in data"
+            :key="data.id" >
+            <div class="sale__card__items">
               <div class="top_card">
                 <a href="#">
                   <img :src="data.cover" alt="" />
                 </a>
               </div>
-              <div class="bottom_card pa-2">
-                <h5 class="sale__desctiptipn py-0">
+              <div class="bottom_card ">
+              <div>
+                  <h5 class="sale__desctiptipn py-0 ">
                   {{ data.title }}
                 </h5>
+              </div>
+            
 
                 <v-row class="price__row ma-0 px-0 py-0">
                   <span class="value d-flex flex-row align-center">
-                    <span>
+                    <span class="pa-0 ma-0 price_icone">
                       <svg
                         width="11"
                         height="11"
@@ -181,10 +185,20 @@
                   </div>
                 </div>
               </div>
+              </div>
             </li>
           </ul>
         </div>
-      </div>
+      </div> 
+       <div class=" arrows_resp_mod  ">
+          <div class="see_more  d-flex align-items-center">
+            <nuxt-link to="propertyCode" class="">
+              <span class="py-0 px-5 see_more_resp_mode">مشاهده بیشتر</span>
+            </nuxt-link>
+          
+          </div>
+          
+        </div>
     </div>
   </div>
 </template>
@@ -199,43 +213,38 @@ export default {
   props: ["data"],
   data() {
     return {
-      swiperOption: {
-        slidesPerView: 4,
-        spaceBetween: 100,
-
+        swiperOption: {
         slidesPerGroup: 1,
-        freeMode: true,
-        freeModeMomentum: true,
-        mousewheelSensitivity: 0.02,
-        loopFillGroupWithBlank: true,
+        loopFillGroupWithBlank: false,
+
         pagination: {
           el: ".swiper-pagination",
           clickable: true,
+         
         },
         navigation: {
-          nextEl: ".prev-button",
-          prevEl: ".next-button",
+          nextEl: ".prev-button-new",
+          prevEl: ".next-button-new",
         },
         breakpoints: {
           1024: {
-            slidesPerView: 4,
-            spaceBetween: 200,
+            loop: true,
+            slidesPerView: 3,
+               spaceBetween: 0,
           },
           768: {
-            slidesPerView: 1,
             freeMode: true,
             freeModeMomentum: true,
             mousewheelSensitivity: 0.02,
           },
           640: {
-            spaceBetween: 10,
-
+            spaceBetween: 5,
             freeMode: true,
             freeModeMomentum: true,
             mousewheelSensitivity: 0.02,
           },
           320: {
-            spaceBetween: 150,
+            spaceBetween: 5,
             freeMode: true,
             freeModeMomentum: true,
             mousewheelSensitivity: 0.02,
@@ -270,6 +279,8 @@ h2 {
   text-align: right;
   color: #121939 !important;
   margin-bottom: 90px;
+  overflow: hidden;
+  white-space: nowrap;
 }
 .arrows {
   position: absolute;
@@ -282,12 +293,6 @@ h2 {
   justify-content: space-around;
   direction: ltr;
   left: 0;
-}
-.see_more {
-  background: #abbdd3;
-  border-radius: 10px;
-  width: 61px;
-  height: 61px;
 }
 .see_more svg {
   width: 25px;
@@ -364,23 +369,29 @@ h2 {
 }
 
 .bottom_card {
-  height: 40% !important;
+  width: 94%;
+  margin-right: 3%!important;
+  margin-top: 2%;
+  height: 35% !important;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
 
 }
 .sale__cards .sale__card__items {
   background-color: #fff;
   border-radius: 10px;
   overflow: hidden;
-  min-width: 350px;
+  /*min-width: 350px;*/ 
   box-shadow: 0px 0px 34px -9px rgba(12, 46, 96, 0.25);
   height: 275px;
 }
 .top_card a {
   overflow: hidden !important;
   border-top-right-radius: 15px;
-  border-bottom-right-radius: 0px;
+  border-bottom-right-radius: 0px!important;
   border-top-left-radius: 15px;
-  border-bottom-left-radius: 0;
+  border-bottom-left-radius: 0!important;
   height: 100% !important;
   width: 100%;
   display: block;
@@ -525,6 +536,7 @@ object-fit: cover;
   h2 {
     text-align: center !important;
     width: 100% !important;
+    margin-bottom: 20px!important;
   }
   h4 {
     font-size: 13px;
@@ -563,10 +575,14 @@ object-fit: cover;
     letter-spacing: -0.035em;
   }
   .sale__desctiptipn {
+    width: 90%;
     font-size: 15px;
     font-weight: 700;
     line-height: 22px;
     letter-spacing: -0.021em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
   .sale__product {
     height: 27px;
@@ -579,11 +595,15 @@ object-fit: cover;
     text-align: right;
   }
   .sale__cards {
-    width: 200px !important;
+         width: 320px!important;
+
   }
   .sale__cards .sale__card__items {
-    height: 415px;
-    
+      box-shadow: 0px 0px 34px -5px rgba(12, 46, 96, 0.15);
+
+    height: 285px;
+    width: calc(  100% - 5px)!important;
+
   }
 
   .sale_contact_way svg {
@@ -594,27 +614,69 @@ object-fit: cover;
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 60% !important;
   }
   .sale__card__items {
     border-radius: 17px !important;
   }
   .toman {
-    font-size: 13px;
+    font-size: 10px;
+    line-height: 15px;
+    padding-right: 3px;
   }
   .value {
-    font-size: 18px;
+    font-size: 12px;
   }
-  .value svg {
-    height: 27px;
-    width: 27px;
+  .value .price_icone  {
+    height: 17px;
+    width: 17px;
+    padding-left: 3px;
+  }.value svg  {
+    height: 17px;
+    width: 17px;
     padding-left: 3px;
   }
   .sale_person h5 {
-    font-size: 12px;
+    font-size: 11px;
+    margin-bottom: 3px;
   }
   .sale_person p {
-    font-size: 10px;
+    font-size: 8px;
+  }
+   .arrows_resp_mod {
+     
+    display: flex!important;
+    align-items: center!important;
+    flex-direction: column!important;
+    width: 100%;
+  }
+  .see_more{
+
+
+  }
+  .see_more a{
+    background: #798595!important;
+color: #ffff!important;
+ height: 61px;
+  padding: 20px;
+    border-radius: 10px;
+ 
+  margin: 0 5px;
+height: 40px!important;
+padding: 0px!important;
+border-radius: 7px!important;
+display: flex;
+align-items: center!important;
+justify-content: center!important;
+text-align: center!important;
+  }
+   .see_more_resp_mode {
+     color: #ffff!important;
+font-size: 11px!important;
+font-weight: 700!important;
+line-height: 19px!important;
+letter-spacing: -0.035em!important;
+padding: 0px!important;
+
   }
 }
 </style>
