@@ -2,10 +2,10 @@
   <div>
     <v-app class="main">
       <!-- isLoading page -->
-      <!-- <loading v-if="isLoading"></loading> -->
+      <loading v-if="isLoading"></loading>
 
       <!-- -------------- -->
-      <!-- <div v-if="!isLoading"> -->
+      <div v-if="!isLoading">
         <hed v-bind="HomePage" :data="HomePage"></hed>
         <value></value>
         <grouping></grouping>
@@ -18,7 +18,7 @@
         <cons v-bind="usersinfo" :data="usersinfo"></cons>
         <weblog v-bind="getBlog" :data="getBlog"></weblog>
         <banner v-bind="homePage_banner_s" :data="homePage_banner_s"></banner>
-      <!-- </div> -->
+      </div>
     </v-app>
   </div>
 </template>
