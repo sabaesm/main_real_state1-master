@@ -12,7 +12,7 @@
             <img :src="propertycode__recentsearch.img" alt="" />
           </v-col>
           <v-col cols="7" class="d-flex flex-column pa-0 ma-0 px-2">
-            <span class="sale__vila"> {{ propertycode__recentsearch.detaile }}</span>
+            <h6 class="sale__vila"> {{ propertycode__recentsearch.detaile }}</h6>
             <v-row
               class="price__row d-flex flex-row align-center justify-space-between ma-0 px-0 py-2"
             >
@@ -51,7 +51,6 @@
                 {{ propertycode__recentsearch.value }}
                 <span class="toman">تومان</span>
               </span>
-
               <span class="price">({{ propertycode__recentsearch.price }})</span>
             </v-row>
           </v-col>
@@ -121,5 +120,42 @@ h4 {
   font-weight: 400;
   line-height: 15px;
   letter-spacing: -0.021em;
+}
+@media screen and (max-width:600px) {
+  h4{
+font-size: 17px!important;
+font-weight: 700;
+line-height: 24px;
+letter-spacing: -0.04em;
+text-align: right;
+margin-bottom: 30px;
+  }
+  .sale__vila{
+font-size: 12px;
+font-weight: 400;
+line-height: 17px;
+letter-spacing: -0.021em;
+text-align: right;
+  }
+  .value svg { 
+height: 10px;
+width: 10px;
+  }
+  .value {
+font-size: 9px;
+font-weight: 800;
+line-height: 13px;
+letter-spacing: -0.021em;
+text-align: right;
+  }
+  .toman{
+
+font-size: 9px;
+font-weight: 400;
+line-height: 13px;
+letter-spacing: -0.021em;
+text-align: right;
+
+  }
 }
 </style>

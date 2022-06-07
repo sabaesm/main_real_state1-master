@@ -1,9 +1,9 @@
 <template>
-  <div v-swiper="swiperOption" class="ml-auto relative" :loadtheme="false">
-    <div class="swiper-wrapper">
-      <ul class="swiper-slide"  v-for="salecard in salecard" :key="salecard.id">
+    <div  v-swiper="swiperOption" class="ml-auto relative" :loadtheme="false">
+      <ul class="swiper-wrapper" >
         <!-- Render original HTML in server, render Swiper in browser (client) -->
-        <li class="cards ">
+        <li class="swiper-slide"  v-for="salecard in salecard" :key="salecard.id"> 
+        <div  class="cards ">
           <img :src="salecard.img" />        
           <div class="prev-button d-none d-md-flex" slot="button-prev">
             <svg
@@ -126,10 +126,10 @@
               </defs>
             </svg>
           </div>
+          </div>
         </li>
       </ul>
     </div>
-  </div>
 </template>
 <script>
 import { directive } from "vue-awesome-swiper";
@@ -180,7 +180,6 @@ export default {
 </script>
 
 <style scoped>
-
 .cards {
   display: flex;
   flex-direction: column;

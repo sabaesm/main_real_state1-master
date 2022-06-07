@@ -7,9 +7,9 @@
           <v-tab href="#tab-2"> تماس </v-tab>
         </v-tabs>
         <v-tabs-items v-model="tab">
-          <v-tab-item :value="'tab-1'">
+          <v-tab-item :value="'tab-1'" class="test">
             <v-card flat>
-              <v-card-text class="pa-0">
+              <v-card-text class="pa-2">
                 <v-form ref="form" v-model="valid" lazy-validation>
                   <v-text-field
                     v-model="name"
@@ -28,11 +28,7 @@
                     <v-textarea solo name="input-7-4" label="متن پیام شما"></v-textarea>
                   </v-col>
                   <v-col cols="12 " class="pa-0">
-                    <v-btn
-                      color="warning"
-                      @click="validate"
-                      class="p-0 w-100 send_message"
-                    >
+                    <v-btn @click="validate" class="p-0 w-100 send_message">
                       ارسال پیام
                     </v-btn>
                   </v-col>
@@ -40,11 +36,11 @@
               </v-card-text>
             </v-card>
           </v-tab-item>
-          <v-tab-item :value="'tab-2'">
+          <v-tab-item :value="'tab-2'" class="" >
             <v-card flat>
-              <v-card-text class="pa-0">
+              <v-card-text class=" tabs1">
                 <div
-                  class="send_message_person_detailes d-flex flex-column justify-center align-center"
+                  class="send_message_person_detailes d-flex flex-column justify-center align-center  "
                 >
                   <span class="send_message__images">
                     <img src="~/assets/images/person3.png" alt="" />
@@ -104,14 +100,14 @@
           <div
             class="report_box my-3 d-flex flex-column align-center justify-center py-4"
           >
-            <div>
+            <div class="home_code">
               کد ملکی:
               <span> 12234</span>
             </div>
             <p class="pa-0 ma-0">هنگام تماس یا ارسال پیام به کد آگهی اشاره فرمایید.</p>
           </div>
-          <span class="problem-report"
-            ><svg
+          <span class="problem-report d-flex align-center">
+            <svg
               width="19"
               height="19"
               viewBox="0 0 19 19"
@@ -135,8 +131,8 @@
                 stroke-linejoin="round"
               />
             </svg>
-            گزارش مشکل اگهی</span
-          >
+            <span> گزارش مشکل اگهی </span>
+          </span>
         </span>
       </v-card>
     </div>
@@ -190,7 +186,6 @@ export default {
   background-color: #ffff;
   border-top-left-radius: 25px !important;
   border-top-right-radius: 25px !important;
-  box-shadow: 0px -1px 38px rgba(0, 0, 0, 0.07) !important;
 }
 .contact_class .v-slide-group__wrapper {
   display: flex !important;
@@ -202,12 +197,18 @@ export default {
 .contact_class .v-sheet.v-card {
   box-shadow: none !important;
 }
+
+.v-window__container {
+  box-shadow: none !important;
+}
 .contact_class .theme--light.v-tabs > .v-tabs-bar .v-tab--disabled,
 .theme--light.v-tabs > .v-tabs-bar .v-tab:not(.v-tab--active),
 .theme--light.v-tabs > .v-tabs-bar .v-tab:not(.v-tab--active) > .v-btn,
 .theme--light.v-tabs > .v-tabs-bar .v-tab:not(.v-tab--active) > .v-icon {
   border-top-left-radius: 25px !important;
   border-top-right-radius: 25px !important;
+  overflow: hidden !important;
+
   /* color: red; */
 }
 .contact_class .v-slide-group__content {
@@ -239,8 +240,10 @@ export default {
   font-weight: 400;
   line-height: 20px;
   letter-spacing: -0.039em;
+  color: #242424de;
 }
-.problem-report {
+
+.problem-report span {
   text-align: center !important;
   width: 100% !important;
   color: #ff9800;
@@ -250,26 +253,50 @@ export default {
   font-weight: 400;
   line-height: 23px;
   letter-spacing: -0.029em;
-  text-align: right;
 }
 .v-application--is-ltr .v-rating .v-icon {
   padding: 10px 0px !important;
+}
+.v-label {
+  padding: 0px 20px !important;
+}
+.v-text-field > .v-input__control > .v-input__slot > .v-text-field__slot {
+  padding: 13px 0 0px 0;
 }
 </style>
 
 <style scoped>
 .send_message {
   width: 100%;
+  height: 60px !important;
+  border-radius: 8px;
+  background: #ed9d02 !important;
+  color: #ffff !important;
 }
 .send_message__images {
   height: 66px;
   width: 66px;
+    border-radius: 25px;
+overflow: hidden;
 }
 .send_message__images img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover !important;
-  border-radius: 25px;
+  height: 66px;
+  width: 66px;
+}
+.home_code {
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 25px;
+  letter-spacing: -0.027em;
+  text-align: right;
+  color: #242424a3;
+}
+.tabs1{
+  padding: 20px;
+  box-shadow: 0px -1px 38px rgba(0, 0, 0, 0.07)!important;
+}
+.send_message_person_detailes{
+  padding: 40px 0px 30px 0px!important;
 }
 .send_message_person_detailes h6 {
   font-size: 20px;
@@ -279,7 +306,7 @@ export default {
   color: #101737;
 }
 .send_message_person_detailes p {
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 500;
   line-height: 23px;
   letter-spacing: -0.021em;
@@ -312,6 +339,7 @@ export default {
   color: #ffff;
   padding: 10px 0;
 }
+
 @media screen and (max-width: 600px) {
 }
 </style>

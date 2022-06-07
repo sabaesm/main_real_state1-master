@@ -1,7 +1,5 @@
 <template>
-    <div>
     <mainDetaile></mainDetaile>
-    </div>
 </template>
 <script>
 import mainDetaile from '../../components/propertyDtalis/mainDetaile.vue'

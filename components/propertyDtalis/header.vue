@@ -1,5 +1,5 @@
 <template>
-  <v-row class="d-flex flex-row">
+  <v-row class="d-flex flex-row pa-0 ma-0">
     <v-col cols="12" class="gallery-container">
       <ul   class=" gallery">
       <li class="gallery_img" v-for=" items in detaileHeader " :key="items.id">
@@ -8,8 +8,7 @@
       </li>
       </ul>
     </v-col>
-    <v-col cols="12">
-    </v-col>
+  
   </v-row>
 </template>
 <script>

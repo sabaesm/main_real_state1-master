@@ -1,5 +1,5 @@
 <template>
-  <v-col cols="12 " md="8">
+  <v-col  cols="12 " md="8">
     <div class="right_section" v-bind="data" :key="data.id">
       <v-row class="pb-4 detaile">
         <span class="d-flex flex-row">
@@ -89,7 +89,7 @@
             بازدید
           </span>
         </span>
-        <span class="share">
+        <span class="share d-none d-sm-flex">
           <svg
             width="20"
             height="20"
@@ -124,13 +124,55 @@
           </svg>
         </span>
       </v-row>
-      <v-row class="sale__title">
-        <v-col class="m-0 p-0">
-          <h4>
-            {{ data.title }}
-          </h4>
-          <div class="location">
-            <span>
+      <v-row class="sale__title pa-0 ma-0">
+        <v-col class="ma-0 pa-0" cols="12">
+          <v-row class="value_title d-flex flex-row align-start justify-space-between py-5 ma-0">
+            <v-col cols="12" sm="8" class="pa-0 ma-0">
+              <h4 >
+                {{data.title}}
+              </h4>
+            </v-col>
+            <v-col cols="12" sm="4" class="pa-0 ma-0">
+              <div class="value">
+                <span class="icon ma-0 pa-0">
+                  <svg
+                    class="ma-0 pa-0"
+                    width="11"
+                    height="11"
+                    viewBox="0 0 11 11"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      opacity="0.4"
+                      d="M8.84724 3.62993V5.99036C8.84724 7.40203 8.04057 8.00701 6.83057 8.00701H2.80182C2.59557 8.00701 2.39849 7.9887 2.21515 7.94745C2.10057 7.92912 1.99057 7.89703 1.88974 7.86037C1.20224 7.6037 0.785156 7.00786 0.785156 5.99036V3.62993C0.785156 2.21826 1.59182 1.61328 2.80182 1.61328H6.83057C7.85724 1.61328 8.59516 2.0487 8.79224 3.04328C8.82432 3.22661 8.84724 3.41451 8.84724 3.62993Z"
+                      fill="#237E48"
+                    />
+                    <path
+                      d="M10.2219 5.00511V7.36554C10.2219 8.7772 9.41526 9.38219 8.20526 9.38219H4.17651C3.83734 9.38219 3.53026 9.33638 3.26443 9.23555C2.71901 9.03388 2.34776 8.6168 2.21484 7.94763C2.39818 7.98888 2.59526 8.00719 2.80151 8.00719H6.83026C8.04026 8.00719 8.84693 7.4022 8.84693 5.99054V3.63011C8.84693 3.41469 8.8286 3.22221 8.79193 3.04346C9.66276 3.22679 10.2219 3.84094 10.2219 5.00511Z"
+                      fill="#237E48"
+                    />
+                    <path
+                      d="M4.81157 6.02255C5.47983 6.02255 6.02158 5.48081 6.02158 4.81255C6.02158 4.14428 5.47983 3.60254 4.81157 3.60254C4.1433 3.60254 3.60156 4.14428 3.60156 4.81255C3.60156 5.48081 4.1433 6.02255 4.81157 6.02255Z"
+                      fill="#237E48"
+                    />
+                    <path
+                      d="M2.19141 3.78125C2.00349 3.78125 1.84766 3.93708 1.84766 4.125V5.5C1.84766 5.68792 2.00349 5.84375 2.19141 5.84375C2.37932 5.84375 2.53516 5.68792 2.53516 5.5V4.125C2.53516 3.93708 2.38391 3.78125 2.19141 3.78125Z"
+                      fill="#237E48"
+                    />
+                    <path
+                      d="M7.42969 3.78125C7.24177 3.78125 7.08594 3.93708 7.08594 4.125V5.5C7.08594 5.68792 7.24177 5.84375 7.42969 5.84375C7.6176 5.84375 7.77344 5.68792 7.77344 5.5V4.125C7.77344 3.93708 7.62219 3.78125 7.42969 3.78125Z"
+                      fill="#237E48"
+                    />
+                  </svg>
+                </span>
+                {{ data.unit_price }}
+                <span class="toman mx-2">تومان</span>
+              </div>
+            </v-col>
+          </v-row>
+          <div class="location mb-2  ">
+            <span class="icon">
               <svg
                 width="22"
                 height="22"
@@ -151,54 +193,16 @@
                   stroke-width="1.5"
                 />
               </svg>
-              مازندران ، نوشهر
             </span>
+            <a> <span class="px-2">{{data.province}}</span> /<span class="px-2"> {{data.city}}</span>   / <span class="px-2">{{data.region}}</span>  </a>
           </div>
-          <h5>توضیحات ملک</h5>
-          <v-col cols="11" md="12" class="description__place m-0 p-0">
-            <p>
+          <v-col cols="12" md="12" class="description__place ma-0 pa-0">
+            <h5>  توضیحات ملک</h5>
+            <p> 
               {{ data.description }}
             </p>
           </v-col>
         </v-col>
-        <div class="value">
-          <v-row class="value_title">
-            <span>
-              <svg
-                class="mx-2"
-                width="11"
-                height="11"
-                viewBox="0 0 11 11"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  opacity="0.4"
-                  d="M8.84724 3.62993V5.99036C8.84724 7.40203 8.04057 8.00701 6.83057 8.00701H2.80182C2.59557 8.00701 2.39849 7.9887 2.21515 7.94745C2.10057 7.92912 1.99057 7.89703 1.88974 7.86037C1.20224 7.6037 0.785156 7.00786 0.785156 5.99036V3.62993C0.785156 2.21826 1.59182 1.61328 2.80182 1.61328H6.83057C7.85724 1.61328 8.59516 2.0487 8.79224 3.04328C8.82432 3.22661 8.84724 3.41451 8.84724 3.62993Z"
-                  fill="#237E48"
-                />
-                <path
-                  d="M10.2219 5.00511V7.36554C10.2219 8.7772 9.41526 9.38219 8.20526 9.38219H4.17651C3.83734 9.38219 3.53026 9.33638 3.26443 9.23555C2.71901 9.03388 2.34776 8.6168 2.21484 7.94763C2.39818 7.98888 2.59526 8.00719 2.80151 8.00719H6.83026C8.04026 8.00719 8.84693 7.4022 8.84693 5.99054V3.63011C8.84693 3.41469 8.8286 3.22221 8.79193 3.04346C9.66276 3.22679 10.2219 3.84094 10.2219 5.00511Z"
-                  fill="#237E48"
-                />
-                <path
-                  d="M4.81157 6.02255C5.47983 6.02255 6.02158 5.48081 6.02158 4.81255C6.02158 4.14428 5.47983 3.60254 4.81157 3.60254C4.1433 3.60254 3.60156 4.14428 3.60156 4.81255C3.60156 5.48081 4.1433 6.02255 4.81157 6.02255Z"
-                  fill="#237E48"
-                />
-                <path
-                  d="M2.19141 3.78125C2.00349 3.78125 1.84766 3.93708 1.84766 4.125V5.5C1.84766 5.68792 2.00349 5.84375 2.19141 5.84375C2.37932 5.84375 2.53516 5.68792 2.53516 5.5V4.125C2.53516 3.93708 2.38391 3.78125 2.19141 3.78125Z"
-                  fill="#237E48"
-                />
-                <path
-                  d="M7.42969 3.78125C7.24177 3.78125 7.08594 3.93708 7.08594 4.125V5.5C7.08594 5.68792 7.24177 5.84375 7.42969 5.84375C7.6176 5.84375 7.77344 5.68792 7.77344 5.5V4.125C7.77344 3.93708 7.62219 3.78125 7.42969 3.78125Z"
-                  fill="#237E48"
-                />
-              </svg>
-            </span>
-            {{ data.unit_price }}
-            <span class="toman mx-2">تومان</span>
-          </v-row>
-        </div>
       </v-row>
       <div class="bordr my-4"></div>
       <v-row class="main_details d-flex flex-column">
@@ -363,7 +367,7 @@
           <li>
             <span class="main_details__title pl-1">اتاق خواب :</span>{{ data.rooms }} عدد
           </li>
-         
+
           <li>
             <span class="main_details__title pl-1">کفپوش:</span> {{ data.floorCover }}
           </li>
@@ -389,7 +393,7 @@
           </li>
         </ul>
         <ul v-else-if="data.estate_type === 'A'">
-        <li>
+          <li>
             <span class="main_details__title pl-1"> متراژ :</span>{{ data.land_size }} متر
           </li>
           <li class="">
@@ -429,11 +433,18 @@
           <li>
             <span class="main_details__title pl-1">مستر:</span>
             {{ data.master }}
-             عدد
+            عدد
           </li>
-          <li><span class="main_details__title pl-1">  تعداد طبقه:</span>{{data.floors}}</li>
-          <li><span class="main_details__title pl-1">   واحد موجود در هر طبقه  :</span>{{data.unit_in_floors}}</li>
-          <li><span class="main_details__title pl-1"> طبقه ی:</span>{{data.which_floor}}</li>
+          <li>
+            <span class="main_details__title pl-1"> تعداد طبقه:</span>{{ data.floors }}
+          </li>
+          <li>
+            <span class="main_details__title pl-1"> واحد موجود در هر طبقه :</span
+            >{{ data.unit_in_floors }}
+          </li>
+          <li>
+            <span class="main_details__title pl-1"> طبقه ی:</span>{{ data.which_floor }}
+          </li>
         </ul>
       </v-row>
       <div class="bordr my-4"></div>
@@ -3293,12 +3304,16 @@ export default {
   line-height: 33px;
   letter-spacing: -0.021em;
   display: flex;
-  flex-direction: column;
-  align-items: end;
+  flex-direction: row;
+  align-items: center;
 }
-.value svg {
-  height: 32px;
-  width: 32px;
+.value .icon {
+  height: 31px;
+  width: 31px;
+}
+.value .icon svg {
+  height: 100%;
+  width: 100%;
 }
 .price_meter {
   font-size: 16px;
@@ -3322,13 +3337,17 @@ export default {
 }
 .location {
   display: flex;
-  justify-content: space-between;
+  flex-direction: row;
   font-size: 16px;
   font-style: normal;
   font-weight: 400;
   line-height: 26px;
   letter-spacing: -0.035em;
   color: #519fff;
+}
+.location .icon{
+  height: 22px;
+  width: 22px;
 }
 .description__place {
   display: flex;
@@ -3439,5 +3458,73 @@ h5 {
   width: 100%;
   height: 350px;
   border-radius: 15px;
+}
+
+@media screen and (max-width: 600px) {
+  .sale__status_v {
+    font-size: 11px;
+    font-weight: 700;
+    line-height: 19px;
+    letter-spacing: -0.035em;
+    text-align: right;
+    height: 26px;
+  }
+  .month {
+    font-size: 11px;
+    line-height: 18px;
+  }
+
+  .seen svg {
+    height: 15px;
+    width: 15px;
+  }
+  .seen,
+  .month {
+    font-size: 10px;
+    line-height: 20px;
+  }
+  .value_title h4 {
+    width: 100% !important;
+    font-size: 19px!important;
+    line-height: 36px!important;
+    letter-spacing: -0.051em;
+    text-align: right;
+    padding-top: 0px!important;
+    margin: 0px!important;
+  }
+  .description__place p {
+ 
+font-weight: 400;
+line-height: 21px;
+font-size: 14px!important;
+  }
+  .toman{
+font-size: 16px!important;
+line-height: 23px;
+letter-spacing: -0.021em;
+  }
+  .value{
+    
+  }
+   h5{
+font-size: 20px;
+font-weight: 700;
+line-height: 29px;
+letter-spacing: -0.011em;
+text-align:center!important;
+width: 100%;
+  }
+  .main_details ul li {
+  width: 100% !important;
+  font-size: 17px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 25px;
+  letter-spacing: -0.011em;
+}
+.Equipment ul li{
+    width: 100% !important;
+
+}
 }
 </style>

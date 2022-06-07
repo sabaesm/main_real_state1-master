@@ -803,12 +803,7 @@ display: inline-block;
   margin: 10px;
   padding: 0 5px;
 }
-.shape {
-  width: 20px;
-  height: 20px;
-  border-radius: 100%;
-  background: #c4c4c4;
-}
+
 .sale_price {
   font-size: 16px;
   font-style: normal;

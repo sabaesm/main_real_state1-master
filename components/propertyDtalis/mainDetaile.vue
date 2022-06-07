@@ -13,7 +13,6 @@
       </div>
       <slider></slider>
     </div>
-    <div class="buttons"> hi</div>
   </v-app>
 </template>
 <script>

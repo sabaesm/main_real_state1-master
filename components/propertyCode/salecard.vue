@@ -11,9 +11,8 @@
     </div> -->
     <v-row class="">
       <v-col cols="12" class="pa-0 ma-0">
-   
         <ul class="sale__cards d-flex flex-row">
-          <li v-for="data in data" :key="data.id" class="pa-3 sale__card__items">
+          <li v-for="data in data" :key="data.id" class="pa-2 sale__card__items">
           <div v-if="data.length == 0  " class="not_founf"> data not found</div>
              <nuxt-link :to="'/propertyCode/'+ data.id">
             <div class="top_card">
@@ -126,9 +125,9 @@
                 </div>
               </div>
               <span class="hover__icon_bottom">
-                <div class="counter d-flex flex-column align-center pa-2">
-                  <span>{{ data.media_count }}</span>
-                  <span
+                <div class="counter d-flex flex-column align-center jusctify-center pa-2">
+                  <span class="counter_number" >{{ data.media_count }}</span>
+                  <span class="icon"
                     ><svg
                       width="19"
                       height="19"
@@ -183,47 +182,26 @@
                 <li v-if="data.tree_count !== null">{{ data.tree_count }}</li>
               </ul>
               <v-row class="price__row ma-0 px-0 py-2">
-                <span class="value d-flex flex-row align-center">
-                  <svg
-                    width="11"
-                    height="11"
-                    viewBox="0 0 11 11"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      opacity="0.4"
-                      d="M8.84724 3.62993V5.99036C8.84724 7.40203 8.04057 8.00701 6.83057 8.00701H2.80182C2.59557 8.00701 2.39849 7.9887 2.21515 7.94745C2.10057 7.92912 1.99057 7.89703 1.88974 7.86037C1.20224 7.6037 0.785156 7.00786 0.785156 5.99036V3.62993C0.785156 2.21826 1.59182 1.61328 2.80182 1.61328H6.83057C7.85724 1.61328 8.59516 2.0487 8.79224 3.04328C8.82432 3.22661 8.84724 3.41451 8.84724 3.62993Z"
-                      fill="#237E48"
-                    />
-                    <path
-                      d="M10.2219 5.00511V7.36554C10.2219 8.7772 9.41526 9.38219 8.20526 9.38219H4.17651C3.83734 9.38219 3.53026 9.33638 3.26443 9.23555C2.71901 9.03388 2.34776 8.6168 2.21484 7.94763C2.39818 7.98888 2.59526 8.00719 2.80151 8.00719H6.83026C8.04026 8.00719 8.84693 7.4022 8.84693 5.99054V3.63011C8.84693 3.41469 8.8286 3.22221 8.79193 3.04346C9.66276 3.22679 10.2219 3.84094 10.2219 5.00511Z"
-                      fill="#237E48"
-                    />
-                    <path
-                      d="M4.81157 6.02255C5.47983 6.02255 6.02158 5.48081 6.02158 4.81255C6.02158 4.14428 5.47983 3.60254 4.81157 3.60254C4.1433 3.60254 3.60156 4.14428 3.60156 4.81255C3.60156 5.48081 4.1433 6.02255 4.81157 6.02255Z"
-                      fill="#237E48"
-                    />
-                    <path
-                      d="M2.19141 3.78125C2.00349 3.78125 1.84766 3.93708 1.84766 4.125V5.5C1.84766 5.68792 2.00349 5.84375 2.19141 5.84375C2.37932 5.84375 2.53516 5.68792 2.53516 5.5V4.125C2.53516 3.93708 2.38391 3.78125 2.19141 3.78125Z"
-                      fill="#237E48"
-                    />
-                    <path
-                      d="M7.42969 3.78125C7.24177 3.78125 7.08594 3.93708 7.08594 4.125V5.5C7.08594 5.68792 7.24177 5.84375 7.42969 5.84375C7.6176 5.84375 7.77344 5.68792 7.77344 5.5V4.125C7.77344 3.93708 7.62219 3.78125 7.42969 3.78125Z"
-                      fill="#237E48"
-                    />
-                  </svg>
+                <span class="value d-flex flex-row align-center justify-center">
+     <svg class="money" width="22" height="23" viewBox="0 0 22 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path opacity="0.4" d="M17.4475 7.90899V12.5084C17.4475 15.259 15.8757 16.4379 13.518 16.4379H5.66781C5.26593 16.4379 4.8819 16.4022 4.52467 16.3218C4.3014 16.2861 4.08707 16.2236 3.8906 16.1521C2.55098 15.652 1.73828 14.491 1.73828 12.5084V7.90899C1.73828 5.15832 3.31009 3.97949 5.66781 3.97949H13.518C15.5184 3.97949 16.9563 4.82791 17.3403 6.76588C17.4028 7.12312 17.4475 7.48925 17.4475 7.90899Z" fill="#237E48"/>
+<path d="M20.1255 10.5882V15.1876C20.1255 17.9382 18.5537 19.1171 16.1959 19.1171H8.3458C7.68493 19.1171 7.08657 19.0278 6.56859 18.8313C5.50583 18.4384 4.78243 17.6257 4.52344 16.3218C4.88067 16.4022 5.26469 16.4378 5.66657 16.4378H13.5167C15.8744 16.4378 17.4462 15.259 17.4462 12.5083V7.90898C17.4462 7.48923 17.4105 7.11417 17.3391 6.76587C19.0359 7.1231 20.1255 8.31979 20.1255 10.5882Z" fill="#237E48"/>
+<path d="M9.5882 12.5707C10.8903 12.5707 11.9459 11.5151 11.9459 10.213C11.9459 8.91083 10.8903 7.85522 9.5882 7.85522C8.28607 7.85522 7.23047 8.91083 7.23047 10.213C7.23047 11.5151 8.28607 12.5707 9.5882 12.5707Z" fill="#237E48"/>
+<path d="M4.48231 8.20361C4.11615 8.20361 3.8125 8.50726 3.8125 8.87342V11.5526C3.8125 11.9188 4.11615 12.2225 4.48231 12.2225C4.84847 12.2225 5.15211 11.9188 5.15211 11.5526V8.87342C5.15211 8.50726 4.8574 8.20361 4.48231 8.20361Z" fill="#237E48"/>
+<path d="M14.6893 8.20361C14.3232 8.20361 14.0195 8.50726 14.0195 8.87342V11.5526C14.0195 11.9188 14.3232 12.2225 14.6893 12.2225C15.0555 12.2225 15.3591 11.9188 15.3591 11.5526V8.87342C15.3591 8.50726 15.0644 8.20361 14.6893 8.20361Z" fill="#237E48"/>
+</svg>
 
-                  {{ data.unit_price }}
-                  <span class="toman">تومان</span>
+   <span class="unit_price">  {{ data.unit_price }}</span>
+                 
+                  <span class="toman pr-1">تومان</span>
                 </span>
               </v-row>
               <div class="sale_person__details d-flex flex-row w-100">
-                <div class="sale_person d-flex flex-row">
+                <div class="sale_person ">
                   <div class="sale_person__pictur">
                     <img :src="data.cover" />
                   </div>
-                  <span class="d-flex flex-column pa-1">
+                  <span class="user_detaile d-flex flex-column align-center pr-1">
                     <h5 class="pa-0 ma-0">{{ data.username }}</h5>
                     <p class="pa-0 ma-0">{{ data.user_activity }}</p>
                   </span>
@@ -348,6 +326,15 @@ export default {
   margin: 5px;
   box-shadow: 0px 0px 34px -9px rgba(12, 46, 96, 0.25);
   margin-bottom: 30px;
+  height: 500px;
+}
+.top_card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+  transition: all ease-in-out 0.3s;
+  width: 100%;
+  height: 50%;
 }
 .top_card a {
   overflow: hidden !important;
@@ -355,6 +342,7 @@ export default {
   height: 100% !important;
   width: 100%;
   display: block;
+  overflow: hidden;
 }
 .top_card img {
   width: 100%;
@@ -365,19 +353,12 @@ export default {
 .top_card:hover img {
   transform: scale(1.1);
 }
-.top_card {
-  position: relative;
-  overflow: hidden;
-  border-radius: 10px;
-  transition: all ease-in-out 0.3s;
-  width: 100%;
-  height: 240px;
-}
+
 .top_card .topcard__top__section {
   position: absolute;
   left: 0;
   right: 0;
-  top: 0;
+  top: 10px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -449,7 +430,8 @@ export default {
 .Building-type {
   background-color: #ffff;
   margin-left: 10px;
-  padding: 10px;
+  padding: 0 8px;
+  height: 34px;
   border-radius: 9px;
 }
 .Building-type p {
@@ -513,7 +495,29 @@ export default {
   color: #fff;
   border-radius: 5px;
   font-size: 12px;
+  height: 50px;
 }
+.counter_number{
+font-size: 12px;
+font-weight: 800;
+line-height: 17px;
+letter-spacing: -0.035em;
+
+}
+.counter .icon {
+  height: 19px;
+  width: 19px;
+}
+.bottom_card{
+  width: 98%;
+  padding-top: 2%;
+  padding-right: 2%;
+  height: 48%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
 .sale__desctiptipn {
   font-size: 20px;
   font-weight: 700;
@@ -524,13 +528,38 @@ export default {
   transition: all ease-in-out 0.3s;
 }
 .home__desctiption {
-  display: flex;
-  width: 100%;
+
+  color: #101737;
+
+ display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-wrap: nowrap;
+  overflow: hidden;
+  width: 70%!important;
 }
 .home__desctiption li {
-  display: inline-block;
-  width: 20%!important;
-  overflow: hidden;
+  width:30%!important;
+  white-space: nowrap;
+display: inline-block;
+  font-size: 17px;
+  font-weight: 700;
+  line-height: 25px;
+  letter-spacing: -0.021em;
+  text-align: right;
+  position: relative;
+  margin: 10px;
+  padding: 0 5px;
+}
+.home__desctiption li::before {
+  content: "";
+  height: 4px;
+  width: 4px;
+  background: #c4c4c4!important;
+  position: absolute;
+  border-radius: 100%;
+  top: 45%;
+  left: 100%;
 }
 .shape {
   width: 20px;
@@ -547,33 +576,37 @@ export default {
   text-align: right;
   color: #818181;
 }
-.value {
-  font-size: 23px;
-  font-style: normal;
-  font-weight: 800;
-  line-height: 33px;
-  letter-spacing: -0.021em;
-  text-align: right;
+.value   .money {
+  width: 30px!important;
+  padding-left: 5px;
 }
-.price {
-  color: rgba(129, 129, 129, 1);
-  font-size: 10px;
-  font-weight: 700;
-  line-height: 15px;
-  letter-spacing: -0.021em;
+.value   .money svg {
+  height: 30px!important;
+  width: 30px!important;
+  padding-left: 5px;
+}
+.unit_price {
+font-size: 23px;
+font-weight: 800;
+line-height: 33px;
+letter-spacing: -0.021em;
+text-align: right;
+color: #101737
+
+}
+.toman {
+font-size: 16px;
+font-weight: 400;
+line-height: 23px;
+letter-spacing: -0.021em;
+text-align: right;
+color: #101737
 }
 .price__row {
   display: flex;
   justify-content: space-between;
 }
-.toman {
-  font-size: 20px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 29px;
-  letter-spacing: -0.021em;
-  text-align: right;
-}
+
 .sale_person__details {
   justify-content: space-between;
   align-items: center;
@@ -585,14 +618,23 @@ export default {
 .sale_contact_way svg {
   width: 45px;
 }
-.sale_person__pictur img {
+.sale_person__pictur  {
   width: 40px;
   height: 40px;
-  border-radius: 0;
+  border-radius: 9px;
+  overflow: hidden;
+}
+.sale_person__pictur img{
+  height: 100%;
+  width: 100%;
 }
 .sale_person {
   display: flex;
+  flex-direction: row;
   align-items: center;
+}
+.user_detaile{
+  height: 40px!important;
 }
 .sale_person p {
   font-size: 11px;
@@ -602,36 +644,53 @@ export default {
   color: #b1b1b1;
 }
 .sale_person h5 {
-  font-size: 15px;
-  font-weight: 700;
-  line-height: 22px;
-  letter-spacing: -0.035em;
-  text-align: right;
-  color: #101737;
+font-size: 15px;
+font-weight: 700;
+line-height: 22px;
+letter-spacing: -0.035em;
+color: #101737!important;
+}
+.user_detaile{
+  height: 100%;
 }
 @media screen and (max-width: 760px) {
   .sale__cards .sale__card__items {
-    width: 90% !important;
+    width: calc(100% - 10px) !important;
   }
 }
 @media screen and (max-width: 600px) {
+  .sale__cards .sale__card__items {
+    width: 100%;
+      height: 380px;
+  }
+  .top_card{
+    height: 55%;
+  }
+  .bottom_card{
+    height: 45%;
+    width: 100%!important;
+  }
   .sale__desctiptipn {
     font-size: 13px;
     font-weight: 400;
     line-height: 19px;
     letter-spacing: -0.021em;
   }
-  .home__desctiption {
+  .home__desctiption li {
     font-size: 11px;
     font-weight: 400;
     line-height: 16px;
     letter-spacing: -0.021em;
   }
-  .value svg {
-    width: 15px !important;
-    height: 15px !important;
+  .value .money{
+    width: 20px!important;
+    height: 20px;
+    padding-left: 1px!important;
+    
   }
-  .value {
+  
+
+  .unit_price {
     font-size: 17px;
     font-weight: 700;
     line-height: 25px;
