@@ -2,6 +2,7 @@
   <v-app>
   
     <div class="mainPage">
+    {{this.$route.params.id}}
       <Header2 class="mb-5"></Header2>
       <div class="medium_container">
         <div class="mb-5">
@@ -15,7 +16,6 @@
           </v-row>
         </div>
         <div class="tset"></div>
-        <slider class="mt-5 pt-5"> </slider>
       </div>
     </div>
   </v-app>
@@ -44,8 +44,8 @@ export default {
   /* extracting url params */
   mounted() {
     // consol.log('dynamic routs')
-    getBlogDynamic(this.$route.params.id)
-      .then((res) => (this.getBlogDynamic = res.data ))
+    getBlogDynamic(this.$route.params.id).then((res) =>this.getBlogDynamic=res.data)
+    
 
   },
   layout: "user",

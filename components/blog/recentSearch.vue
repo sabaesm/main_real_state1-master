@@ -4,7 +4,7 @@
 <li>
 <div class="d-flex justify-center align-center cards_row_weblog py-2 pe-2 ">
 <v-col cols="5" class="pa-0 home_img  px-1">
-    <img class="" :src="data.cover" />
+    <img class="" :src="env+data.cover" />
     </v-col>
 <v-col class="recent__home d-flex flex-column pa-0 pr-2" cols="7">
 <h5 class="mb-0 p-0 mt-1">{{data.title}}</h5>
@@ -36,7 +36,13 @@ export default {
   computed: mapState(["recent"]),
   props:[
     'data'
-  ]
+  ],
+  data() {
+    return{
+    env: process.env.baseURL,
+
+    }
+  },
 };
 </script>
 <style scoped>

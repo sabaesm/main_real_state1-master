@@ -28,6 +28,9 @@ export default {
     "@nuxtjs/vuetify",
     "nuxt-moment-jalaali",
   ],
+  env:{
+    baseURL:'https://real.iran.liara.run/'
+  },
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [],

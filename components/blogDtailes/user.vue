@@ -10,7 +10,7 @@
             class="">{{ experience }}</p>
           </span>
         </div>
-        <row class="contact_way d-flex flex-column 
+        <div class="contact_way d-flex flex-column 
 justify-end align-end">
         <span class="d-flex flex-row">
            <svg
@@ -84,7 +84,7 @@ justify-end align-end">
             {{date}}
           </p>
           </span>
-        </row>
+        </div>
       
       </div>
 </template>

@@ -6,8 +6,8 @@
         <div class="mainSection__cards mb-5">
           <v-row>
             <v-col cols="12 " md="7">
-              <card v-bind="'getBlog,count' " :data="getBlog"
-              :data2="count"
+              <card v-bind="'getBlog,pagination' " :data="getBlog"
+              :data2="pagination"
               ></card
             ></v-col>
             <v-col cols="12 " md="5">
@@ -50,11 +50,13 @@ export default {
       tags: [],
       weblogTypes: [],
       MostViewWeblogs: [],
-      count:[]
+      count:[],
+      pagination:''
     };
   },
   mounted() {
     getBlog().then((res) => (this.getBlog = res.data.results));
+     getBlog().then((res) => (this.pagination = res.data.next));
     getBlog().then((res) => (this.count = res.data.count));
     tags().then((res) => (this.tags = res.data))
     weblogTypes().then((res) => (this.weblogTypes = res.data));

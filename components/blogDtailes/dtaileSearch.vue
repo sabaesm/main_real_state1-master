@@ -22,14 +22,14 @@
    <category></category>
 <h4 class="home_title py-5 ">  برچسب های محبوب
  </h4>
- <row>
+ <div>
  <v-col cols="8" class="label "> 
 <ul v-for="lables in lables" :key="lables.id" class="ma-1">
 <li > 
 {{lables.lable}}
 </li></ul>
  </v-col>
- </row>
+ </div>
    </div>
 </template>
 <script>

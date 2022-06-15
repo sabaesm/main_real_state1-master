@@ -4,7 +4,7 @@
       <h4>ویلای ساحلی مورد علاقت را پیدا کن !</h4>
       <h2>جدیدترین ویلاهای ساحلی</h2>
       <div class="arrows">
-        <div class="next-button d-flex justify-center align-center" slot="button-next">
+        <div class="prev-button-new d-flex justify-center align-center" slot="prev-button-new">
           <svg
             width="20"
             height="14"
@@ -30,7 +30,7 @@
             />
           </svg>
         </div>
-        <div class="prev-button d-flex justify-center align-center" slot="button-prev">
+        <div class="next-button-new d-flex justify-center align-center" slot="next-button-new">
           <svg
             width="20"
             height="14"
@@ -191,13 +191,11 @@
         </div>
       </div> 
        <div class=" arrows_resp_mod  ">
-          <div class="see_more  d-flex align-items-center">
+          <div class="see_more  d-flex d-sm-none align-items-center">
             <nuxt-link to="propertyCode" class="">
               <span class="py-0 px-5 see_more_resp_mode">مشاهده بیشتر</span>
             </nuxt-link>
-          
           </div>
-          
         </div>
     </div>
   </div>
@@ -214,8 +212,6 @@ export default {
   data() {
     return {
         swiperOption: {
-        slidesPerGroup: 1,
-        loopFillGroupWithBlank: false,
 
         pagination: {
           el: ".swiper-pagination",
@@ -228,9 +224,9 @@ export default {
         },
         breakpoints: {
           1024: {
-            loop: true,
-            slidesPerView: 3,
-               spaceBetween: 0,
+            loop: false,
+            slidesPerView: 4,
+               spaceBetween: 20,
           },
           768: {
             freeMode: true,
@@ -256,6 +252,10 @@ export default {
 };
 </script>
 <style scoped>
+.larg_container{}
+.swiper-wrapper{
+  width: 100%;
+}
 .new_vila__main_section {
   box-sizing: border-box;
   position: relative;
@@ -294,34 +294,37 @@ h2 {
   direction: ltr;
   left: 0;
 }
+.see_more{
+  display: none;
+}
 .see_more svg {
   width: 25px;
   height: 25px;
 }
-.prev-button,
-.next-button {
+.next-button-new,
+.prev-button-new {
   border-radius: 10px;
   cursor: pointer;
   position: relative;
   width: 61px;
   height: 61px;
 }
-.prev-button {
+.next-button-new {
   background-color: #519fff !important;
   width: 50px;
   height: 50px;
   transition: all ease-in-out 0.3s !important;
 }
-.next-button {
+.prev-button-new {
   background-color: #519fff !important;
   width: 50px;
   height: 50px;
   transition: all ease-in-out 0.3s !important;
 }
-.next-button:hover {
+.prev-button-new:hover {
   background-color: #3370bc !important;
 }
-.prev-button:hover {
+.next-button-new:hover {
   background-color: #3370bc !important;
 }
 
@@ -334,19 +337,19 @@ h2 {
   color: #969595;
   font-size: 12px;
 }
-.prev-button,
-.next-button {
+.next-button-new,
+.prev-button-new {
   border-radius: 10px;
   cursor: pointer;
   position: relative;
 }
 
-.prev-button {
+.next-button-new {
   background-color: #519fff;
   width: 50px;
   height: 50px;
 }
-.next-button {
+.prev-button-new {
   background-color: #3370bc;
   width: 50px;
   height: 50px;
@@ -359,6 +362,7 @@ h2 {
   flex-wrap: wrap;
   justify-content: space-between;
   margin: 30px 0;
+  width: 360px!important;
 }
 .top_card {
   position: relative;
@@ -380,11 +384,13 @@ h2 {
 }
 .sale__cards .sale__card__items {
   background-color: #fff;
-  border-radius: 10px;
+  border-radius: 15px;
   overflow: hidden;
   /*min-width: 350px;*/ 
   box-shadow: 0px 0px 34px -9px rgba(12, 46, 96, 0.25);
   height: 275px;
+    width: 100%;
+
 }
 .top_card a {
   overflow: hidden !important;
@@ -527,6 +533,10 @@ object-fit: cover;
   color: #101737 !important;
 }
 @media screen and (max-width: 600px) {
+  .new_vila__main_section{
+
+    margin: 60px 0;
+  }
   .arrows {
     display: none;
   }
@@ -595,13 +605,13 @@ object-fit: cover;
     text-align: right;
   }
   .sale__cards {
-         width: 320px!important;
+         width: 280px!important;
 
   }
   .sale__cards .sale__card__items {
-      box-shadow: 0px 0px 34px -5px rgba(12, 46, 96, 0.15);
+      box-shadow: 0px 0px 34px -5px rgba(12, 46, 96, 0.1);
 
-    height: 285px;
+    height: 280px;
     width: calc(  100% - 5px)!important;
 
   }

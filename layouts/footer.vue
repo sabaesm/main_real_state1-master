@@ -180,7 +180,7 @@
           </div>
           <div class="col-sm-12 col-md-3 footer_medium_mood">
             <h6 class="mb-5">از جدید ترین ها با خبر شوید</h6>
-            <form  class=" mt-3">
+            <form  class=" mt-3" >
             <input type="text" placeholder="  شماره تماس  خود را وارد کنید" class="enter_email" v-model="form.phone">
              <button class="submit" @click="validate">
              ثبت
@@ -199,19 +199,20 @@
     </footer>
 </template>
 <script>
-import {footer} from "../service/postApi"
+import { footer } from '../service/postApi';
 export default {
-  data(){
-    return{
-      form:{
+  data: () => ({
+ form:{
           phone: ""
       }
-    }
-  },
-  methods: {
-    validate(){
-  footer(this.form).then((res) => console.log("hi"));
-    }
+  }),
+
+    methods: {   
+    validate(e) {     
+      e.preventDefault();
+      
+        footer(this.form).then((res) => console.log("hi"));
+    },
   },
 };
 </script>
@@ -299,9 +300,11 @@ display: block;
 .footer-links a:focus,
 .footer-links a svg:hover {
   color: #519fff !important;
+    transition: all  0.2s;
+
 }
 .footer-links li a{
-  transition: all ease-in-out 0.1s;
+  transition: all  0.2s;
 }
 .footer-links li a:hover {
  transform: translateX(-10px);
@@ -309,7 +312,7 @@ display: block;
     align-items: baseline;
 }
 .footer-links a {
-  transition: all ease-in-out 0.1s;
+  transition: all  0.2s;
   
 }
 .footer-links-list li a svg path {

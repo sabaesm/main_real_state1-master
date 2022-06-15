@@ -495,6 +495,9 @@ export default {
 };
 </script>
 <style scoped>
+.larg_container{
+  background-color: #ffff!important;
+}
 h4 {
   color: #519fff;
   font-size: 20px;
@@ -539,7 +542,7 @@ h2 {
 }
 .arrows {
   position: absolute;
-  z-index: 999;
+  z-index: 2;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -980,7 +983,7 @@ display: inline-block;
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 320px !important;
+    width: 300px !important;
   }
   .sale__card__items {
     border-radius: 17px !important;

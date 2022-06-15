@@ -48,12 +48,13 @@ return{
     display: flex;
     align-items: center;
     flex-direction: column;
+    background: #F7F9FC!important;
+
 }
 .main .mainCard{
     position: relative;
 }
 .section{
-background: #F7F9FC;
 }
 </style>
 <style >

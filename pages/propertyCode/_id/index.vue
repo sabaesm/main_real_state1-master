@@ -9,7 +9,8 @@
               v-bind="getSearchDynamic"
               :data="getSearchDynamic"
             ></rightsection>
-            <leftsetion></leftsetion>
+            <leftsetion   v-bind="getSearchDynamic"
+              :data="getSearchDynamic"></leftsetion>
           </div>
         </div>
       </div>

@@ -1,7 +1,7 @@
 <template>
 <div class="d-flex flex-column align-center mt-5 pt-5 releted_post">
  <h4 class="my-5">پست های مرتبط</h4>
-<row class="d-flex flex-column flex-lg-row  ">
+<div class="d-flex flex-column flex-lg-row  ">
 <ul v-for=" ( weblog,index) in weblog" :key="weblog.id" class="ma-2">
       <v-col  v-if="index<2" cols="12 " class="pa-3 ma-0 grouping_card">
         <v-row class="main__row  pa-0 ma-0">
@@ -44,7 +44,7 @@
                     {{ weblog.date }}
                   </p>
                 </div>
-                <row class="d-flex flex-row count__icon">
+                <div class="d-flex flex-row count__icon">
                   <div class="text_counter px-2">
                     <p class="message__number pt-1">{{ weblog.message }}</p>
                     <span class="message__icon">
@@ -110,7 +110,7 @@
                       </svg>
                     </span>
                   </div>
-                </row>
+                </div>
               </div>
             </li>
           </v-col>
@@ -131,7 +131,7 @@
                     <p class="exprience">{{ weblog.experience }}</p>
                   </span>
                 </div>
-                <row class="contact_way">
+                <div class="contact_way">
                   <svg
                     class="ml-2"
                     viewBox="0 0 44 44"
@@ -183,7 +183,7 @@
                       fill="#0DA049"
                     />
                   </svg>
-                </row>
+                </div>
               </div>
             </li>
           </v-col>
@@ -192,7 +192,7 @@
       </v-col>
       <!-- end of card -->
     </ul>
-</row>
+</div>
 </div>
 </template>
 <script>

@@ -2,14 +2,15 @@
   <div class="mainCard__weblog d-flex flex-column mb-5">
   
     <ul v-for="data in data" :key="data.id" class="grouping_card pa-0 mb-5">
-    <nuxt-link :to="'/blog/'+ data.id ">
+    <nuxt-link :to="'/blog/'+ data.slug ">
      <v-col cols="12 " class="pa-3 ma-0">
         <v-row class="main__row d-flex pa-0 ma-0">
           <v-col cols="12" sm="5" class="ma-0 pa-0">
             <!-- right section of card -->
             <li class="right__section ma-0 pa-0">
               <div class="pictur ma-0">
-                <img class="main__pic" :src="data.cover" />
+                    <img class="" :src="env+data.cover" />
+
                 <div class="time">
                   <svg viewBox="0 0 15 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path
@@ -191,10 +192,19 @@
         </v-row>
       </v-col>
     </nuxt-link>
+    <div > {{data.count}}</div>
       <!-- end of card -->
     </ul>
     <v-col cols="6" md="4" lg="4" class="pa-0 ma-0 mt-5 mb-5">
-      <pagination></pagination>
+    
+      <div v-for="data2 in data2"  :key="data2">
+       {{data2}}
+      <ul class="d-flex pa-0 ma-1 cards_pagination">
+     
+          <li>
+      <span class="pagination__number">مشاهده ی بیشتر</span>
+    </li>
+  </ul></div>
     </v-col>
   </div>
 </template>
@@ -207,9 +217,15 @@ pagination
   },
   computed: mapState(["weblog"]),
   props:[
-   'data' 
+   'data',
+   'data2' 
   ],
-  
+  data() {
+    return{
+    env: process.env.baseURL,
+
+    }
+  },
 };
 </script>
 <style scoped>
@@ -255,6 +271,10 @@ h5 {
   display: flex;
   align-items: center;
   transition: all ease-in-out 0.3s;
+  width: 100%!important;
+}
+.grouping_card a{
+  width: 100%!important;
 }
 
 li {
@@ -521,5 +541,43 @@ transform: scale(1.1);
     width: 35px;
     height: 35px;
   }
+}
+</style>
+<style scoped>
+.cards_pagination {
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 10px;
+}
+.cards_pagination li {
+  border: 1px solid rgba(0, 0, 0, 0.219);
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  width: 150px !important;
+  height: 50px;
+  margin: 0 5px;
+}
+.cards_pagination li .pagination__number {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 26px;
+  color: rgba(0, 0, 0, 0.53);
+}
+.cards_pagination li:hover {
+  background: rgba(81, 159, 255, 0.12);
+  transition: all ease-in-out 0.2s;
+}
+.cards_pagination li:hover .pagination__number {
+  color: rgba(81, 159, 255, 1);
+  transition: all ease-in-out 0.2s;
+}
+.cards_pagination li:hover svg path {
+  stroke: rgba(81, 159, 255, 1);
+  transition: all ease-in-out 0.2s;
 }
 </style>

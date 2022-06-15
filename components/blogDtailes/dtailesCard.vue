@@ -1,14 +1,13 @@
 <template>
   <div class="weblog__cards">
-    <div></div>
-    <div class="blog_detailes_right_section"  v-bind="data" :key="data.id">
+    <div class="blog_detailes_right_section" v-bind="data" :key="data.id">
       <div class="blog_description">
         <h4 class="blog_detailes__beautiful_home py-4 mt-5">{{ data.title }}</h4>
         <img src="~/assets/images/4.png" alt="" />
-        <p class="py-0 my-0">
-          {{ data.text }}
+        <p class="ma-0" :v-html="data.text">
+          {{ parseInt(data.text) }}
         </p>
-        <p>{{ data.text }}</p>
+
         <h6 class="pa-0">اولین قدم برای داشتن خانه ای زیبا</h6>
         <p class="ma-0" :v-html="data.text">
           {{ parseInt(data.text) }}
@@ -17,7 +16,8 @@
           ><img src="~/assets/images/9.png" alt=""
         /></v-col>
         <h6 class="">اولین قدم برای داشتن خانه ای زیبا</h6>
-        <p class="pa-0" :v-html="data.text">{parseInt(data.text }}</p>
+        <p class="pa-0" :v-html="data.text">{{ parseInt(data.text) }}</p>
+
         <div class="atention">
           <div class="overlay"></div>
           <img class="atention_images" src="~/assets/images/9.png" alt="" />
@@ -41,15 +41,13 @@
       <div v-for="blogDetailes__user in blogDetailes__user" :key="blogDetailes__user.id">
         <div class="user w-100 mb-0 pa-0 d-flex justify-space-between">
           <div class="person d-flex flex-row">
-            <div class="person__pictur">
-              <img :src="img" />
-            </div>
+            <div class="person__pictur"></div>
             <span class="pa-0 ma-0">
               <h5 class=" ">{{ data.username }}</h5>
               <p class="">{{ data.user_activity }}</p>
             </span>
           </div>
-          <row class="contact_way d-flex flex-column justify-end align-end">
+          <div class="contact_way d-flex flex-column justify-end align-end">
             <span class="d-flex flex-row">
               <svg
                 class="ml-2"
@@ -190,10 +188,10 @@
 
               <span class="text">نوشته شده در :</span>
               <p class="">
-                {{ date }}
+                {{ data.time }}
               </p>
             </span>
-          </row>
+          </div>
         </div>
       </div>
       <v-col cols="12" class="page_control">
@@ -264,36 +262,34 @@
         </ul>
       </v-col>
       <relatedpost class="d-none d-lg-flex pb-5 mx-2"></relatedpost>
+    </div>
+    <div>
       <h4 class="comments py-5 my-5">کامنت ها</h4>
-      <form action="" class="ma-0 pa-0">
+      <div>
         <v-col
           cols="10 "
           class="answer_box2 d-flex flex-column"
-          v-for="answerbox in answerbox"
-          :key="answerbox.id"
+          v-for="GetReview in GetReview"
+          :key="GetReview"
         >
-          <row class="w-100 d-flex pa-0 ma-0">
-            <v-col cols="2" md="1" class="pa-0 ma-0 user__img">
-              <img :src="answerbox.user_imgag" />
-            </v-col>
+        
+          <div class="w-100 d-flex pa-0 ma-0 " v-if="GetReview.accepted === true">
+            <v-col cols="2" md="1" class="pa-0 ma-0 user__img"> </v-col>
             <v-col cols="10" md="11" class="pa-0 ma-0">
-              <row
+              <div
                 class="user__detailes d-flex flex-row justify-space-between pb-1 pa-0 ma-0"
               >
-                <span class="respone__name">{{ answerbox.user_name }} </span>
-                <span class="respone__date">
-                  نوشته شده در :
-                  {{ answerbox.user_date }}
-                </span>
-              </row>
-              <div class="response__box">
-                <textarea name="" id=""> </textarea>
+                <span class="respone__name"> </span>
+                <span class="respone__date"> نوشته شده در : </span>
+              </div>
+              <div class="response__box pa-3">
+                <span> {{GetReview.review}}</span>
                 <button class="pa-0 ma-0">پاسخ</button>
               </div>
             </v-col>
-          </row>
+          </div>
         </v-col>
-      </form>
+      </div>
       <h4 class="comments py-5 mt-3">کامنت بگذارید</h4>
       <v-col>
         <form>
@@ -301,11 +297,9 @@
             <v-col cols="12 " md="6">
               <Label class="ma-0" for="">نام کامل</Label>
               <v-text-field
-                v-model="name"
+                v-model="form.name"
                 class="m-0"
-                :error-messages="nameErrors"
                 required
-                @input="$v.name.$touch()"
                 placeholder="نام کامل"
               >
               </v-text-field>
@@ -313,11 +307,9 @@
             <v-col cols="12 " md="6">
               <Label class="m-0" for="">آدرس ایمیل</Label>
               <v-text-field
-                v-model="email"
-                :error-messages="nameErrors"
+                v-model="form.review"
                 class="m-0"
                 required
-                @input="$v.name.$touch()"
                 placeholder=" آدرس ایمیل"
               >
               </v-text-field>
@@ -328,8 +320,6 @@
             <v-textarea solo name="input-7-4" label="پیام خود را بنویسید..."></v-textarea>
           </v-col>
           <v-checkbox
-            v-model="checkbox"
-            :error-messages="checkboxErrors"
             label="وقتی پاسخی به نظرم دریافت کردم به من اطلاع دهید."
             required
           ></v-checkbox>
@@ -344,7 +334,18 @@
 import { mapState } from "vuex";
 import relatedpost from "./relatedpost.vue";
 import user from "./user.vue";
+import { review } from "../../service/postApi";
+import { GetReview } from "../../service/getApi";
 export default {
+  data() {
+    return {
+      form: {
+        name: "",
+        review: "",
+      },
+      GetReview: [],
+    };
+  },
   computed: {
     ...mapState(["blogDetailes"]),
     ...mapState(["blogDetailes__user"]),
@@ -356,8 +357,19 @@ export default {
   },
   props: ["data"],
   mounted() {
-    console.log('hi');
+    console.log("hi");
     console.log(this.data);
+  },
+  methods: {
+    submit(e) {
+      e.preventDefault();
+      review(this.$route.params.id, this.form).then((res) =>
+        alert("عملیات با موفقیت انجام شد")
+      );
+    },
+  },
+  mounted() {
+    GetReview(this.$route.params.id).then((res) => this.GetReview=res.data).catch(err=>console.log(err));
   },
 };
 </script>
@@ -399,7 +411,7 @@ export default {
   box-sizing: border-box;
   border-radius: 11px;
   width: 100%;
-  height: 100%;
+  height: 100px;
   position: relative;
 }
 .response__box textarea {
@@ -747,7 +759,7 @@ export default {
   font-weight: 400;
   line-height: 16px;
   letter-spacing: -0.021em;
-  color: #b1b1b1!important;
+  color: #b1b1b1 !important;
 }
 
 .person h5 {

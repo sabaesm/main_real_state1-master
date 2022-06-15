@@ -6,7 +6,7 @@
 <img :src="data.estate_picture"/>
 </v-col>
 <v-col class="left_section " col="12" md="6" >
-<v-row class="bio  my-5 ">
+<v-row class="bio  my-5  ">
  <span class="bio_info">
  <img :src="data.manager_pic" alt="">
  </span> 
@@ -52,7 +52,7 @@ position: sticky;
     color: rgb(0, 0, 0);
     font-size: 20px;
     font-weight: 400; 
-    margin-right: -75px;
+    margin-right: -60px;
     
 }
 .bio .bio_info{
@@ -62,11 +62,14 @@ position: sticky;
     align-items: center;
     justify-content: center;
     padding:  5px;
+    width: 78px;
+height: 78px;
 }
 .bio .bio_info img{
-    width: 100px;
       border-radius: 100%;
       border: 5px solid #ffff;
+      width: 100%;
+      height: 100%;
   }
 .manage{
 font-size: 22px;
@@ -125,17 +128,23 @@ flex-direction: column;
 align-items: center;
 align-items: center;
 justify-content: center;
-
-
 }
 .bio_info{
 text-align: center;
+width: 78px;
+height: 78px;
 }
 .bio .bio_info img{
-    width: 100%;
       border-radius: 100%;
       border: none;
+      width: 100%;
+      height: 100%;
   }
+  .bio{
+   
+    margin-right: 0px;
+    
+}
   .bio .bio_info{
     width: 80px;
     border-radius: 100%;

@@ -1,6 +1,6 @@
 <template>
   <div class="medium_container">
-    <v-col cols="12" class="pa-0 ma-0 main_nav d-sm-flex d-none">
+    <v-col cols="12" class="py-3 px-0 ma-0 main_nav d-sm-flex d-none">
       <v-col cols="6" class="right-bar ma-0 pa-0">
         <div class="logo">
           <nuxt-link to="/"
@@ -93,6 +93,8 @@
               <svg
                 width="24"
                 height="24"
+
+
                 viewBox="0 0 24 24"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
@@ -233,7 +235,7 @@
       class="d-flex flex-column align-start pr-5 menu_items"
       v-bind:class="{ active: isActive, error: isError }"
     >
-        <v-row class=" menu_icons pa-0 mx-0">
+        <v-row class=" menu_icons pa-0 ">
           <nuxt-link to="/" class="back_home">
             <svg
               width="131"
@@ -301,6 +303,7 @@
               />
             </svg>
           </nuxt-link>
+          <span class="icon_2">
           <svg
             v-on:click="myFilter"
             width="31"
@@ -314,9 +317,10 @@
               fill="black"
             />
           </svg>
+          </span>
+          
         </v-row>
      <ul class="menu_list" >
-
       <li contextmenu="" v-on:click="myFilter">
         <nuxt-link to="blog"> وبلاگ</nuxt-link>
         <span class="border"></span>
@@ -433,10 +437,11 @@
             </nuxt-link>
           </li>
           <li>
-            <v-dialog v-model="dialog2" width="500">
+            <v-dialog  width="500">
               <template v-slot:activator="{ on, attrs }">
                 <a class="search" href="#" v-bind="attrs" v-on="on">
-                  <span class="icon">
+                  <span class="search_text px-1">  کد ملکی</span>
+                   <span class="icon">
                     <svg
                       width="16"
                       height="16"
@@ -474,8 +479,6 @@
                       />
                     </svg>
                   </span>
-
-                  <span class="search_text px-2">جست وجو کد ملکی</span>
                 </a>
               </template>
               <v-card class="pa-5">
@@ -563,7 +566,7 @@
                   >
                 </form>
                 <nuxt-link
-                  v-model="dialog2"
+                 
                   :to="{
                     name: 'propertyCode',
                     query: {
@@ -592,6 +595,7 @@ export default {
     return {
       isActive: false,
       isError: true,
+      dialog:false,
       valueInput: {
         estate_code: 0,
       },
@@ -622,13 +626,14 @@ export default {
   right: 2px;
   transform: translateX(300px);
   bottom: 0px !important;
+    z-index:9999;
+
 }
 .active {
-  position: absolute;
+  position: fixed;
   right: 0;
-  z-index: 222;
+  z-index:9999;
 }
-
 .main_nav {
   width: 100%;
   background-color: #ffff;
@@ -702,11 +707,12 @@ export default {
   background-color: #519fff;
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: flex-end;
   padding: 15px;
   border-radius: 15px;
   color: #ffff;
 }
+
 .search_button {
   background: #519fff !important;
   color: #ffff !important;
@@ -768,7 +774,7 @@ form span {
   .menu_items {
     background-color: #ffff !important;
     width: 60%;
-    z-index: 999;
+    z-index: 999!important;
     position: fixed;
     transition: all ease-in-out 0.5s;
     left: 0;
@@ -777,15 +783,13 @@ form span {
     height: 100% !important;
     display: none;
   }
-  .menu_items a{
-  }
-
   .menu_icons{
-    margin-bottom: 100px!important;
+    width: 80%!important;
     display: flex;
     flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
+    align-items: center!important;
+    justify-content: space-between!important;
+    margin: 10px 10px 100px 10px!important;
   }
     .menu_list{
     width: 100%;
@@ -796,37 +800,65 @@ form span {
     font-weight: 700;
     font-size: 18px;
     margin-bottom: 15px;
+    transition: all ease-in-out .2s;
+  }
+  .menu_list li a:hover{
+    color:#478adc !important;  
   }
     .menu_list li {
-   
     margin-bottom: 15px!important;
   }
+
   .menu_items .back_home{
-    display: inline-block;
-    width: 50%;
+    width: 80px;
+    height: 40px;
   }
-  .menu_icons svg{
-    width: 50%;
+   .menu_items .back_home svg{
+    width: 80px;
+    height: 40px;
+  }
+  .menu_icons .icon_2{
+width: 20px;
+ height: 20px;
+  }
+  .menu_icons  .icon_2 svg{
+ width: 20px;
+ height: 20px;
+transition: all ease-in-out .3s;
+  }
+    .menu_icons  .icon_2:hover svg{
+transform: rotate(180deg);
+color: #478adc!important;
+
+  }
+      .menu_icons  .icon_2:hover svg path{
+fill: #478adc!important;
+
+  }
+  .menu_icons  .icon_2:hover{
+transform: scale(1.2);
+ 
   }
   .search {
     background-color: #ffff;
   }
   .search_text {
-    font-style: normal;
-    font-weight: bold;
-    font-size: 10px;
-    line-height: 21px;
-    letter-spacing: -0.04em;
+font-size: 11px;
+font-weight: 500;
+line-height: 15px;
+letter-spacing: -0.04em;
+text-align: left;
+
     color: #478adc;
     white-space: nowrap;
   }
   .search .icon {
-    height: 30px;
-    width: 30px;
+   height: 16px;
+    width: 16px;
   }
   .search .icon svg {
-    height: 30px;
-    width: 30px;
+    height: 16px;
+    width: 16px;
   }
 }
 </style>

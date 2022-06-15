@@ -1,6 +1,6 @@
 <template>
   <v-col cols="4" class="d-none d-md-block">
-    <div class="contact_class">
+    <div class="contact_class" v-bind="data" :key="data">
       <v-card>
         <v-tabs v-model="tab">
           <v-tab href="#tab-1"> ارسال پیام </v-tab>
@@ -12,23 +12,25 @@
               <v-card-text class="pa-2">
                 <v-form ref="form" v-model="valid" lazy-validation>
                   <v-text-field
-                    v-model="name"
+                    v-model="form.customer_name"
+                    name="Customer_name"
                     :rules="nameRules"
                     label=" نام و نام خانوادگی"
                     required
                   ></v-text-field>
                   <v-text-field
                     class="pt-0"
-                    v-model="email"
-                    :rules="emailRules"
+                    v-model="form.customer_phone"
+                   
                     label="ایمیل"
+                    name="Customer_phone"
                     required
                   ></v-text-field>
                   <v-col cols="12" class="pa-0 ma-0">
-                    <v-textarea solo name="input-7-4" label="متن پیام شما"></v-textarea>
+                    <v-textarea solo name="Text" label="متن پیام شما"  v-model="form.text"></v-textarea>
                   </v-col>
                   <v-col cols="12 " class="pa-0">
-                    <v-btn @click="validate" class="p-0 w-100 send_message">
+                    <v-btn  class="p-0 w-100 send_message" type="submit" @click="submit">
                       ارسال پیام
                     </v-btn>
                   </v-col>
@@ -139,10 +141,23 @@
   </v-col>
 </template>
 <script>
+import {conversation} from '../../service/postApi'
 export default {
+   props:[
+     'data'
+
+    ],
   data() {
     return {
+      form :{
+        customer_name:"",
+          customer_phone: "",
+              text: ""
+
+      },
+
       tab: null,
+      conversation:null,
       items: [
         { tab: "ارسال پیام", content: "Tab 1 Content" },
         { tab: "درخواست تماس", content: "Tab 2 Content" },
@@ -165,7 +180,15 @@ export default {
     validate() {
       this.$refs.form.validate();
     },
-  },
+  submit(e){
+ e.preventDefault();
+ 
+    conversation(this.$route.params.id ,this.form).then( res =>alert('hi'))
+ 
+  }}
+
+   
+  
 };
 </script>
 <style>

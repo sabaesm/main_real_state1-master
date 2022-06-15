@@ -113,6 +113,14 @@ export async function getSearchDynamic(id) {
   });
   return apiCall;
 }
+export async function GetReview(slug ) {
+  let apiCall = await api().get(`weblog/${slug}/review`, {
+    "Content-Type": "application/json",
+  });
+  return apiCall
+}
+
+
 export async function usersinfo() {
   let apiCall = await api().get("/usersinfo/", {
     "Content-Type": "application/json",

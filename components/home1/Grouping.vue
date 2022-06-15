@@ -351,7 +351,7 @@ export default {
 </script>
 <style scoped>
 .larg_container {
-  background-color: #f7f9fc;
+  background-color: #f7f9fc!important;
   padding-top: 60px;
   padding-bottom: 60px;
 }
@@ -499,5 +499,10 @@ h2 {
     line-height: 30px;
     letter-spacing: -0.035em;
   }
+
+  .main:hover {
+  filter: drop-shadow(0px 0px 0px rgba(0, 0, 0, 0));
+  transform: translateY(0px);
+}
 }
 </style>

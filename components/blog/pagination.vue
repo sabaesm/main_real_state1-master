@@ -1,11 +1,9 @@
 <template>
 <div>
   <ul class="d-flex pa-0 ma-1 cards_pagination">
-    {{
-      this.$route.params.page
-    }}
+  
 
-    <li>
+    <!-- <li>
       <svg
         width="18"
         height="18"
@@ -22,64 +20,26 @@
           stroke-linejoin="round"
         />
       </svg>
-    </li>
-    <li>
+    </li> -->
+    <!-- <li>
       <nuxt-link :to=" {
           name:' blog',
           params:{ page: 1}
       }"> <span class="pagination__number">2</span>  </nuxt-link>
-    </li>
+    </li> -->
     <li>
-      <span class="pagination__number">1</span>
+      <span class="pagination__number">مشاهده ی بیشتر</span>
     </li>
   </ul>
 
-  <span v-if="currentPage === 1" :class="disabledStyle">
-  First
-</span>
 
-<nuxt-link
-  v-else
-  :to="{ name: 'articles-page-page', params: { page: 1 } }"
-  :class="buttonStyles"
->
-  First
-</nuxt-link>
 
-<span v-if="currentPage === 1" :class="disabledStyle">
-  Prev
-</span>
 
-<nuxt-link
-  v-else
-  :to="{ name: 'articles-page-page', params: { page: prevPage } }"
-  :class="buttonStyles"
->
-  Prev
-</nuxt-link>
 
-<span v-if="currentPage === totalPages" :class="disabledStyle">
-  Next
-</span>
 
-<nuxt-link
-  v-else
-  :to="{ name: 'articles-page-page', params: { page: nextPage } }"
-  :class="buttonStyles"
->
-  Next
-</nuxt-link>
-<span v-if="currentPage === totalPages" :class="disabledStyle">
-  Last
-</span>
 
-<nuxt-link
-  v-else
-  :to="{ name: 'articles-page-page', params: { page: totalPages } }"
-  :class="buttonStyles"
->
-  Last
-</nuxt-link>
+
+
 </div>
 </template>
 <script>
@@ -125,8 +85,8 @@ export default {
   align-items: center;
   justify-content: center;
   border-radius: 10px;
-  width: 40px !important;
-  height: 40px;
+  width: 150px !important;
+  height: 50px;
   margin: 0 5px;
 }
 .cards_pagination li .pagination__number {

@@ -201,6 +201,8 @@ h3 {
 @media only screen and (max-width: 600px) {
   .larg_container {
     background: #f7f9fc;
+        padding-top: 65%!important;
+
   }
   h4,
   h2 {

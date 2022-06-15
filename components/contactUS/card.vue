@@ -5,11 +5,10 @@
         <v-col cols="12" md="7">
           <v-form ref="form" v-model="valid" lazy-validation>
             <v-col class="ma-0 pa-0 12">
-              <div class="ma-0 pa-0 registration d-flex flex-wrap ">
+              <div class="ma-0 pa-0 registration d-flex flex-wrap">
                 <v-col cols="12 " md="6">
                   <v-text-field
-                    v-model="form.Customer_name"
-                    :rules="nameRules"
+                    v-model="form.customer_name"
                     label="نام و نام خانوادگی"
                     required
                   >
@@ -17,9 +16,9 @@
                 </v-col>
                 <v-col cols="12 " md="6">
                   <v-text-field
-                    v-model="form.Phone"
-                    :counter="11"
-                    :rules="phoneRules"
+                    v-model="form.phone"
+                    
+                    value=""
                     label="شماره تماس"
                     required
                   ></v-text-field>
@@ -32,15 +31,6 @@
                     required
                   ></v-text-field>
                 </v-col>
-
-                <v-col cols="12 " md="6">
-                  <v-text-field
-                    v-model="form.region"
-                    :rules="region"
-                    label="منطقه"
-                    required
-                  ></v-text-field>
-                </v-col>
                 <v-col cols="12 " md="6">
                   <v-text-field
                     v-model="form.city"
@@ -49,6 +39,15 @@
                     required
                   ></v-text-field>
                 </v-col>
+                <v-col cols="12 " md="6">
+                  <v-text-field
+                    v-model="form.region"
+                    :rules="region"
+                    label="منطقه"
+                    required
+                  ></v-text-field>
+                </v-col>
+
                 <v-col cols="12 " md="6">
                   <v-text-field
                     v-model="form.min_price"
@@ -65,42 +64,80 @@
                     required
                   ></v-text-field>
                 </v-col>
-                    <v-col cols="12 " md="6">
-                  <v-text-field
-                    v-model="form.demand_type"
-                    :rules="max_price"
-                    label="ماکزیمم"
-                    required
-                  ></v-text-field>
-                </v-col>
-                <v-col cols="12 " md="6">
-                  <v-select
-                    v-model="form.select"
-                    :items="items"
-                    :rules="[(v) => !!v || 'Item is required']"
-                    label="منطقه"
-                    required
-                  ></v-select>
-                </v-col>
               </div>
             </v-col>
-            <v-row class="ma-0 pa-0 check_box">
-              <v-col cols="4" md="2">
-                <v-checkbox label="ویلا" hide-details></v-checkbox>
-              </v-col>
-              <v-col cols="4" md="2">
-                <v-checkbox label="مغازه و تجاری" hide-details></v-checkbox>
-              </v-col>
-              <v-col cols="4" md="2">
-                <v-checkbox label=" آپارتمان " hide-details></v-checkbox>
-              </v-col>
-              <v-col cols="4" md="2">
-                <v-checkbox label="خانه ویلایی" hide-details></v-checkbox>
-              </v-col>
-              <v-col cols="4" md="2">
-                <v-checkbox label="باغ" hide-details></v-checkbox>
-              </v-col>
-              <v-col cols="4" md="2">
+            <v-radio-group v-model="radios" mandatory>
+              <v-row class="ma-0 pa-0 check_box">
+                <v-col cols="4" md="2">
+                <label for="ویلا"> ویلا</label>
+                  
+                  <input type="radio"  label="ویلا" value="ویلا" color="info" v-model="form.demand_type">
+                </v-col>
+                <v-col cols="4" md="2">
+                  <label for="">مغازه و تجاری</label>
+                  <input
+                    type="radio"
+                    label="مغازه و 
+                     تجاری"
+                    name="مغازه و 
+                     تجاری"
+                    hide-details
+                    value=" مغازه  و تجاری"
+                    color="info"
+                    v-model="form.demand_type"
+                  />
+                </v-col>
+                <v-col cols="4" md="2">
+                <label for="آپارتمان">آپارتمان</label>
+                <input  type="radio"  label=" آپارتمان "
+                    value="آپارتمان"
+                    hide-details
+                    color="info"
+                    v-model="form.demand_type">
+                  
+                </v-col>
+                <v-col cols="4" md="2">
+                <label for="  خانه ویلایی">  خانه ویلایی</label>
+                <input type="radio" label="
+                    خانه ویلایی
+                    "
+                    value="خانه ویلایی"
+                    hide-details
+                    color="info">
+                
+                </v-col>
+                <v-col cols="4" md="2">
+                  <label for=""> باغ
+                   
+                  </label>
+                   <input
+                      type="radio"
+                      name=""
+                      id=""
+                      label="باغ"
+                      value="باغ"
+                      hide-details
+                      color="info"
+                      v-model="form.demand_type"
+                    />
+                </v-col>
+                <v-col cols="4" md="2">
+                  <label for="زمین"> زمین</label>
+                  <input
+                    type="radio"
+                    name=""
+                    id=""
+                    label="زمین"
+                    value="زمین"
+                    hide-details
+                    color="info"
+                    v-model="form.demand_type"
+                  />
+                </v-col>
+              </v-row>
+            </v-radio-group>
+            <input type="text" name="" id="" />
+            <!-- <v-col cols="4" md="2">
                 <v-checkbox label="فلت" hide-details></v-checkbox>
               </v-col>
               <v-col cols="4" md="2">
@@ -111,8 +148,7 @@
               </v-col>
               <v-col cols="4" md="2">
                 <v-checkbox label="نوساز" hide-details></v-checkbox>
-              </v-col>
-            </v-row>
+              </v-col> -->
             <v-col cols="12" class="mt-5 pa-0">
               <v-textarea
                 v-model="form.text"
@@ -139,51 +175,34 @@ import { vilayab } from "../../service/postApi";
 export default {
   data: () => ({
     valid: true,
-    Customer_name: "",
-    nameRules: [
-      (v) => !!v || "Name is required",
-      (v) => (v && v.length <= 30) || "Name must be less than 10 characters",
-    ],
+    // nameRules: [
+    //   (v) => !!v || "Name is required",
+    //   (v) => (v && v.length <= 30) || "Name must be less than 10 characters",
+    // ],
+    // phoneRules: [
+    //   (v) => !!v || "phone is required",
+    //   (v) => (v && v.length == 11) || "Name must be less than 11 characters",
+    // ],
     form: {
       customer_name: "",
-      Phone: "",
+      phone: "",
       province: "",
       city: "",
       region: "",
-      demand_type: null,
+      demand_type: "",
       min_price: null,
       max_price: null,
       text: "",
-      items: ["Item 1", "Item 2", "Item 3", "Item 4"],
-      checkbox: false,
     },
     vilayab: [],
     phoneRules: [(v) => !!v || "phone is required"],
     countryRules: [(v) => !!v || "country is required"],
     cityRules: [(v) => !!v || "city is required"],
   }),
-  methods: {
-    validate() {
-      this.$refs.form.validate();
+  methods: {   
+    submitForm() {     
+       vilayab(this.form).then((res) => console.log("hi"));
     },
-    reset() {
-      this.$refs.form.reset();
-    },
-    resetValidation() {
-      this.$refs.form.resetValidation();
-    },
-    test() {},
-    submitForm() {
-      // console.log(this.form)
-      // var form_data = new FormData();
-
-      // for (var key in this.form) {
-      //   form_data.append(key, item[key]);
-      // }
-      vilayab(this.form).then((res) => console.log("hi"));
-      // .then( res=>console.log( res.data))
-    },
-    mounted() {},
   },
 };
 </script>
@@ -243,7 +262,39 @@ export default {
 .check_box {
   display: flex;
   flex-direction: row;
-  justify-content: flex-start;
+  align-items: flex-start !important;
   flex-wrap: wrap;
+}
+.check_box .v-label {
+  white-space: nowrap;
+}
+</style>
+
+<style>
+@media screen and (max-width: 600px) {
+  .registration .v-label {
+    font-size: 12px !important;
+    font-weight: 700;
+    line-height: 20px;
+    letter-spacing: -0.02em;
+    padding: 0px !important;
+  }
+  .v-input {
+    font-size: 12px !important;
+    font-weight: 700;
+    line-height: 20px;
+    letter-spacing: -0.02em;
+    padding: 0px !important;
+  }
+  .mainCard {
+    border-radius: 20px !important;
+  }
+  .check_box .v-label {
+    white-space: nowrap;
+    padding: 5px 0 !important;
+    font-size: 12px !important;
+    line-height: 20px;
+    letter-spacing: -0.02em;
+  }
 }
 </style>

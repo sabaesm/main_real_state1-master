@@ -203,7 +203,7 @@
                   </div>
                 </span>
               </div>
-              <v-col class="bottom_card pa-0 ma-0" cols="12">
+              <div class="bottom_card pa-0 ma-0" cols="12">
                 <h5 class="sale__desctiptipn">
                   {{ data.title }}
                 </h5>
@@ -276,7 +276,7 @@
                     </svg>
                   </div>
                 </div>
-              </v-col>
+              </div>
             </div>
           </li>
         </ul>
@@ -438,11 +438,7 @@ h2 {
   width: 60px;
   height: 60px;
 }
-.bottom_card {
-  height: 50%;
-  display: flex;
-  flex-direction: column;
-}
+
 .sale__card__items:hover .sale__desctiptipn {
   color: #087cce !important;
 }
@@ -461,6 +457,12 @@ h2 {
   box-shadow: 0px 0px 34px -9px rgba(12, 46, 96, 0.25);
   height: 490px;
 }
+.bottom_card {
+  height: 240px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
 .top_card {
   position: relative;
   border-radius: 10px;
@@ -471,15 +473,15 @@ h2 {
 .top_card a {
   overflow: hidden !important;
   border-radius: 10px;
-  height: 100%;
+ height: 240px;
   width: 100%;
   display: block;
 }
 .top_card img {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+ height: 240px;
   transition: all ease-in-out 0.3s !important;
+  z-index: 222;
 }
 .top_card:hover img {
   transform: scale(1.1);
@@ -666,7 +668,7 @@ h2 {
   }
   .bottom_card {
     width: 100%;
-    height: 100%;
+    height: 250px;
   }
   .bottom_card .sale__desctiptipn{
 font-size: 15px;

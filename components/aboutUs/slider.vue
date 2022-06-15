@@ -1,18 +1,19 @@
 <template>
   <div class="about__us">
     <h3 class="m-0">اعضاء مشاورین املاک هوملند</h3>
-    <div class="medium_container custom_slider mt-5 pt-5">
+    <div class="medium_container custom_slider ">
       <v-col cols="10" class="grouping-main-section">
         <v-col cols="12">
-          <div v-swiper="swiperOption" class="ml-auto relative" :loadtheme="false">
-            <div class="swiper-wrapper">
+            <div  v-swiper="swiperOption" class="ml-auto relative" :loadtheme="false">
               <ul
-                class="swiper-slide"
-                :key="data.id"
-                v-for="data in data"
+                class="swiper-wrapper"
               >
                 <!-- Render original HTML in server, render Swiper in browser (client) -->
-                <li class="cards">
+                <li class="swiper-slide"
+                :key="data.id"
+                v-for="data in data" >
+                <div class="cards">
+                
                   <img :src="data.picture" />
                   <h4>
                     {{ data.full_name }}
@@ -20,10 +21,10 @@
                   <p>
                     {{ data.activity_type }}
                   </p>
+                  </div>
                 </li>
               </ul>
             </div>
-          </div>
         </v-col>
         <div class="prev-button d-none d-md-flex" slot="button-prev">
           <svg
@@ -195,11 +196,11 @@ export default {
           },
            425: {
             slidesPerView: 3,
-            spaceBetween: 10,
+            spaceBetween: 0,
           },
           320: {
             slidesPerView: 3,
-            spaceBetween: 10,
+            spaceBetween: 0,
           },
         },
       },
@@ -223,15 +224,208 @@ margin: 0 2px;
 }
 </style>
 <style scoped>
-@import "../../assets/css/aboutUs/slider.css";
 .custom_slider {
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding-top: 40px;
 }
+ 
 .about__us h3 {
   text-align: center;
   margin-top: 100px!important;
   text-align: center!important;
+}
+.about__us{
+
+  width: 100%;
+  overflow: hidden;
+}
+.swiper-slide {
+display: flex;
+justify-content: space-around;
+
+
+}
+.sliders {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .v-application  ul{
+    padding-left: 0px!important;
+  }
+  .grouping-main-section {
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+    margin: 20px 0;
+    padding: 20px 0;
+    width: 100%;
+    
+  }
+  .cards {
+    box-sizing: border-box;
+    background-color: #ffff;
+    border-radius: 10px;
+  padding-bottom: 10px;
+  transition: all .25s;
+  filter: drop-shadow(0px 0px 6px rgba(0, 0, 0, 0.1));
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 15px;
+  }
+  .swiper-wrapper {
+    width: 100%;
+   
+  }
+  .swiper-slide li {
+  
+  }
+  .swiper-slide:hover .cards  {
+    box-shadow: 0px 0px 23px -3px rgba(81, 159, 255, 0.43);
+    transition: all ease-in-out .5s;
+  }
+ .custom_slider h3 {
+    padding: 50px 0 !important;
+    font-size: 25px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 41px;
+    letter-spacing: -0.02em;
+    text-align: center !important;
+    width: 100%;
+    
+  }
+  .slider_img{
+
+    
+  }
+  .cards img {
+    border-radius: 5px;
+    box-shadow: 0px 0px 0px 6px #519fff;
+    margin: 20px;
+    aspect-ratio: 1/1;
+    height: 120px;
+
+  }
+ 
+  .cards div {
+    position: absolute;
+    bottom: 20px;
+    background-color: #fff;
+    width: 80%;
+    padding: 10px;
+    border-radius: 10px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .prev-button {
+    right: -10%;
+    position: absolute;
+    z-index: 999;
+    
+  }
+  .next-button {
+    left: -10%;
+    position: absolute;
+    z-index: 999;
+   
+  }
+  
+  .cards img {
+    border-radius: 100%;
+  }
+  .cards h4{
+    
+    font-size: 16px  ;
+    font-style: normal  ;
+    font-weight: 700  ;
+    line-height: 26px  ;
+    letter-spacing: -0.025em  ;
+    
+  }
+  .about__us p {
+    color: #9b9b9b ;
+font-size: 16px  ;
+font-style: normal  ;
+font-weight: 400  ;
+line-height: 26px  ;
+letter-spacing: -0.025em  ;
+margin-bottom: 0px!important;
+
+  }
+  li {
+    width: 100%;
+    box-sizing: border-box;
+  }
+  .swiper-pagination {
+width: 100%;
+justify-content: center;
+position: absolute;
+top: 100%;
+  }
+/* responsive mode*/
+@media only screen and (max-width: 600px) {
+   .grouping-main-section {
+     margin: 5px 0;
+    padding:  0;
+  }
+  .custom_slider{
+    padding-top: 5px;
+    padding-bottom: 60px;
+  }
+  .cards{
+margin: 10px  30px!important ;
+
+  }
+  .about__us h3{
+  
+    font-size: 15px !important;
+    line-height: 25px !important;
+    letter-spacing: -0.02em !important;
+    text-align: center !important ;
+padding: 0;
+margin-top: 50px!important;
+  }
+  .about__us .cards img {
+    aspect-ratio: 1 !important;
+    height: 50px;
+  }
+  .about__us .cards p{
+font-size: 10px ;
+font-weight: 700;
+line-height: 17px;
+letter-spacing: -0.025em;
+text-align: right;
+padding: 8px;
+  }
+  .cards h4{
+font-size: 10px;
+font-style: normal;
+font-weight: 700;
+line-height: 17px;
+letter-spacing: -0.025em;
+text-align: center;
+
+  }
+   .swiper-slide:hover .cards  {
+    box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.0);
+    transition: all ease-in-out .5s;
+  }
+    .cards img {
+    box-shadow: 0px 0px 0px 4px #519fff;
+ 
+
+  }
+ 
 }
 </style>

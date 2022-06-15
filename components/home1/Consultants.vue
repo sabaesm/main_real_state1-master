@@ -4251,6 +4251,10 @@ line-height: 13px;
 letter-spacing: -0.021em;
 
 }
+.main_card:hover {
+  transform: translateY(0px);
+  filter: drop-shadow(0px 0px 6.03801px rgba(0, 0, 0, 0.15));
+}
 }
 /*card style*/
 </style>

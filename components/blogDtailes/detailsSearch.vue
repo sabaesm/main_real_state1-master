@@ -2,7 +2,7 @@
   <div>
     <ul v-for="recent in recent" :key="recent.id" class="my-1">
       <li>
-        <row class="d-flex flex-row jusify-center align-center cards_row_weblog py-2 pr-2">
+        <div class="d-flex flex-row jusify-center align-center cards_row_weblog py-2 pr-2">
           <v-col cols="4" class="pa-0 home_img">
             <img class="" :src="recent.img" />
           </v-col>
@@ -87,7 +87,7 @@
               {{ recent.date }}
             </div>
           </v-col>
-        </row>
+        </div>
       </li>
     </ul>
   </div>
@@ -117,7 +117,7 @@ object-fit: cover;
   font-weight: 400;
   line-height: 23px;
   letter-spacing: -0.021em;
-  color: rgba(16, 23, 55, 1);
+  color: rgba(16, 23, 55, 1)!important;
 }
 .recent__home p {
   font-size: 9px;

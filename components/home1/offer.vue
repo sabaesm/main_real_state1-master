@@ -103,7 +103,7 @@
                     </a>
                     <div class="topcard__top__section">
                       <div
-                        class="status d-flex flex-row align-center justify-center px-3"
+                        class="status d-flex flex-row align-center justify-center px-4"
                       >
                         <div v-if="data.special === true">
                           <span
@@ -462,6 +462,8 @@ export default {
         pagination: {
           el: ".swiper-pagination",
           clickable: true,
+                        freeModeMomentum: true,
+
         },
         navigation: {
           nextEl: ".prev-button",
@@ -471,10 +473,12 @@ export default {
           1024: {
        spaceBetween: -120,   
             slidesPerView: 2,
+              freeModeMomentum: true,
           },
           768: {
             slidesPerView: 3,
             spaceBetween: 10,
+              freeModeMomentum: true,
           },
           640: {
    spaceBetween: 5,
@@ -492,10 +496,9 @@ export default {
   },
 };
 </script>
-
 <style scoped>
 .larg_container {
-  background: #f7f9fc;
+  background: #f7f9fc!important;
 }
 .class2 {
   background-color: blue;
@@ -861,12 +864,16 @@ h2 {
 }
 
 @media screen and (max-width: 600px) {
+  .grouping-main-section {
+
+  margin: 60px 0;
+}
   .arrows {
     display: none;
   }
 .top_section div{
   width: 100%!important;
-  margin-bottom: 30px!important;
+  margin: 30px 0!important;
 }
  h4 {
     font-size: 13px;

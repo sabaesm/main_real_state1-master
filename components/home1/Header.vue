@@ -6,13 +6,12 @@
         <h2>{{ data.homePage_title }}</h2>
         <p>{{ data.homePage_text }}</p>
       </div>
-    
     </div>
       <div
         class="search_section d-flex flex-column flex-md-row justify-space-between align-center "
       >
         <v-col cols=" 12 " md="10" class="pa-0 ma-0">
-          <form action="" class="d-flex flex-column flex-md-row align-center">
+          <form action="" class="select_bar d-flex flex-column flex-md-row align-center">
             <div class="region search_bar ma-md-0 mb-5">
               <!-- <label for=""> منطقه : </label> -->
               <select name="region" id="" v-on:change="onchangeGetValue">
@@ -87,7 +86,6 @@
       </div>
   </div>
 </template>
-
 <script>
 import search from "./Search.vue";
 import { getSearch } from "../../service/getApi";
@@ -132,7 +130,6 @@ export default {
 </script>
 <style scoped>
 /*search */
-
 .main_section {
   position: relative;
   padding: 200px 0 100px 0 !important;
@@ -140,26 +137,22 @@ export default {
   object-fit: cover;
   width: 100%;
 }
-
 .main_section h5,
 h2,
 p {
   padding-bottom: 20px;
   color: #000 !important;
 }
-
 h2 {
   font-size: 57px;
   font-weight: 800;
   line-height: 80px;
   letter-spacing: -0.025em;
 }
-
 .header-info {
   padding-top: 80px;
   width: 25%;
 }
-
 p {
   font-size: 13px;
   font-weight: 400;
@@ -306,7 +299,11 @@ select {
   outline: none;
 }
 @media screen and (max-width: 600px) {
+ .main_section{
 
+  padding: 200px 0 0px 0 !important;
+
+  }
   .main_section  h5{
 font-size: 12px;
 font-weight: 700;
@@ -353,18 +350,20 @@ opacity: 1;
   .search_section{
     padding: 0px;
     align-items: center!important;
-         margin-top:-20px!important;
-         background-color: #ffff;
+ position: absolute;
+width: 100%;
+bottom: 0;
+height: 10%;
+top: 96%;
 
-  }
-  .main_section{
-
-    padding-bottom: 0px!important;
-
-  }
-  .search_section{
-
-  }
+}
+.building, .region {
+  opacity: 1!important;
+}
+ 
+ .select_bar{
+      
+ }
   .test_btn{
     display: flex;
     align-items: center;

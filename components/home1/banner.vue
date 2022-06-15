@@ -45,6 +45,9 @@ export default {
 };
 </script>
 <style scoped>
+.larg_container{
+  background-color: #ffff!important;
+}
 .mainSection_weblog__cards {
   margin-top: 0;
 }
@@ -71,7 +74,7 @@ export default {
   bottom: 0;
   right: 0;
   width: 100%;
-  z-index: 3;
+  z-index: 2;
 }
 .main-banner {
   width: 100%;

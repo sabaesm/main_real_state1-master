@@ -1,7 +1,7 @@
 <template>
     <v-app>
 <div  class="main ">
-<svg class="right_circle" width="246" height="514" viewBox="0 0 246 514" fill="none" xmlns="http://www.w3.org/2000/svg">
+<svg   class=" right_circle d-none d-md-block" width="246" height="514" viewBox="0 0 246 514" fill="none" xmlns="http://www.w3.org/2000/svg">
 <g opacity="0.4">
 <circle cx="257" cy="257" r="256" stroke="#BCBCBC" stroke-opacity="0.76" stroke-width="2"/>
 <circle opacity="0.5" cx="257" cy="257" r="238" fill="url(#paint0_linear_562_6118)"/>
@@ -13,7 +13,7 @@
 </linearGradient>
 </defs>
 </svg>
-<svg class="left_circle" width="212" height="514" viewBox="0 0 212 514" fill="none" xmlns="http://www.w3.org/2000/svg">
+<svg class="left_circle d-none d-md-block" width="212" height="514" viewBox="0 0 212 514" fill="none" xmlns="http://www.w3.org/2000/svg">
 <g opacity="0.5">
 <circle cx="-45" cy="257" r="256" transform="rotate(-180 -45 257)" stroke="#BCBCBC" stroke-opacity="0.76" stroke-width="2"/>
 <circle opacity="0.5" cx="-45" cy="257" r="238" transform="rotate(-180 -45 257)" fill="url(#paint0_linear_562_6121)"/>

@@ -3,7 +3,7 @@
     <ul v-for="category in category" :key="category.id" class="ma-0 py-2" >
 <li>
 <v-col  cols="12" class=" ma-0 pa-0">
-<row class="  category__itmes " >
+<div class="  category__itmes " >
 <p class=" col-11 mb-0">
 {{category.name}}
 <span>({{category.counter}})</span>
@@ -11,7 +11,7 @@
 <svg width="6" height="11" viewBox="0 0 6 11" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M4.78681 10.0852L1.10768 6.54823C0.673185 6.13052 0.636698 5.4127 1.0266 4.95309L4.32812 1.06128" stroke="#292D32" stroke-opacity="0.44" stroke-width="1.28644" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
 </svg>
-</row>
+</div>
 </v-col>
 </li>
 </ul>

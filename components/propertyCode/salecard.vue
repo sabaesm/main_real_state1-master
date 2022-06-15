@@ -7,7 +7,6 @@
     data not found
     </p>
     </v-col>
-  
     </div> -->
     <v-row class="">
       <v-col cols="12" class="pa-0 ma-0">

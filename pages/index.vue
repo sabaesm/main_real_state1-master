@@ -87,7 +87,10 @@ export default {
 </script>
 
 <style scoped>
+
 .main {
   overflow: hidden;
+    background-color: #ffff!important;
+
 }
 </style>
