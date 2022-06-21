@@ -22,7 +22,9 @@
                 <option value="جاده محمودآباد">جاده محمودآباد</option>
               </select>
             </div>
-            <div class="building ma-md-0 mb-5 pr-2">
+            <div class="building ma-md-0 mb-5 pr-2">       
+                   <label for="" class="name"> منطقه </label>
+
               <select name="estate_type" id="" v-on:change="onchangeGetValue" class=" ">
                 <option value=""> نوع ملک: </option>
                 <option value="V ">ویلا</option>
@@ -32,7 +34,7 @@
                 <option value="A">آپارتمان</option>
                 <option value="B">مغازه و تجاری</option>
               </select>
-              <label for="" class="name"> </label>
+              <label for="" class="name"> منطقه </label>
             </div>
                <div class="building pa-0 ma-md-0 mb-5">
               <select name="estate_type" id="" v-on:change="onchangeGetValue" >
@@ -44,7 +46,7 @@
                 <option value="A">آپارتمان</option>
                 <option value="B">مغازه و تجاری</option>
               </select>
-              <label for="" class="name"> </label>
+              <label for="" class="name"> منطقه </label>
             </div>
             <!-- <div class="price search_bar ma-md-0 mb-5">
               <span> بازه قیمتی</span>
@@ -242,8 +244,7 @@ form {
   bottom: 0;
   padding-right: 20px!important;
 }
-.building select option {
-}
+
 .region label {
   font-size: 19px;
   font-weight: 800;
@@ -360,10 +361,7 @@ top: 96%;
 .building, .region {
   opacity: 1!important;
 }
- 
- .select_bar{
-      
- }
+
   .test_btn{
     display: flex;
     align-items: center;
