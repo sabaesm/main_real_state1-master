@@ -5,7 +5,7 @@
         <h4 class="blog_detailes__beautiful_home py-4 mt-5">{{ data.title }}</h4>
         <img src="~/assets/images/4.png" alt="" />
         <p class="ma-0" :v-html="data.text">
-          {{ parseInt(data.text) }}
+          {{ data.text }}
         </p>
 
         <h6 class="pa-0">اولین قدم برای داشتن خانه ای زیبا</h6>
