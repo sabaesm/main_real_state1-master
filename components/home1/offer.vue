@@ -1,5 +1,5 @@
 <template>
-  <div class="larg_container">
+  <div class="larg_container py-1">
     <div class="grouping-main-section">
       <div class="top_section d-flex flex-row align-center">
         <div>
@@ -458,7 +458,10 @@ export default {
   data() {
     return {
       swiperOption: {
-         slidesPerGroup: 1,
+         freeMode:true,
+                     slidesPerView: 2,
+                     loop:false,
+
         pagination: {
           el: ".swiper-pagination",
           clickable: true,
@@ -471,9 +474,7 @@ export default {
         },
         breakpoints: {
           1024: {
-       spaceBetween: -120,   
-            slidesPerView: 2,
-              freeModeMomentum: true,
+            slidesPerView: 1,
           },
           768: {
             slidesPerView: 3,
@@ -599,11 +600,11 @@ h2 {
   border-radius: 15px !important;
   margin-left: 30px !important;
   box-sizing: border-box !important;
+  width: 750px!important;
 }
 .sale__cards .sale__card__items {
   background-color: #fff;
   box-shadow: 0px 0px 34px -14px rgba(12, 46, 96, 0.25) !important;
-
   width: 100%;
   height: 100%;
   margin-bottom: 30px;

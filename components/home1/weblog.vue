@@ -104,7 +104,7 @@
             <div class="ma-0 pa-2 sale__card__items d-flex flex-column">
               <div class="top_card">
                 <a href="#">
-                  <img :src="data.cover" alt="" />
+                  <img class="" :src="env + data.cover" />
                 </a>
                 <div class="topcard__top__section">
                   <div class="status d-flex flex-row align-center justify-center px-3">
@@ -335,6 +335,8 @@ export default {
           },
         },
       },
+            env: process.env.baseURL,
+
     };
   },
   props: ["data"],
@@ -453,7 +455,7 @@ h2 {
   background-color: #fff;
   border-radius: 10px;
   padding: 20px;
-  width: calc(100% -20px);
+  width: calc(100% - 20px);
   box-shadow: 0px 0px 34px -9px rgba(12, 46, 96, 0.25);
   height: 490px;
 }

@@ -4014,9 +4014,8 @@ export default {
   data() {
     return {
       swiperOption_member: {
-        slidesPerView: 3,
         spaceBetween: 0,
-        loop: true,
+        loop: false,
         pagination: {
           el: ".swiper-pagination",
           clickable: true,
@@ -4027,8 +4026,6 @@ export default {
         },
         breakpoints: {
           1024: {
-            slidesPerView: 3,
-            spaceBetween: 0,
           },
           768: {
             slidesPerView: 1,
@@ -4109,7 +4106,7 @@ h2 {
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: center;
+  justify-content: start;
 
 }
 .offer__card__items {
@@ -4164,7 +4161,7 @@ h2 {
 
 .arrows {
   position: absolute;
-  top: 0;
+  top: 5%;
   z-index: 999;
   display: flex;
   flex-direction: row;

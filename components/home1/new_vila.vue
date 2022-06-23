@@ -212,10 +212,9 @@ export default {
   data() {
     return {
         swiperOption: {
-
+          freeMode:true,
         pagination: {
           el: ".swiper-pagination",
-          clickable: true,
          
         },
         navigation: {
@@ -225,7 +224,7 @@ export default {
         breakpoints: {
           1024: {
             loop: false,
-            slidesPerView: 4,
+            slidesPerView: 3,
                spaceBetween: 20,
           },
           768: {

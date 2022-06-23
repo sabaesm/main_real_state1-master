@@ -111,7 +111,7 @@ h2 {
 .see_more {
   position: absolute;
   left: 0;
-  top: 0;
+  top: 5%;
   background: #abbdd3;
 
   width: 61px;
