@@ -4,19 +4,19 @@
       <div class="blog_description">
         <h4 class="blog_detailes__beautiful_home py-4 mt-5">{{ data.title }}</h4>
         <img src="~/assets/images/4.png" alt="" />
-        <p class="ma-0" :v-html="data.text">
-          {{ data.text }}
+        <p class="ma-0 editor" v-html="data.text">
+          {{ parseInt(data.text) }}
         </p>
 
         <h6 class="pa-0">اولین قدم برای داشتن خانه ای زیبا</h6>
-        <p class="ma-0" :v-html="data.text">
+        <p class="ma-0 editor" v-html="data.text">
           {{ parseInt(data.text) }}
         </p>
         <v-col cols="12" class="ma-0 pa-0"
           ><img src="~/assets/images/9.png" alt=""
         /></v-col>
         <h6 class="">اولین قدم برای داشتن خانه ای زیبا</h6>
-        <p class="pa-0" :v-html="data.text">{{ parseInt(data.text) }}</p>
+        <p class="pa-0 editor" v-html="data.text">{{ parseInt(data.text) }}</p>
 
         <div class="atention">
           <div class="overlay"></div>
@@ -25,7 +25,7 @@
           <p>ای که باید به آن توجه کنیدای که باید به آن توجه کنید</p>
         </div>
         <h6>اولین قدم برای داشتن خانه ای زیبا</h6>
-        <p class="ma-0 pa-0" :v-html="data.text">
+        <p class="ma-0 pa-0 editor" v-html="data.text" >
           {{ parseInt(data.text) }}
         </p>
       </div>
@@ -379,6 +379,9 @@ export default {
   padding-left: 0;
   margin-right: 0;
   padding-right: 0;
+}
+.editor  div img{
+  width: 100%!important;
 }
 .mybutton {
   background-color: rgba(81, 159, 255, 1) !important;

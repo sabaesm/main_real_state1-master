@@ -276,7 +276,7 @@
                           </svg>
                         </span>
                       </div>
-                      <span class="sale_date">{{ data.placed_at }}</span>
+                      <span class="sale_date" v-bind="DateToText">{{ DateToText(data.placed_at)  }}</span>
                     </span>
                 </v-col>
                 <v-col class="bottom_card pa-2 ma-0" cols="12" md="7">
@@ -446,6 +446,7 @@
 <script>
 import { directive } from "vue-awesome-swiper";
 import { mapState } from "vuex";
+import { DateToText } from "../../helper/dateTotext";
 export default {
   name: "Slider",
   directives: {
@@ -457,6 +458,7 @@ export default {
   props: ["data"],
   data() {
     return {
+        DateToText,
       swiperOption: {
          freeMode:true,
                      slidesPerView: 2,
@@ -495,6 +497,9 @@ export default {
       },
     };
   },
+  // mounted(){
+  //   console.log( DateToText(data.placed_at));
+  // }
 };
 </script>
 <style scoped>

@@ -11,7 +11,9 @@ export default {
       { hid: "description", name: "description", content: "" },
       { name: "format-detection", content: "telephone=no" },
     ],
-    script: [],
+    script: [
+      
+    ],
   },
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: ["./assets/css/global.css", "./swiper/css/swiper.css"],
@@ -19,6 +21,7 @@ export default {
   plugins: [
     "./plugins/vuetify.js",
     { src: "./plugins/vue-awesome-swiper", mode: "client" },
+    { src: '~/plugins/scroll.js', },
   ],
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
@@ -31,6 +34,9 @@ export default {
   env:{
     baseURL:'https://real.iran.liara.run/'
   },
+  // moment: {
+  //   defaultTimezone: 'Asia/Tehran'
+  // },
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [],

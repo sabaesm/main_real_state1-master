@@ -1,14 +1,14 @@
 <template>
   <div class="larg_container">
     <div class="items">
-      <h4 class="pa-0">ارزش های ما</h4>
+      <h4 class="pa-0 mb-5">ارزش های ما</h4>
       <h2 class="pb-5 mb-5">چرا باید به ما اعتماد کنید؟</h2>
       <ul
         class="d-flex flex-column flex-sm-row flex-md-row align-center justify-space-around"
       >
         <v-col cols="12" md="4" lg="4" xl="4" sm="4">
           <li class="d-flex flex-row align-center align-md-start">
-            <v-col cols="2">
+            <v-col cols="2" class="px-5 py-3 ma-0">
               <svg
                 width="53"
                 height="53"
@@ -52,7 +52,7 @@
         </v-col>
         <v-col cols="12" md="4" lg="4" xl="4" sm="4">
           <li class="d-flex flex-row align-center align-md-start">
-            <v-col cols="2">
+            <v-col cols="2" class="px-5 py-3 ma-0">
               <svg
                 width="53"
                 height="53"
@@ -95,7 +95,7 @@
         </v-col>
         <v-col cols="12" md="4" lg="4" xl="4" sm="4">
           <li class="d-flex flex-row align-center align-md-start">
-            <v-col cols="2">
+            <v-col cols="2 " class="px-5 py-3 ma-0">
               <svg
                 width="53"
                 height="53"

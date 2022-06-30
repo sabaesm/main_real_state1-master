@@ -12,6 +12,7 @@
     >
       <v-col cols=" 12 " md="10" class="pa-0 ma-0">
         <form action="" class="select_bar d-flex flex-column flex-md-row align-center">
+          <div class="animation">
           <div class="region search_bar ma-md-0 mb-5">
             <label for=""> منطقه : </label>
             <div class="test">
@@ -25,63 +26,45 @@
             </div>
             <span class="arrow"></span>
           </div>
-            <div class="region search_bar ma-md-0 mb-5">
+          </div>
+          <div class="animation">
+          <div class="region search_bar ma-md-0 mb-5">
             <label for="" class="name"> نوع ملک </label>
             <div class="test">
-               <select name="estate_type" id="" v-on:change="onchangeGetValue" class=" ">
-              <option value="">هر ملکی</option>
-              <option value="V ">ویلا</option>
-              <option value="G">باغ</option>
-              <option value="H">خانه ویلایی</option>
-              <option value="L">زمین</option>
-              <option value="A">آپارتمان</option>
-              <option value="B">مغازه و تجاری</option>
-            </select>
+              <select name="estate_type" id="" v-on:change="onchangeGetValue" class=" ">
+                <option value="">هر ملکی</option>
+                <option value="V ">ویلا</option>
+                <option value="G">باغ</option>
+                <option value="H">خانه ویلایی</option>
+                <option value="L">زمین</option>
+                <option value="A">آپارتمان</option>
+                <option value="B">مغازه و تجاری</option>
+              </select>
             </div>
             <span class="arrow"></span>
           </div>
-          <div class=" building ma-md-0 mb-5 pr-2">
-            <label for="" class="name">
-             نوع ملک
-             </label>
-            <div class="test">
-            <select name="estate_type" id="" v-on:change="onchangeGetValue" class=" ">
-              <option value="">             نوع ملک
-:</option>
-              <option value="V ">ویلا</option>
-              <option value="G">باغ</option>
-              <option value="H">خانه ویلایی</option>
-              <option value="L">زمین</option>
-              <option value="A">آپارتمان</option>
-              <option value="B">مغازه و تجاری</option>
-            </select>
-            </div>
-                        <span class="arrow"></span>
-
           </div>
-        
-          <!-- <div class="price search_bar ma-md-0 mb-5">
-              <span> بازه قیمتی</span>
-              <label for="down"> از</label>
-              <input
-                type="text"
-                name="unit_price__gte"
-                v-on:change="onchangeGetValue"
-                id="down"
-                placeholder="    "
-              />
-              <label for="top"> تا</label>
-              <input
-                type="text"
-                name="unit_price__lte"
-                v-on:change="onchangeGetValue"
-                id="top"
-                placeholder=""
-              />
-            </div> -->
+         
+<div class="animation">
+          <div class="region search_bar ma-md-0 mb-5">
+            <label for="" class="name"> نوع ملک </label>
+            <div class="test">
+              <select name="estate_type" id="" v-on:change="onchangeGetValue" class=" ">
+                <option value="">هر ملکی</option>
+                <option value="V ">ویلا</option>
+                <option value="G">باغ</option>
+                <option value="H">خانه ویلایی</option>
+                <option value="L">زمین</option>
+                <option value="A">آپارتمان</option>
+                <option value="B">مغازه و تجاری</option>
+              </select>
+            </div>
+            <span class="arrow"></span>
+          </div>
+          </div>
+         
         </form>
       </v-col>
-      <!-- <nuxt-link :to="{ name: 'propertyCode', query: { region: `${this.onchangeGetValue.region}` } }"> -->
       <nuxt-link
         class="ma-md-0 pa-0 mb-5 col-12 col-md-2 test_btn"
         :to="{
@@ -95,7 +78,7 @@
         }"
       >
         <!-- <nuxt-link :to=" { name: 'propertyCode', query: ` ${'region'}`}">     -->
-        <v-btn class="search_home" v-on:click="handleSearch"> جستجوی ملک</v-btn>
+        <button class="search_home" v-on:click="handleSearch"> جستجوی ملک</button>
       </nuxt-link>
     </div>
   </div>
@@ -143,13 +126,19 @@ export default {
 };
 </script>
 
+<style>
+.region select {
+  text-align: left !important;
+}
+</style>
 <style scoped>
 /*search */
 .main_section {
   position: relative;
-  padding: 200px 0 100px 0 !important;
+  padding: 260px 0 100px 0 !important;
   background-image: url("~/assets/images/headerimg.png");
-  object-fit: cover;
+  background-size: cover;
+
   width: 100%;
 }
 .main_section h5,
@@ -176,6 +165,7 @@ p {
   text-align: right;
   width: 50% !important;
   opacity: 0.6;
+  padding-top: 0px !important;
 }
 
 h5 {
@@ -194,59 +184,123 @@ h5 {
   font-weight: 800;
   line-height: 28px;
   letter-spacing: -0.01em;
-  text-align: right;
+  text-align: center;
   width: 80%;
   height: 58px !important;
+  position: relative;
+  z-index: 0;
+      overflow: hidden;
+
+  
+}
+.search_home::before{
+      content: "";
+    width: 100%;
+    height: 0;
+    background-color: #478adc!important;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    border-radius: 8px;
+    transition: .3s;
+    transform-origin: center;
+    z-index: -1!important;
+
+}
+.search_home:hover:before{
+  height: 100%!important;
 }
 form {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
 }
+.animation{
+  width: 30%;
+  position: relative;
+}
+.animation::before{
+      content: "";
+    position: absolute;
+    height: 100%;
+    z-index: -1;
+    border-radius: 9px;
+    transition: .3s;
+    pointer-events: none;
+        top: 10px;
+    left: 40px;
+    width: calc(100% - 80px);
+    background-color: hsla(0,0%,100%,.4);
+}
+.animation:hover::before,
+.animation:hover::after{
+  top: 0;
+  bottom: 0;
 
+left: 0;
+}
+.animation::after{
+      content: "";
+    position: absolute;
+    height: 100%;
+    z-index: -1;
+    border-radius: 9px;
+    transition: .3s;
+    pointer-events: none;
+        top: 5px;
+    left: 20px;
+    width: calc(100% - 40px);
+    background-color: hsla(0,0%,100%,.6);
+}
+.search_bar{
+  width: 100%;
+}
 .search_bar:hover {
   opacity: 1 !important;
-  transition: all ease-in-out 0.2s;
-  box-shadow: 0px 0px 52px -10px rgba(0, 0, 0, 0.29) !important;
 }
 .region {
   background-color: #ffff;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px;
+  padding: 15px;
   position: relative;
-  opacity: 0.9 !important;
+  opacity: 0.95 !important;
   border-radius: 10px !important;
   height: 58px;
   overflow: hidden;
-  width: 30%;
-}
-.search_bar::before{
-  content: '';
-  position: absolute;
-width: 8px;  height: 2px;
-  left: 7%;
-    background-color: #848486;
-    transition: all ease-in-out .1s;
 
 }
-.search_bar:hover::before{
- 
-transform: rotate(45deg);
-}
-.search_bar::after{
-  content: '';
+.search_bar::before {
+  content: "";
+  
   position: absolute;
-width: 8px;  height: 2px;
-  left: 8.5%;
-    background-color: #848486;
-  transition: all ease-in-out .1s;
+  width: 8px;
+  height: 2px;
+  left: 7%;
+  background-color: #848486;
+      transition: all ease-in-out 0.2s;
+
   
 }
-.search_bar:hover::after{
- 
-transform: rotate(-45deg);
+.search_bar:hover::before {
+  transform: rotate(45deg);  
+  height: 3px;
+
+}
+.search_bar::after {
+  content: "";
+  position: absolute;
+  width: 8px;
+  height: 2px;
+  left: 8.5%;
+  background-color: #848486;
+      transition: all ease-in-out 0.2s;
+
+}
+.search_bar:hover::after {
+  transform: rotate(-45deg);
+  height: 3px;
 }
 
 .region label {
@@ -258,7 +312,11 @@ transform: rotate(-45deg);
   position: absolute !important;
   z-index: 2;
 }
-
+.select_bar {
+  width: 95%;
+  float: left;
+  padding-left: 20px;
+}
 .test {
   z-index: 1;
   position: absolute !important;
@@ -275,7 +333,6 @@ transform: rotate(-45deg);
   bottom: 0;
   top: 0;
   width: 100%;
-  text-align: left!important;
   font-size: 16px;
   font-weight: 400;
   line-height: 30px;
@@ -286,7 +343,7 @@ transform: rotate(-45deg);
 }
 
 .building {
-  opacity: 0.9 !important;
+  opacity: 0.95 !important;
   border-radius: 10px !important;
   height: 58px;
   position: relative;
@@ -295,7 +352,6 @@ transform: rotate(-45deg);
   align-items: center;
   position: relative;
   z-index: 1;
-  width: 30%;
   overflow: hidden;
 }
 .building select {
@@ -392,7 +448,6 @@ select {
     font-weight: 700;
     line-height: 15px;
     letter-spacing: -0.05em;
-
   }
   .search_home {
     width: 90%;
@@ -411,7 +466,6 @@ select {
     opacity: 1 !important;
   }
 
-  
   .test_btn {
     display: flex;
     align-items: center;

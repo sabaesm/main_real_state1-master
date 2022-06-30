@@ -35,8 +35,7 @@
 <style scoped>
 .main_section {
     background-image: url("~/assets/images/headerimg.png");
-    object-fit: cover;
-    height: auto;
+background-size: cover;    height: auto;
     width: 100%;
     padding: 0;
     margin: 0;

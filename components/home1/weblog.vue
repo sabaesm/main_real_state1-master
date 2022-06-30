@@ -106,7 +106,7 @@
                 <a href="#">
                   <img class="" :src="env + data.cover" />
                 </a>
-                <div class="topcard__top__section">
+                <div class="topcard__top__section ">
                   <div class="status d-flex flex-row align-center justify-center px-3">
                     <svg
                       width="19"
@@ -138,10 +138,12 @@
                         stroke-linejoin="round"
                       />
                     </svg>
-                    <span class="sale__status">{{ data.time }}</span>
+                    <span class="sale__status">{{ data.time }}
+                    
+                     </span>
                   </div>
-                  <span class="date">
-                    {{ data.placed_at }}
+                  <span class="date d-flex align-center justify-center">
+                    {{ $moment( data.placed_at).format('jYYYY/jM/jDD') }}
                   </span>
                 </div>
                 <span class="hover__icon_bottom">
@@ -491,14 +493,13 @@ h2 {
 
 .top_card .topcard__top__section {
   position: absolute;
-  left: 0;
-  right: 0;
-  top: 0;
+  left: 3%;
+  right: 3%;
+  top: 3%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  width: 100%;
 }
 
 .salecard_product__text {

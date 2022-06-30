@@ -45,7 +45,7 @@
                   </div>
                   <div class="date">
                     <p class="">
-                      {{ data.placed_at }}
+                    {{ $moment( data.placed_at).format('jYYYY/jM/jDD') }}
                     </p>
                   </div>
                   <div class="d-flex flex-row count__icon mb-4">
@@ -287,6 +287,11 @@ li {
   height: 180px;
   overflow: hidden !important;
 }
+.pictur img{
+  background-size: cover;
+width: 100%!important;
+
+}
 .main__pic:hover {
   transform: scale(1.1);
 }
@@ -332,7 +337,7 @@ li {
 }
 .date {
   position: absolute;
-  width: 55px;
+  width: 60px;
   top: 13px;
   left: 0%;
   background-color: #ffff;
@@ -350,7 +355,7 @@ li {
   color: #535353;
   text-align: right;
   white-space: nowrap;
-  width: 45px;
+  width: 55px;
   overflow: hidden;
   text-overflow: ellipsis;
   padding: 0;
@@ -408,7 +413,6 @@ li {
 .person__pictur img {
   border-radius: 15px !important;
   margin-left: 8px;
-  object-fit: cover;
 }
 .person__pictur img {
   width: 40px;

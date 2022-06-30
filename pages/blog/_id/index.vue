@@ -2,7 +2,6 @@
   <v-app>
   
     <div class="mainPage">
-    {{this.$route.params.id}}
       <Header2 class="mb-5"></Header2>
       <div class="medium_container">
         <div class="mb-5">

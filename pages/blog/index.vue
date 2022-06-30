@@ -6,29 +6,19 @@
         <div class="mainSection__cards mb-5">
           <v-row>
             <v-col cols="12 " md="7">
-              <card v-bind="getBlog " :data="getBlog"
-             
-              ></card
-            >
-                <v-col cols="6" md="4" lg="4" class="pa-0 ma-0 mt-5 mb-5">
-      <div v-bind="next" :key="next">
-      next: {{ next }}
-        <ul class="d-flex pa-0 ma-1 cards_pagination" v-if="next">
-          <li>
-            
-           
-            <v-btn
-            @click="next2"
-  elevation="2"
-  :loading="loading"
->            مشاهده ی بیشتر
-</v-btn>
-          </li>
-        </ul>
-      </div>
-    </v-col>
+              <card v-bind="getBlog" :data="getBlog"></card>
+              <v-col cols="6" md="4" lg="4" class="pa-0 ma-0 mt-5 mb-5">
+                <div v-bind="next" :key="next">
+                  <div class="d-flex pa-0 ma-1 cards_pagination" v-if="next">
+                    
+                      <v-btn @click="next2" elevation="2" :loading="loading">
+                        مشاهده ی بیشتر
+                      </v-btn>
+                  </div>
+                </div>
+              </v-col>
             </v-col>
-         
+
             <v-col cols="12 " md="5">
               <search
                 v-bind="'MostViewWeblogs,tags ,weblogTypes'"
@@ -55,7 +45,7 @@ import { tags } from "../../service/getApi";
 import { weblogTypes } from "../../service/getApi";
 import { MostViewWeblogs } from "../../service/getApi";
 
-import axios from 'axios';
+import axios from "axios";
 import { mapActions } from "vuex";
 export default {
   components: {
@@ -71,35 +61,39 @@ export default {
       tags: [],
       weblogTypes: [],
       MostViewWeblogs: [],
-      count:[],
-      next:'',
-    loading:false
+      count: [],
+      next: "",
+      loading: false,
     };
   },
-    methods:{
-next2(){
-  this.loading=true
-  axios.get(this.next).then(res=>(
-     this.next=res.data.next,
-    //  this.getBlog.push(res.data.results),
-    res.data.results.forEach(ele => {
-      this.getBlog.push(ele)
-    }),
-     this.loading=false,
-     console.log(res.data.next)
-  )).catch(err=>console.log(err))
-  }
+  methods: {
+    next2() {
+      this.loading = true;
+      axios
+        .get(this.next)
+        .then(
+          (res) => (
+            (this.next = res.data.next),
+            //  this.getBlog.push(res.data.results),
+            res.data.results.forEach((ele) => {
+              this.getBlog.push(ele);
+            }),
+            (this.loading = false),
+            console.log(res.data.next)
+          )
+        )
+        .catch((err) => console.log(err));
+    },
   },
 
   mounted() {
-     getBlog().then((res) => {
-       this.getBlog = res.data.results
-       this.next = res.data.next
-     }
-     );
-      // getBlog().then((res) => (this.next = res.data.next));
+    getBlog().then((res) => {
+      this.getBlog = res.data.results;
+      this.next = res.data.next;
+    });
+    // getBlog().then((res) => (this.next = res.data.next));
     // getBlog().then((res) => (this.count = res.data.count));
-    tags().then((res) => (this.tags = res.data))
+    tags().then((res) => (this.tags = res.data));
     weblogTypes().then((res) => (this.weblogTypes = res.data));
     MostViewWeblogs().then((res) => (this.MostViewWeblogs = res.data));
     // .then((res)=>console.log(res.find(i=> i.id === 1)))
@@ -110,7 +104,6 @@ next2(){
 </script>
 
 <style>
-
 .mainSection__cards .mainCard__weblog,
 .search_main_section {
   margin-top: -100px;
@@ -127,32 +120,28 @@ next2(){
   justify-content: center;
   margin: 0 10px;
 }
-.cards_pagination li {
+.cards_pagination .v-btn {
   border: 1px solid rgba(0, 0, 0, 0.219);
   text-align: center;
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: 10px;
-  width: 150px !important;
+  width: 200px !important;
   height: 50px;
-  margin: 0 5px;
+  margin: 0px;
+  background-color: rgb(255, 255, 255);
+  transition: all ease-in-out 0.2s;
+
 }
-.cards_pagination li .pagination__number {
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 26px;
-  color: rgba(0, 0, 0, 0.53);
-}
-.cards_pagination li:hover {
+
+.cards_pagination .v-btn:hover {
   background: rgba(81, 159, 255, 0.12);
-  transition: all ease-in-out 0.2s;
 }
-.cards_pagination li:hover .pagination__number {
+.cards_pagination .v-btn:hover  {
   color: rgba(81, 159, 255, 1);
-  transition: all ease-in-out 0.2s;
 }
-.cards_pagination li:hover svg path {
+.cards_pagination a:hover svg path {
   stroke: rgba(81, 159, 255, 1);
   transition: all ease-in-out 0.2s;
 }
