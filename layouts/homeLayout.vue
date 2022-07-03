@@ -13,6 +13,7 @@ import navbar from "./navbar.vue";
 import custoMfooter from "./footer.vue";
  import $ from 'jquery'
 export default {
+  
   components: {
     navbar,
     custoMfooter,

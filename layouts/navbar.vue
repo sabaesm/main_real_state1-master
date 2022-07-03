@@ -605,7 +605,7 @@ export default {
       isActive: false,
       isError: true,
       dialog: false,
-      close: true,
+      close1: true,
       scrollToTop: false,
       fixed_nav: true,
       showAltNavbar: false,
@@ -621,8 +621,8 @@ export default {
       this.isActive = !this.isActive;
       this.isError = !this.isError;
     },
-    close: function () {
-      this.close = !this.close;
+    close() {
+      this.close1 =!this.close1;
     },
     onchangeGetValue(e) {
       this.valueInput.estate_code = e.target.value;

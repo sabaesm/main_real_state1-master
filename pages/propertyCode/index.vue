@@ -43,10 +43,10 @@ export default {
     };
   },
   mounted() {
-    console.log(this.$route.query);
-    console.log(this.$route.query.unit_price__gte);
-    console.log(this.$route.query.unit_price__lte);
-    console.log(this.$route.query.estate_type);
+    // console.log(this.$route.query);
+    // console.log(this.$route.query.unit_price__gte);
+    // console.log(this.$route.query.unit_price__lte);
+    // console.log(this.$route.query.estate_type);
     getSearch({...this.$route.query}).then((res) => console.log(res.data.results))
     getSearch({...this.$route.query}).then((res) => this.getSearch=res.data.results)
 

@@ -13,56 +13,55 @@
       <v-col cols=" 12 " md="10" class="pa-0 ma-0">
         <form action="" class="select_bar d-flex flex-column flex-md-row align-center">
           <div class="animation">
-          <div class="region search_bar ma-md-0 mb-5">
-            <label for=""> منطقه : </label>
-            <div class="test">
-              <select name="region" id="" v-on:change="onchangeGetValue">
-                <option value="">مکان شما</option>
-                <option value="هراز ">هراز</option>
-                <option value="امام رضا">امام رضا</option>
-                <option value="جاده نور">جاده نور</option>
-                <option value="جاده محمودآباد">جاده محمودآباد</option>
-              </select>
+            <div class="region search_bar ma-md-0 mb-5">
+              <label for=""> منطقه : </label>
+              <div class="test">
+                <select name="region" id="" v-on:change="onchangeGetValue">
+                  <option value="">مکان شما</option>
+                  <option value="هراز ">هراز</option>
+                  <option value="امام رضا">امام رضا</option>
+                  <option value="جاده نور">جاده نور</option>
+                  <option value="جاده محمودآباد">جاده محمودآباد</option>
+                </select>
+              </div>
+              <span class="arrow"></span>
             </div>
-            <span class="arrow"></span>
-          </div>
           </div>
           <div class="animation">
-          <div class="region search_bar ma-md-0 mb-5">
-            <label for="" class="name"> نوع ملک </label>
-            <div class="test">
-              <select name="estate_type" id="" v-on:change="onchangeGetValue" class=" ">
-                <option value="">هر ملکی</option>
-                <option value="V ">ویلا</option>
-                <option value="G">باغ</option>
-                <option value="H">خانه ویلایی</option>
-                <option value="L">زمین</option>
-                <option value="A">آپارتمان</option>
-                <option value="B">مغازه و تجاری</option>
-              </select>
+            <div class="region search_bar ma-md-0 mb-5">
+              <label for="" class="name"> نوع ملک </label>
+              <div class="test">
+                <select name="estate_type" id="" v-on:change="onchangeGetValue" class=" ">
+                  <option value="">هر ملکی</option>
+                  <option value="V ">ویلا</option>
+                  <option value="G">باغ</option>
+                  <option value="H">خانه ویلایی</option>
+                  <option value="L">زمین</option>
+                  <option value="A">آپارتمان</option>
+                  <option value="B">مغازه و تجاری</option>
+                </select>
+              </div>
+              <span class="arrow"></span>
             </div>
-            <span class="arrow"></span>
           </div>
-          </div>
-         
-<div class="animation">
-          <div class="region search_bar ma-md-0 mb-5">
-            <label for="" class="name"> نوع ملک </label>
-            <div class="test">
-              <select name="estate_type" id="" v-on:change="onchangeGetValue" class=" ">
-                <option value="">هر ملکی</option>
-                <option value="V ">ویلا</option>
-                <option value="G">باغ</option>
-                <option value="H">خانه ویلایی</option>
-                <option value="L">زمین</option>
-                <option value="A">آپارتمان</option>
-                <option value="B">مغازه و تجاری</option>
-              </select>
+
+          <div class="animation">
+            <div class="region search_bar ma-md-0 mb-5">
+              <label for="" class="name"> نوع ملک </label>
+              <div class="test">
+                <select name="estate_type" id="" v-on:change="onchangeGetValue" class=" ">
+                  <option value="">هر ملکی</option>
+                  <option value="V ">ویلا</option>
+                  <option value="G">باغ</option>
+                  <option value="H">خانه ویلایی</option>
+                  <option value="L">زمین</option>
+                  <option value="A">آپارتمان</option>
+                  <option value="B">مغازه و تجاری</option>
+                </select>
+              </div>
+              <span class="arrow"></span>
             </div>
-            <span class="arrow"></span>
           </div>
-          </div>
-         
         </form>
       </v-col>
       <nuxt-link
@@ -78,7 +77,7 @@
         }"
       >
         <!-- <nuxt-link :to=" { name: 'propertyCode', query: ` ${'region'}`}">     -->
-        <button class="search_home" v-on:click="handleSearch"> جستجوی ملک</button>
+        <button class="search_home" v-on:click="handleSearch">جستجوی ملک</button>
       </nuxt-link>
     </div>
   </div>
@@ -128,7 +127,7 @@ export default {
 
 <style>
 .region select {
-  text-align: left !important;
+  text-align-last: left !important;
 }
 </style>
 <style scoped>
@@ -189,70 +188,67 @@ h5 {
   height: 58px !important;
   position: relative;
   z-index: 0;
-      overflow: hidden;
-
-  
+  overflow: hidden;
 }
-.search_home::before{
-      content: "";
-    width: 100%;
-    height: 0;
-    background-color: #478adc!important;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    border-radius: 8px;
-    transition: .3s;
-    transform-origin: center;
-    z-index: -1!important;
-
+.search_home::before {
+  content: "";
+  width: 100%;
+  height: 0;
+  background-color: #478adc !important;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  border-radius: 8px;
+  transition: 0.3s;
+  transform-origin: center;
+  z-index: -1 !important;
 }
-.search_home:hover:before{
-  height: 100%!important;
+.search_home:hover:before {
+  height: 100% !important;
 }
 form {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
 }
-.animation{
+.animation {
   width: 30%;
   position: relative;
 }
-.animation::before{
-      content: "";
-    position: absolute;
-    height: 100%;
-    z-index: -1;
-    border-radius: 9px;
-    transition: .3s;
-    pointer-events: none;
-        top: 10px;
-    left: 40px;
-    width: calc(100% - 80px);
-    background-color: hsla(0,0%,100%,.4);
+.animation::before {
+  content: "";
+  position: absolute;
+  height: 100%;
+  z-index: -1;
+  border-radius: 9px;
+  transition: 0.3s;
+  pointer-events: none;
+  top: 10px;
+  left: 40px;
+  width: calc(100% - 80px);
+  background-color: hsla(0, 0%, 100%, 0.4);
 }
 .animation:hover::before,
-.animation:hover::after{
+.animation:hover::after {
   top: 0;
   bottom: 0;
 
-left: 0;
+  left: 0;
 }
-.animation::after{
-      content: "";
-    position: absolute;
-    height: 100%;
-    z-index: -1;
-    border-radius: 9px;
-    transition: .3s;
-    pointer-events: none;
-        top: 5px;
-    left: 20px;
-    width: calc(100% - 40px);
-    background-color: hsla(0,0%,100%,.6);
+.animation::after {
+  content: "";
+  position: absolute;
+  height: 100%;
+  z-index: -1;
+  border-radius: 9px;
+  transition: 0.3s;
+  pointer-events: none;
+  top: 5px;
+  left: 20px;
+  width: calc(100% - 40px);
+  background-color: hsla(0, 0%, 100%, 0.6);
 }
-.search_bar{
+.search_bar {
   width: 100%;
 }
 .search_bar:hover {
@@ -269,24 +265,20 @@ left: 0;
   border-radius: 10px !important;
   height: 58px;
   overflow: hidden;
-
 }
 .search_bar::before {
   content: "";
-  
+
   position: absolute;
   width: 8px;
   height: 2px;
   left: 7%;
   background-color: #848486;
-      transition: all ease-in-out 0.2s;
-
-  
+  transition: all ease-in-out 0.2s;
 }
 .search_bar:hover::before {
-  transform: rotate(45deg);  
+  transform: rotate(45deg);
   height: 3px;
-
 }
 .search_bar::after {
   content: "";
@@ -295,8 +287,7 @@ left: 0;
   height: 2px;
   left: 8.5%;
   background-color: #848486;
-      transition: all ease-in-out 0.2s;
-
+  transition: all ease-in-out 0.2s;
 }
 .search_bar:hover::after {
   transform: rotate(-45deg);
